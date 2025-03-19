@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { LightbulbIcon, ChevronRight, ChevronLeft } from 'lucide-react';
@@ -7,7 +6,8 @@ import {
   CarouselContent, 
   CarouselItem, 
   CarouselNext, 
-  CarouselPrevious 
+  CarouselPrevious,
+  type CarouselApi
 } from '@/components/ui/carousel';
 import { cn } from '@/lib/utils';
 import { 
@@ -192,7 +192,11 @@ const ProjectsSection = () => {
               loop: true,
             }}
             className="w-full"
-            onSelect={(api) => api && setActiveIndustryIndex(api.selectedScrollSnap())}
+            onSelect={(api: CarouselApi) => {
+              if (api) {
+                setActiveIndustryIndex(api.selectedScrollSnap());
+              }
+            }}
           >
             <div className="flex items-center justify-end gap-2 mb-4">
               <CarouselPrevious className="static relative translate-y-0 h-8 w-8" />
@@ -239,7 +243,11 @@ const ProjectsSection = () => {
               loop: true,
             }}
             className="w-full"
-            onSelect={(api) => api && setActiveEventTypeIndex(api.selectedScrollSnap())}
+            onSelect={(api: CarouselApi) => {
+              if (api) {
+                setActiveEventTypeIndex(api.selectedScrollSnap());
+              }
+            }}
           >
             <div className="flex items-center justify-end gap-2 mb-4">
               <CarouselPrevious className="static relative translate-y-0 h-8 w-8" />
