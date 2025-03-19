@@ -29,7 +29,7 @@ const HeroSection = () => {
           Wir bringen Menschen zusammen – Meeting. Congress. Event.
         </h1>
         <div className="font-medium text-xl mb-6">➡ INDIVIDUELL. KREATIV. NACHHALTIG.</div>
-        <p className="font-medium text-primary mb-6">Jedes Event erzählt eine Geschichte – lassen Sie uns gemeinsam Ihre erzählen.</p>
+        <p className="font-medium text-primary text-xl mb-6">Jedes Event erzählt eine Geschichte – lassen Sie uns gemeinsam Ihre erzählen.</p>
         <p className="subheader-section max-w-2xl mx-auto mb-8">
           Wir konzipieren und realisieren maßgeschneiderte Erlebnisse, die Menschen verbinden, Marken erlebbar machen und unvergessliche Erinnerungen schaffen.
         </p>

@@ -10,7 +10,7 @@ interface CategoryItemProps {
 
 const CategoryItem = ({ title, description }: CategoryItemProps) => (
   <div className="bg-card rounded-lg overflow-hidden border hover:shadow-md transition-shadow group">
-    <div className="aspect-video placeholder-box rounded-t-lg flex items-center justify-center text-muted-foreground">
+    <div className="aspect-video placeholder-box rounded-t-lg flex items-center justify-center text-muted-foreground bg-muted/50">
       [Platzhalter für Branchenbild]
     </div>
     <div className="p-5">
@@ -103,7 +103,11 @@ const ProjectsSection = () => {
                 variant={activeCategory === category ? "default" : "outline"}
                 size="sm"
                 onClick={() => setActiveCategory(category)}
-                className="rounded-full"
+                className={`rounded-full transition-all duration-300 ${
+                  activeCategory === category 
+                    ? "bg-primary text-primary-foreground shadow-md scale-105" 
+                    : "hover:bg-primary/10"
+                }`}
               >
                 {category}
               </Button>

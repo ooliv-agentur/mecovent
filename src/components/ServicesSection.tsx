@@ -25,7 +25,7 @@ interface ServiceCardProps {
 const ServiceCard = ({ title, description, icon: Icon }: ServiceCardProps) => (
   <div className="border rounded-lg p-6 hover:shadow-sm transition-shadow bg-card">
     <div className="w-12 h-12 mb-4 flex items-center justify-center">
-      <Icon className="w-6 h-6" />
+      <Icon className="w-7 h-7 text-primary/80" />
     </div>
     <h3 className="font-medium text-xl mb-3">{title}</h3>
     <p className="text-muted-foreground">
@@ -83,6 +83,10 @@ const ServicesSection = () => {
           <h2 className="header-section">Unsere Leistungen – Mehr als nur Eventplanung</h2>
           <p className="subheader-section">
             Wir realisieren nicht einfach Events – wir erschaffen Erlebnisse. Dank unserer langjährigen Erfahrung und einem starken Netzwerk sind wir Ihr zuverlässiger Partner für professionelle Veranstaltungsorganisation.
+          </p>
+          
+          <p className="font-medium text-primary mt-4 mb-6">
+            Von strategischer Planung bis zur perfekten Umsetzung – wir bieten alles aus einer Hand.
           </p>
           
           <div className="flex justify-center mt-6 mb-8">

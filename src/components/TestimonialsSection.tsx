@@ -1,6 +1,7 @@
 
-import React from 'react';
-import { MessageSquare, LightbulbIcon } from 'lucide-react';
+import React, { useState } from 'react';
+import { MessageSquare, LightbulbIcon, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -11,8 +12,26 @@ const TestimonialsSection = () => {
     {
       quote: "Von der ersten Beratung bis zur Umsetzung – absolut zuverlässig, transparent und professionell!",
       attribution: ""
+    },
+    {
+      quote: "Die individuelle Betreuung war hervorragend. Jedes Detail wurde präzise ausgearbeitet.",
+      attribution: ""
+    },
+    {
+      quote: "Wir waren beeindruckt von der strategischen Planung und reibungslosen Durchführung.",
+      attribution: ""
     }
   ];
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <section id="testimonials">
@@ -22,20 +41,65 @@ const TestimonialsSection = () => {
           <h2 className="header-section">Was andere über uns sagen</h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-card border rounded-lg p-8 shadow-sm">
-              <MessageSquare className="h-10 w-10 text-primary/20 mb-4" />
-              <blockquote className="text-xl font-medium mb-4">
-                "{testimonial.quote}"
-              </blockquote>
-              {testimonial.attribution && (
-                <cite className="block text-right text-muted-foreground not-italic">
-                  — {testimonial.attribution}
-                </cite>
-              )}
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out" 
+                style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="w-full flex-shrink-0 px-4">
+                    <div className="bg-card border rounded-lg p-8 shadow-sm h-full">
+                      <MessageSquare className="h-10 w-10 text-primary/20 mb-4" />
+                      <blockquote className="text-xl font-medium mb-4">
+                        "{testimonial.quote}"
+                      </blockquote>
+                      {testimonial.attribution && (
+                        <cite className="block text-right text-muted-foreground not-italic">
+                          — {testimonial.attribution}
+                        </cite>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+            
+            <div className="flex justify-center mt-6 gap-2">
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="rounded-full" 
+                onClick={prevTestimonial}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              
+              <div className="flex gap-1 items-center">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      currentTestimonial === index 
+                        ? "bg-primary w-4" 
+                        : "bg-muted"
+                    }`}
+                    onClick={() => setCurrentTestimonial(index)}
+                  />
+                ))}
+              </div>
+              
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="rounded-full" 
+                onClick={nextTestimonial}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
         </div>
         
         <div className="text-center mt-10 animate-fade-in">

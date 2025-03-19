@@ -10,8 +10,8 @@ interface ValueCardProps {
 
 const ValueCard = ({ title, description, icon: Icon }: ValueCardProps) => (
   <div className="flex flex-col items-center text-center">
-    <div className="w-24 h-24 flex items-center justify-center mb-6">
-      <Icon className="w-16 h-16" />
+    <div className="w-28 h-28 flex items-center justify-center mb-6">
+      <Icon className="w-20 h-20 text-primary/80" />
     </div>
     <h3 className="font-medium text-xl mb-3">{title}</h3>
     <p className="text-muted-foreground">
@@ -46,7 +46,7 @@ const AboutSection = () => {
           <div className="section-tag">Über Uns</div>
           <h2 className="header-section">Unsere Kompetenz für Ihre Events, unsere Kreativität für Ihren Erfolg!</h2>
           <p className="subheader-section">
-            Events sind mehr als nur Veranstaltungen – sie sind emotionale Begegnungen, die im Gedächtnis bleiben. Unser Ziel ist es, Ihre Vision in ein unvergessliches Event zu verwandeln, das inspiriert, verbindet und begeistert.
+            Events sind emotionale Begegnungen, die im Gedächtnis bleiben. Wir verwandeln Ihre Vision in ein unvergessliches Erlebnis.
           </p>
         </div>
         
