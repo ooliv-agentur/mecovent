@@ -1,19 +1,31 @@
 
 import React from 'react';
+import { Heart, Star, Award } from 'lucide-react';
 
-const ValueCard = ({ title }: { title: string }) => (
+interface ValueCardProps {
+  title: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+const ValueCard = ({ title, icon: Icon }: ValueCardProps) => (
   <div className="flex flex-col items-center text-center">
-    <div className="w-16 h-16 placeholder-box rounded-full mb-4">
-      [Icon]
+    <div className="w-24 h-24 flex items-center justify-center mb-6">
+      <Icon className="w-16 h-16" />
     </div>
-    <h3 className="font-medium text-lg mb-2">{title}</h3>
-    <p className="text-muted-foreground text-sm">
+    <h3 className="font-medium text-xl mb-3">{title}</h3>
+    <p className="text-muted-foreground">
       [Platzhalter für kurze Beschreibung des Wertes]
     </p>
   </div>
 );
 
 const AboutSection = () => {
+  const values = [
+    { title: "Wert 1", icon: Heart },
+    { title: "Wert 2", icon: Star },
+    { title: "Wert 3", icon: Award }
+  ];
+
   return (
     <section id="about" className="bg-secondary/30">
       <div className="container-section">
@@ -25,10 +37,14 @@ const AboutSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in-up">
-          <ValueCard title="Wert 1" />
-          <ValueCard title="Wert 2" />
-          <ValueCard title="Wert 3" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 animate-fade-in-up">
+          {values.map((value, index) => (
+            <ValueCard 
+              key={index}
+              title={value.title} 
+              icon={value.icon}
+            />
+          ))}
         </div>
       </div>
     </section>
