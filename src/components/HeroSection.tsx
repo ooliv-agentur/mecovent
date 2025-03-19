@@ -26,10 +26,10 @@ const HeroSection = () => {
       <div className="container-section relative z-10 text-center max-w-4xl animate-fade-in">
         <div className="section-tag">Wireframe v1</div>
         <h1 className="header-section text-4xl sm:text-5xl md:text-6xl mb-6">
-          [Platzhalter für Hauptbotschaft]
+          Wir bringen Menschen zusammen – Meeting. Congress. Event.
         </h1>
         <p className="subheader-section max-w-2xl mx-auto mb-8">
-          [Platzhalter für USP oder Mission]
+          Individuelle, kreative und nachhaltige Eventlösungen – perfekt abgestimmt auf Ihre Bedürfnisse.
         </p>
         <div className="flex flex-col items-center gap-4">
           <Button size="lg" className="rounded-full px-8 py-6 text-base">

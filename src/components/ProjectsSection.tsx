@@ -23,16 +23,16 @@ const ProjectCard = ({ title, category }: ProjectCardProps) => (
 );
 
 const ProjectsSection = () => {
-  const categories = ["Alle", "Kategorie 1", "Kategorie 2", "Kategorie 3"];
+  const categories = ["Alle", "Pharma & Medizintechnik", "Automobil & Verkehrswesen", "Chemie & Industrie", "Finanz- & Versicherungswesen"];
   const [activeCategory, setActiveCategory] = useState("Alle");
   
   const projects = [
-    { title: "Projekt 1", category: "Kategorie 1" },
-    { title: "Projekt 2", category: "Kategorie 2" },
-    { title: "Projekt 3", category: "Kategorie 1" },
-    { title: "Projekt 4", category: "Kategorie 3" },
-    { title: "Projekt 5", category: "Kategorie 2" },
-    { title: "Projekt 6", category: "Kategorie 3" }
+    { title: "Projekt 1", category: "Pharma & Medizintechnik" },
+    { title: "Projekt 2", category: "Automobil & Verkehrswesen" },
+    { title: "Projekt 3", category: "Pharma & Medizintechnik" },
+    { title: "Projekt 4", category: "Chemie & Industrie" },
+    { title: "Projekt 5", category: "Finanz- & Versicherungswesen" },
+    { title: "Projekt 6", category: "Automobil & Verkehrswesen" }
   ];
 
   const filteredProjects = activeCategory === "Alle" 
@@ -46,7 +46,7 @@ const ProjectsSection = () => {
           <div className="section-tag">Erfolgreiche Projekte</div>
           <h2 className="header-section">Unsere Referenzen</h2>
           <p className="subheader-section">
-            Entdecken Sie unsere erfolgreich abgeschlossenen Projekte und lassen Sie sich von unserer Arbeit inspirieren
+            Unsere Erfahrung spricht für sich. Wir haben bereits Events für zahlreiche Branchen erfolgreich umgesetzt.
           </p>
           
           <div className="flex flex-wrap justify-center gap-2 mt-6">

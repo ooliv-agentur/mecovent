@@ -8,34 +8,57 @@ import {
 } from "@/components/ui/tabs";
 import { 
   Code, 
-  PenTool, 
-  BarChart, 
-  Smartphone 
+  Users, 
+  Music, 
+  Smartphone,
+  Cake
 } from 'lucide-react';
 
 interface ServiceCardProps {
   title: string;
+  description: string;
   icon: React.ComponentType<{ className?: string }>;
 }
 
-const ServiceCard = ({ title, icon: Icon }: ServiceCardProps) => (
+const ServiceCard = ({ title, description, icon: Icon }: ServiceCardProps) => (
   <div className="border rounded-lg p-6 hover:shadow-sm transition-shadow bg-card">
     <div className="w-12 h-12 mb-4 flex items-center justify-center">
       <Icon className="w-6 h-6" />
     </div>
     <h3 className="font-medium text-xl mb-3">{title}</h3>
     <p className="text-muted-foreground">
-      [Platzhalter für kurze Beschreibung der Leistung]
+      {description}
     </p>
   </div>
 );
 
 const ServicesSection = () => {
   const services = [
-    { title: "Leistung 1", icon: Code },
-    { title: "Leistung 2", icon: PenTool },
-    { title: "Leistung 3", icon: BarChart },
-    { title: "Leistung 4", icon: Smartphone }
+    { 
+      title: "Eventmanagement", 
+      description: "Planung & Durchführung maßgeschneiderter Veranstaltungen", 
+      icon: Code 
+    },
+    { 
+      title: "Teilnehmermanagement", 
+      description: "Einladung, Buchung, Betreuung Ihrer Gäste", 
+      icon: Users 
+    },
+    { 
+      title: "Veranstaltungstechnik", 
+      description: "Bühnenbau, Licht, Ton & Videotechnik", 
+      icon: Music 
+    },
+    { 
+      title: "Incentives & Teamevents", 
+      description: "Unvergessliche Erlebnisse für Ihr Team", 
+      icon: Smartphone 
+    },
+    { 
+      title: "Private Events", 
+      description: "Hochzeiten, Jubiläen & exklusive Feiern", 
+      icon: Cake 
+    }
   ];
 
   const [view, setView] = useState<"grid" | "slider">("grid");
@@ -60,11 +83,12 @@ const ServicesSection = () => {
           </div>
         </div>
         
-        <div className={`${view === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" : "grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-2"} animate-fade-in-up`}>
+        <div className={`${view === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-2"} animate-fade-in-up`}>
           {services.map((service, index) => (
             <ServiceCard 
               key={index}
               title={service.title}
+              description={service.description}
               icon={service.icon}
             />
           ))}
