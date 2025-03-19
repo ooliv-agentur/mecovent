@@ -88,10 +88,20 @@ const ProjectsSection = () => {
         </div>
         
         <div className="text-center mt-16 animate-fade-in">
-          <p className="flex items-center justify-center gap-2 text-primary">
-            <LightbulbIcon className="h-5 w-5" />
-            <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
-          </p>
+          <div className="max-w-2xl mx-auto">
+            <p className="flex items-center justify-center gap-2 text-primary mb-8">
+              <LightbulbIcon className="h-5 w-5" />
+              <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
+            </p>
+            
+            <div className="mt-12 bg-primary/5 p-8 rounded-xl border border-primary/10">
+              <h3 className="text-xl font-medium mb-4 text-primary">Bereit für Ihr nächstes Event? Lassen Sie uns gemeinsam planen!</h3>
+              <p className="mb-6 text-foreground/80">Ob <span className="font-medium text-primary">Automobil</span> oder <span className="font-medium text-primary">Pharma</span>, <span className="font-medium text-primary">Produktlaunch</span> oder <span className="font-medium text-primary">Workshop</span> – wir finden die perfekte Lösung für Ihre Herausforderung.</p>
+              <button className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors shadow-sm">
+                Jetzt kostenlos beraten lassen
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

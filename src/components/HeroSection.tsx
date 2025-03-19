@@ -26,10 +26,12 @@ const HeroSection = () => {
       <div className="container-section relative z-10 text-center max-w-4xl animate-fade-in">
         <div className="section-tag">Wireframe v1</div>
         <h1 className="header-section text-4xl sm:text-5xl md:text-6xl mb-6">
-          Wir bringen Menschen zusammen – Meeting. Congress. Event.
+          Message. Atmosphäre. Event. – Wir schaffen Erlebnisse, die Menschen verbinden.
         </h1>
         <div className="font-medium text-xl mb-6">➡ INDIVIDUELL. KREATIV. NACHHALTIG.</div>
-        <p className="font-medium text-primary text-xl mb-6">Jedes Event erzählt eine Geschichte – lassen Sie uns gemeinsam Ihre erzählen.</p>
+        <p className="font-medium text-primary text-xl mb-6">
+          Wir helfen Unternehmen, ihre Visionen in einzigartige Veranstaltungen zu verwandeln. Ob Change, Innovation oder Markeninszenierung – Ihre Botschaft wird lebendig.
+        </p>
         <p className="subheader-section max-w-2xl mx-auto mb-8">
           Wir konzipieren und realisieren maßgeschneiderte Erlebnisse, die Menschen verbinden, Marken erlebbar machen und unvergessliche Erinnerungen schaffen.
         </p>
@@ -51,7 +53,7 @@ const HeroSection = () => {
         
         <div className="flex flex-col items-center gap-4">
           <Button size="lg" className="rounded-full px-8 py-6 text-base">
-            Jetzt unverbindlich anfragen
+            Jetzt kostenlos beraten lassen
           </Button>
           <Button 
             variant="ghost" 
