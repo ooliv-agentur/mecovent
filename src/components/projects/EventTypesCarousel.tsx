@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { eventTypes } from './data';
 import SectionTitle from './SectionTitle';
@@ -39,14 +39,20 @@ const EventTypesCarousel = ({
   activeEventTypeIndex, 
   setActiveEventTypeIndex 
 }: EventTypesCarouselProps) => {
+  // Track which row is currently active (expanded)
+  const [activeRow, setActiveRow] = useState<number | null>(null);
+  
   // Handle expanding/collapsing a card
   const handleToggleCard = (index: number) => {
     if (activeEventTypeIndex === index) {
       // If this card is already active, collapse it
       setActiveEventTypeIndex(null);
+      setActiveRow(null);
     } else {
       // Otherwise, expand this card and collapse any others
       setActiveEventTypeIndex(index);
+      // Calculate which row this card is in (assuming 3 columns)
+      setActiveRow(Math.floor(index / 3));
     }
   };
   
@@ -83,6 +89,12 @@ const EventTypesCarousel = ({
     'Teamgeist': <Users className="h-3 w-3" />
   };
   
+  // Determine if a card is in the active row
+  const isInActiveRow = (index: number) => {
+    if (activeRow === null) return false;
+    return Math.floor(index / 3) === activeRow;
+  };
+  
   return (
     <div>
       <SectionTitle 
@@ -93,91 +105,116 @@ const EventTypesCarousel = ({
       <div className="mt-8">
         {/* Grid layout for event types */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {eventTypes.map((event, index) => (
-            <Collapsible 
-              key={index}
-              open={activeEventTypeIndex === index}
-              onOpenChange={() => handleToggleCard(index)}
-              className={cn(
-                "bg-card rounded-lg border transition-all duration-300 h-full",
-                activeEventTypeIndex === index 
-                  ? "bg-accent/20 border-primary/30 shadow-md" 
-                  : "shadow-sm hover:shadow-md hover:border-primary/20"
-              )}
-            >
-              <Card className="border-0 shadow-none bg-transparent h-full flex flex-col">
-                <CollapsibleTrigger className="w-full text-left cursor-pointer">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className={cn(
-                        "w-10 h-10 rounded-full flex items-center justify-center",
-                        activeEventTypeIndex === index ? "bg-primary/20" : "bg-primary/10"
-                      )}>
-                        <Clock className={cn(
-                          "h-5 w-5",
-                          activeEventTypeIndex === index ? "text-primary" : "text-primary/80"
-                        )} />
-                      </div>
-                    </div>
-                    
-                    <CardTitle className={cn(
-                      "text-xl font-semibold",
-                      activeEventTypeIndex === index ? "text-primary" : "text-primary/90"
-                    )}>
-                      {event.title}
-                    </CardTitle>
-                    
-                    <CardDescription className="text-muted-foreground">
-                      {event.description}
-                    </CardDescription>
-                  </CardHeader>
-                  
-                  <CardContent className="pt-0">
-                    <div className="flex justify-end items-center text-sm text-primary mt-2">
-                      {activeEventTypeIndex === index ? (
-                        <div className="flex items-center gap-1">
-                          <span>Weniger anzeigen</span>
-                          <ChevronUp className="h-4 w-4" />
+          {eventTypes.map((event, index) => {
+            const isActive = activeEventTypeIndex === index;
+            const inActiveRow = isInActiveRow(index);
+            
+            return (
+              <Collapsible 
+                key={index}
+                open={isActive}
+                onOpenChange={() => handleToggleCard(index)}
+                className={cn(
+                  "rounded-lg border transition-all duration-500",
+                  isActive 
+                    ? "bg-accent/30 border-primary/40 shadow-lg transform scale-105 z-10" 
+                    : inActiveRow
+                      ? "bg-accent/10 border-primary/20 shadow-md transform scale-102"
+                      : "shadow-sm hover:shadow-md hover:border-primary/20 bg-card"
+                )}
+              >
+                <Card className={cn(
+                  "border-0 shadow-none bg-transparent h-full flex flex-col transition-all duration-500",
+                  isActive ? "min-h-[280px]" : inActiveRow ? "min-h-[260px]" : "min-h-[240px]"
+                )}>
+                  <CollapsibleTrigger className="w-full text-left cursor-pointer">
+                    <CardHeader>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className={cn(
+                          "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300",
+                          isActive 
+                            ? "bg-primary/30" 
+                            : inActiveRow 
+                              ? "bg-primary/20" 
+                              : "bg-primary/10"
+                        )}>
+                          <Clock className={cn(
+                            "h-5 w-5 transition-colors duration-300",
+                            isActive 
+                              ? "text-primary" 
+                              : inActiveRow 
+                                ? "text-primary/90" 
+                                : "text-primary/80"
+                          )} />
                         </div>
-                      ) : (
-                        <div className="flex items-center gap-1">
-                          <span>Mehr erfahren</span>
-                          <ChevronDown className="h-4 w-4" />
-                        </div>
-                      )}
-                    </div>
-                  </CardContent>
-                </CollapsibleTrigger>
-                
-                <CollapsibleContent className="px-6 pb-4 max-h-52 overflow-hidden">
-                  <ScrollArea className="h-full max-h-52 pr-4">
-                    <div className="pt-2 border-t border-border/40">
-                      <div className="my-4 text-sm text-foreground/80 leading-relaxed">
-                        {event.details}
                       </div>
                       
-                      <div className="flex flex-wrap gap-2 mt-4 pb-2">
-                        {eventTags[index].map((tag, i) => (
-                          <Badge 
-                            key={i} 
-                            variant="outline" 
-                            className="flex items-center gap-1.5 py-1 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary hover:bg-primary/10"
-                          >
-                            {tagIcons[tag]}
-                            <span>{tag}</span>
-                          </Badge>
-                        ))}
+                      <CardTitle className={cn(
+                        "text-xl font-semibold transition-colors duration-300",
+                        isActive 
+                          ? "text-primary" 
+                          : inActiveRow 
+                            ? "text-primary/90" 
+                            : "text-primary/80"
+                      )}>
+                        {event.title}
+                      </CardTitle>
+                      
+                      <CardDescription className={cn(
+                        "text-muted-foreground transition-colors duration-300",
+                        isActive ? "font-medium" : ""
+                      )}>
+                        {event.description}
+                      </CardDescription>
+                    </CardHeader>
+                    
+                    <CardContent className="pt-0">
+                      <div className="flex justify-end items-center text-sm text-primary mt-2">
+                        {isActive ? (
+                          <div className="flex items-center gap-1">
+                            <span>Weniger anzeigen</span>
+                            <ChevronUp className="h-4 w-4" />
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-1">
+                            <span>Mehr erfahren</span>
+                            <ChevronDown className="h-4 w-4" />
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  </ScrollArea>
-                </CollapsibleContent>
-                
-                <CardFooter className="mt-auto pt-0 opacity-0">
-                  {/* Spacer for consistent height */}
-                </CardFooter>
-              </Card>
-            </Collapsible>
-          ))}
+                    </CardContent>
+                  </CollapsibleTrigger>
+                  
+                  <CollapsibleContent className="px-6 pb-4 overflow-hidden transition-all duration-500">
+                    <ScrollArea className="h-full max-h-44 pr-4">
+                      <div className="pt-2 border-t border-border/40">
+                        <div className="my-4 text-sm text-foreground/80 leading-relaxed">
+                          {event.details}
+                        </div>
+                        
+                        <div className="flex flex-wrap gap-2 mt-4 pb-2">
+                          {eventTags[index].map((tag, i) => (
+                            <Badge 
+                              key={i} 
+                              variant="outline" 
+                              className="flex items-center gap-1.5 py-1 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary hover:bg-primary/10"
+                            >
+                              {tagIcons[tag]}
+                              <span>{tag}</span>
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </ScrollArea>
+                  </CollapsibleContent>
+                  
+                  <CardFooter className="mt-auto pt-0 opacity-0">
+                    {/* Spacer for consistent height */}
+                  </CardFooter>
+                </Card>
+              </Collapsible>
+            );
+          })}
         </div>
       </div>
     </div>
