@@ -5,14 +5,12 @@ import { cn } from '@/lib/utils';
 import IndustriesCarousel from './projects/IndustriesCarousel';
 import EventTypesCarousel from './projects/EventTypesCarousel';
 import IndustryDialog from './projects/IndustryDialog';
-import EventDialog from './projects/EventDialog';
-import { industryItems, eventTypes } from './projects/data';
+import { industryItems } from './projects/data';
 
 const ProjectsSection = () => {
   const [activeIndustryIndex, setActiveIndustryIndex] = useState(0);
-  const [activeEventTypeIndex, setActiveEventTypeIndex] = useState(0);
+  const [activeEventTypeIndex, setActiveEventTypeIndex] = useState<number | null>(null);
   const [openIndustryDialog, setOpenIndustryDialog] = useState<string | null>(null);
-  const [openEventDialog, setOpenEventDialog] = useState<string | null>(null);
   
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -46,10 +44,6 @@ const ProjectsSection = () => {
     setOpenIndustryDialog(title);
   };
 
-  const handleOpenEventDialog = (title: string) => {
-    setOpenEventDialog(title);
-  };
-
   return (
     <section id="projects" className="bg-secondary/10 overflow-hidden" ref={sectionRef}>
       <div className="container-section overflow-visible">
@@ -76,33 +70,20 @@ const ProjectsSection = () => {
             <IndustryDialog 
               key={index}
               industry={industry}
-              eventTypes={eventTypes}
               isOpen={openIndustryDialog === industry.title}
               onClose={() => setOpenIndustryDialog(null)}
             />
           ))}
         </div>
         
-        {/* Event Types Section - Grid Layout */}
+        {/* Event Types Section - Expanding Cards Layout */}
         <div className={cn("mt-16 transition-all duration-700 transform", 
                           isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}
              style={{ transitionDelay: "300ms" }}>
           <EventTypesCarousel 
             activeEventTypeIndex={activeEventTypeIndex} 
             setActiveEventTypeIndex={setActiveEventTypeIndex}
-            openEventDialog={handleOpenEventDialog}
           />
-          
-          {/* Event Type Dialogs */}
-          {eventTypes.map((event, index) => (
-            <EventDialog 
-              key={index}
-              event={event}
-              industries={industryItems}
-              isOpen={openEventDialog === event.title}
-              onClose={() => setOpenEventDialog(null)}
-            />
-          ))}
         </div>
         
         <div className="text-center mt-16 animate-fade-in">

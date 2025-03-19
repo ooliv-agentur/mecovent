@@ -1,33 +1,40 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { eventTypes } from './data';
 import SectionTitle from './SectionTitle';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ChevronRight, Clock } from 'lucide-react';
+import { ChevronDown, ChevronUp, Clock } from 'lucide-react';
+import { 
+  Collapsible, 
+  CollapsibleContent, 
+  CollapsibleTrigger 
+} from "@/components/ui/collapsible";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface EventTypesCarouselProps {
-  activeEventTypeIndex: number;
-  setActiveEventTypeIndex: (index: number) => void;
-  openEventDialog: (title: string) => void;
+  activeEventTypeIndex: number | null;
+  setActiveEventTypeIndex: (index: number | null) => void;
 }
 
 const EventTypesCarousel = ({ 
   activeEventTypeIndex, 
-  setActiveEventTypeIndex, 
-  openEventDialog 
+  setActiveEventTypeIndex 
 }: EventTypesCarouselProps) => {
-  // Event categories for filtering
-  const categories = [
-    { id: "all", label: "Alle Eventtypen" },
-    { id: "corporate", label: "Corporate Events" },
-    { id: "educational", label: "Bildungsevents" },
-  ];
-  
-  // Handle tab change
-  const handleTabChange = (value: string) => {
-    // If we implement filtering in the future, we can use this
-    console.log("Selected tab:", value);
+  // Handle expanding/collapsing a card
+  const handleToggleCard = (index: number) => {
+    if (activeEventTypeIndex === index) {
+      // If this card is already active, collapse it
+      setActiveEventTypeIndex(null);
+    } else {
+      // Otherwise, expand this card and collapse any others
+      setActiveEventTypeIndex(index);
+    }
   };
   
   return (
@@ -38,86 +45,76 @@ const EventTypesCarousel = ({
       />
       
       <div className="mt-8">
-        {/* Filter tabs */}
-        <Tabs defaultValue="all" onValueChange={handleTabChange} className="w-full">
-          <div className="flex justify-center mb-8">
-            <TabsList>
-              {categories.map((category) => (
-                <TabsTrigger key={category.id} value={category.id}>
-                  {category.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </div>
-          
-          <TabsContent value="all" className="mt-0">
-            {/* Grid layout for event types */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {eventTypes.map((event, index) => (
-                <div 
-                  key={index}
-                  className={cn(
-                    "bg-card rounded-lg p-6 border shadow-md cursor-pointer",
-                    "transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:border-primary/30",
-                    "flex flex-col h-full"
-                  )}
-                  onClick={() => {
-                    setActiveEventTypeIndex(index);
-                    openEventDialog(event.title);
-                  }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={cn(
-                      "w-10 h-10 rounded-full flex items-center justify-center",
-                      "bg-primary/10"
-                    )}>
-                      <Clock className="h-5 w-5 text-primary" />
+        {/* Grid layout for event types */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {eventTypes.map((event, index) => (
+            <Collapsible 
+              key={index}
+              open={activeEventTypeIndex === index}
+              onOpenChange={() => handleToggleCard(index)}
+              className={cn(
+                "bg-card rounded-lg border shadow-sm h-full transition-all duration-300",
+                activeEventTypeIndex === index ? "bg-accent/10 border-primary/30" : ""
+              )}
+            >
+              <Card className="border-0 shadow-none bg-transparent h-full flex flex-col">
+                <CollapsibleTrigger className="w-full text-left cursor-pointer">
+                  <CardHeader>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-primary/10">
+                        <Clock className="h-5 w-5 text-primary" />
+                      </div>
                     </div>
-                    <div className="text-xs font-medium">Phase {index + 1}</div>
+                    
+                    <CardTitle className="text-xl font-semibold text-primary">
+                      {event.title}
+                    </CardTitle>
+                    
+                    <CardDescription className="text-muted-foreground">
+                      {event.description}
+                    </CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent className="pt-0">
+                    <div className="flex justify-end items-center text-sm text-primary mt-2">
+                      {activeEventTypeIndex === index ? (
+                        <div className="flex items-center gap-1">
+                          <span>Weniger anzeigen</span>
+                          <ChevronUp className="h-4 w-4" />
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-1">
+                          <span>Mehr erfahren</span>
+                          <ChevronDown className="h-4 w-4" />
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </CollapsibleTrigger>
+                
+                <CollapsibleContent className="px-6 pb-4">
+                  <div className="pt-2 border-t border-border/40">
+                    <div className="my-4 text-sm text-foreground/80 leading-relaxed">
+                      {event.details}
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {['Event', 'Konzept', 'Planung'].map((tag, i) => (
+                        <span key={i} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  
-                  <h3 className="text-xl font-semibold mb-3 text-primary">
-                    {event.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground mb-4 flex-grow">
-                    {event.description}
-                  </p>
-                  
-                  <div className="text-sm text-muted-foreground/80 mb-4">
-                    {event.details.substring(0, 100)}...
-                  </div>
-                  
-                  <div className="flex justify-end mt-auto pt-4">
-                    <button 
-                      className="flex items-center text-primary text-sm font-medium"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openEventDialog(event.title);
-                      }}
-                    >
-                      <span>Mehr erfahren</span>
-                      <ChevronRight className="h-4 w-4 ml-1" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-          
-          {/* Content for other tabs would go here */}
-          <TabsContent value="corporate">
-            <div className="text-center py-8 text-muted-foreground">
-              Filter-Funktionalität kann in zukünftigen Versionen implementiert werden.
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="educational">
-            <div className="text-center py-8 text-muted-foreground">
-              Filter-Funktionalität kann in zukünftigen Versionen implementiert werden.
-            </div>
-          </TabsContent>
-        </Tabs>
+                </CollapsibleContent>
+                
+                <CardFooter className="mt-auto pt-0 opacity-0">
+                  {/* Spacer for consistent height */}
+                </CardFooter>
+              </Card>
+            </Collapsible>
+          ))}
+        </div>
       </div>
     </div>
   );
