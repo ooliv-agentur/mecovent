@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import IndustriesCarousel from './projects/IndustriesCarousel';
 import EventTypesCarousel from './projects/EventTypesCarousel';
 import IndustryDialog from './projects/IndustryDialog';
-import { industryItems } from './projects/data';
+import { industryItems, eventTypes } from './projects/data';
 
 const ProjectsSection = () => {
   const [activeIndustryIndex, setActiveIndustryIndex] = useState(0);
@@ -70,6 +70,7 @@ const ProjectsSection = () => {
             <IndustryDialog 
               key={index}
               industry={industry}
+              eventTypes={eventTypes}
               isOpen={openIndustryDialog === industry.title}
               onClose={() => setOpenIndustryDialog(null)}
             />
