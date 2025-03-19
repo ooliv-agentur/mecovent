@@ -1,18 +1,10 @@
 
 import React, { useRef, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem,
-  type CarouselApi
-} from '@/components/ui/carousel';
-import CategoryItem from './CategoryItem';
+import { cn } from '@/lib/utils';
+import { useInView } from 'react-intersection-observer';
+import { industryItems } from './data';
 import SectionTitle from './SectionTitle';
 import ScrollIndicator from './ScrollIndicator';
-import { industryItems } from './data';
-import { useInView } from 'react-intersection-observer';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface IndustriesCarouselProps {
   activeIndustryIndex: number;
@@ -20,11 +12,14 @@ interface IndustriesCarouselProps {
   openIndustryDialog: (title: string) => void;
 }
 
-const IndustriesCarousel = ({ activeIndustryIndex, setActiveIndustryIndex, openIndustryDialog }: IndustriesCarouselProps) => {
-  const [api, setApi] = React.useState<CarouselApi>();
-  const scrollRef = useRef<HTMLDivElement>(null);
+const IndustriesCarousel = ({ 
+  activeIndustryIndex, 
+  setActiveIndustryIndex, 
+  openIndustryDialog 
+}: IndustriesCarouselProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   
-  // Create multiple intersection observers for different industry cards
+  // Create intersection observers for each industry
   const industryRefs = industryItems.map((_, i) => {
     const { ref, inView } = useInView({
       threshold: 0.6,
@@ -33,111 +28,149 @@ const IndustriesCarousel = ({ activeIndustryIndex, setActiveIndustryIndex, openI
     return { ref, inView };
   });
 
-  // Watch for industries coming into view
+  // Update active industry when an industry comes into view
   useEffect(() => {
     const inViewIndex = industryRefs.findIndex(item => item.inView);
     if (inViewIndex !== -1) {
       setActiveIndustryIndex(inViewIndex);
-      if (api) {
-        api.scrollTo(inViewIndex);
-      }
     }
-  }, [industryRefs.map(ref => ref.inView), api, setActiveIndustryIndex]);
-
-  React.useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    api.on("select", () => {
-      setActiveIndustryIndex(api.selectedScrollSnap());
-    });
-  }, [api, setActiveIndustryIndex]);
+  }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
   return (
     <div>
       <SectionTitle 
         title="Branchen, in denen wir tätig sind" 
-        subtitle="Ein dynamisches Erlebnis durch unsere Fachgebiete"
+        subtitle="Ein immersives Erlebnis durch unsere Fachgebiete"
       />
       
-      <div className="relative overflow-hidden bg-secondary/20 rounded-lg shadow-inner">
-        <ScrollArea className="h-[450px]" ref={scrollRef}>
-          <div className="p-6 space-y-16">
-            {industryItems.map((industry, index) => (
+      <div className="relative mt-8">
+        <div className="h-[600px] overflow-y-auto snap-y snap-mandatory" ref={containerRef}>
+          {industryItems.map((industry, index) => (
+            <div 
+              key={index}
+              ref={industryRefs[index].ref}
+              className={cn(
+                "h-[600px] snap-start snap-always w-full relative flex flex-col items-center justify-center",
+                "transition-opacity duration-700 ease-in-out"
+              )}
+              onClick={() => openIndustryDialog(industry.title)}
+            >
               <div 
-                key={index}
-                ref={industryRefs[index].ref}
-                className={`
-                  transition-all duration-700 transform
-                  ${industryRefs[index].inView 
-                    ? 'opacity-100 translate-y-0' 
-                    : index < activeIndustryIndex 
-                      ? 'opacity-30 -translate-y-4' 
-                      : 'opacity-30 translate-y-4'
-                  }
-                `}
+                className={cn(
+                  "absolute inset-0 transition-opacity duration-700",
+                  industryRefs[index].inView ? "opacity-100" : "opacity-0"
+                )}
                 style={{
-                  transitionDelay: `${index * 100}ms`
+                  background: getIndustryGradient(index),
                 }}
+              />
+              
+              <div 
+                className={cn(
+                  "relative z-10 max-w-2xl mx-auto p-8 rounded-xl transition-all duration-700",
+                  "backdrop-blur-sm bg-background/70 shadow-2xl border border-primary/10",
+                  industryRefs[index].inView 
+                    ? "opacity-100 scale-100 translate-y-0" 
+                    : "opacity-0 scale-95 translate-y-8"
+                )}
               >
-                <div 
-                  className={`
-                    relative rounded-lg overflow-hidden cursor-pointer
-                    ${industryRefs[index].inView ? 'shadow-lg' : 'shadow'}
-                    transition-all duration-500
-                  `} 
-                  onClick={() => openIndustryDialog(industry.title)}
-                >
-                  <div 
-                    className={`
-                      absolute inset-0 bg-gradient-to-r opacity-20 transition-opacity duration-500
-                      ${industryRefs[index].inView ? 'opacity-40' : 'opacity-10'}
-                    `}
-                    style={{
-                      background: getIndustryGradient(index)
+                <div className="flex justify-center mb-6">
+                  {getIndustryIcon(index)}
+                </div>
+                
+                <h3 className={cn(
+                  "text-3xl font-bold text-center mb-4 transition-colors duration-300",
+                  industryRefs[index].inView ? "text-primary" : "text-foreground"
+                )}>
+                  {industry.title}
+                </h3>
+                
+                <p className="text-lg text-center text-foreground/80 mb-6">
+                  {industry.description}
+                </p>
+                
+                <div className="text-sm text-center text-foreground/60">
+                  {industry.details}
+                </div>
+                
+                <div className={cn(
+                  "mt-6 flex justify-center transition-all duration-500",
+                  industryRefs[index].inView ? "opacity-100" : "opacity-0"
+                )}>
+                  <button 
+                    className="px-6 py-2 bg-primary/90 text-primary-foreground rounded-full hover:bg-primary transition-colors"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openIndustryDialog(industry.title);
                     }}
-                  />
-                  
-                  <CategoryItem 
-                    title={industry.title}
-                    description={industry.description}
-                    onClick={() => openIndustryDialog(industry.title)}
-                    index={index}
-                    active={index === activeIndustryIndex}
-                    showMapIndicator={industryRefs[index].inView}
-                  />
+                  >
+                    Mehr entdecken
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-        </ScrollArea>
+              
+              {/* Floating decorative elements */}
+              <div className={cn(
+                "absolute pointer-events-none transition-all duration-1000",
+                industryRefs[index].inView ? "opacity-60 scale-100" : "opacity-0 scale-50"
+              )}>
+                <div className="absolute top-20 left-[15%] w-16 h-16 bg-primary/20 rounded-full blur-xl animate-pulse" />
+                <div className="absolute top-40 right-[20%] w-24 h-24 bg-primary/30 rounded-full blur-xl animate-pulse delay-300" />
+                <div className="absolute bottom-20 left-[25%] w-20 h-20 bg-primary/20 rounded-full blur-xl animate-pulse delay-700" />
+              </div>
+            </div>
+          ))}
+        </div>
         
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-primary/80 animate-bounce">
-          <span className="text-xs mb-1">Scroll für mehr</span>
-          <ChevronDown className="h-4 w-4" />
+        {/* Side Scroll Indicator */}
+        <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+          <ScrollIndicator 
+            active={activeIndustryIndex} 
+            total={industryItems.length} 
+            orientation="vertical" 
+          />
+        </div>
+        
+        {/* Scroll hint */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-primary/80 animate-bounce text-sm">
+          <span>Weiterscrollen</span>
         </div>
       </div>
-      
-      <ScrollIndicator active={activeIndustryIndex} total={industryItems.length} />
     </div>
   );
 };
 
-// Function to generate different background gradients for each industry
+// Gradient backgrounds for different industries
 const getIndustryGradient = (index: number): string => {
   const gradients = [
-    'linear-gradient(90deg, hsla(277, 75%, 84%, 1) 0%, hsla(297, 50%, 51%, 1) 100%)',
-    'linear-gradient(90deg, hsla(39, 100%, 77%, 1) 0%, hsla(22, 90%, 57%, 1) 100%)',
-    'linear-gradient(90deg, hsla(46, 73%, 75%, 1) 0%, hsla(176, 73%, 88%, 1) 100%)',
-    'linear-gradient(90deg, hsla(59, 86%, 68%, 1) 0%, hsla(134, 36%, 53%, 1) 100%)',
-    'linear-gradient(90deg, hsla(29, 92%, 70%, 1) 0%, hsla(0, 87%, 73%, 1) 100%)',
-    'linear-gradient(90deg, hsla(24, 100%, 83%, 1) 0%, hsla(341, 91%, 68%, 1) 100%)',
-    'linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%)',
-    'linear-gradient(90deg, hsla(139, 70%, 75%, 1) 0%, hsla(63, 90%, 76%, 1) 100%)',
+    // Pharma & Medizintechnik - Medical blue gradient
+    'linear-gradient(135deg, rgba(232, 244, 253, 0.9) 0%, rgba(182, 223, 253, 0.9) 100%)',
+    // Automobil - Dynamic gradient
+    'linear-gradient(135deg, rgba(247, 245, 232, 0.9) 0%, rgba(240, 219, 183, 0.9) 100%)',
+    // Chemie & Industrie - Technical gradient
+    'linear-gradient(135deg, rgba(236, 248, 245, 0.9) 0%, rgba(214, 233, 226, 0.9) 100%)',
+    // Finanz - Corporate gradient
+    'linear-gradient(135deg, rgba(232, 232, 242, 0.9) 0%, rgba(204, 204, 223, 0.9) 100%)',
+    // Technologie - Digital gradient
+    'linear-gradient(135deg, rgba(238, 245, 255, 0.9) 0%, rgba(202, 219, 245, 0.9) 100%)',
+    // Bildung - Knowledge gradient
+    'linear-gradient(135deg, rgba(255, 248, 230, 0.9) 0%, rgba(253, 226, 184, 0.9) 100%)',
   ];
   
   return gradients[index % gradients.length];
+};
+
+// Industry-specific icons
+const getIndustryIcon = (index: number) => {
+  // You would normally use proper SVG icons here
+  // This is a placeholder using emoji for simplicity
+  const icons = ["💊", "🚗", "🧪", "💰", "💻", "🎓"];
+  
+  return (
+    <div className="w-16 h-16 flex items-center justify-center text-3xl bg-primary/10 rounded-full">
+      {icons[index % icons.length]}
+    </div>
+  );
 };
 
 export default IndustriesCarousel;

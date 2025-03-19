@@ -51,7 +51,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="bg-secondary/30 overflow-hidden" ref={sectionRef}>
+    <section id="projects" className="bg-secondary/10 overflow-hidden" ref={sectionRef}>
       <div className="container-section overflow-visible">
         <div className={cn("text-center max-w-3xl mx-auto mb-12", 
                            isVisible ? "animate-fade-in" : "opacity-0")}>
@@ -62,7 +62,7 @@ const ProjectsSection = () => {
           </p>
         </div>
         
-        {/* Industries Section - Dynamic Scroll Map */}
+        {/* Immersive Industries Experience */}
         <div className={cn("mb-20 transition-all duration-700 transform", 
                           isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}>
           <IndustriesCarousel 

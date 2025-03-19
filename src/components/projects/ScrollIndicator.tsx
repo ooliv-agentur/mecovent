@@ -5,21 +5,30 @@ import { cn } from '@/lib/utils';
 interface ScrollIndicatorProps {
   active: number;
   total: number;
+  orientation?: 'horizontal' | 'vertical';
 }
 
-const ScrollIndicator = ({ active, total }: ScrollIndicatorProps) => {
+const ScrollIndicator = ({ active, total, orientation = 'horizontal' }: ScrollIndicatorProps) => {
+  const isVertical = orientation === 'vertical';
+  
   return (
-    <div className="flex items-center justify-center gap-1 mt-6">
+    <div className={cn(
+      "flex gap-1",
+      isVertical ? "flex-col items-center" : "items-center justify-center"
+    )}>
       {Array.from({ length: total }).map((_, i) => (
         <div 
           key={i} 
           className={cn(
-            "h-1.5 rounded-full transition-all duration-500",
+            "rounded-full transition-all duration-500",
+            isVertical
+              ? "h-12 w-1.5" // Vertical orientation
+              : "h-1.5 w-full", // Horizontal orientation
             i === active 
-              ? "w-8 bg-primary" 
+              ? isVertical ? "bg-primary h-12" : "w-8 bg-primary"
               : i < active 
-                ? "w-3 bg-primary/60" 
-                : "w-2 bg-muted-foreground/30"
+                ? isVertical ? "bg-primary/60 h-8" : "w-3 bg-primary/60"
+                : isVertical ? "bg-muted-foreground/30 h-4" : "w-2 bg-muted-foreground/30"
           )}
           style={{
             transitionDelay: `${Math.abs(i - active) * 50}ms`
