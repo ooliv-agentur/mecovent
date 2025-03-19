@@ -77,7 +77,7 @@ const ProjectsSection = () => {
           ))}
         </div>
         
-        {/* Event Types Section - Adaptive Grid Layout with Fluid Row Expansion */}
+        {/* Event Types Section - Isolated Card Expansion */}
         <div className={cn("mt-16 transition-all duration-700 transform", 
                           isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}
              style={{ transitionDelay: "300ms" }}>

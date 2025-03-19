@@ -2,7 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { eventTypes } from './data';
 import SectionTitle from './SectionTitle';
-import { ChevronDown, ChevronUp, Clock, Search, Network, PresentationIcon, Sparkles, Flag, MonitorIcon, GraduationCap, Users, MessageSquare, Handshake, Building, Flame, Star, PartyPopper, Crown, Tent, TreeDeciduous } from 'lucide-react';
+import { 
+  ChevronDown, 
+  ChevronUp, 
+  Clock, 
+  Search, 
+  Network, 
+  PresentationIcon, 
+  Sparkles, 
+  Flag, 
+  MonitorIcon, 
+  GraduationCap, 
+  Users, 
+  MessageSquare, 
+  Handshake, 
+  Building, 
+  Flame, 
+  Star, 
+  PartyPopper, 
+  Crown, 
+  Tent, 
+  TreeDeciduous 
+} from 'lucide-react';
 import { 
   Collapsible, 
   CollapsibleContent, 
@@ -220,4 +241,3 @@ const EventTypesCarousel = ({
 };
 
 export default EventTypesCarousel;
-
