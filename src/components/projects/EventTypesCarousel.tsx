@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import { cn } from '@/lib/utils';
 import { eventTypes } from './data';
 import SectionTitle from './SectionTitle';
-import { ChevronDown, ChevronUp, Clock } from 'lucide-react';
+import { ChevronDown, ChevronUp, Clock, CalendarCheck, Lightbulb, ClipboardList } from 'lucide-react';
 import { 
   Collapsible, 
   CollapsibleContent, 
@@ -16,6 +17,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface EventTypesCarouselProps {
   activeEventTypeIndex: number | null;
@@ -37,6 +39,13 @@ const EventTypesCarousel = ({
     }
   };
   
+  // Map of tag names to their icons
+  const tagIcons = {
+    'Event': <CalendarCheck className="h-3 w-3" />,
+    'Konzept': <Lightbulb className="h-3 w-3" />,
+    'Planung': <ClipboardList className="h-3 w-3" />
+  };
+  
   return (
     <div>
       <SectionTitle 
@@ -53,20 +62,31 @@ const EventTypesCarousel = ({
               open={activeEventTypeIndex === index}
               onOpenChange={() => handleToggleCard(index)}
               className={cn(
-                "bg-card rounded-lg border shadow-sm h-full transition-all duration-300",
-                activeEventTypeIndex === index ? "bg-accent/10 border-primary/30" : ""
+                "bg-card rounded-lg border transition-all duration-300",
+                activeEventTypeIndex === index 
+                  ? "bg-accent/20 border-primary/30 shadow-md" 
+                  : "shadow-sm hover:shadow-md hover:border-primary/20"
               )}
             >
               <Card className="border-0 shadow-none bg-transparent h-full flex flex-col">
                 <CollapsibleTrigger className="w-full text-left cursor-pointer">
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-primary/10">
-                        <Clock className="h-5 w-5 text-primary" />
+                      <div className={cn(
+                        "w-10 h-10 rounded-full flex items-center justify-center",
+                        activeEventTypeIndex === index ? "bg-primary/20" : "bg-primary/10"
+                      )}>
+                        <Clock className={cn(
+                          "h-5 w-5",
+                          activeEventTypeIndex === index ? "text-primary" : "text-primary/80"
+                        )} />
                       </div>
                     </div>
                     
-                    <CardTitle className="text-xl font-semibold text-primary">
+                    <CardTitle className={cn(
+                      "text-xl font-semibold",
+                      activeEventTypeIndex === index ? "text-primary" : "text-primary/90"
+                    )}>
                       {event.title}
                     </CardTitle>
                     
@@ -100,9 +120,14 @@ const EventTypesCarousel = ({
                     
                     <div className="flex flex-wrap gap-2 mt-4">
                       {['Event', 'Konzept', 'Planung'].map((tag, i) => (
-                        <span key={i} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
-                          {tag}
-                        </span>
+                        <Badge 
+                          key={i} 
+                          variant="outline" 
+                          className="flex items-center gap-1.5 py-1 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary hover:bg-primary/10"
+                        >
+                          {tagIcons[tag as keyof typeof tagIcons]}
+                          <span>{tag}</span>
+                        </Badge>
                       ))}
                     </div>
                   </div>
