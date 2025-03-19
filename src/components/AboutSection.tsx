@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Heart, Award, Leaf } from 'lucide-react';
+import { Heart, Award, Leaf, CheckCircle } from 'lucide-react';
 
 interface ValueCardProps {
   title: string;
@@ -23,18 +23,18 @@ const ValueCard = ({ title, description, icon: Icon }: ValueCardProps) => (
 const AboutSection = () => {
   const values = [
     { 
-      title: "Diskretion", 
-      description: "Vertrauen ist unsere oberste Priorität.", 
+      title: "INDIVIDUELL", 
+      description: "Jedes Event wird genau auf Ihre Bedürfnisse zugeschnitten", 
       icon: Heart 
     },
     { 
-      title: "Kreativität", 
-      description: "Wir entwickeln maßgeschneiderte Eventkonzepte.", 
+      title: "KREATIV", 
+      description: "Innovative & inspirierende Konzepte für nachhaltige Erlebnisse", 
       icon: Award 
     },
     { 
-      title: "Nachhaltigkeit", 
-      description: "Ressourcenbewusstes und effektives Eventmanagement.", 
+      title: "NACHHALTIG", 
+      description: "Effiziente, ressourcenschonende Eventlösungen", 
       icon: Leaf 
     }
   ];
@@ -44,9 +44,9 @@ const AboutSection = () => {
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <div className="section-tag">Über Uns</div>
-          <h2 className="header-section">Über Uns</h2>
+          <h2 className="header-section">Unsere Kompetenz für Ihre Events, unsere Kreativität für Ihren Erfolg!</h2>
           <p className="subheader-section">
-            Unsere Mission ist es, sich an individuelle Herausforderungen anzupassen und bedeutsame Veranstaltungen zu realisieren. Von der ersten Idee bis zur perfekten Umsetzung – wir bringen Ihre Vision zum Leben.
+            Events sind mehr als nur Veranstaltungen – sie sind emotionale Begegnungen, die im Gedächtnis bleiben. Unser Ziel ist es, Ihre Vision in ein unvergessliches Event zu verwandeln, das inspiriert, verbindet und begeistert.
           </p>
         </div>
         
@@ -59,6 +59,24 @@ const AboutSection = () => {
               icon={value.icon}
             />
           ))}
+        </div>
+        
+        <div className="mt-12 max-w-3xl mx-auto">
+          <h3 className="text-center text-xl font-medium mb-4">Warum MECOVENT?</h3>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-2">
+              <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+              <span>Langjährige Erfahrung & ein starkes Partnernetzwerk</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+              <span>Budgeteffiziente & transparente Planung</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+              <span>Persönlicher Rundum-Service – Sie genießen das Event, wir kümmern uns um alles!</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

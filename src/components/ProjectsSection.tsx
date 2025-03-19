@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { LightbulbIcon } from 'lucide-react';
 
 interface CategoryItemProps {
   title: string;
@@ -28,54 +29,54 @@ const ProjectsSection = () => {
   const industryItems = [
     { 
       title: "Pharma & Medizintechnik", 
-      description: "Wissenschaftliche Konferenzen, Produktlaunches und Fachveranstaltungen für die Pharma- und Medizintechnikbranche." 
+      description: "Wissenschaftliche Kongresse, Tagungen, Fortbildungen" 
     },
     { 
       title: "Automobil & Verkehrswesen", 
-      description: "Events und Konferenzen für die Automobilbranche und das Verkehrswesen mit innovativen Präsentationen." 
+      description: "Produktpräsentationen, Messen, Networking-Events" 
     },
     { 
       title: "Chemie & Industrie", 
-      description: "Fachtagungen, Kongresse und Mitarbeiterveranstaltungen für die Chemie- und Industriebranche." 
+      description: "Corporate Events, Jubiläen, Mitarbeiterevents" 
     },
     { 
       title: "Finanz- & Versicherungswesen", 
-      description: "Diskrete und professionelle Events für Finanzdienstleister und Versicherungsunternehmen." 
+      description: "Leadership Summits, exklusive Kundenveranstaltungen" 
     },
     { 
       title: "Technologie & IT", 
-      description: "Technologiekonferenzen, Produkteinführungen und interaktive Workshops für die IT-Branche." 
+      description: "Digitale Konferenzen, hybride Events, Hackathons" 
     },
     { 
       title: "Bildung & Wissenschaft", 
-      description: "Wissenschaftliche Symposien, Fachkonferenzen und Bildungsveranstaltungen." 
+      description: "Fachkongresse, Preisverleihungen, Workshops" 
     }
   ];
 
   const eventTypes = [
     { 
       title: "Wissenschaftliche Konferenzen", 
-      description: "Fachveranstaltungen für den Wissensaustausch mit Experten aus verschiedenen Disziplinen." 
+      description: "Experten vernetzen & Wissen teilen" 
     },
     { 
       title: "Produktlaunches & Präsentationen", 
-      description: "Beeindruckende Events zur Markteinführung von Produkten und Dienstleistungen." 
+      description: "Begeisterung für Innovationen schaffen" 
     },
     { 
       title: "Interaktive Workshops", 
-      description: "Kollaborative Formate für Wissenstransfer, Innovation und Teambuilding." 
+      description: "Lernen durch Erleben" 
     },
     { 
       title: "Firmenevents & Mitarbeiterveranstaltungen", 
-      description: "Motivierende und verbindende Events für Teams und Unternehmen." 
+      description: "Teamgeist & Unternehmenswerte stärken" 
     },
     { 
       title: "Galas & exklusive Abendveranstaltungen", 
-      description: "Elegante Abendveranstaltungen in exklusiven Locations mit erstklassigem Service." 
+      description: "Stilvolle Inszenierungen mit besonderem Flair" 
     },
     { 
       title: "Outdoor- & Teamevents", 
-      description: "Unvergessliche Erlebnisse unter freiem Himmel für Teambuilding und Incentives." 
+      description: "Erlebnisse, die zusammenschweißen" 
     }
   ];
 
@@ -92,7 +93,7 @@ const ProjectsSection = () => {
           <div className="section-tag">Branchen & Eventtypen</div>
           <h2 className="header-section">So vielfältig sind unsere Events</h2>
           <p className="subheader-section">
-            Unsere Erfahrung erstreckt sich über zahlreiche Branchen und Eventformate. Jedes Projekt wird individuell konzipiert – immer mit höchster Diskretion und Professionalität.
+            Wir bringen Expertise aus zahlreichen Branchen mit und wissen genau, worauf es bei jeder Zielgruppe ankommt.
           </p>
           
           <div className="flex flex-wrap justify-center gap-2 mt-6">
@@ -120,10 +121,10 @@ const ProjectsSection = () => {
           ))}
         </div>
         
-        <div className="text-center mt-10 text-muted-foreground animate-fade-in">
-          <p className="flex items-center justify-center gap-2">
-            <span className="inline-block w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center text-xs">💡</span>
-            Diskretion ist unser oberstes Prinzip – auf Wunsch stellen wir Ihnen gerne weitere Informationen zur Verfügung.
+        <div className="text-center mt-10 animate-fade-in">
+          <p className="flex items-center justify-center gap-2 text-primary">
+            <LightbulbIcon className="h-5 w-5" />
+            <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
           </p>
         </div>
       </div>
