@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { eventTypes } from './data';
 import SectionTitle from './SectionTitle';
@@ -25,7 +24,7 @@ interface EventTypesCarouselProps {
   setActiveEventTypeIndex: (index: number | null) => void;
 }
 
-// Define event-specific tags
+// Define event-specific tags with icons
 const eventTags = [
   ['Forschung', 'Networking', 'Präsentation'], // Wissenschaftliche Konferenzen
   ['Innovation', 'Markeninszenierung', 'Medien'], // Produktlaunches & Präsentationen
@@ -39,23 +38,6 @@ const EventTypesCarousel = ({
   activeEventTypeIndex, 
   setActiveEventTypeIndex 
 }: EventTypesCarouselProps) => {
-  // Track which row is currently active (expanded)
-  const [activeRow, setActiveRow] = useState<number | null>(null);
-  
-  // Handle expanding/collapsing a card
-  const handleToggleCard = (index: number) => {
-    if (activeEventTypeIndex === index) {
-      // If this card is already active, collapse it
-      setActiveEventTypeIndex(null);
-      setActiveRow(null);
-    } else {
-      // Otherwise, expand this card and collapse any others
-      setActiveEventTypeIndex(index);
-      // Calculate which row this card is in (assuming 3 columns)
-      setActiveRow(Math.floor(index / 3));
-    }
-  };
-  
   // Map of tag names to their icons
   const tagIcons: Record<string, React.ReactNode> = {
     // Scientific conference tags
@@ -89,10 +71,22 @@ const EventTypesCarousel = ({
     'Teamgeist': <Users className="h-3 w-3" />
   };
   
+  // Handle expanding/collapsing a card
+  const handleToggleCard = (index: number) => {
+    // If this card is already active, collapse it
+    if (activeEventTypeIndex === index) {
+      setActiveEventTypeIndex(null);
+    } else {
+      // Otherwise, expand this card and collapse any others
+      setActiveEventTypeIndex(index);
+    }
+  };
+  
   // Determine if a card is in the active row
+  const getRowIndex = (index: number) => Math.floor(index / 3);
   const isInActiveRow = (index: number) => {
-    if (activeRow === null) return false;
-    return Math.floor(index / 3) === activeRow;
+    if (activeEventTypeIndex === null) return false;
+    return getRowIndex(index) === getRowIndex(activeEventTypeIndex);
   };
   
   return (
@@ -103,7 +97,7 @@ const EventTypesCarousel = ({
       />
       
       <div className="mt-8">
-        {/* Grid layout for event types */}
+        {/* Grid layout for event types with fluid row expansion */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {eventTypes.map((event, index) => {
             const isActive = activeEventTypeIndex === index;
@@ -117,15 +111,19 @@ const EventTypesCarousel = ({
                 className={cn(
                   "rounded-lg border transition-all duration-500",
                   isActive 
-                    ? "bg-accent/30 border-primary/40 shadow-lg transform scale-105 z-10" 
+                    ? "bg-accent/40 border-primary/50 shadow-lg transform scale-105 z-20" 
                     : inActiveRow
-                      ? "bg-accent/10 border-primary/20 shadow-md transform scale-102"
+                      ? "bg-accent/20 border-primary/30 shadow-md transform scale-102 z-10 transition-all duration-500"
                       : "shadow-sm hover:shadow-md hover:border-primary/20 bg-card"
                 )}
               >
                 <Card className={cn(
                   "border-0 shadow-none bg-transparent h-full flex flex-col transition-all duration-500",
-                  isActive ? "min-h-[280px]" : inActiveRow ? "min-h-[260px]" : "min-h-[240px]"
+                  isActive 
+                    ? "min-h-[280px]" 
+                    : inActiveRow 
+                      ? "min-h-[265px] transition-all duration-500" 
+                      : "min-h-[240px]"
                 )}>
                   <CollapsibleTrigger className="w-full text-left cursor-pointer">
                     <CardHeader>
@@ -133,9 +131,9 @@ const EventTypesCarousel = ({
                         <div className={cn(
                           "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300",
                           isActive 
-                            ? "bg-primary/30" 
+                            ? "bg-primary/40" 
                             : inActiveRow 
-                              ? "bg-primary/20" 
+                              ? "bg-primary/30" 
                               : "bg-primary/10"
                         )}>
                           <Clock className={cn(
@@ -197,10 +195,10 @@ const EventTypesCarousel = ({
                             <Badge 
                               key={i} 
                               variant="outline" 
-                              className="flex items-center gap-1.5 py-1 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary hover:bg-primary/10"
+                              className="flex items-center gap-1.5 py-1.5 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary hover:bg-primary/10"
                             >
                               {tagIcons[tag]}
-                              <span>{tag}</span>
+                              <span className="font-medium">{tag}</span>
                             </Badge>
                           ))}
                         </div>
@@ -222,3 +220,4 @@ const EventTypesCarousel = ({
 };
 
 export default EventTypesCarousel;
+
