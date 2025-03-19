@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+
+import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { LightbulbIcon, ChevronRight, ChevronLeft } from 'lucide-react';
+import { LightbulbIcon, ChevronRight, ChevronLeft, Sparkles } from 'lucide-react';
 import { 
   Carousel, 
   CarouselContent, 
@@ -10,6 +11,7 @@ import {
   type CarouselApi
 } from '@/components/ui/carousel';
 import { cn } from '@/lib/utils';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { 
   Dialog,
   DialogContent,
@@ -24,19 +26,43 @@ interface CategoryItemProps {
   description: string;
   icon?: React.ReactNode;
   onClick?: () => void;
+  index: number;
+  active: boolean;
 }
 
-const CategoryItem = ({ title, description, icon, onClick }: CategoryItemProps) => (
+const CategoryItem = ({ title, description, icon, onClick, index, active }: CategoryItemProps) => (
   <div 
-    className="relative h-64 bg-card rounded-lg overflow-hidden border hover:shadow-md transition-all duration-300 group cursor-pointer"
+    className={cn(
+      "relative h-64 bg-card rounded-lg overflow-hidden border transition-all duration-500",
+      "group cursor-pointer transform",
+      active ? "scale-100 opacity-100 shadow-md" : "scale-95 opacity-80",
+      "hover:shadow-lg hover:opacity-100"
+    )}
     onClick={onClick}
+    style={{
+      transitionDelay: `${index * 50}ms`
+    }}
   >
     <div className="absolute inset-0 placeholder-box rounded-t-lg flex items-center justify-center text-muted-foreground bg-muted/50 opacity-80 transition-opacity group-hover:opacity-60">
       [Platzhalter für Branchenbild]
     </div>
-    <div className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-background/90 to-transparent">
+    <div 
+      className={cn(
+        "absolute inset-0 p-6 flex flex-col justify-end",
+        "bg-gradient-to-t from-background/90 to-transparent",
+        "transform transition-transform duration-500",
+        active ? "translate-y-0" : "translate-y-4"
+      )}
+    >
+      <Sparkles className={cn(
+        "h-6 w-6 text-primary/80 mb-2 opacity-0 transition-opacity duration-500",
+        active ? "opacity-100" : "opacity-0" 
+      )}/>
       <h3 className="font-medium text-xl mb-2 group-hover:text-primary transition-colors">{title}</h3>
-      <p className="text-muted-foreground text-sm">
+      <p className={cn(
+        "text-muted-foreground text-sm transform transition-all duration-500",
+        active ? "opacity-100" : "opacity-80"
+      )}>
         {description}
       </p>
     </div>
@@ -44,17 +70,63 @@ const CategoryItem = ({ title, description, icon, onClick }: CategoryItemProps) 
 );
 
 const SectionTitle = ({ title, subtitle }: { title: string, subtitle: string }) => (
-  <div className="text-center mb-8">
+  <div className="text-center mb-8 animate-fade-in">
     <h3 className="text-xl font-medium mb-1">{title}</h3>
     <p className="text-sm text-muted-foreground">{subtitle}</p>
   </div>
 );
+
+// Create a component for the horizontal scroll indicator
+const ScrollIndicator = ({ active, total }: { active: number, total: number }) => {
+  return (
+    <div className="flex items-center justify-center gap-1 mt-4">
+      {Array.from({ length: total }).map((_, i) => (
+        <div 
+          key={i} 
+          className={cn(
+            "h-1.5 rounded-full transition-all duration-300",
+            i === active ? "w-6 bg-primary" : "w-2 bg-muted-foreground/30"
+          )}
+        />
+      ))}
+    </div>
+  );
+};
 
 const ProjectsSection = () => {
   const [activeIndustryIndex, setActiveIndustryIndex] = useState(0);
   const [activeEventTypeIndex, setActiveEventTypeIndex] = useState(0);
   const [openIndustryDialog, setOpenIndustryDialog] = useState<string | null>(null);
   const [openEventDialog, setOpenEventDialog] = useState<string | null>(null);
+  const [api1, setApi1] = useState<CarouselApi>();
+  const [api2, setApi2] = useState<CarouselApi>();
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const industryItems = [
     { 
@@ -169,9 +241,10 @@ const ProjectsSection = () => {
   );
 
   return (
-    <section id="projects" className="bg-secondary/30 overflow-hidden">
+    <section id="projects" className="bg-secondary/30 overflow-hidden" ref={sectionRef}>
       <div className="container-section overflow-visible">
-        <div className="text-center max-w-3xl mx-auto mb-8 animate-fade-in">
+        <div className={cn("text-center max-w-3xl mx-auto mb-12", 
+                           isVisible ? "animate-fade-in" : "opacity-0")}>
           <div className="section-tag">Branchen & Eventtypen</div>
           <h2 className="header-section">So vielfältig sind unsere Events</h2>
           <p className="subheader-section mb-6">
@@ -179,11 +252,12 @@ const ProjectsSection = () => {
           </p>
         </div>
         
-        {/* Industries Section */}
-        <div className="mb-16">
+        {/* Industries Section - Dynamic Scroll Map */}
+        <div className={cn("mb-20 transition-all duration-700 transform", 
+                          isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}>
           <SectionTitle 
             title="Branchen, in denen wir tätig sind" 
-            subtitle="Klicken Sie auf eine Branche für mehr Details"
+            subtitle="Ein dynamisches Erlebnis durch unsere Fachgebiete"
           />
           
           <Carousel
@@ -192,32 +266,55 @@ const ProjectsSection = () => {
               loop: true,
             }}
             className="w-full"
-            onSelect={(api: CarouselApi) => {
-              if (api) {
-                setActiveIndustryIndex(api.selectedScrollSnap());
+            setApi={setApi1}
+            onSelect={() => {
+              if (api1) {
+                setActiveIndustryIndex(api1.selectedScrollSnap());
               }
             }}
           >
-            <div className="flex items-center justify-end gap-2 mb-4">
-              <CarouselPrevious className="static relative translate-y-0 h-8 w-8" />
-              <span className="text-sm text-muted-foreground">
+            <div className="flex items-center justify-between gap-2 mb-4">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => api1?.scrollPrev()}
+                className="flex items-center gap-1"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                <span>Zurück</span>
+              </Button>
+              
+              <span className="text-sm font-medium">
                 {activeIndustryIndex + 1} / {industryItems.length}
               </span>
-              <CarouselNext className="static relative translate-y-0 h-8 w-8" />
+              
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => api1?.scrollNext()}
+                className="flex items-center gap-1"
+              >
+                <span>Weiter</span>
+                <ChevronRight className="h-4 w-4" />
+              </Button>
             </div>
             
             <CarouselContent className="-ml-2 md:-ml-4">
               {industryItems.map((industry, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-5/6 lg:basis-3/4">
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-4/5 lg:basis-3/4">
                   <CategoryItem 
                     title={industry.title}
                     description={industry.description}
                     onClick={() => setOpenIndustryDialog(industry.title)}
+                    index={index}
+                    active={index === activeIndustryIndex}
                   />
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
+          
+          <ScrollIndicator active={activeIndustryIndex} total={industryItems.length} />
           
           {/* Industry Dialogs */}
           {industryItems.map((industry, index) => (
@@ -230,11 +327,13 @@ const ProjectsSection = () => {
           ))}
         </div>
         
-        {/* Event Types Section */}
-        <div className="mt-12">
+        {/* Event Types Section - Interactive Timeline */}
+        <div className={cn("mt-16 transition-all duration-700 transform", 
+                          isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}
+             style={{ transitionDelay: "300ms" }}>
           <SectionTitle 
             title="Eventarten, die wir realisieren" 
-            subtitle="Klicken Sie auf einen Eventtyp für mehr Details"
+            subtitle="Interaktive Timeline unserer Event-Expertise"
           />
           
           <Carousel
@@ -243,32 +342,55 @@ const ProjectsSection = () => {
               loop: true,
             }}
             className="w-full"
-            onSelect={(api: CarouselApi) => {
-              if (api) {
-                setActiveEventTypeIndex(api.selectedScrollSnap());
+            setApi={setApi2}
+            onSelect={() => {
+              if (api2) {
+                setActiveEventTypeIndex(api2.selectedScrollSnap());
               }
             }}
           >
-            <div className="flex items-center justify-end gap-2 mb-4">
-              <CarouselPrevious className="static relative translate-y-0 h-8 w-8" />
-              <span className="text-sm text-muted-foreground">
+            <div className="flex items-center justify-between gap-2 mb-4">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => api2?.scrollPrev()}
+                className="flex items-center gap-1"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                <span>Zurück</span>
+              </Button>
+              
+              <span className="text-sm font-medium">
                 {activeEventTypeIndex + 1} / {eventTypes.length}
               </span>
-              <CarouselNext className="static relative translate-y-0 h-8 w-8" />
+              
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => api2?.scrollNext()}
+                className="flex items-center gap-1"
+              >
+                <span>Weiter</span>
+                <ChevronRight className="h-4 w-4" />
+              </Button>
             </div>
             
             <CarouselContent className="-ml-2 md:-ml-4">
               {eventTypes.map((event, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-5/6 lg:basis-3/4">
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-4/5 lg:basis-3/4">
                   <CategoryItem 
                     title={event.title}
                     description={event.description}
                     onClick={() => setOpenEventDialog(event.title)}
+                    index={index}
+                    active={index === activeEventTypeIndex}
                   />
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
+          
+          <ScrollIndicator active={activeEventTypeIndex} total={eventTypes.length} />
           
           {/* Event Type Dialogs */}
           {eventTypes.map((event, index) => (
@@ -281,7 +403,7 @@ const ProjectsSection = () => {
           ))}
         </div>
         
-        <div className="text-center mt-10 animate-fade-in">
+        <div className="text-center mt-16 animate-fade-in">
           <p className="flex items-center justify-center gap-2 text-primary">
             <LightbulbIcon className="h-5 w-5" />
             <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
