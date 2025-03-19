@@ -1,7 +1,6 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { 
   Carousel, 
   CarouselContent, 
@@ -12,6 +11,8 @@ import CategoryItem from './CategoryItem';
 import SectionTitle from './SectionTitle';
 import ScrollIndicator from './ScrollIndicator';
 import { eventTypes } from './data';
+import { Progress } from '@/components/ui/progress';
+import { useInView } from 'react-intersection-observer';
 
 interface EventTypesCarouselProps {
   activeEventTypeIndex: number;
@@ -21,6 +22,10 @@ interface EventTypesCarouselProps {
 
 const EventTypesCarousel = ({ activeEventTypeIndex, setActiveEventTypeIndex, openEventDialog }: EventTypesCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
+  const { ref: sectionRef, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: false
+  });
 
   React.useEffect(() => {
     if (!api) {
@@ -32,61 +37,85 @@ const EventTypesCarousel = ({ activeEventTypeIndex, setActiveEventTypeIndex, ope
     });
   }, [api, setActiveEventTypeIndex]);
 
+  // Calculate timeline progress as a percentage
+  const timelineProgress = activeEventTypeIndex === 0 
+    ? 5 
+    : Math.min(((activeEventTypeIndex + 1) / eventTypes.length) * 100, 100);
+
   return (
-    <div>
+    <div className="relative" ref={sectionRef}>
       <SectionTitle 
         title="Eventarten, die wir realisieren" 
         subtitle="Interaktive Timeline unserer Event-Expertise"
       />
       
-      <Carousel
-        opts={{
-          align: "center",
-          loop: true,
-        }}
-        className="w-full"
-        setApi={setApi}
-      >
-        <div className="flex items-center justify-between gap-2 mb-4">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={() => api?.scrollPrev()}
-            className="flex items-center gap-1"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            <span>Zurück</span>
-          </Button>
-          
-          <span className="text-sm font-medium">
-            {activeEventTypeIndex + 1} / {eventTypes.length}
-          </span>
-          
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={() => api?.scrollNext()}
-            className="flex items-center gap-1"
-          >
-            <span>Weiter</span>
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
+      {/* Timeline Progress Indicator */}
+      <div className="relative mb-8 mt-6">
+        <Progress 
+          value={timelineProgress} 
+          className="h-1.5 w-full bg-muted/30"
+        />
         
-        <CarouselContent className="-ml-2 md:-ml-4">
-          {eventTypes.map((event, index) => (
-            <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-4/5 lg:basis-3/4">
-              <CategoryItem 
-                title={event.title}
-                description={event.description}
-                onClick={() => openEventDialog(event.title)}
-                index={index}
-                active={index === activeEventTypeIndex}
+        <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+          {eventTypes.map((_, index) => (
+            <div 
+              key={index}
+              className={`relative -ml-2 ${index === 0 ? 'ml-0' : ''} ${index === eventTypes.length - 1 ? 'ml-auto' : ''}`}
+              style={{ left: index === 0 ? '0' : index === eventTypes.length - 1 ? '0' : `-${100 / eventTypes.length / 3}%` }}
+            >
+              <div 
+                className={`h-2 w-2 rounded-full ${index <= activeEventTypeIndex ? 'bg-primary' : 'bg-muted/50'} 
+                           transition-all duration-300 ${index === activeEventTypeIndex ? 'scale-150' : ''}`}
               />
-            </CarouselItem>
+              {index === activeEventTypeIndex && (
+                <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-primary font-medium">
+                  {eventTypes[index].title}
+                </div>
+              )}
+            </div>
           ))}
-        </CarouselContent>
-      </Carousel>
+        </div>
+      </div>
+      
+      <div className="overflow-hidden">
+        <div className="relative">
+          <Carousel
+            opts={{
+              align: "center",
+              loop: true,
+              dragFree: true,
+            }}
+            className="w-full overflow-visible"
+            setApi={setApi}
+          >
+            <CarouselContent className="py-4">
+              {eventTypes.map((event, index) => (
+                <CarouselItem 
+                  key={index} 
+                  className={`pl-4 md:basis-4/5 lg:basis-3/4 transition-all duration-700
+                              ${activeEventTypeIndex === index 
+                                ? 'opacity-100 scale-100' 
+                                : 'opacity-50 scale-95'}`}
+                >
+                  <CategoryItem 
+                    title={event.title}
+                    description={event.description}
+                    onClick={() => openEventDialog(event.title)}
+                    index={index}
+                    active={index === activeEventTypeIndex}
+                    showTimelineIndicator={true}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+          
+          <div className="absolute bottom-1/2 right-2 transform translate-y-1/2 flex items-center text-sm text-primary/80 animate-pulse">
+            <span className="mr-1">Scroll</span>
+            <ChevronRight className="h-4 w-4" />
+          </div>
+        </div>
+      </div>
       
       <ScrollIndicator active={activeEventTypeIndex} total={eventTypes.length} />
     </div>

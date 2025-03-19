@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, MapPin, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface CategoryItemProps {
@@ -10,9 +10,20 @@ interface CategoryItemProps {
   onClick?: () => void;
   index: number;
   active: boolean;
+  showMapIndicator?: boolean;
+  showTimelineIndicator?: boolean;
 }
 
-const CategoryItem = ({ title, description, icon, onClick, index, active }: CategoryItemProps) => (
+const CategoryItem = ({ 
+  title, 
+  description, 
+  icon, 
+  onClick, 
+  index, 
+  active,
+  showMapIndicator,
+  showTimelineIndicator
+}: CategoryItemProps) => (
   <div 
     className={cn(
       "relative h-64 bg-card rounded-lg overflow-hidden border transition-all duration-500",
@@ -28,6 +39,23 @@ const CategoryItem = ({ title, description, icon, onClick, index, active }: Cate
     <div className="absolute inset-0 placeholder-box rounded-t-lg flex items-center justify-center text-muted-foreground bg-muted/50 opacity-80 transition-opacity group-hover:opacity-60">
       [Platzhalter für Branchenbild]
     </div>
+    
+    {/* Map Pin Indicator for Industry Items */}
+    {showMapIndicator && (
+      <div className="absolute top-4 right-4 bg-primary/80 text-primary-foreground p-2 rounded-full shadow-lg 
+                      animate-fade-in-up transform hover:scale-105 transition-transform">
+        <MapPin className="h-4 w-4" />
+      </div>
+    )}
+    
+    {/* Timeline Indicator for Event Types */}
+    {showTimelineIndicator && (
+      <div className="absolute top-4 left-4 bg-primary/80 text-primary-foreground p-2 rounded-full shadow-lg
+                      animate-fade-in transform hover:scale-105 transition-transform">
+        <Clock className="h-4 w-4" />
+      </div>
+    )}
+    
     <div 
       className={cn(
         "absolute inset-0 p-6 flex flex-col justify-end",
