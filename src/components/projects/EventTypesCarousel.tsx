@@ -3,7 +3,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { eventTypes } from './data';
 import SectionTitle from './SectionTitle';
-import { ChevronDown, ChevronUp, Clock, CalendarCheck, Lightbulb, ClipboardList } from 'lucide-react';
+import { ChevronDown, ChevronUp, Clock, Search, Network, PresentationIcon, Sparkles, Flag, MonitorIcon, GraduationCap, Users, MessageSquare, Handshake, Building, Flame, Star, PartyPopper, Crown, Tent, TreeDeciduous } from 'lucide-react';
 import { 
   Collapsible, 
   CollapsibleContent, 
@@ -18,11 +18,22 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface EventTypesCarouselProps {
   activeEventTypeIndex: number | null;
   setActiveEventTypeIndex: (index: number | null) => void;
 }
+
+// Define event-specific tags
+const eventTags = [
+  ['Forschung', 'Networking', 'Präsentation'], // Wissenschaftliche Konferenzen
+  ['Innovation', 'Markeninszenierung', 'Medien'], // Produktlaunches & Präsentationen
+  ['Weiterbildung', 'Kollaboration', 'Moderation'], // Interaktive Workshops
+  ['Teambuilding', 'Unternehmenskultur', 'Motivation'], // Firmen- & Mitarbeiterevents
+  ['Premium', 'Entertainment', 'VIP-Experience'], // Galas & exklusive Abendveranstaltungen
+  ['Abenteuer', 'Natur', 'Teamgeist'] // Outdoor- & Teamevents
+];
 
 const EventTypesCarousel = ({ 
   activeEventTypeIndex, 
@@ -40,10 +51,36 @@ const EventTypesCarousel = ({
   };
   
   // Map of tag names to their icons
-  const tagIcons = {
-    'Event': <CalendarCheck className="h-3 w-3" />,
-    'Konzept': <Lightbulb className="h-3 w-3" />,
-    'Planung': <ClipboardList className="h-3 w-3" />
+  const tagIcons: Record<string, React.ReactNode> = {
+    // Scientific conference tags
+    'Forschung': <Search className="h-3 w-3" />,
+    'Networking': <Network className="h-3 w-3" />,
+    'Präsentation': <PresentationIcon className="h-3 w-3" />,
+    
+    // Product launch tags
+    'Innovation': <Sparkles className="h-3 w-3" />,
+    'Markeninszenierung': <Flag className="h-3 w-3" />,
+    'Medien': <MonitorIcon className="h-3 w-3" />,
+    
+    // Workshop tags
+    'Weiterbildung': <GraduationCap className="h-3 w-3" />,
+    'Kollaboration': <Users className="h-3 w-3" />,
+    'Moderation': <MessageSquare className="h-3 w-3" />,
+    
+    // Company event tags
+    'Teambuilding': <Handshake className="h-3 w-3" />,
+    'Unternehmenskultur': <Building className="h-3 w-3" />,
+    'Motivation': <Flame className="h-3 w-3" />,
+    
+    // Gala tags
+    'Premium': <Star className="h-3 w-3" />,
+    'Entertainment': <PartyPopper className="h-3 w-3" />,
+    'VIP-Experience': <Crown className="h-3 w-3" />,
+    
+    // Outdoor event tags
+    'Abenteuer': <Tent className="h-3 w-3" />,
+    'Natur': <TreeDeciduous className="h-3 w-3" />,
+    'Teamgeist': <Users className="h-3 w-3" />
   };
   
   return (
@@ -62,7 +99,7 @@ const EventTypesCarousel = ({
               open={activeEventTypeIndex === index}
               onOpenChange={() => handleToggleCard(index)}
               className={cn(
-                "bg-card rounded-lg border transition-all duration-300",
+                "bg-card rounded-lg border transition-all duration-300 h-full",
                 activeEventTypeIndex === index 
                   ? "bg-accent/20 border-primary/30 shadow-md" 
                   : "shadow-sm hover:shadow-md hover:border-primary/20"
@@ -112,25 +149,27 @@ const EventTypesCarousel = ({
                   </CardContent>
                 </CollapsibleTrigger>
                 
-                <CollapsibleContent className="px-6 pb-4">
-                  <div className="pt-2 border-t border-border/40">
-                    <div className="my-4 text-sm text-foreground/80 leading-relaxed">
-                      {event.details}
+                <CollapsibleContent className="px-6 pb-4 max-h-52 overflow-hidden">
+                  <ScrollArea className="h-full max-h-52 pr-4">
+                    <div className="pt-2 border-t border-border/40">
+                      <div className="my-4 text-sm text-foreground/80 leading-relaxed">
+                        {event.details}
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-2 mt-4 pb-2">
+                        {eventTags[index].map((tag, i) => (
+                          <Badge 
+                            key={i} 
+                            variant="outline" 
+                            className="flex items-center gap-1.5 py-1 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary hover:bg-primary/10"
+                          >
+                            {tagIcons[tag]}
+                            <span>{tag}</span>
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
-                    
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {['Event', 'Konzept', 'Planung'].map((tag, i) => (
-                        <Badge 
-                          key={i} 
-                          variant="outline" 
-                          className="flex items-center gap-1.5 py-1 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary hover:bg-primary/10"
-                        >
-                          {tagIcons[tag as keyof typeof tagIcons]}
-                          <span>{tag}</span>
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
+                  </ScrollArea>
                 </CollapsibleContent>
                 
                 <CardFooter className="mt-auto pt-0 opacity-0">
