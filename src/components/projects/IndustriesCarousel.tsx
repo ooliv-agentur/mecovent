@@ -22,6 +22,16 @@ interface IndustriesCarouselProps {
 const IndustriesCarousel = ({ activeIndustryIndex, setActiveIndustryIndex, openIndustryDialog }: IndustriesCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
 
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    api.on("select", () => {
+      setActiveIndustryIndex(api.selectedScrollSnap());
+    });
+  }, [api, setActiveIndustryIndex]);
+
   return (
     <div>
       <SectionTitle 
@@ -36,11 +46,6 @@ const IndustriesCarousel = ({ activeIndustryIndex, setActiveIndustryIndex, openI
         }}
         className="w-full"
         setApi={setApi}
-        onSelect={(api) => {
-          if (api) {
-            setActiveIndustryIndex(api.selectedScrollSnap());
-          }
-        }}
       >
         <div className="flex items-center justify-between gap-2 mb-4">
           <Button 

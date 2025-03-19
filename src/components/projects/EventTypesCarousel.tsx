@@ -22,6 +22,16 @@ interface EventTypesCarouselProps {
 const EventTypesCarousel = ({ activeEventTypeIndex, setActiveEventTypeIndex, openEventDialog }: EventTypesCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
 
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    api.on("select", () => {
+      setActiveEventTypeIndex(api.selectedScrollSnap());
+    });
+  }, [api, setActiveEventTypeIndex]);
+
   return (
     <div>
       <SectionTitle 
@@ -36,11 +46,6 @@ const EventTypesCarousel = ({ activeEventTypeIndex, setActiveEventTypeIndex, ope
         }}
         className="w-full"
         setApi={setApi}
-        onSelect={(api) => {
-          if (api) {
-            setActiveEventTypeIndex(api.selectedScrollSnap());
-          }
-        }}
       >
         <div className="flex items-center justify-between gap-2 mb-4">
           <Button 
