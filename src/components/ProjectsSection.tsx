@@ -63,7 +63,7 @@ const ProjectsSection = () => {
         </div>
         
         {/* Immersive Industries Experience */}
-        <div className={cn("mb-20 transition-all duration-700 transform", 
+        <div className={cn("mb-28 transition-all duration-700 transform", 
                           isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}>
           <IndustriesCarousel 
             activeIndustryIndex={activeIndustryIndex} 
@@ -83,7 +83,7 @@ const ProjectsSection = () => {
           ))}
         </div>
         
-        {/* Event Types Section - Interactive Timeline */}
+        {/* Event Types Section - Grid Layout */}
         <div className={cn("mt-16 transition-all duration-700 transform", 
                           isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}
              style={{ transitionDelay: "300ms" }}>

@@ -1,11 +1,10 @@
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
-import { useInView } from 'react-intersection-observer';
 import { eventTypes } from './data';
 import SectionTitle from './SectionTitle';
-import ScrollIndicator from './ScrollIndicator';
-import { Clock, ChevronRight } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ChevronRight, Clock } from 'lucide-react';
 
 interface EventTypesCarouselProps {
   activeEventTypeIndex: number;
@@ -18,132 +17,78 @@ const EventTypesCarousel = ({
   setActiveEventTypeIndex, 
   openEventDialog 
 }: EventTypesCarouselProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  // Event categories for filtering
+  const categories = [
+    { id: "all", label: "Alle Eventtypen" },
+    { id: "corporate", label: "Corporate Events" },
+    { id: "educational", label: "Bildungsevents" },
+  ];
   
-  // Create multiple intersection observers for different event types
-  const eventRefs = eventTypes.map((_, i) => {
-    const { ref, inView } = useInView({
-      threshold: 0.6,
-      triggerOnce: false
-    });
-    return { ref, inView };
-  });
-
-  // Watch for events coming into view
-  useEffect(() => {
-    const inViewIndex = eventRefs.findIndex(item => item.inView);
-    if (inViewIndex !== -1) {
-      setActiveEventTypeIndex(inViewIndex);
-    }
-  }, [eventRefs.map(ref => ref.inView), setActiveEventTypeIndex]);
+  // Handle tab change
+  const handleTabChange = (value: string) => {
+    // If we implement filtering in the future, we can use this
+    console.log("Selected tab:", value);
+  };
   
   return (
     <div>
       <SectionTitle 
         title="Eventtypen, die wir gestalten" 
-        subtitle="Eine chronologische Reise durch unsere Veranstaltungsformate"
+        subtitle="Eine Übersicht unserer Veranstaltungsformate"
       />
       
-      <div className="relative mt-12">
-        {/* Timeline Track */}
-        <div className="absolute left-0 right-0 h-1 top-20 bg-muted/50 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-primary transition-all duration-500"
-            style={{ 
-              width: `${(activeEventTypeIndex + 1) / eventTypes.length * 100}%` 
-            }}
-          />
-        </div>
-        
-        {/* Event Items Container */}
-        <div 
-          className="overflow-x-auto pb-12 hide-scrollbar snap-x snap-mandatory flex"
-          ref={containerRef}
-        >
-          {eventTypes.map((event, index) => (
-            <div 
-              key={index}
-              ref={eventRefs[index].ref}
-              className="snap-center min-w-[320px] w-[80vw] max-w-md mx-4 flex-shrink-0"
-              onClick={() => openEventDialog(event.title)}
-            >
-              <div className="relative pt-28 pb-4 px-2">
-                {/* Timeline Node */}
+      <div className="mt-8">
+        {/* Filter tabs */}
+        <Tabs defaultValue="all" onValueChange={handleTabChange} className="w-full">
+          <div className="flex justify-center mb-8">
+            <TabsList>
+              {categories.map((category) => (
+                <TabsTrigger key={category.id} value={category.id}>
+                  {category.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
+          
+          <TabsContent value="all" className="mt-0">
+            {/* Grid layout for event types */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {eventTypes.map((event, index) => (
                 <div 
-                  className={cn(
-                    "absolute top-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10",
-                    "transition-all duration-500 scale-100"
-                  )}
-                >
-                  <div 
-                    className={cn(
-                      "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500",
-                      eventRefs[index].inView 
-                        ? "bg-primary scale-110" 
-                        : "bg-muted scale-90"
-                    )}
-                  >
-                    <Clock 
-                      className={cn(
-                        "h-5 w-5 transition-colors duration-500",
-                        eventRefs[index].inView 
-                          ? "text-primary-foreground" 
-                          : "text-muted-foreground"
-                      )} 
-                    />
-                  </div>
-                </div>
-                
-                {/* Date Indicator */}
-                <div 
-                  className={cn(
-                    "absolute top-6 left-1/2 transform -translate-x-1/2 text-sm font-medium",
-                    "transition-all duration-500",
-                    eventRefs[index].inView 
-                      ? "text-primary opacity-100" 
-                      : "text-muted-foreground opacity-50"
-                  )}
-                >
-                  Phase {index + 1}
-                </div>
-                
-                {/* Event Card */}
-                <div 
+                  key={index}
                   className={cn(
                     "bg-card rounded-lg p-6 border shadow-md cursor-pointer",
-                    "transition-all duration-500 hover:shadow-lg",
-                    eventRefs[index].inView 
-                      ? "transform-none opacity-100 border-primary/50" 
-                      : index < activeEventTypeIndex 
-                        ? "-translate-x-4 opacity-60" 
-                        : "translate-x-4 opacity-60"
+                    "transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:border-primary/30",
+                    "flex flex-col h-full"
                   )}
-                  style={{
-                    transitionDelay: `${Math.abs(index - activeEventTypeIndex) * 50}ms`
+                  onClick={() => {
+                    setActiveEventTypeIndex(index);
+                    openEventDialog(event.title);
                   }}
                 >
-                  <h3 className={cn(
-                    "text-xl font-semibold mb-3 transition-colors duration-300",
-                    eventRefs[index].inView ? "text-primary" : "text-foreground"
-                  )}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={cn(
+                      "w-10 h-10 rounded-full flex items-center justify-center",
+                      "bg-primary/10"
+                    )}>
+                      <Clock className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="text-xs font-medium">Phase {index + 1}</div>
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold mb-3 text-primary">
                     {event.title}
                   </h3>
                   
-                  <p className="text-muted-foreground mb-4">
+                  <p className="text-muted-foreground mb-4 flex-grow">
                     {event.description}
                   </p>
                   
-                  <div className={cn(
-                    "text-sm text-muted-foreground/80 mb-4 transition-all duration-500",
-                    eventRefs[index].inView ? "opacity-100" : "opacity-0"
-                  )}>
-                    {event.details}
+                  <div className="text-sm text-muted-foreground/80 mb-4">
+                    {event.details.substring(0, 100)}...
                   </div>
                   
-                  <div className={cn(
-                    "flex justify-end transition-all duration-300 mt-4",
-                    eventRefs[index].inView ? "opacity-100" : "opacity-0"
-                  )}>
+                  <div className="flex justify-end mt-auto pt-4">
                     <button 
                       className="flex items-center text-primary text-sm font-medium"
                       onClick={(e) => {
@@ -156,21 +101,23 @@ const EventTypesCarousel = ({
                     </button>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-        
-        {/* Scroll indicator */}
-        <div className="flex justify-center mt-6">
-          <ScrollIndicator active={activeEventTypeIndex} total={eventTypes.length} />
-        </div>
-        
-        {/* Scroll hint */}
-        <div className="absolute bottom-0 right-4 text-primary/80 animate-bounce-x flex items-center gap-1 text-sm">
-          <span>Nach rechts scrollen</span>
-          <ChevronRight className="h-4 w-4" />
-        </div>
+          </TabsContent>
+          
+          {/* Content for other tabs would go here */}
+          <TabsContent value="corporate">
+            <div className="text-center py-8 text-muted-foreground">
+              Filter-Funktionalität kann in zukünftigen Versionen implementiert werden.
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="educational">
+            <div className="text-center py-8 text-muted-foreground">
+              Filter-Funktionalität kann in zukünftigen Versionen implementiert werden.
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );
