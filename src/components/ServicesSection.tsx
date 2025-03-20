@@ -1,11 +1,5 @@
 
-import React, { useState } from 'react';
-import { 
-  Tabs, 
-  TabsContent, 
-  TabsList, 
-  TabsTrigger 
-} from "@/components/ui/tabs";
+import React from 'react';
 import { 
   LightbulbIcon, 
   Users, 
@@ -20,13 +14,17 @@ interface ServiceCardProps {
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
+  category?: string;
 }
 
-const ServiceCard = ({ title, description, icon: Icon }: ServiceCardProps) => (
-  <div className="border rounded-lg p-6 hover:shadow-sm transition-shadow bg-card">
-    <div className="w-12 h-12 mb-4 flex items-center justify-center">
+const ServiceCard = ({ title, description, icon: Icon, category }: ServiceCardProps) => (
+  <div className="border rounded-lg p-6 hover:shadow-sm transition-shadow bg-card group">
+    <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
       <Icon className="w-7 h-7 text-primary/80" />
     </div>
+    {category && (
+      <div className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">{category}</div>
+    )}
     <h3 className="font-medium text-xl mb-3">{title}</h3>
     <p className="text-muted-foreground">
       {description}
@@ -35,45 +33,62 @@ const ServiceCard = ({ title, description, icon: Icon }: ServiceCardProps) => (
 );
 
 const ServicesSection = () => {
-  const services = [
-    { 
-      title: "Strategische Eventberatung", 
-      description: "Analyse Ihrer Ziele & maßgeschneiderte Konzepte", 
-      icon: BarChart4 
+  const serviceCategories = [
+    {
+      name: "Strategische Planung & Eventorganisation",
+      services: [
+        { 
+          title: "Strategische Eventberatung", 
+          description: "Analyse Ihrer Ziele & maßgeschneiderte Konzepte", 
+          icon: BarChart4 
+        },
+        { 
+          title: "Eventmanagement", 
+          description: "Konzeption, Planung & Durchführung", 
+          icon: LightbulbIcon 
+        }
+      ]
     },
-    { 
-      title: "Eventmanagement", 
-      description: "Konzeption, Planung & Durchführung", 
-      icon: LightbulbIcon 
+    {
+      name: "Operative Umsetzung & Technik",
+      services: [
+        { 
+          title: "Teilnehmermanagement", 
+          description: "Einladung, Buchung & Betreuung", 
+          icon: Users 
+        },
+        { 
+          title: "Veranstaltungstechnik", 
+          description: "Bühne, Licht, Ton & Video für den perfekten Auftritt", 
+          icon: Music 
+        }
+      ]
     },
-    { 
-      title: "Teilnehmermanagement", 
-      description: "Einladung, Buchung & Betreuung", 
-      icon: Users 
-    },
-    { 
-      title: "Veranstaltungstechnik", 
-      description: "Bühne, Licht, Ton & Video für den perfekten Auftritt", 
-      icon: Music 
-    },
-    { 
-      title: "Incentives & Teamevents", 
-      description: "Motivation & Erlebnis für Ihr Team", 
-      icon: Smartphone 
-    },
-    { 
-      title: "Marketing & Eventkommunikation", 
-      description: "Zielgerichtete Kampagnen für mehr Reichweite", 
-      icon: PartyPopper 
-    },
-    { 
-      title: "Exklusive Private Events", 
-      description: "Hochzeiten, Jubiläen, Gala-Dinner", 
-      icon: Cake 
+    {
+      name: "Erlebnis & Kommunikation",
+      services: [
+        { 
+          title: "Incentives & Teamevents", 
+          description: "Motivation & Erlebnis für Ihr Team", 
+          icon: Smartphone 
+        },
+        { 
+          title: "Marketing & Eventkommunikation", 
+          description: "Zielgerichtete Kampagnen für mehr Reichweite", 
+          icon: PartyPopper 
+        },
+        { 
+          title: "Exklusive Private Events", 
+          description: "Hochzeiten, Jubiläen, Gala-Dinner", 
+          icon: Cake 
+        }
+      ]
     }
   ];
 
-  const [view, setView] = useState<"grid" | "slider">("grid");
+  const allServices = serviceCategories.flatMap(category => 
+    category.services.map(service => ({...service, category: category.name}))
+  );
 
   return (
     <section id="services">
@@ -82,31 +97,29 @@ const ServicesSection = () => {
           <div className="section-tag">Was wir bieten</div>
           <h2 className="header-section">Unsere Leistungen – Mehr als nur Eventplanung</h2>
           <p className="subheader-section">
-            Wir realisieren nicht einfach Events – wir erschaffen Erlebnisse. Dank unserer langjährigen Erfahrung und einem starken Netzwerk sind wir Ihr zuverlässiger Partner für professionelle Veranstaltungsorganisation.
+            Wir schaffen nicht nur Events – wir gestalten Erlebnisse, die in Erinnerung bleiben. Dank unserer langjährigen Erfahrung und einem starken Netzwerk sind wir Ihr zuverlässiger Partner für Veranstaltungen mit Wirkung.
           </p>
           
           <p className="font-medium text-primary mt-4 mb-6">
-            Von strategischer Planung bis zur perfekten Umsetzung – wir bieten alles aus einer Hand.
+            Von der ersten Idee bis zum finalen Eventerlebnis – wir übernehmen Planung, Umsetzung & Teilnehmerbetreuung mit höchster Präzision.
           </p>
-          
-          <div className="flex justify-center mt-6 mb-8">
-            <Tabs defaultValue="grid" onValueChange={(value) => setView(value as "grid" | "slider")}>
-              <TabsList>
-                <TabsTrigger value="grid">Grid-Ansicht</TabsTrigger>
-                <TabsTrigger value="slider">Slider-Ansicht</TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
         </div>
         
-        <div className={`${view === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-2"} animate-fade-in-up`}>
-          {services.map((service, index) => (
-            <ServiceCard 
-              key={index}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-            />
+        <div className="space-y-10 animate-fade-in-up">
+          {serviceCategories.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="space-y-4">
+              <h3 className="font-medium text-lg text-primary/70">{category.name}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {category.services.map((service, serviceIndex) => (
+                  <ServiceCard 
+                    key={serviceIndex}
+                    title={service.title}
+                    description={service.description}
+                    icon={service.icon}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
         
