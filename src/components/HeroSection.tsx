@@ -17,8 +17,8 @@ const HeroSection = () => {
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-background/30 flex flex-col items-center justify-center">
-        <div className="w-full h-full placeholder-box flex items-center justify-center text-muted-foreground">
-          [Platzhalter für Bild/Video, das Emotion & Dynamik transportiert]
+        <div className="w-full h-full placeholder-box flex items-center justify-center">
+          {/* Placeholder area for future image/video */}
         </div>
       </div>
       
