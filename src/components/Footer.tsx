@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CheckCircle, Phone, Mail } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -46,24 +46,6 @@ const Footer = () => {
                 info@MECOVENT.de
               </a>
             </address>
-          </div>
-        </div>
-        
-        <div className="mt-12 pt-8 border-t">
-          <h3 className="text-center text-lg font-semibold mb-6">Warum MECOVENT?</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="flex items-start gap-3">
-              <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-              <span><strong>INDIVIDUELL</strong> – Jedes Event wird speziell für Ihre Bedürfnisse konzipiert</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-              <span><strong>KREATIV</strong> – Wir setzen auf innovative und einzigartige Eventkonzepte</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-              <span><strong>NACHHALTIG</strong> – Verantwortungsvoller Umgang mit Ressourcen für nachhaltige Erlebnisse</span>
-            </div>
           </div>
         </div>
         

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { eventTypes } from './data';
@@ -186,13 +185,12 @@ const EventTypesCarousel = ({
                         </div>
                         
                         {/* "Click to flip" hint - shown only on hover */}
-                        <div className={cn(
-                          "text-xs text-primary/70 flex items-center gap-1 ml-auto transition-opacity duration-300",
-                          showHint ? "opacity-100" : "opacity-0"
-                        )}>
-                          <RotateCw className="h-3.5 w-3.5" />
-                          <span>Klicken zum Wenden</span>
-                        </div>
+                        {showHint && (
+                          <div className="text-xs text-primary/70 flex items-center gap-1 ml-auto">
+                            <RotateCw className="h-3.5 w-3.5" />
+                            <span>Klicken zum Wenden</span>
+                          </div>
+                        )}
                       </div>
                       
                       <CardTitle className="text-xl font-semibold text-primary/80">
@@ -230,7 +228,7 @@ const EventTypesCarousel = ({
                           <Badge 
                             key={i} 
                             variant="outline" 
-                            className="flex items-center gap-1.5 py-1.5 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary text-xs whitespace-normal break-words"
+                            className="flex items-center gap-1.5 py-1 pl-1.5 pr-2 border-primary/30 bg-primary/5 text-primary text-xs"
                           >
                             {tagIcons[tag]}
                             <span className="font-medium">{tag}</span>

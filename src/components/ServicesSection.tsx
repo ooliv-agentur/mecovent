@@ -75,13 +75,9 @@ const ServicesSection = () => {
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <div className="section-tag">Was wir bieten</div>
-          <h2 className="header-section">Unsere Leistungen – Mehr als nur Eventplanung</h2>
+          <h2 className="header-section">Unsere Leistungen</h2>
           <p className="subheader-section">
             Wir schaffen nicht nur Events – wir gestalten Erlebnisse, die in Erinnerung bleiben. Dank unserer langjährigen Erfahrung und einem starken Netzwerk sind wir Ihr zuverlässiger Partner für Veranstaltungen mit Wirkung.
-          </p>
-          
-          <p className="font-medium text-primary mt-4 mb-6">
-            Von der ersten Idee bis zum finalen Eventerlebnis – wir übernehmen Planung, Umsetzung & Teilnehmerbetreuung mit höchster Präzision.
           </p>
         </div>
         
@@ -99,7 +95,7 @@ const ServicesSection = () => {
         <div className="mt-12 text-center">
           <p className="flex items-center justify-center gap-2 text-primary max-w-2xl mx-auto border-t pt-8 border-muted/30">
             <LightbulbIcon className="h-5 w-5 flex-shrink-0" />
-            <span className="font-medium">Jede Veranstaltung ist eine neue Herausforderung – wir übernehmen die Verantwortung, damit Ihr Event reibungslos abläuft.</span>
+            <span className="font-medium">Von der ersten Idee bis zum finalen Eventerlebnis – wir übernehmen Planung, Umsetzung & Teilnehmerbetreuung mit höchster Präzision.</span>
           </p>
         </div>
       </div>

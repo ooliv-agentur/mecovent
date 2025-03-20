@@ -35,7 +35,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials" className="bg-background py-16">
+    <section id="testimonials" className="bg-background py-20">
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <div className="section-tag">Kundenstimmen</div>
@@ -52,12 +52,12 @@ const TestimonialsSection = () => {
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="w-full flex-shrink-0 px-4">
                     <Card className="shadow-md h-full">
-                      <CardContent className="p-8">
+                      <CardContent className="p-10">
                         <div className="flex mb-6">
-                          <Quote className="h-10 w-10 text-primary/40 mr-2" />
-                          <Quote className="h-10 w-10 text-primary/20" />
+                          <Quote className="h-12 w-12 text-primary/40 mr-2" />
+                          <Quote className="h-12 w-12 text-primary/20" />
                         </div>
-                        <blockquote className="text-2xl font-medium mb-6 leading-relaxed">
+                        <blockquote className="text-3xl font-medium mb-6 leading-relaxed">
                           {testimonial.quote}
                         </blockquote>
                         {testimonial.attribution && (
@@ -111,7 +111,7 @@ const TestimonialsSection = () => {
           </div>
         </div>
         
-        <div className="text-center mt-10 animate-fade-in">
+        <div className="text-center mt-12 animate-fade-in">
           <p className="flex items-center justify-center gap-2 text-primary">
             <LightbulbIcon className="h-5 w-5" />
             <span className="font-medium">Events sind Vertrauenssache – unser Anspruch ist es, Ihre Erwartungen zu übertreffen.</span>
