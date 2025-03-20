@@ -1,16 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
 
 const HeroSection = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section 
       id="hero" 
@@ -27,20 +19,12 @@ const HeroSection = () => {
           Message. Atmosphäre. Event.
         </h1>
         <p className="subheader-section max-w-3xl mx-auto mt-6">
-          Wir schaffen Erlebnisse, die Menschen verbinden.
+          Wir gestalten Erlebnisse, die Menschen und Marken nachhaltig verbinden.
         </p>
         
         <div className="flex flex-col items-center gap-6 mt-10">
           <Button size="lg" className="rounded-full px-8 py-6 text-base">
             Jetzt kostenlos beraten lassen
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="flex items-center gap-2"
-            onClick={() => scrollToSection('about')}
-          >
-            Mehr erfahren <ChevronDown className="h-4 w-4" />
           </Button>
         </div>
       </div>

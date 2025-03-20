@@ -12,6 +12,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Tabs, 
+  TabsContent, 
+  TabsList, 
+  TabsTrigger
+} from "@/components/ui/tabs";
 
 const FAQItem = ({ question, answer }: { question: string; answer: React.ReactNode }) => (
   <AccordionItem value={question} className="border-b">
@@ -21,151 +27,158 @@ const FAQItem = ({ question, answer }: { question: string; answer: React.ReactNo
 );
 
 const ContactSection = () => {
-  const faqs = [
-    {
-      question: "Was macht MECOVENT genau?",
-      answer: (
-        <div className="space-y-2">
-          <p>MECOVENT ist eine Full-Service-Eventagentur, die sich auf die <strong>Planung, Organisation und Durchführung</strong> maßgeschneiderter Veranstaltungen spezialisiert hat. Wir bieten Lösungen für:</p>
-          <ul className="space-y-1">
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Kongresse & Konferenzen</strong></span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Produktlaunches & Firmenveranstaltungen</strong></span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Workshops, Incentives & Teamevents</strong></span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Outdoor-Events & exklusive Abendveranstaltungen</strong></span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Private Feiern wie Hochzeiten & Jubiläen</strong></span>
-            </li>
-          </ul>
-          <p>Unsere Leistungen umfassen <strong>Projektmanagement, Teilnehmermanagement, Eventmanagement, Veranstaltungstechnik & Marketingmaßnahmen</strong> – alles aus einer Hand!</p>
-        </div>
-      )
-    },
-    {
-      question: "Warum sollte ich MECOVENT für mein Event buchen?",
-      answer: (
-        <div className="space-y-2">
-          <p>Unsere drei Kernwerte – <strong>INDIVIDUELL, KREATIV, NACHHALTIG</strong> – stehen für maßgeschneiderte Events, innovative Konzepte und verantwortungsvolle Umsetzung. Wir bieten:</p>
-          <ul className="space-y-1">
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Langjährige Erfahrung & ein starkes Partnernetzwerk</strong></span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Kreative & budgeteffiziente Planung</strong></span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Transparente Kosten & professionelle Umsetzung</strong></span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Kompletten Rundum-Service – Sie genießen das Event, wir kümmern uns um alles!</strong></span>
-            </li>
-          </ul>
-        </div>
-      )
-    },
-    {
-      question: "Welche Veranstaltungsgrößen betreut MECOVENT?",
-      answer: (
-        <p>Wir organisieren Events jeder Größe – von <strong>kleinen exklusiven Meetings (10 Personen)</strong> bis hin zu <strong>großen Firmenveranstaltungen mit über 1.000 Teilnehmern</strong>. Egal ob Konferenz, Gala oder Teamevent, wir haben die passenden Lösungen.</p>
-      )
-    },
-    {
-      question: "Unterstützt MECOVENT auch private Feiern?",
-      answer: (
-        <p>Ja! Neben Firmenveranstaltungen planen wir auch <strong>Hochzeiten, Geburtstage, Jubiläen und private Feiern</strong>. Unser Team übernimmt die gesamte Organisation, damit Sie sich entspannt zurücklehnen und Ihren besonderen Tag genießen können.</p>
-      )
-    },
-    {
-      question: "Kann MECOVENT auch digitale oder hybride Events umsetzen?",
-      answer: (
-        <div className="space-y-2">
-          <p>Absolut! Wir bieten Lösungen für:</p>
-          <ul className="space-y-1">
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Hybride Events</strong> – Kombination aus Live- und Online-Teilnahme</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Digitale Konferenzen & Webinare</strong> – Virtuelle Plattformen mit interaktiven Elementen</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Live-Streaming & Simultantechnik</strong> – Professionelle Übertragung weltweit</span>
-            </li>
-          </ul>
-          <p>Wir helfen Ihnen, Ihr digitales Event so interaktiv und wirkungsvoll wie möglich zu gestalten.</p>
-        </div>
-      )
-    },
-    {
-      question: "Welche technischen Services bietet MECOVENT?",
-      answer: (
-        <div className="space-y-2">
-          <p>Wir arbeiten mit führenden Anbietern für Veranstaltungstechnik zusammen und bieten:</p>
-          <ul className="space-y-1">
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Bühnenbau & Dekoration</strong> – Perfektes Setup für Ihre Veranstaltung</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Licht-, Ton- & Videotechnik</strong> – Hochwertige technische Umsetzung</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Präsentationstechnik & Kameratechnik</strong> – Optimale Darstellung Ihrer Inhalte</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 mt-1 text-primary" />
-              <span><strong>Simultantechnik & TED-Systeme</strong> – Interaktive Abstimmungen & Mehrsprachigkeit</span>
-            </li>
-          </ul>
-          <p>Unsere Technik-Experten sorgen für ein reibungsloses Event-Erlebnis.</p>
-        </div>
-      )
-    },
-    {
-      question: "Kann MECOVENT bei der Location-Suche helfen?",
-      answer: (
-        <p>Ja, wir unterstützen Sie bei der Auswahl der passenden Location – egal ob Hotel, Konferenzzentrum, Outdoor-Event oder exklusive Eventlocation. Wir haben Zugang zu einer Vielzahl an <strong>Top-Locations deutschlandweit & international</strong>.</p>
-      )
-    },
-    {
-      question: "Wie transparent sind die Kosten?",
-      answer: (
-        <div className="space-y-2">
-          <p>Unsere Kostenstruktur ist <strong>vollständig transparent</strong>. Wir arbeiten mit <strong>klaren Budgets & detaillierten Angeboten</strong>, damit Sie immer die volle Kontrolle haben. Keine versteckten Kosten, keine Überraschungen.</p>
-          <p className="flex items-center gap-2">
-            <Info className="h-4 w-4 text-primary" />
-            <span><strong>Tipp:</strong> Wir optimieren Ihr Budget so, dass Sie den maximalen Mehrwert erhalten.</span>
-          </p>
-        </div>
-      )
-    },
-    {
-      question: "Kann ich Referenzen von MECOVENT einsehen?",
-      answer: (
-        <p>Aus <strong>Loyalität & Diskretion</strong> gegenüber unseren Kunden führen wir keine direkten Referenzen auf der Website auf. Gerne geben wir Ihnen jedoch in einem persönlichen Gespräch weitere Informationen über erfolgreich umgesetzte Projekte.</p>
-      )
-    }
-  ];
+  // Group FAQs by category
+  const faqCategories = {
+    allgemein: [
+      {
+        question: "Was macht MECOVENT genau?",
+        answer: (
+          <div className="space-y-2">
+            <p>MECOVENT ist eine Full-Service-Eventagentur, die sich auf die <strong>Planung, Organisation und Durchführung</strong> maßgeschneiderter Veranstaltungen spezialisiert hat. Wir bieten Lösungen für:</p>
+            <ul className="space-y-1">
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Kongresse & Konferenzen</strong></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Produktlaunches & Firmenveranstaltungen</strong></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Workshops, Incentives & Teamevents</strong></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Outdoor-Events & exklusive Abendveranstaltungen</strong></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Private Feiern wie Hochzeiten & Jubiläen</strong></span>
+              </li>
+            </ul>
+            <p>Unsere Leistungen umfassen <strong>Projektmanagement, Teilnehmermanagement, Eventmanagement, Veranstaltungstechnik & Marketingmaßnahmen</strong> – alles aus einer Hand!</p>
+          </div>
+        )
+      },
+      {
+        question: "Warum sollte ich MECOVENT für mein Event buchen?",
+        answer: (
+          <div className="space-y-2">
+            <p>Unsere drei Kernwerte – <strong>INDIVIDUELL, KREATIV, NACHHALTIG</strong> – stehen für maßgeschneiderte Events, innovative Konzepte und verantwortungsvolle Umsetzung. Wir bieten:</p>
+            <ul className="space-y-1">
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Langjährige Erfahrung & ein starkes Partnernetzwerk</strong></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Kreative & budgeteffiziente Planung</strong></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Transparente Kosten & professionelle Umsetzung</strong></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Kompletten Rundum-Service – Sie genießen das Event, wir kümmern uns um alles!</strong></span>
+              </li>
+            </ul>
+          </div>
+        )
+      },
+      {
+        question: "Welche Veranstaltungsgrößen betreut MECOVENT?",
+        answer: (
+          <p>Wir organisieren Events jeder Größe – von <strong>kleinen exklusiven Meetings (10 Personen)</strong> bis hin zu <strong>großen Firmenveranstaltungen mit über 1.000 Teilnehmern</strong>. Egal ob Konferenz, Gala oder Teamevent, wir haben die passenden Lösungen.</p>
+        )
+      },
+    ],
+    planung: [
+      {
+        question: "Unterstützt MECOVENT auch private Feiern?",
+        answer: (
+          <p>Ja! Neben Firmenveranstaltungen planen wir auch <strong>Hochzeiten, Geburtstage, Jubiläen und private Feiern</strong>. Unser Team übernimmt die gesamte Organisation, damit Sie sich entspannt zurücklehnen und Ihren besonderen Tag genießen können.</p>
+        )
+      },
+      {
+        question: "Kann MECOVENT auch digitale oder hybride Events umsetzen?",
+        answer: (
+          <div className="space-y-2">
+            <p>Absolut! Wir bieten Lösungen für:</p>
+            <ul className="space-y-1">
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Hybride Events</strong> – Kombination aus Live- und Online-Teilnahme</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Digitale Konferenzen & Webinare</strong> – Virtuelle Plattformen mit interaktiven Elementen</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Live-Streaming & Simultantechnik</strong> – Professionelle Übertragung weltweit</span>
+              </li>
+            </ul>
+            <p>Wir helfen Ihnen, Ihr digitales Event so interaktiv und wirkungsvoll wie möglich zu gestalten.</p>
+          </div>
+        )
+      },
+      {
+        question: "Kann MECOVENT bei der Location-Suche helfen?",
+        answer: (
+          <p>Ja, wir unterstützen Sie bei der Auswahl der passenden Location – egal ob Hotel, Konferenzzentrum, Outdoor-Event oder exklusive Eventlocation. Wir haben Zugang zu einer Vielzahl an <strong>Top-Locations deutschlandweit & international</strong>.</p>
+        )
+      },
+    ],
+    technisch: [
+      {
+        question: "Welche technischen Services bietet MECOVENT?",
+        answer: (
+          <div className="space-y-2">
+            <p>Wir arbeiten mit führenden Anbietern für Veranstaltungstechnik zusammen und bieten:</p>
+            <ul className="space-y-1">
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Bühnenbau & Dekoration</strong> – Perfektes Setup für Ihre Veranstaltung</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Licht-, Ton- & Videotechnik</strong> – Hochwertige technische Umsetzung</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Präsentationstechnik & Kameratechnik</strong> – Optimale Darstellung Ihrer Inhalte</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span><strong>Simultantechnik & TED-Systeme</strong> – Interaktive Abstimmungen & Mehrsprachigkeit</span>
+              </li>
+            </ul>
+            <p>Unsere Technik-Experten sorgen für ein reibungsloses Event-Erlebnis.</p>
+          </div>
+        )
+      },
+      {
+        question: "Wie transparent sind die Kosten?",
+        answer: (
+          <div className="space-y-2">
+            <p>Unsere Kostenstruktur ist <strong>vollständig transparent</strong>. Wir arbeiten mit <strong>klaren Budgets & detaillierten Angeboten</strong>, damit Sie immer die volle Kontrolle haben. Keine versteckten Kosten, keine Überraschungen.</p>
+            <p className="flex items-center gap-2">
+              <Info className="h-4 w-4 text-primary" />
+              <span><strong>Tipp:</strong> Wir optimieren Ihr Budget so, dass Sie den maximalen Mehrwert erhalten.</span>
+            </p>
+          </div>
+        )
+      },
+      {
+        question: "Kann ich Referenzen von MECOVENT einsehen?",
+        answer: (
+          <p>Aus <strong>Loyalität & Diskretion</strong> gegenüber unseren Kunden führen wir keine direkten Referenzen auf der Website auf. Gerne geben wir Ihnen jedoch in einem persönlichen Gespräch weitere Informationen über erfolgreich umgesetzte Projekte.</p>
+        )
+      }
+    ]
+  };
 
   return (
     <section id="contact" className="bg-background py-20">
@@ -182,15 +195,50 @@ const ContactSection = () => {
           <div className="lg:col-span-2 space-y-8">
             <div>
               <h3 className="text-2xl font-bold mb-6">Häufig gestellte Fragen</h3>
-              <Accordion type="single" collapsible className="w-full space-y-2">
-                {faqs.map((faq, index) => (
-                  <FAQItem 
-                    key={index}
-                    question={faq.question}
-                    answer={faq.answer}
-                  />
-                ))}
-              </Accordion>
+              
+              <Tabs defaultValue="allgemein" className="w-full">
+                <TabsList className="w-full mb-4">
+                  <TabsTrigger value="allgemein" className="flex-1">Allgemein</TabsTrigger>
+                  <TabsTrigger value="planung" className="flex-1">Planung & Ablauf</TabsTrigger>
+                  <TabsTrigger value="technisch" className="flex-1">Technische Fragen</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="allgemein">
+                  <Accordion type="single" collapsible className="w-full space-y-2">
+                    {faqCategories.allgemein.map((faq, index) => (
+                      <FAQItem 
+                        key={index}
+                        question={faq.question}
+                        answer={faq.answer}
+                      />
+                    ))}
+                  </Accordion>
+                </TabsContent>
+                
+                <TabsContent value="planung">
+                  <Accordion type="single" collapsible className="w-full space-y-2">
+                    {faqCategories.planung.map((faq, index) => (
+                      <FAQItem 
+                        key={index}
+                        question={faq.question}
+                        answer={faq.answer}
+                      />
+                    ))}
+                  </Accordion>
+                </TabsContent>
+                
+                <TabsContent value="technisch">
+                  <Accordion type="single" collapsible className="w-full space-y-2">
+                    {faqCategories.technisch.map((faq, index) => (
+                      <FAQItem 
+                        key={index}
+                        question={faq.question}
+                        answer={faq.answer}
+                      />
+                    ))}
+                  </Accordion>
+                </TabsContent>
+              </Tabs>
             </div>
           </div>
           

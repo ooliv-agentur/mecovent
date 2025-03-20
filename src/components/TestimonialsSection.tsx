@@ -111,10 +111,17 @@ const TestimonialsSection = () => {
         </div>
         
         <div className="text-center mt-12 animate-fade-in">
-          <p className="flex items-center justify-center gap-2 text-primary">
+          <p className="flex items-center justify-center gap-2 text-primary mb-6">
             <LightbulbIcon className="h-5 w-5" />
             <span className="font-medium">Events sind Vertrauenssache – unser Anspruch ist es, Ihre Erwartungen zu übertreffen.</span>
           </p>
+          
+          <div className="mt-8">
+            <p className="text-lg mb-4">Lassen Sie sich von unseren Kunden überzeugen – Planen Sie jetzt Ihr Event mit uns.</p>
+            <Button size="lg" className="rounded-full px-8 py-6 text-base">
+              Jetzt kostenlos beraten lassen
+            </Button>
+          </div>
         </div>
       </div>
     </section>

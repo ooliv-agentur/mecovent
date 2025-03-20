@@ -1,7 +1,6 @@
 
 import React from 'react';
-import { Heart, Award, Leaf, CheckCircle, Info, Lightbulb } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Heart, Award, Leaf, Lightbulb } from 'lucide-react';
 
 const AboutSection = () => {
   return (
@@ -49,29 +48,22 @@ const AboutSection = () => {
         </div>
         
         <div className="mt-16 max-w-3xl mx-auto bg-background/80 p-8 rounded-xl border shadow-sm">
-          <h3 className="text-center text-xl font-medium mb-6">Unsere Stärken</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div className="flex flex-col items-center text-center">
               <Award className="h-10 w-10 text-primary mb-3" />
               <h4 className="font-medium text-base mb-2">Langjährige Erfahrung</h4>
-              <p className="text-sm text-muted-foreground">Ein starkes Partnernetzwerk & Expertenwissen für Ihr Event.</p>
+              <p className="text-sm text-muted-foreground">Unser Expertennetzwerk macht den Unterschied.</p>
             </div>
             <div className="flex flex-col items-center text-center">
-              <Info className="h-10 w-10 text-primary mb-3" />
+              <Award className="h-10 w-10 text-primary mb-3" />
               <h4 className="font-medium text-base mb-2">Budgeteffiziente Planung</h4>
-              <p className="text-sm text-muted-foreground">Transparente Kostenstruktur für eine wirtschaftliche Umsetzung.</p>
+              <p className="text-sm text-muted-foreground">Transparente Kostenstruktur für Ihre Sicherheit.</p>
             </div>
             <div className="flex flex-col items-center text-center">
-              <CheckCircle className="h-10 w-10 text-primary mb-3" />
+              <Award className="h-10 w-10 text-primary mb-3" />
               <h4 className="font-medium text-base mb-2">Persönlicher Rundum-Service</h4>
-              <p className="text-sm text-muted-foreground">Wir kümmern uns um alles – Sie genießen Ihr Event.</p>
+              <p className="text-sm text-muted-foreground">Sie genießen Ihr Event, wir kümmern uns um alles.</p>
             </div>
-          </div>
-          
-          <div className="text-center mt-8">
-            <Button size="lg" className="rounded-full px-8 py-6 text-base">
-              Jetzt kostenlos beraten lassen
-            </Button>
           </div>
         </div>
       </div>

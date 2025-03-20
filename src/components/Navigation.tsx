@@ -12,7 +12,7 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 20);
       
       // Update active section based on scroll position
-      const sections = ['hero', 'about', 'services', 'projects', 'testimonials', 'contact'];
+      const sections = ['hero', 'about', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
       
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -63,7 +63,7 @@ const Navigation = () => {
             { id: 'hero', label: 'Start' },
             { id: 'about', label: 'Über Uns' },
             { id: 'services', label: 'Leistungen' },
-            { id: 'projects', label: 'Branchen & Eventformate' },
+            { id: 'projects', label: 'Unsere Expertise' },
             { id: 'testimonials', label: 'Kundenstimmen' },
             { id: 'contact', label: 'Kontakt' }
           ].map((item) => (

@@ -77,7 +77,7 @@ const ServicesSection = () => {
           <div className="section-tag">Was wir bieten</div>
           <h2 className="header-section">Unsere Leistungen</h2>
           <p className="subheader-section">
-            Wir schaffen nicht nur Events – wir gestalten Erlebnisse, die in Erinnerung bleiben. Dank unserer langjährigen Erfahrung und einem starken Netzwerk sind wir Ihr zuverlässiger Partner für Veranstaltungen mit Wirkung.
+            Von strategischer Beratung bis zur perfekten Umsetzung – wir machen Ihr Event einzigartig.
           </p>
         </div>
         

@@ -2,14 +2,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import EventTypesCarousel from './projects/EventTypesCarousel';
 import IndustryDialog from './projects/IndustryDialog';
 import { industryItems, eventTypes } from './projects/data';
 import IndustriesCarousel from './projects/IndustriesCarousel';
 
 const ProjectsSection = () => {
   const [activeIndustryIndex, setActiveIndustryIndex] = useState(0);
-  const [activeEventTypeIndex, setActiveEventTypeIndex] = useState<number | null>(null);
   const [openIndustryDialog, setOpenIndustryDialog] = useState<string | null>(null);
   
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -115,23 +113,13 @@ const ProjectsSection = () => {
           </p>
         </div>
         
-        {/* Immersive Industries Experience - Using the improved IndustriesCarousel component */}
+        {/* Immersive Industries Experience */}
         <div className={cn("mb-28 transition-all duration-700 transform w-full", 
                           isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}>
           <IndustriesCarousel 
             activeIndustryIndex={activeIndustryIndex}
             setActiveIndustryIndex={setActiveIndustryIndex}
             openIndustryDialog={handleOpenIndustryDialog}
-          />
-        </div>
-        
-        {/* Event Types Section - Flip Card Concept */}
-        <div id="eventformate" className={cn("mt-16 transition-all duration-700 transform px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto", 
-                          isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}
-             style={{ transitionDelay: "300ms" }}>
-          <EventTypesCarousel 
-            activeEventTypeIndex={activeEventTypeIndex} 
-            setActiveEventTypeIndex={setActiveEventTypeIndex}
           />
         </div>
         
