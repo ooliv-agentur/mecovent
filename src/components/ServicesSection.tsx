@@ -75,7 +75,7 @@ const ServicesSection = () => {
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <div className="section-tag">Was wir bieten</div>
-          <h2 className="header-section">Unsere Leistungen – Ihr Event, perfekt geplant.</h2>
+          <h2 className="header-section">Unsere Leistungen</h2>
           <p className="subheader-section">
             Von strategischer Beratung bis zur perfekten Umsetzung – wir machen Ihr Event einzigartig.
           </p>
