@@ -16,7 +16,7 @@ const HeroSection = () => {
       
       <div className="container-section relative z-10 text-center max-w-4xl animate-fade-in">
         <h1 className="header-section text-4xl sm:text-5xl md:text-6xl">
-          Events, die begeistern. Erlebnisse, die verbinden.
+          Message. Atmosphäre. Event.
         </h1>
         <p className="subheader-section max-w-3xl mx-auto mt-6">
           Wir gestalten Erlebnisse, die Menschen und Marken nachhaltig verbinden.
