@@ -108,8 +108,8 @@ const ProjectsSection = () => {
       <div className="py-16 md:py-24">
         <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
                           isVisible ? "animate-fade-in" : "opacity-0")}>
-          <div className="section-tag">Branchen & Eventtypen</div>
-          <h2 className="header-section">So vielfältig sind unsere Events</h2>
+          <div className="section-tag">Unsere Expertise</div>
+          <h2 className="header-section">Branchen & Eventformate</h2>
           <p className="subheader-section mb-6">
             Wir bringen Expertise aus zahlreichen Branchen mit und wissen genau, worauf es bei jeder Zielgruppe ankommt.
           </p>
