@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { eventTypes } from './data';
@@ -32,6 +33,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useMediaQuery } from '@/hooks/use-mobile';
 
 interface EventTypesCarouselProps {
   activeEventTypeIndex: number | null;
@@ -52,6 +54,10 @@ const EventTypesCarousel = ({
   activeEventTypeIndex, 
   setActiveEventTypeIndex 
 }: EventTypesCarouselProps) => {
+  const isMobile = useMediaQuery('(max-width: 640px)');
+  const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
+  const [showTapHint, setShowTapHint] = useState<number | null>(null);
+  
   // Map of tag names to their icons
   const tagIcons: Record<string, React.ReactNode> = {
     // Scientific conference tags
@@ -94,6 +100,31 @@ const EventTypesCarousel = ({
       // Otherwise, flip this card and unflip any others
       setActiveEventTypeIndex(index);
     }
+    
+    // Reset tap hint if it was showing
+    if (showTapHint === index) {
+      setShowTapHint(null);
+    }
+  };
+  
+  // Handle touch start for mobile devices
+  const handleTouchStart = (index: number) => {
+    if (isMobile && activeEventTypeIndex !== index) {
+      // Show hint on first tap
+      setShowTapHint(index);
+      
+      // Set a timeout to flip the card automatically after showing the hint
+      setTimeout(() => {
+        if (showTapHint === index) {
+          handleFlipCard(index);
+        }
+      }, 1500);
+    }
+  };
+  
+  // Clear the tap hint when touch is moved or ended
+  const handleTouchEnd = () => {
+    setShowTapHint(null);
   };
   
   return (
@@ -108,6 +139,8 @@ const EventTypesCarousel = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {eventTypes.map((event, index) => {
             const isFlipped = activeEventTypeIndex === index;
+            const isHovered = hoveredCardIndex === index;
+            const showHint = isHovered || showTapHint === index;
             
             return (
               <div 
@@ -117,6 +150,11 @@ const EventTypesCarousel = ({
                   isFlipped ? "is-flipped" : ""
                 )}
                 onClick={() => handleFlipCard(index)}
+                onMouseEnter={() => setHoveredCardIndex(index)}
+                onMouseLeave={() => setHoveredCardIndex(null)}
+                onTouchStart={() => handleTouchStart(index)}
+                onTouchEnd={handleTouchEnd}
+                onTouchMove={handleTouchEnd}
                 style={{
                   perspective: "1000px"
                 }}
@@ -146,7 +184,12 @@ const EventTypesCarousel = ({
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                           <Clock className="h-5 w-5 text-primary/80" />
                         </div>
-                        <div className="text-xs text-primary/70 flex items-center gap-1 ml-auto">
+                        
+                        {/* "Click to flip" hint - shown only on hover */}
+                        <div className={cn(
+                          "text-xs text-primary/70 flex items-center gap-1 ml-auto transition-opacity duration-300",
+                          showHint ? "opacity-100" : "opacity-0"
+                        )}>
                           <RotateCw className="h-3.5 w-3.5" />
                           <span>Klicken zum Wenden</span>
                         </div>
@@ -181,12 +224,13 @@ const EventTypesCarousel = ({
                         {event.details}
                       </div>
                       
-                      <div className="flex flex-wrap gap-2 mt-4">
+                      {/* Improved tag layout that prevents overflow */}
+                      <div className="flex flex-wrap gap-2 mt-4 max-w-full">
                         {eventTags[index].map((tag, i) => (
                           <Badge 
                             key={i} 
                             variant="outline" 
-                            className="flex items-center gap-1.5 py-1.5 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary"
+                            className="flex items-center gap-1.5 py-1.5 pl-1.5 pr-2.5 border-primary/30 bg-primary/5 text-primary text-xs whitespace-normal break-words"
                           >
                             {tagIcons[tag]}
                             <span className="font-medium">{tag}</span>

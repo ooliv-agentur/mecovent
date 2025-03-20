@@ -182,6 +182,13 @@
   backface-visibility: hidden;
 }
 
+/* Improve tag display in flip cards */
+.flip-card-back .badge {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 /* Hide scrollbar but keep scrolling functionality */
 .hide-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
