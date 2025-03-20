@@ -12,12 +12,13 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 20);
       
       // Update active section based on scroll position
-      const sections = ['hero', 'about', 'services', 'projects', 'contact'];
+      const sections = ['hero', 'about', 'services', 'projects', 'eventformate', 'contact'];
       
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
+          // Adjusted offset to account for navigation bar height
           if (rect.top <= 100 && rect.bottom > 0) {
             setActiveSection(section);
             break;
@@ -33,7 +34,15 @@ const Navigation = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Calculate offset to account for fixed navigation height
+      const navHeight = 80; // approximate nav height in pixels
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - navHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -54,7 +63,8 @@ const Navigation = () => {
             { id: 'hero', label: 'Start' },
             { id: 'about', label: 'Über Uns' },
             { id: 'services', label: 'Leistungen' },
-            { id: 'projects', label: 'Referenzen' },
+            { id: 'projects', label: 'Branchen & Events' },
+            { id: 'eventformate', label: 'Eventformate' },
             { id: 'contact', label: 'Kontakt' }
           ].map((item) => (
             <button

@@ -126,7 +126,7 @@ const ProjectsSection = () => {
         </div>
         
         {/* Event Types Section - Flip Card Concept */}
-        <div className={cn("mt-16 transition-all duration-700 transform px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto", 
+        <div id="eventformate" className={cn("mt-16 transition-all duration-700 transform px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto", 
                           isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}
              style={{ transitionDelay: "300ms" }}>
           <EventTypesCarousel 
