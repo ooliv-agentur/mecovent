@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
-import { MessageSquare, LightbulbIcon, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MessageSquare, LightbulbIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -34,7 +35,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials">
+    <section id="testimonials" className="bg-background py-16">
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <div className="section-tag">Kundenstimmen</div>
@@ -50,42 +51,49 @@ const TestimonialsSection = () => {
               >
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="w-full flex-shrink-0 px-4">
-                    <div className="bg-card border rounded-lg p-8 shadow-sm h-full">
-                      <MessageSquare className="h-10 w-10 text-primary/20 mb-4" />
-                      <blockquote className="text-xl font-medium mb-4">
-                        "{testimonial.quote}"
-                      </blockquote>
-                      {testimonial.attribution && (
-                        <cite className="block text-right text-muted-foreground not-italic">
-                          — {testimonial.attribution}
-                        </cite>
-                      )}
-                    </div>
+                    <Card className="shadow-md h-full">
+                      <CardContent className="p-8">
+                        <div className="flex mb-6">
+                          <Quote className="h-10 w-10 text-primary/40 mr-2" />
+                          <Quote className="h-10 w-10 text-primary/20" />
+                        </div>
+                        <blockquote className="text-2xl font-medium mb-6 leading-relaxed">
+                          {testimonial.quote}
+                        </blockquote>
+                        {testimonial.attribution && (
+                          <cite className="block text-right text-muted-foreground not-italic">
+                            — {testimonial.attribution}
+                          </cite>
+                        )}
+                      </CardContent>
+                    </Card>
                   </div>
                 ))}
               </div>
             </div>
             
-            <div className="flex justify-center mt-6 gap-2">
+            <div className="flex justify-center mt-8 gap-4 items-center">
               <Button 
                 variant="outline" 
                 size="icon" 
-                className="rounded-full" 
+                className="rounded-full shadow-sm hover:shadow-md transition-all h-10 w-10" 
                 onClick={prevTestimonial}
+                aria-label="Vorheriges Testimonial"
               >
-                <ChevronLeft className="h-4 w-4" />
+                <ChevronLeft className="h-5 w-5" />
               </Button>
               
-              <div className="flex gap-1 items-center">
+              <div className="flex gap-2 items-center">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
-                    className={`w-2 h-2 rounded-full transition-all ${
+                    className={`h-3 rounded-full transition-all ${
                       currentTestimonial === index 
-                        ? "bg-primary w-4" 
-                        : "bg-muted"
+                        ? "bg-primary w-6" 
+                        : "bg-muted w-3"
                     }`}
                     onClick={() => setCurrentTestimonial(index)}
+                    aria-label={`Testimonial ${index + 1}`}
                   />
                 ))}
               </div>
@@ -93,10 +101,11 @@ const TestimonialsSection = () => {
               <Button 
                 variant="outline" 
                 size="icon" 
-                className="rounded-full" 
+                className="rounded-full shadow-sm hover:shadow-md transition-all h-10 w-10" 
                 onClick={nextTestimonial}
+                aria-label="Nächstes Testimonial"
               >
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-5 w-5" />
               </Button>
             </div>
           </div>

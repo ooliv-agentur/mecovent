@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { Card, CardContent } from '@/components/ui/card';
 import {
   Accordion,
   AccordionContent,
@@ -13,9 +14,9 @@ import {
 } from "@/components/ui/accordion";
 
 const FAQItem = ({ question, answer }: { question: string; answer: React.ReactNode }) => (
-  <AccordionItem value={question}>
-    <AccordionTrigger>{question}</AccordionTrigger>
-    <AccordionContent>{answer}</AccordionContent>
+  <AccordionItem value={question} className="border-b">
+    <AccordionTrigger className="text-left font-medium py-4">{question}</AccordionTrigger>
+    <AccordionContent className="pb-6">{answer}</AccordionContent>
   </AccordionItem>
 );
 
@@ -167,21 +168,21 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact">
+    <section id="contact" className="bg-background py-20">
       <div className="container-section">
-        <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
           <div className="section-tag">Kontakt</div>
           <h2 className="header-section">Lassen Sie uns Ihr Event planen!</h2>
-          <p className="subheader-section">
+          <p className="text-lg text-muted-foreground mt-4">
             Nehmen Sie Kontakt mit uns auf und wir besprechen gemeinsam Ihre individuellen Eventanforderungen.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-5xl mx-auto animate-fade-in-up">
-          <div className="lg:col-span-2">
-            <div className="mb-8">
-              <h3 className="text-xl font-medium mb-4">Häufig gestellte Fragen</h3>
-              <Accordion type="single" collapsible className="w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-5xl mx-auto animate-fade-in-up">
+          <div className="lg:col-span-2 space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-6">Häufig gestellte Fragen</h3>
+              <Accordion type="single" collapsible className="w-full space-y-2">
                 {faqs.map((faq, index) => (
                   <FAQItem 
                     key={index}
@@ -191,93 +192,100 @@ const ContactSection = () => {
                 ))}
               </Accordion>
             </div>
-            
-            <div className="bg-secondary/30 p-6 rounded-lg text-center">
-              <h3 className="text-xl font-medium mb-4">Persönliche Beratung gewünscht?</h3>
-              <div className="space-y-4">
-                <p className="text-muted-foreground">Kontaktieren Sie uns direkt:</p>
-                <div className="flex flex-col gap-2">
-                  <p className="font-medium flex items-center justify-center gap-2">
-                    <Phone className="h-4 w-4 text-primary" />
-                    +49 6135 70 39 59 -0
-                  </p>
-                  <p className="font-medium flex items-center justify-center gap-2">
-                    <Mail className="h-4 w-4 text-primary" />
-                    info@MECOVENT.de
-                  </p>
-                </div>
-                <Button className="gap-2 mt-2">
-                  <Calendar className="h-4 w-4" />
-                  Termin vereinbaren
-                </Button>
-              </div>
-            </div>
           </div>
           
           <div className="lg:col-span-3">
-            <div className="bg-card border rounded-lg p-8">
-              <form className="space-y-5">
-                <div>
-                  <Label htmlFor="name" className="block text-sm font-medium mb-1">Name</Label>
-                  <Input
-                    type="text"
-                    id="name"
-                    placeholder="Ihr Name"
-                  />
-                </div>
+            <Card className="shadow-md">
+              <CardContent className="p-8">
+                <form className="space-y-5">
+                  <div>
+                    <Label htmlFor="name" className="block text-sm font-medium mb-2">Name</Label>
+                    <Input
+                      type="text"
+                      id="name"
+                      placeholder="Ihr Name"
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="email" className="block text-sm font-medium mb-2">E-Mail</Label>
+                    <Input
+                      type="email"
+                      id="email"
+                      placeholder="ihre.email@beispiel.de"
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="concern" className="block text-sm font-medium mb-2">Anliegen</Label>
+                    <select
+                      id="concern"
+                      className="w-full rounded-md border border-input bg-background px-4 py-2 text-sm"
+                      defaultValue=""
+                    >
+                      <option value="" disabled>Bitte auswählen</option>
+                      <option value="eventmanagement">Eventmanagement</option>
+                      <option value="teilnehmermanagement">Teilnehmermanagement</option>
+                      <option value="veranstaltungstechnik">Veranstaltungstechnik</option>
+                      <option value="incentives">Incentives & Teamevents</option>
+                      <option value="private">Private Events</option>
+                      <option value="digitale-events">Digitale & Hybride Events</option>
+                      <option value="location">Location-Suche</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="message" className="block text-sm font-medium mb-2">Nachricht</Label>
+                    <Textarea
+                      id="message"
+                      rows={4}
+                      placeholder="Ihre Nachricht"
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <Button type="submit" className="w-full py-6 text-base flex items-center justify-center gap-2 mt-4">
+                    <Mail className="h-4 w-4" />
+                    Jetzt Anfrage senden
+                  </Button>
+                </form>
                 
-                <div>
-                  <Label htmlFor="email" className="block text-sm font-medium mb-1">E-Mail</Label>
-                  <Input
-                    type="email"
-                    id="email"
-                    placeholder="ihre.email@beispiel.de"
-                  />
+                <div className="mt-8 pt-6 border-t">
+                  <p className="flex items-center gap-2 mb-2 text-sm text-muted-foreground">
+                    <HelpCircle className="h-4 w-4" />
+                    <span>Haben Sie weitere Fragen? Wir helfen Ihnen gerne weiter!</span>
+                  </p>
+                  <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Info className="h-4 w-4" />
+                    <span>Wir behandeln Ihre Daten vertraulich und kontaktieren Sie schnellstmöglich.</span>
+                  </p>
                 </div>
-                
-                <div>
-                  <Label htmlFor="concern" className="block text-sm font-medium mb-1">Anliegen</Label>
-                  <select
-                    id="concern"
-                    className="w-full rounded-md border border-input bg-background px-4 py-2"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>Bitte auswählen</option>
-                    <option value="eventmanagement">Eventmanagement</option>
-                    <option value="teilnehmermanagement">Teilnehmermanagement</option>
-                    <option value="veranstaltungstechnik">Veranstaltungstechnik</option>
-                    <option value="incentives">Incentives & Teamevents</option>
-                    <option value="private">Private Events</option>
-                    <option value="digitale-events">Digitale & Hybride Events</option>
-                    <option value="location">Location-Suche</option>
-                  </select>
+              </CardContent>
+            </Card>
+            
+            <Card className="mt-8 bg-secondary/30 shadow-sm">
+              <CardContent className="p-8 text-center">
+                <h3 className="text-xl font-medium mb-4">Persönliche Beratung gewünscht?</h3>
+                <div className="space-y-4">
+                  <div className="flex flex-col gap-3 my-4">
+                    <a href="tel:+4961357039590" className="font-medium flex items-center justify-center gap-2 hover:text-primary transition-colors">
+                      <Phone className="h-4 w-4 text-primary" />
+                      +49 6135 70 39 59 -0
+                    </a>
+                    <a href="mailto:info@MECOVENT.de" className="font-medium flex items-center justify-center gap-2 hover:text-primary transition-colors">
+                      <Mail className="h-4 w-4 text-primary" />
+                      info@MECOVENT.de
+                    </a>
+                  </div>
+                  <Button size="lg" className="gap-2 mt-2 py-6 px-8 text-base">
+                    <Calendar className="h-5 w-5" />
+                    Termin vereinbaren
+                  </Button>
                 </div>
-                
-                <div>
-                  <Label htmlFor="message" className="block text-sm font-medium mb-1">Nachricht</Label>
-                  <Textarea
-                    id="message"
-                    rows={4}
-                    placeholder="Ihre Nachricht"
-                  />
-                </div>
-                
-                <Button type="submit" className="w-full">
-                  Jetzt Anfrage senden
-                </Button>
-              </form>
-              
-              <div className="mt-6 pt-6 border-t">
-                <p className="flex items-center gap-2 mb-2 text-sm text-muted-foreground">
-                  <HelpCircle className="h-4 w-4" />
-                  <span>Haben Sie weitere Fragen? Wir helfen Ihnen gerne weiter!</span>
-                </p>
-                <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Info className="h-4 w-4" />
-                  <span>Wir behandeln Ihre Daten vertraulich und kontaktieren Sie schnellstmöglich.</span>
-                </p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
