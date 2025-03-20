@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
@@ -123,7 +124,7 @@ const IndustriesCarousel = ({
           />
         </div>
         
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-primary/80 animate-bounce text-sm">
+        <div className="absolute bottom-4 left-0 right-0 text-center text-primary/80 animate-bounce text-sm">
           <span>Weiterscrollen</span>
         </div>
       </div>
