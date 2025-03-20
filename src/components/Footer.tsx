@@ -20,7 +20,8 @@ const Footer = () => {
               <li><a href="#hero" className="hover:text-primary transition-colors">Start</a></li>
               <li><a href="#about" className="hover:text-primary transition-colors">Über Uns</a></li>
               <li><a href="#services" className="hover:text-primary transition-colors">Leistungen</a></li>
-              <li><a href="#projects" className="hover:text-primary transition-colors">Branchen & Events</a></li>
+              <li><a href="#projects" className="hover:text-primary transition-colors">Unsere Expertise</a></li>
+              <li><a href="#eventformate" className="hover:text-primary transition-colors">Veranstaltungsformate</a></li>
               <li><a href="#testimonials" className="hover:text-primary transition-colors">Kundenstimmen</a></li>
               <li><a href="#contact" className="hover:text-primary transition-colors">Kontakt</a></li>
             </ul>
