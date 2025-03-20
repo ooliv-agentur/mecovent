@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Clock, RotateCw, Quote } from 'lucide-react';
+import { Clock, RotateCw, Tag } from 'lucide-react';
 import { eventTypes } from './projects/data';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/hooks/use-mobile';
@@ -12,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 // Define event-specific tags with icons and their components
 const eventTags = [
@@ -45,6 +47,11 @@ const EventTypesSection = () => {
     }
   };
   
+  // Handle back button to reset all cards
+  const handleResetCards = () => {
+    setActiveEventTypeIndex(null);
+  };
+  
   // Handle touch start for mobile devices
   const handleTouchStart = (index: number) => {
     if (isMobile && activeEventTypeIndex !== index) {
@@ -73,13 +80,27 @@ const EventTypesSection = () => {
   return (
     <section id="eventformate" className="py-16 md:py-24 bg-background">
       <div className="container-section">
-        <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
+        <div className="text-center max-w-3xl mx-auto mb-8 animate-fade-in">
           <div className="section-tag">Unsere Veranstaltungsformate</div>
           <h2 className="header-section">Eventtypen, die wir gestalten</h2>
           <p className="subheader-section">
-            Eine Übersicht unserer Veranstaltungsformate
+            Eine Übersicht unserer professionellen Veranstaltungskonzepte
           </p>
         </div>
+        
+        {/* Back button when cards are flipped */}
+        {activeEventTypeIndex !== null && (
+          <div className="flex justify-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={handleResetCards}
+              className="flex items-center gap-2"
+            >
+              <RotateCw className="h-4 w-4" />
+              <span>Zurück zur Übersicht</span>
+            </Button>
+          </div>
+        )}
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
           {eventTypes.map((event, index) => {
@@ -91,7 +112,7 @@ const EventTypesSection = () => {
               <div 
                 key={index}
                 className={cn(
-                  "flip-card-container cursor-pointer h-[320px]",
+                  "flip-card-container cursor-pointer h-[350px]",
                   isFlipped ? "is-flipped" : ""
                 )}
                 onClick={() => handleFlipCard(index)}
@@ -134,7 +155,7 @@ const EventTypesSection = () => {
                         {showHint && (
                           <div className="text-xs text-primary/70 flex items-center gap-1 ml-auto">
                             <RotateCw className="h-3.5 w-3.5" />
-                            <span>Klicken zum Wenden</span>
+                            <span>Klicken für Details</span>
                           </div>
                         )}
                       </div>
@@ -163,14 +184,17 @@ const EventTypesSection = () => {
                       </CardTitle>
                     </CardHeader>
                     
-                    <CardContent className="flex-1">
+                    <CardContent className="flex-1 flex flex-col">
                       <div className="text-sm text-foreground/80 leading-relaxed mb-4">
                         {event.details}
                       </div>
                       
                       {/* Tags section */}
-                      <div className="mt-4">
-                        <p className="text-xs text-foreground/60 mb-2">Tags:</p>
+                      <div className="mt-auto">
+                        <div className="flex items-center gap-1 text-xs text-foreground/60 mb-2">
+                          <Tag className="h-3 w-3" />
+                          <span>Tags:</span>
+                        </div>
                         <div className="flex flex-wrap gap-2">
                           {eventTags[index].map((tag, i) => (
                             <Badge 
@@ -187,13 +211,6 @@ const EventTypesSection = () => {
                         </div>
                       </div>
                     </CardContent>
-                    
-                    <CardFooter className="pt-0 text-xs justify-center border-t mt-auto">
-                      <button className="flex items-center gap-1 text-primary/70 hover:text-primary transition-colors">
-                        <RotateCw className="h-3.5 w-3.5" />
-                        <span>Zurück zur Übersicht</span>
-                      </button>
-                    </CardFooter>
                   </Card>
                 </div>
               </div>
