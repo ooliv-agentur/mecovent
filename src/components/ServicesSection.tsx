@@ -9,89 +9,69 @@ import {
   BarChart4,
   PartyPopper
 } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface ServiceCardProps {
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
-  category?: string;
 }
 
-const ServiceCard = ({ title, description, icon: Icon, category }: ServiceCardProps) => (
-  <div className="border rounded-lg p-6 hover:shadow-sm transition-shadow bg-card group">
-    <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
-      <Icon className="w-7 h-7 text-primary/80" />
-    </div>
-    {category && (
-      <div className="text-xs text-muted-foreground mb-2 uppercase tracking-wider">{category}</div>
-    )}
-    <h3 className="font-medium text-xl mb-3">{title}</h3>
-    <p className="text-muted-foreground">
-      {description}
-    </p>
-  </div>
+const ServiceCard = ({ title, description, icon: Icon }: ServiceCardProps) => (
+  <Card className="h-full hover:shadow-md transition-shadow group">
+    <CardContent className="p-6">
+      <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+        <Icon className="w-7 h-7 text-primary/80" />
+      </div>
+      <h3 className="font-medium text-xl mb-3">{title}</h3>
+      <p className="text-muted-foreground">
+        {description}
+      </p>
+    </CardContent>
+  </Card>
 );
 
 const ServicesSection = () => {
-  const serviceCategories = [
-    {
-      name: "Strategische Planung & Eventorganisation",
-      services: [
-        { 
-          title: "Strategische Eventberatung", 
-          description: "Analyse Ihrer Ziele & maßgeschneiderte Konzepte", 
-          icon: BarChart4 
-        },
-        { 
-          title: "Eventmanagement", 
-          description: "Konzeption, Planung & Durchführung", 
-          icon: LightbulbIcon 
-        }
-      ]
+  const services = [
+    { 
+      title: "Strategische Eventberatung", 
+      description: "Analyse Ihrer Ziele & maßgeschneiderte Konzepte", 
+      icon: BarChart4 
     },
-    {
-      name: "Operative Umsetzung & Technik",
-      services: [
-        { 
-          title: "Teilnehmermanagement", 
-          description: "Einladung, Buchung & Betreuung", 
-          icon: Users 
-        },
-        { 
-          title: "Veranstaltungstechnik", 
-          description: "Bühne, Licht, Ton & Video für den perfekten Auftritt", 
-          icon: Music 
-        }
-      ]
+    { 
+      title: "Eventmanagement", 
+      description: "Konzeption, Planung & Durchführung", 
+      icon: LightbulbIcon 
     },
-    {
-      name: "Erlebnis & Kommunikation",
-      services: [
-        { 
-          title: "Incentives & Teamevents", 
-          description: "Motivation & Erlebnis für Ihr Team", 
-          icon: Smartphone 
-        },
-        { 
-          title: "Marketing & Eventkommunikation", 
-          description: "Zielgerichtete Kampagnen für mehr Reichweite", 
-          icon: PartyPopper 
-        },
-        { 
-          title: "Exklusive Private Events", 
-          description: "Hochzeiten, Jubiläen, Gala-Dinner", 
-          icon: Cake 
-        }
-      ]
+    { 
+      title: "Teilnehmermanagement", 
+      description: "Einladung, Buchung & Betreuung", 
+      icon: Users 
+    },
+    { 
+      title: "Veranstaltungstechnik", 
+      description: "Bühne, Licht, Ton & Video für den perfekten Auftritt", 
+      icon: Music 
+    },
+    { 
+      title: "Incentives & Teamevents", 
+      description: "Motivation & Erlebnis für Ihr Team", 
+      icon: Smartphone 
+    },
+    { 
+      title: "Marketing & Eventkommunikation", 
+      description: "Zielgerichtete Kampagnen für mehr Reichweite", 
+      icon: PartyPopper 
+    },
+    { 
+      title: "Exklusive Private Events", 
+      description: "Hochzeiten, Jubiläen, Gala-Dinner", 
+      icon: Cake 
     }
   ];
 
-  const allServices = serviceCategories.flatMap(category => 
-    category.services.map(service => ({...service, category: category.name}))
-  );
-
   return (
-    <section id="services">
+    <section id="services" className="bg-background">
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <div className="section-tag">Was wir bieten</div>
@@ -105,27 +85,20 @@ const ServicesSection = () => {
           </p>
         </div>
         
-        <div className="space-y-10 animate-fade-in-up">
-          {serviceCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="space-y-4">
-              <h3 className="font-medium text-lg text-primary/70">{category.name}</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.services.map((service, serviceIndex) => (
-                  <ServiceCard 
-                    key={serviceIndex}
-                    title={service.title}
-                    description={service.description}
-                    icon={service.icon}
-                  />
-                ))}
-              </div>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
+          {services.map((service, index) => (
+            <ServiceCard 
+              key={index}
+              title={service.title}
+              description={service.description}
+              icon={service.icon}
+            />
           ))}
         </div>
         
-        <div className="mt-8 text-center">
-          <p className="flex items-center justify-center gap-2 text-primary">
-            <LightbulbIcon className="h-5 w-5" />
+        <div className="mt-12 text-center">
+          <p className="flex items-center justify-center gap-2 text-primary max-w-2xl mx-auto border-t pt-8 border-muted/30">
+            <LightbulbIcon className="h-5 w-5 flex-shrink-0" />
             <span className="font-medium">Jede Veranstaltung ist eine neue Herausforderung – wir übernehmen die Verantwortung, damit Ihr Event reibungslos abläuft.</span>
           </p>
         </div>
