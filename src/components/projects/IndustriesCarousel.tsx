@@ -5,6 +5,14 @@ import { useInView } from 'react-intersection-observer';
 import { industryItems } from './data';
 import SectionTitle from './SectionTitle';
 import ScrollIndicator from './ScrollIndicator';
+import { 
+  Pill, 
+  Car, 
+  Flask, 
+  Building2, 
+  Cpu, 
+  GraduationCap 
+} from 'lucide-react';
 
 interface IndustriesCarouselProps {
   activeIndustryIndex: number;
@@ -44,7 +52,11 @@ const IndustriesCarousel = ({
       />
       
       <div className="relative mt-8">
-        <div className="h-[600px] overflow-y-auto snap-y snap-mandatory" ref={containerRef}>
+        <div 
+          className="h-[600px] overflow-y-auto snap-y snap-mandatory scrollbar-hide scroll-smooth" 
+          ref={containerRef}
+          style={{ scrollBehavior: 'smooth' }}
+        >
           {industryItems.map((industry, index) => (
             <div 
               key={index}
@@ -160,15 +172,21 @@ const getIndustryGradient = (index: number): string => {
   return gradients[index % gradients.length];
 };
 
-// Industry-specific icons
+// Industry-specific icons with Lucide monochrome icons
 const getIndustryIcon = (index: number) => {
-  // You would normally use proper SVG icons here
-  // This is a placeholder using emoji for simplicity
-  const icons = ["💊", "🚗", "🧪", "💰", "💻", "🎓"];
+  // Map of industry index to appropriate Lucide icon
+  const iconMap = [
+    <Pill className="w-8 h-8 text-primary/80" />,                // Pharma & Medizintechnik
+    <Car className="w-8 h-8 text-primary/80" />,                 // Automobil & Verkehrswesen
+    <Flask className="w-8 h-8 text-primary/80" />,               // Chemie & Industrie
+    <Building2 className="w-8 h-8 text-primary/80" />,           // Finanz- & Versicherungswesen
+    <Cpu className="w-8 h-8 text-primary/80" />,                 // Technologie & IT
+    <GraduationCap className="w-8 h-8 text-primary/80" />        // Bildung & Wissenschaft
+  ];
   
   return (
-    <div className="w-16 h-16 flex items-center justify-center text-3xl bg-primary/10 rounded-full">
-      {icons[index % icons.length]}
+    <div className="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full">
+      {iconMap[index % iconMap.length]}
     </div>
   );
 };
