@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
@@ -8,10 +7,10 @@ import ScrollIndicator from './ScrollIndicator';
 import { 
   Pill, 
   Car, 
-  Flask, 
   Building2, 
   Cpu, 
-  GraduationCap 
+  GraduationCap,
+  Beaker 
 } from 'lucide-react';
 
 interface IndustriesCarouselProps {
@@ -27,7 +26,6 @@ const IndustriesCarousel = ({
 }: IndustriesCarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Create intersection observers for each industry
   const industryRefs = industryItems.map((_, i) => {
     const { ref, inView } = useInView({
       threshold: 0.6,
@@ -36,7 +34,6 @@ const IndustriesCarousel = ({
     return { ref, inView };
   });
 
-  // Update active industry when an industry comes into view
   useEffect(() => {
     const inViewIndex = industryRefs.findIndex(item => item.inView);
     if (inViewIndex !== -1) {
@@ -104,24 +101,8 @@ const IndustriesCarousel = ({
                 <div className="text-sm text-center text-foreground/60">
                   {industry.details}
                 </div>
-                
-                <div className={cn(
-                  "mt-6 flex justify-center transition-all duration-500",
-                  industryRefs[index].inView ? "opacity-100" : "opacity-0"
-                )}>
-                  <button 
-                    className="px-6 py-2 bg-primary/90 text-primary-foreground rounded-full hover:bg-primary transition-colors"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openIndustryDialog(industry.title);
-                    }}
-                  >
-                    Mehr entdecken
-                  </button>
-                </div>
               </div>
               
-              {/* Floating decorative elements */}
               <div className={cn(
                 "absolute pointer-events-none transition-all duration-1000",
                 industryRefs[index].inView ? "opacity-60 scale-100" : "opacity-0 scale-50"
@@ -134,7 +115,6 @@ const IndustriesCarousel = ({
           ))}
         </div>
         
-        {/* Side Scroll Indicator */}
         <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
           <ScrollIndicator 
             active={activeIndustryIndex} 
@@ -143,7 +123,6 @@ const IndustriesCarousel = ({
           />
         </div>
         
-        {/* Scroll hint */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-primary/80 animate-bounce text-sm">
           <span>Weiterscrollen</span>
         </div>
@@ -152,36 +131,27 @@ const IndustriesCarousel = ({
   );
 };
 
-// Gradient backgrounds for different industries
 const getIndustryGradient = (index: number): string => {
   const gradients = [
-    // Pharma & Medizintechnik - Medical blue gradient
     'linear-gradient(135deg, rgba(232, 244, 253, 0.9) 0%, rgba(182, 223, 253, 0.9) 100%)',
-    // Automobil - Dynamic gradient
     'linear-gradient(135deg, rgba(247, 245, 232, 0.9) 0%, rgba(240, 219, 183, 0.9) 100%)',
-    // Chemie & Industrie - Technical gradient
     'linear-gradient(135deg, rgba(236, 248, 245, 0.9) 0%, rgba(214, 233, 226, 0.9) 100%)',
-    // Finanz - Corporate gradient
     'linear-gradient(135deg, rgba(232, 232, 242, 0.9) 0%, rgba(204, 204, 223, 0.9) 100%)',
-    // Technologie - Digital gradient
     'linear-gradient(135deg, rgba(238, 245, 255, 0.9) 0%, rgba(202, 219, 245, 0.9) 100%)',
-    // Bildung - Knowledge gradient
     'linear-gradient(135deg, rgba(255, 248, 230, 0.9) 0%, rgba(253, 226, 184, 0.9) 100%)',
   ];
   
   return gradients[index % gradients.length];
 };
 
-// Industry-specific icons with Lucide monochrome icons
 const getIndustryIcon = (index: number) => {
-  // Map of industry index to appropriate Lucide icon
   const iconMap = [
-    <Pill className="w-8 h-8 text-primary/80" />,                // Pharma & Medizintechnik
-    <Car className="w-8 h-8 text-primary/80" />,                 // Automobil & Verkehrswesen
-    <Flask className="w-8 h-8 text-primary/80" />,               // Chemie & Industrie
-    <Building2 className="w-8 h-8 text-primary/80" />,           // Finanz- & Versicherungswesen
-    <Cpu className="w-8 h-8 text-primary/80" />,                 // Technologie & IT
-    <GraduationCap className="w-8 h-8 text-primary/80" />        // Bildung & Wissenschaft
+    <Pill className="w-8 h-8 text-primary/80" />,
+    <Car className="w-8 h-8 text-primary/80" />,
+    <Beaker className="w-8 h-8 text-primary/80" />,
+    <Building2 className="w-8 h-8 text-primary/80" />,
+    <Cpu className="w-8 h-8 text-primary/80" />,
+    <GraduationCap className="w-8 h-8 text-primary/80" />
   ];
   
   return (
