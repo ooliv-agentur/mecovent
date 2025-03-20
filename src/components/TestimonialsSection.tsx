@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { MessageSquare, LightbulbIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { LightbulbIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -53,9 +53,8 @@ const TestimonialsSection = () => {
                   <div key={index} className="w-full flex-shrink-0 px-4">
                     <Card className="shadow-md h-full">
                       <CardContent className="p-10">
-                        <div className="flex mb-6">
-                          <Quote className="h-12 w-12 text-primary/40 mr-2" />
-                          <Quote className="h-12 w-12 text-primary/20" />
+                        <div className="mb-6">
+                          <Quote className="h-12 w-12 text-primary/40" />
                         </div>
                         <blockquote className="text-3xl font-medium mb-6 leading-relaxed">
                           {testimonial.quote}
