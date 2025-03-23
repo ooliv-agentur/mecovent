@@ -133,16 +133,17 @@ const IndustriesCarousel = ({
 };
 
 const getIndustryGradient = (index: number): string => {
-  const gradients = [
-    'linear-gradient(135deg, rgba(232, 244, 253, 0.9) 0%, rgba(182, 223, 253, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(247, 245, 232, 0.9) 0%, rgba(240, 219, 183, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(236, 248, 245, 0.9) 0%, rgba(214, 233, 226, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(232, 232, 242, 0.9) 0%, rgba(204, 204, 223, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(238, 245, 255, 0.9) 0%, rgba(202, 219, 245, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(255, 248, 230, 0.9) 0%, rgba(253, 226, 184, 0.9) 100%)',
+  // Using different shades of gray instead of colorful gradients
+  const grayGradients = [
+    'linear-gradient(135deg, rgba(246, 246, 247, 0.9) 0%, rgba(232, 232, 234, 0.9) 100%)', // Lightest gray
+    'linear-gradient(135deg, rgba(242, 242, 242, 0.9) 0%, rgba(227, 227, 227, 0.9) 100%)',
+    'linear-gradient(135deg, rgba(238, 238, 238, 0.9) 0%, rgba(222, 222, 222, 0.9) 100%)',
+    'linear-gradient(135deg, rgba(235, 235, 237, 0.9) 0%, rgba(218, 218, 220, 0.9) 100%)',
+    'linear-gradient(135deg, rgba(240, 240, 242, 0.9) 0%, rgba(224, 224, 226, 0.9) 100%)',
+    'linear-gradient(135deg, rgba(244, 244, 246, 0.9) 0%, rgba(229, 229, 231, 0.9) 100%)' // Darkest gray
   ];
   
-  return gradients[index % gradients.length];
+  return grayGradients[index % grayGradients.length];
 };
 
 const getIndustryIcon = (index: number) => {
