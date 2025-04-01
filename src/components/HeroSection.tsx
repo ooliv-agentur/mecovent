@@ -24,7 +24,7 @@ const HeroSection = () => {
         
         <div className="flex flex-col items-center gap-6 mt-10">
           <Button size="lg" className="rounded-full px-8 py-6 text-base">
-            Jetzt kostenlos beraten lassen
+            Kennenlernen
           </Button>
         </div>
       </div>
