@@ -1,9 +1,7 @@
-
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
 import { industryItems } from './data';
-import SectionTitle from './SectionTitle';
 import ScrollIndicator from './ScrollIndicator';
 import { 
   Pill, 
@@ -44,11 +42,6 @@ const IndustriesCarousel = ({
 
   return (
     <div>
-      <SectionTitle 
-        title="Branchen, für die wir gestalten" 
-        subtitle="Jede Branche braucht ein anderes Gespür"
-      />
-      
       <div className="relative mt-8">
         <div 
           className="h-[600px] overflow-y-auto snap-y snap-mandatory scrollbar-hide scroll-smooth" 
@@ -133,14 +126,13 @@ const IndustriesCarousel = ({
 };
 
 const getIndustryGradient = (index: number): string => {
-  // Using different shades of gray instead of colorful gradients
   const grayGradients = [
-    'linear-gradient(135deg, rgba(246, 246, 247, 0.9) 0%, rgba(232, 232, 234, 0.9) 100%)', // Lightest gray
+    'linear-gradient(135deg, rgba(246, 246, 247, 0.9) 0%, rgba(232, 232, 234, 0.9) 100%)',
     'linear-gradient(135deg, rgba(242, 242, 242, 0.9) 0%, rgba(227, 227, 227, 0.9) 100%)',
     'linear-gradient(135deg, rgba(238, 238, 238, 0.9) 0%, rgba(222, 222, 222, 0.9) 100%)',
     'linear-gradient(135deg, rgba(235, 235, 237, 0.9) 0%, rgba(218, 218, 220, 0.9) 100%)',
     'linear-gradient(135deg, rgba(240, 240, 242, 0.9) 0%, rgba(224, 224, 226, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(244, 244, 246, 0.9) 0%, rgba(229, 229, 231, 0.9) 100%)' // Darkest gray
+    'linear-gradient(135deg, rgba(244, 244, 246, 0.9) 0%, rgba(229, 229, 231, 0.9) 100%)'
   ];
   
   return grayGradients[index % grayGradients.length];
