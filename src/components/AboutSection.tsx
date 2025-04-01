@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Heart, Award, Leaf, Lightbulb } from 'lucide-react';
 
@@ -67,7 +66,7 @@ const AboutSection = () => {
               </div>
               <div className="flex flex-col items-center text-center">
                 <Award className="h-10 w-10 text-primary mb-3" />
-                <h4 className="font-medium text-base mb-2">Persönlicher Rundum-Service</h4>
+                <h4 className="font-medium text-base mb-2">Hand in Hand</h4>
                 <p className="text-sm text-muted-foreground">Sie genießen, wir kümmern uns um alles.</p>
               </div>
             </div>
