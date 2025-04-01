@@ -14,7 +14,6 @@ const ProjectsSection = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [scrollLocked, setScrollLocked] = useState(false);
 
-  // Observer for section visibility
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -40,17 +39,13 @@ const ProjectsSection = () => {
     };
   }, []);
 
-  // Handle scroll locking and smooth transitions
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      // Check if we're in the industries section and the section is visible
       if (!isVisible || scrollLocked) return;
       
-      // Get the reference to the section
       const section = sectionRef.current;
       if (!section) return;
       
-      // Check if we're in the industries viewport
       const rect = section.getBoundingClientRect();
       const isInIndustriesViewport = 
         rect.top <= 0 && 
@@ -58,37 +53,30 @@ const ProjectsSection = () => {
         !hasScrolled;
       
       if (isInIndustriesViewport) {
-        // Calculate new industry index based on scroll direction
         const newIndex = e.deltaY > 0 
           ? Math.min(activeIndustryIndex + 1, industryItems.length - 1)
           : Math.max(activeIndustryIndex - 1, 0);
         
-        // Only lock scroll and update if we're changing index
         if (newIndex !== activeIndustryIndex) {
           e.preventDefault();
           
-          // Lock scrolling temporarily to ensure smooth transition
           setScrollLocked(true);
           setActiveIndustryIndex(newIndex);
           
-          // Unlock after transition completes
           setTimeout(() => {
             setScrollLocked(false);
             
-            // If we've reached the last industry, mark as scrolled to allow natural page scroll
             if (newIndex === industryItems.length - 1 && e.deltaY > 0) {
               setHasScrolled(true);
             }
-            // If we've reached the first industry and scrolling up, reset scroll state
             else if (newIndex === 0 && e.deltaY < 0) {
               setHasScrolled(false);
             }
-          }, 800); // Match this with your transition duration
+          }, 800);
         }
       }
     };
     
-    // Add event listener with passive: false to allow preventDefault
     window.addEventListener('wheel', handleWheel, { passive: false });
     
     return () => {
@@ -106,13 +94,15 @@ const ProjectsSection = () => {
         <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
                           isVisible ? "animate-fade-in" : "opacity-0")}>
           <div className="section-tag">Unsere Expertise</div>
-          <h2 className="header-section">Branchen & Eventformate</h2>
-          <p className="subheader-section mb-6">
-            Wir bringen Expertise aus zahlreichen Branchen mit und wissen genau, worauf es bei jeder Zielgruppe ankommt.
+          <h2 className="header-section">Branchen, für die wir gestalten</h2>
+          <p className="subheader-section mb-3">
+            Jede Branche braucht ein anderes Gespür – wir kennen die Unterschiede.
+          </p>
+          <p className="text-muted-foreground">
+            Ob Pharma oder Finanzwesen, Bildung oder Industrie – wir verstehen die Besonderheiten Ihrer Branche und gestalten Events, die Ihre Zielgruppe wirklich erreichen.
           </p>
         </div>
         
-        {/* Immersive Industries Experience */}
         <div className={cn("mb-28 transition-all duration-700 transform w-full", 
                           isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}>
           <IndustriesCarousel 
@@ -132,7 +122,6 @@ const ProjectsSection = () => {
         </div>
       </div>
       
-      {/* Industry Dialogs */}
       {industryItems.map((industry, index) => (
         <IndustryDialog 
           key={index}

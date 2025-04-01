@@ -45,8 +45,8 @@ const IndustriesCarousel = ({
   return (
     <div>
       <SectionTitle 
-        title="Branchen, in denen wir tätig sind" 
-        subtitle="Ein immersives Erlebnis durch unsere Fachgebiete"
+        title="Branchen, für die wir gestalten" 
+        subtitle="Jede Branche braucht ein anderes Gespür"
       />
       
       <div className="relative mt-8">

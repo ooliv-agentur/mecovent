@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Clock, RotateCw, Tag, Calendar } from 'lucide-react';
 import { eventTypes } from './projects/data';
@@ -14,13 +15,24 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
+// Updated event tags based on the new requirements
 const eventTags = [
-  ['Forschung', 'Networking', 'Präsentation'], // Wissenschaftliche Konferenzen
-  ['Innovation', 'Markeninszenierung', 'Medien'], // Produktlaunches & Präsentationen
-  ['Weiterbildung', 'Kollaboration', 'Moderation'], // Interaktive Workshops
-  ['Teambuilding', 'Unternehmenskultur', 'Motivation'], // Firmen- & Mitarbeiterevents
-  ['Premium', 'Entertainment', 'VIP-Experience'], // Galas & exklusive Abendveranstaltungen
-  ['Abenteuer', 'Natur', 'Teamgeist'] // Outdoor- & Teamevents
+  ['Fachpublikum', 'Wissenstransfer', 'Präzision'], // Wissenschaftliche Konferenzen
+  ['Innovation', 'Markenauftritt', 'Inszenierung'], // Produktlaunches & Präsentationen
+  ['Aktivierung', 'Kollaboration', 'Lernerlebnis'], // Interaktive Workshops
+  ['Unternehmenskultur', 'Wertschätzung', 'Teambuilding'], // Firmen- & Mitarbeiterevents
+  ['Premium', 'Stil', 'Atmosphäre'], // Galas & exklusive Abendveranstaltungen
+  ['Natur', 'Herausforderung', 'Zusammenhalt'] // Outdoor- & Teamevents
+];
+
+// Updated event descriptions
+const eventDescriptions = [
+  "Fachpublikum erreichen, Wissen vermitteln", // Wissenschaftliche Konferenzen
+  "Innovationen inszenieren und begeistern", // Produktlaunches & Präsentationen
+  "Wissen aktivieren, Kollaboration fördern", // Interaktive Workshops
+  "Teamgeist und Unternehmenskultur stärken", // Firmen- & Mitarbeiterevents
+  "Stilvolle Highlights mit besonderem Flair", // Galas & exklusive Abendveranstaltungen
+  "Gemeinsam wachsen, Natur erleben" // Outdoor- & Teamevents
 ];
 
 const EventTypesSection = () => {
@@ -65,13 +77,16 @@ const EventTypesSection = () => {
   };
   
   return (
-    <section id="eventformate" className="py-16 md:py-24 bg-background">
+    <section id="eventformate" className="py-16 md:py-24 bg-secondary/5">
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-8 animate-fade-in">
           <div className="section-tag">Unsere Veranstaltungsformate</div>
-          <h2 className="header-section">Eventtypen, die wir gestalten</h2>
-          <p className="subheader-section">
-            Entdecken Sie unsere professionellen Veranstaltungskonzepte für Ihren Erfolg
+          <h2 className="header-section">Formate, die Ihre Botschaft tragen</h2>
+          <p className="subheader-section mb-3">
+            Ob Kongress oder Kick-off – wir gestalten das passende Format für Ihr Ziel.
+          </p>
+          <p className="text-muted-foreground">
+            Unsere Eventformate verbinden strategische Wirkung mit emotionaler Inszenierung. Vom Fachkongress bis zum Teamevent – jedes Format wird individuell für Sie entwickelt.
           </p>
         </div>
         
@@ -158,7 +173,7 @@ const EventTypesSection = () => {
                       </CardTitle>
                       
                       <CardDescription className="text-muted-foreground">
-                        {event.description}
+                        {eventDescriptions[index]}
                       </CardDescription>
                     </CardHeader>
                   </Card>
