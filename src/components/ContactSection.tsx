@@ -52,12 +52,8 @@ const ContactSection = () => {
                 <Check className="h-4 w-4 mt-1 text-primary" />
                 <span><strong>Outdoor-Events & exklusive Abendveranstaltungen</strong></span>
               </li>
-              <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
-                <span><strong>Private Feiern wie Hochzeiten & Jubiläen</strong></span>
-              </li>
             </ul>
-            <p>Unsere Leistungen umfassen <strong>Projektmanagement, Teilnehmermanagement, Eventmanagement, Veranstaltungstechnik & Marketingmaßnahmen</strong> – alles aus einer Hand!</p>
+            <p>Unsere Leistungen umfassen <strong>Projektmanagement, Teilnehmermanagement, Eventmanagement, Veranstaltungstechnik & Marketingmaßnahmen</strong> – alles Hand in Hand!</p>
           </div>
         )
       },
@@ -81,7 +77,7 @@ const ContactSection = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="h-4 w-4 mt-1 text-primary" />
-                <span><strong>Kompletten Rundum-Service – Sie genießen das Event, wir kümmern uns um alles!</strong></span>
+                <span><strong>Verlässliche Partnerschaft – Sie genießen das Event, wir arbeiten mit Hingabe!</strong></span>
               </li>
             </ul>
           </div>
@@ -95,12 +91,6 @@ const ContactSection = () => {
       },
     ],
     planung: [
-      {
-        question: "Unterstützt MECOVENT auch private Feiern?",
-        answer: (
-          <p>Ja! Neben Firmenveranstaltungen planen wir auch <strong>Hochzeiten, Geburtstage, Jubiläen und private Feiern</strong>. Unser Team übernimmt die gesamte Organisation, damit Sie sich entspannt zurücklehnen und Ihren besonderen Tag genießen können.</p>
-        )
-      },
       {
         question: "Kann MECOVENT auch digitale oder hybride Events umsetzen?",
         answer: (
@@ -155,7 +145,7 @@ const ContactSection = () => {
                 <span><strong>Simultantechnik & TED-Systeme</strong> – Interaktive Abstimmungen & Mehrsprachigkeit</span>
               </li>
             </ul>
-            <p>Unsere Technik-Experten sorgen für ein reibungsloses Event-Erlebnis.</p>
+            <p>Unsere Technik-Experten sorgen für ein serviceorientiertes Event-Erlebnis.</p>
           </div>
         )
       },
@@ -187,7 +177,7 @@ const ContactSection = () => {
           <div className="section-tag">Kontakt</div>
           <h2 className="header-section">Lassen Sie uns Ihr Event planen!</h2>
           <p className="text-lg text-muted-foreground mt-4">
-            Nehmen Sie Kontakt mit uns auf und wir besprechen gemeinsam Ihre individuellen Eventanforderungen.
+            Verbinden Sie sich mit uns und wir besprechen gemeinsam Ihre individuellen Eventanforderungen.
           </p>
         </div>
         
@@ -278,7 +268,6 @@ const ContactSection = () => {
                       <option value="teilnehmermanagement">Teilnehmermanagement</option>
                       <option value="veranstaltungstechnik">Veranstaltungstechnik</option>
                       <option value="incentives">Incentives & Teamevents</option>
-                      <option value="private">Private Events</option>
                       <option value="digitale-events">Digitale & Hybride Events</option>
                       <option value="location">Location-Suche</option>
                     </select>
@@ -296,7 +285,7 @@ const ContactSection = () => {
                   
                   <Button type="submit" className="w-full py-6 text-base flex items-center justify-center gap-2 mt-4">
                     <Mail className="h-4 w-4" />
-                    Jetzt Anfrage senden
+                    Verbindung knüpfen
                   </Button>
                 </form>
                 
@@ -329,7 +318,7 @@ const ContactSection = () => {
                   </div>
                   <Button size="lg" className="gap-2 mt-2 py-6 px-8 text-base">
                     <Calendar className="h-5 w-5" />
-                    Termin vereinbaren
+                    Kennenlernen
                   </Button>
                 </div>
               </CardContent>

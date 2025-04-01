@@ -5,7 +5,6 @@ import {
   Users, 
   Music, 
   Smartphone,
-  Cake,
   BarChart4,
   PartyPopper
 } from 'lucide-react';
@@ -62,11 +61,6 @@ const ServicesSection = () => {
       title: "Marketing & Eventkommunikation", 
       description: "Zielgerichtete Kampagnen für mehr Reichweite", 
       icon: PartyPopper 
-    },
-    { 
-      title: "Exklusive Private Events", 
-      description: "Hochzeiten, Jubiläen, Gala-Dinner", 
-      icon: Cake 
     }
   ];
 
@@ -95,7 +89,7 @@ const ServicesSection = () => {
         <div className="mt-12 text-center">
           <p className="flex items-center justify-center gap-2 text-primary max-w-2xl mx-auto border-t pt-8 border-muted/30">
             <LightbulbIcon className="h-5 w-5 flex-shrink-0" />
-            <span className="font-medium">Von der ersten Idee bis zum finalen Eventerlebnis – wir übernehmen Planung, Umsetzung & Teilnehmerbetreuung mit höchster Präzision.</span>
+            <span className="font-medium">Von der ersten Idee bis zur erfolgreichen Umsetzung – wir übernehmen Planung, Umsetzung & Teilnehmerbetreuung mit höchster Präzision.</span>
           </p>
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Clock, RotateCw, Tag } from 'lucide-react';
 import { eventTypes } from './projects/data';
@@ -84,7 +83,7 @@ const EventTypesSection = () => {
           <div className="section-tag">Unsere Veranstaltungsformate</div>
           <h2 className="header-section">Eventtypen, die wir gestalten</h2>
           <p className="subheader-section">
-            Eine Übersicht unserer professionellen Veranstaltungskonzepte
+            Entdecken Sie unsere professionellen Veranstaltungskonzepte für Ihren Erfolg
           </p>
         </div>
         
@@ -93,7 +92,7 @@ const EventTypesSection = () => {
           <div className="flex justify-center mb-8">
             <Button 
               variant="outline" 
-              onClick={handleResetCards}
+              onClick={() => setActiveEventTypeIndex(null)}
               className="flex items-center gap-2"
             >
               <RotateCw className="h-4 w-4" />
@@ -115,12 +114,21 @@ const EventTypesSection = () => {
                   "flip-card-container cursor-pointer h-[350px]",
                   isFlipped ? "is-flipped" : ""
                 )}
-                onClick={() => handleFlipCard(index)}
+                onClick={() => setActiveEventTypeIndex(isFlipped ? null : index)}
                 onMouseEnter={() => setHoveredCardIndex(index)}
                 onMouseLeave={() => setHoveredCardIndex(null)}
-                onTouchStart={() => handleTouchStart(index)}
-                onTouchEnd={handleTouchEnd}
-                onTouchMove={handleTouchEnd}
+                onTouchStart={() => {
+                  if (isMobile && activeEventTypeIndex !== index) {
+                    setShowTapHint(index);
+                    setTimeout(() => {
+                      if (showTapHint === index) {
+                        setActiveEventTypeIndex(index);
+                      }
+                    }, 1500);
+                  }
+                }}
+                onTouchEnd={() => setShowTapHint(null)}
+                onTouchMove={() => setShowTapHint(null)}
                 style={{
                   perspective: "1000px"
                 }}
@@ -201,8 +209,7 @@ const EventTypesSection = () => {
                               key={i} 
                               variant="outline" 
                               className={cn(
-                                "py-1 px-2 border-primary/30 text-xs font-medium",
-                                getTagClass(tag)
+                                "py-1 px-2 border-primary/30 text-xs font-medium bg-primary/10 text-primary"
                               )}
                             >
                               {tag}
@@ -216,6 +223,13 @@ const EventTypesSection = () => {
               </div>
             );
           })}
+        </div>
+        
+        <div className="mt-12 text-center">
+          <Button variant="outline" className="gap-2">
+            <Calendar className="h-4 w-4" />
+            Erste Verbindung herstellen
+          </Button>
         </div>
       </div>
     </section>
