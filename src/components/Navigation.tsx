@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
@@ -14,7 +13,7 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 150);
       
       // Update active section based on scroll position
-      const sections = ['hero', 'about', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
+      const sections = ['hero', 'ueber-uns', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
       
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -63,7 +62,7 @@ const Navigation = () => {
 
   const navigationItems = [
     { id: 'hero', label: 'Start' },
-    { id: 'about', label: 'Über Uns' },
+    { id: 'ueber-uns', label: 'Über Uns' },
     { id: 'services', label: 'Leistungen' },
     { id: 'projects', label: 'Unsere Expertise' },
     { id: 'eventformate', label: 'Veranstaltungsformate' },
