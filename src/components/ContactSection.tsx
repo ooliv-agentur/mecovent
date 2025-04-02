@@ -1,10 +1,6 @@
 
 import React from 'react';
-import { Calendar, Phone, Mail, Info, HelpCircle, Check } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
+import { Phone, Mail, Info, HelpCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Accordion,
@@ -37,19 +33,19 @@ const ContactSection = () => {
             <p>MECOVENT ist eine Full-Service-Eventagentur, die sich auf die <strong>Planung, Organisation und Durchführung</strong> maßgeschneiderter Veranstaltungen spezialisiert hat. Wir bieten Lösungen für:</p>
             <ul className="space-y-1">
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Kongresse & Konferenzen</strong></span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Produktlaunches & Firmenveranstaltungen</strong></span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Workshops, Incentives & Teamevents</strong></span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Outdoor-Events & exklusive Abendveranstaltungen</strong></span>
               </li>
             </ul>
@@ -64,19 +60,19 @@ const ContactSection = () => {
             <p>Unsere drei Kernwerte – <strong>INDIVIDUELL, KREATIV, NACHHALTIG</strong> – stehen für maßgeschneiderte Events, innovative Konzepte und verantwortungsvolle Umsetzung. Wir bieten:</p>
             <ul className="space-y-1">
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Langjährige Erfahrung & ein starkes Partnernetzwerk</strong></span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Kreative & budgeteffiziente Planung</strong></span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Transparente Kosten & professionelle Umsetzung</strong></span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Verlässliche Partnerschaft – Sie genießen das Event, wir arbeiten mit Hingabe!</strong></span>
               </li>
             </ul>
@@ -98,15 +94,15 @@ const ContactSection = () => {
             <p>Absolut! Wir bieten Lösungen für:</p>
             <ul className="space-y-1">
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Hybride Events</strong> – Kombination aus Live- und Online-Teilnahme</span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Digitale Konferenzen & Webinare</strong> – Virtuelle Plattformen mit interaktiven Elementen</span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Live-Streaming & Simultantechnik</strong> – Professionelle Übertragung weltweit</span>
               </li>
             </ul>
@@ -129,19 +125,19 @@ const ContactSection = () => {
             <p>Wir arbeiten mit führenden Anbietern für Veranstaltungstechnik zusammen und bieten:</p>
             <ul className="space-y-1">
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Bühnenbau & Dekoration</strong> – Perfektes Setup für Ihre Veranstaltung</span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Licht-, Ton- & Videotechnik</strong> – Hochwertige technische Umsetzung</span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Präsentationstechnik & Kameratechnik</strong> – Optimale Darstellung Ihrer Inhalte</span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-4 w-4 mt-1 text-primary" />
+                <span className="h-4 w-4 mt-1 text-primary">✓</span>
                 <span><strong>Simultantechnik & TED-Systeme</strong> – Interaktive Abstimmungen & Mehrsprachigkeit</span>
               </li>
             </ul>
@@ -181,8 +177,36 @@ const ContactSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-5xl mx-auto animate-fade-in-up">
-          <div className="lg:col-span-2 space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-5xl mx-auto animate-fade-in-up">
+          {/* Contact Information Card */}
+          <div className="lg:col-span-1">
+            <Card className="shadow-md bg-secondary/30">
+              <CardContent className="p-8 text-center">
+                <h3 className="text-xl font-medium mb-6">Persönliche Beratung gewünscht?</h3>
+                <div className="space-y-4">
+                  <div className="flex flex-col gap-3 my-6">
+                    <a href="tel:+4961357039590" className="font-medium flex items-center justify-center gap-2 hover:text-primary transition-colors">
+                      <Phone className="h-4 w-4 text-primary" />
+                      +49 6135 70 39 59 -0
+                    </a>
+                    <a href="mailto:info@MECOVENT.de" className="font-medium flex items-center justify-center gap-2 hover:text-primary transition-colors">
+                      <Mail className="h-4 w-4 text-primary" />
+                      info@MECOVENT.de
+                    </a>
+                  </div>
+                  <div className="pt-4 border-t">
+                    <p className="flex items-center justify-center gap-2 mb-2 text-sm text-muted-foreground">
+                      <HelpCircle className="h-4 w-4" />
+                      <span>Haben Sie weitere Fragen? Wir helfen Ihnen gerne weiter!</span>
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* FAQ Section */}
+          <div className="lg:col-span-2">
             <div>
               <h3 className="text-2xl font-bold mb-6">Häufig gestellte Fragen</h3>
               
@@ -230,99 +254,6 @@ const ContactSection = () => {
                 </TabsContent>
               </Tabs>
             </div>
-          </div>
-          
-          <div className="lg:col-span-3">
-            <Card className="shadow-md">
-              <CardContent className="p-8">
-                <form className="space-y-5">
-                  <div>
-                    <Label htmlFor="name" className="block text-sm font-medium mb-2">Name</Label>
-                    <Input
-                      type="text"
-                      id="name"
-                      placeholder="Ihr Name"
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="email" className="block text-sm font-medium mb-2">E-Mail</Label>
-                    <Input
-                      type="email"
-                      id="email"
-                      placeholder="ihre.email@beispiel.de"
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="concern" className="block text-sm font-medium mb-2">Anliegen</Label>
-                    <select
-                      id="concern"
-                      className="w-full rounded-md border border-input bg-background px-4 py-2 text-sm"
-                      defaultValue=""
-                    >
-                      <option value="" disabled>Bitte auswählen</option>
-                      <option value="eventmanagement">Eventmanagement</option>
-                      <option value="teilnehmermanagement">Teilnehmermanagement</option>
-                      <option value="veranstaltungstechnik">Veranstaltungstechnik</option>
-                      <option value="incentives">Incentives & Teamevents</option>
-                      <option value="digitale-events">Digitale & Hybride Events</option>
-                      <option value="location">Location-Suche</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message" className="block text-sm font-medium mb-2">Nachricht</Label>
-                    <Textarea
-                      id="message"
-                      rows={4}
-                      placeholder="Ihre Nachricht"
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <Button type="submit" className="w-full py-6 text-base flex items-center justify-center gap-2 mt-4">
-                    <Mail className="h-4 w-4" />
-                    Verbindung knüpfen
-                  </Button>
-                </form>
-                
-                <div className="mt-8 pt-6 border-t">
-                  <p className="flex items-center gap-2 mb-2 text-sm text-muted-foreground">
-                    <HelpCircle className="h-4 w-4" />
-                    <span>Haben Sie weitere Fragen? Wir helfen Ihnen gerne weiter!</span>
-                  </p>
-                  <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Info className="h-4 w-4" />
-                    <span>Wir behandeln Ihre Daten vertraulich und kontaktieren Sie schnellstmöglich.</span>
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="mt-8 bg-secondary/30 shadow-sm">
-              <CardContent className="p-8 text-center">
-                <h3 className="text-xl font-medium mb-4">Persönliche Beratung gewünscht?</h3>
-                <div className="space-y-4">
-                  <div className="flex flex-col gap-3 my-4">
-                    <a href="tel:+4961357039590" className="font-medium flex items-center justify-center gap-2 hover:text-primary transition-colors">
-                      <Phone className="h-4 w-4 text-primary" />
-                      +49 6135 70 39 59 -0
-                    </a>
-                    <a href="mailto:info@MECOVENT.de" className="font-medium flex items-center justify-center gap-2 hover:text-primary transition-colors">
-                      <Mail className="h-4 w-4 text-primary" />
-                      info@MECOVENT.de
-                    </a>
-                  </div>
-                  <Button size="lg" className="gap-2 mt-2 py-6 px-8 text-base">
-                    <Calendar className="h-5 w-5" />
-                    Kennenlernen
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
