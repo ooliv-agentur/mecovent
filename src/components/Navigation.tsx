@@ -10,8 +10,8 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update sticky header based on scroll position
-      setIsScrolled(window.scrollY > 20);
+      // Update sticky header based on scroll position (150-200px threshold)
+      setIsScrolled(window.scrollY > 150);
       
       // Update active section based on scroll position
       const sections = ['hero', 'about', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
@@ -75,14 +75,17 @@ const Navigation = () => {
     <>
       <header 
         className={cn(
-          "fixed top-0 right-0 z-50 transition-all duration-300 py-4",
-          isScrolled ? "bg-background/90 shadow-sm w-full" : "bg-transparent"
+          "fixed top-0 right-0 z-50 transition-all duration-300 py-4 w-full",
+          isScrolled ? "bg-white/80 backdrop-blur-sm shadow-sm" : "bg-transparent"
         )}
       >
         <div className="container mx-auto flex justify-end items-center px-4">          
           <button 
             onClick={() => setIsMenuOpen(true)}
-            className="p-2 transition-all hover:bg-accent/50 rounded-full text-white"
+            className={cn(
+              "p-2 transition-all hover:bg-accent/50 rounded-full",
+              isScrolled ? "text-gray-800" : "text-white"
+            )}
             aria-label="Open menu"
           >
             <Menu size={24} />
