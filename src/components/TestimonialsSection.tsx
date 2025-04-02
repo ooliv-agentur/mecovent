@@ -110,16 +110,17 @@ const TestimonialsSection = () => {
           </div>
         </div>
         
-        <div className="text-center mt-12 animate-fade-in">
+        {/* Updated CTA section with new text, button label and adjusted spacing */}
+        <div className="text-center mt-20 mb-20 animate-fade-in">
           <p className="flex items-center justify-center gap-2 text-primary mb-6">
             <LightbulbIcon className="h-5 w-5" />
-            <span className="font-medium">Events sind Vertrauenssache – unser Anspruch ist es, Ihre Erwartungen zu übertreffen.</span>
+            <span className="font-medium">Vertrauen entsteht im gemeinsamen Tun.</span>
           </p>
           
           <div className="mt-8">
-            <p className="text-lg mb-4">Lassen Sie sich von unseren Kunden überzeugen – Planen Sie jetzt Ihr Event mit uns.</p>
+            <p className="text-lg mb-4">Lassen Sie uns in Verbindung treten – wir freuen uns auf den ersten Austausch.</p>
             <Button size="lg" className="rounded-full px-8 py-6 text-base">
-              Jetzt kostenlos beraten lassen
+              Erste Verbindung herstellen
             </Button>
           </div>
         </div>
