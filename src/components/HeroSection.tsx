@@ -52,7 +52,7 @@ const HeroSection = () => {
           <Button 
             onClick={scrollToAbout}
             size="lg" 
-            className="rounded-full px-8 py-6 text-base bg-white text-black hover:bg-gray-100 w-full sm:w-auto"
+            className="rounded-full px-8 py-6 text-base bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all duration-300 w-full sm:w-auto"
           >
             Kennenlernen
           </Button>
