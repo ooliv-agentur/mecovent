@@ -75,18 +75,14 @@ const Navigation = () => {
     <>
       <header 
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 backdrop-blur-sm",
-          isScrolled ? "bg-background/90 shadow-sm" : "bg-transparent"
+          "fixed top-0 right-0 z-50 transition-all duration-300 py-4",
+          isScrolled ? "bg-background/90 shadow-sm w-full" : "bg-transparent"
         )}
       >
-        <div className="container mx-auto flex justify-between items-center px-4">
-          <div className="font-bold text-xl">
-            [Logo]
-          </div>
-          
+        <div className="container mx-auto flex justify-end items-center px-4">          
           <button 
             onClick={() => setIsMenuOpen(true)}
-            className="p-2 transition-all hover:bg-accent/50 rounded-full"
+            className="p-2 transition-all hover:bg-accent/50 rounded-full text-white"
             aria-label="Open menu"
           >
             <Menu size={24} />
@@ -98,8 +94,12 @@ const Navigation = () => {
       {isMenuOpen && (
         <div className="fixed inset-0 bg-background z-[60] flex flex-col overflow-y-auto animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div className="font-bold text-xl">
-              [Logo]
+            <div>
+              <img 
+                src="/lovable-uploads/92fb0bda-3846-4569-af8a-7741561e0af9.png" 
+                alt="MECOVENT Logo" 
+                className="h-9 object-contain" 
+              />
             </div>
             <button 
               onClick={() => setIsMenuOpen(false)}

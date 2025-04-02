@@ -3,11 +3,11 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
-  const scrollToContact = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const scrollToAbout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({
         behavior: 'smooth'
       });
     }
@@ -34,13 +34,13 @@ const HeroSection = () => {
       {/* Logo (Top Left) */}
       <div className="absolute top-0 left-0 p-6 z-10">
         <img 
-          src="/lovable-uploads/9c383b79-a81a-4ef0-9b54-92ca8574730b.png" 
+          src="/lovable-uploads/92fb0bda-3846-4569-af8a-7741561e0af9.png" 
           alt="MECOVENT Logo" 
-          className="h-8 md:h-12" 
+          className="h-9 object-contain" 
         />
       </div>
       
-      <div className="container-section relative z-10 text-center max-w-[800px] mx-auto py-[25vh] animate-fade-in">
+      <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
           Wir bringen Menschen zusammen.
         </h1>
@@ -50,7 +50,7 @@ const HeroSection = () => {
         
         <div className="flex justify-center">
           <Button 
-            onClick={scrollToContact}
+            onClick={scrollToAbout}
             size="lg" 
             className="rounded-full px-8 py-6 text-base bg-white text-black hover:bg-gray-100 w-full sm:w-auto"
           >
