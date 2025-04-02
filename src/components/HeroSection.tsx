@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 const HeroSection = () => {
   const scrollToAbout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const aboutSection = document.getElementById('about');
+    const aboutSection = document.getElementById('ueber-uns');
     if (aboutSection) {
       aboutSection.scrollIntoView({
         behavior: 'smooth'
@@ -42,10 +42,10 @@ const HeroSection = () => {
       
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-          Wir bringen Menschen zusammen.
+          Message. Atmosphäre. Event.
         </h1>
         <p className="text-lg md:text-xl text-gray-100 tracking-wide mb-12">
-          Meeting. Congress. Event.
+          Wir gestalten Erlebnisse, die Menschen und Marken nachhaltig verbinden.
         </p>
         
         <div className="flex justify-center">
@@ -54,7 +54,7 @@ const HeroSection = () => {
             size="lg" 
             className="rounded-full px-8 py-6 text-base bg-white text-black hover:bg-gray-100 w-full sm:w-auto"
           >
-            Verbindung knüpfen
+            Kennenlernen
           </Button>
         </div>
       </div>
