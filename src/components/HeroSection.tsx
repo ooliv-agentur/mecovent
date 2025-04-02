@@ -5,10 +5,11 @@ import { Button } from '@/components/ui/button';
 const HeroSection = () => {
   const scrollToAbout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const aboutSection = document.getElementById('ueber-uns');
+    const aboutSection = document.getElementById('about');
     if (aboutSection) {
       aboutSection.scrollIntoView({
-        behavior: 'smooth'
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   };
