@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { LightbulbIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -110,8 +109,7 @@ const TestimonialsSection = () => {
           </div>
         </div>
         
-        {/* Updated CTA section with new text, button label and adjusted spacing */}
-        <div className="text-center mt-20 mb-20 animate-fade-in">
+        <div className="text-center py-20 animate-fade-in">
           <p className="flex items-center justify-center gap-2 text-primary mb-6">
             <LightbulbIcon className="h-5 w-5" />
             <span className="font-medium">Vertrauen entsteht im gemeinsamen Tun.</span>
