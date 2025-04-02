@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Heart, Award, Leaf, Lightbulb } from 'lucide-react';
 
@@ -10,6 +11,9 @@ const AboutSection = () => {
           <h2 className="header-section">Warum MECOVENT? – Unsere Mission ist Ihr Erfolg.</h2>
           <p className="subheader-section">
             Wir verwandeln Ihre Vision in unvergessliche Erlebnisse. Ob Change, Innovation oder Markeninszenierung – Ihre Botschaft wird lebendig.
+          </p>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+            Jedes Event erzählt eine Geschichte. Unsere Aufgabe ist es, diese Geschichte sichtbar, spürbar und nachhaltig zu gestalten – mit Respekt vor Ihrer Marke und dem Ziel, Menschen zu verbinden.
           </p>
         </div>
         

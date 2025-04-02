@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -94,12 +95,14 @@ const ProjectsSection = () => {
         <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
                           isVisible ? "animate-fade-in" : "opacity-0")}>
           <div className="section-tag">Unsere Expertise</div>
-          <h2 className="header-section">Branchen, für die wir gestalten</h2>
+          <h2 className="header-section">Mit Branchenverstand gestalten</h2>
           <p className="subheader-section mb-3">
             Jede Branche braucht ein anderes Gespür – wir kennen die Unterschiede.
           </p>
           <p className="text-muted-foreground">
-            Ob Pharma oder Finanzwesen, Bildung oder Industrie – wir verstehen die Besonderheiten Ihrer Branche und gestalten Events, die Ihre Zielgruppe wirklich erreichen.
+            Ob Pharma, Finanzwesen, Bildung oder Industrie –<br />
+            wir verstehen, worauf es in Ihrer Branche ankommt.<br />
+            So gestalten wir Events, die nicht nur passen – sondern wirken.
           </p>
         </div>
         

@@ -81,12 +81,14 @@ const EventTypesSection = () => {
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-8 animate-fade-in">
           <div className="section-tag">Unsere Veranstaltungsformate</div>
-          <h2 className="header-section">Formate, die Ihre Botschaft tragen</h2>
+          <h2 className="header-section">Events, die wirken – strategisch geplant, emotional inszeniert</h2>
           <p className="subheader-section mb-3">
-            Ob Kongress oder Kick-off – wir gestalten das passende Format für Ihr Ziel.
+            Ob Fachkongress oder Kick-off – wir finden das richtige Format für Ihre Botschaft.
           </p>
           <p className="text-muted-foreground">
-            Unsere Eventformate verbinden strategische Wirkung mit emotionaler Inszenierung. Vom Fachkongress bis zum Teamevent – jedes Format wird individuell für Sie entwickelt.
+            Vom Kick-off bis zur Roadshow, vom Fachkongress bis zum Team-Retreat:<br />
+            Unsere Formate entstehen immer mit einem Ziel – Wirkung.<br />
+            Strategisch durchdacht, emotional inszeniert und individuell für Sie entwickelt.
           </p>
         </div>
         

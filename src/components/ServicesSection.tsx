@@ -73,6 +73,9 @@ const ServicesSection = () => {
           <p className="subheader-section">
             Von strategischer Beratung bis zur perfekten Umsetzung – wir machen Ihr Event einzigartig.
           </p>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+            Ob Fachkonferenz, Kick-off oder hybride Messe – wir begleiten Sie von der ersten Idee bis zur Umsetzung mit Strategie, Hingabe und Erfahrung.
+          </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
