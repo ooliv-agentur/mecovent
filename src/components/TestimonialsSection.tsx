@@ -108,21 +108,26 @@ const TestimonialsSection = () => {
             </div>
           </div>
         </div>
-        
-        <div className="text-center py-20 animate-fade-in">
-          <p className="flex items-center justify-center gap-2 text-primary mb-6">
-            <LightbulbIcon className="h-5 w-5" />
-            <span className="font-medium">Vertrauen entsteht im gemeinsamen Tun.</span>
-          </p>
-          
-          <div className="mt-8">
-            <p className="text-lg mb-4">Lassen Sie uns in Verbindung treten – wir freuen uns auf den ersten Austausch.</p>
-            <Button size="lg" className="rounded-full px-8 py-6 text-base">
-              Erste Verbindung herstellen
-            </Button>
+      </div>
+      
+      {/* Extracted CTA as a separate section with explicit margins */}
+      <section className="bg-background mt-[80px] mb-[80px]">
+        <div className="container-section">
+          <div className="text-center animate-fade-in">
+            <p className="flex items-center justify-center gap-2 text-primary mb-6">
+              <LightbulbIcon className="h-5 w-5" />
+              <span className="font-medium">Vertrauen entsteht im gemeinsamen Tun.</span>
+            </p>
+            
+            <div className="mt-8">
+              <p className="text-lg mb-4">Lassen Sie uns in Verbindung treten – wir freuen uns auf den ersten Austausch.</p>
+              <Button size="lg" className="rounded-full px-8 py-6 text-base">
+                Erste Verbindung herstellen
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </section>
   );
 };
