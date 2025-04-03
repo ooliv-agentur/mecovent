@@ -36,7 +36,9 @@ interface StrengthCardProps {
 const StrengthCard = ({ icon: Icon, title, description }: StrengthCardProps) => {
   return (
     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 flex flex-col items-center text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-      <Icon className="h-10 w-10 text-neutral-500 mb-4 group-hover:text-[#00B5E2] transition-colors duration-300" />
+      <div className="group">
+        <Icon className="h-10 w-10 text-neutral-500 mb-4 group-hover:text-[#00B5E2] transition-colors duration-300" />
+      </div>
       <h4 className="font-medium text-lg mb-2 text-neutral-800">{title}</h4>
       <p className="text-sm text-neutral-600">{description}</p>
     </div>
