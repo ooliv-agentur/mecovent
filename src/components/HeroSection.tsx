@@ -17,8 +17,21 @@ const HeroSection = () => {
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#009fe3]"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          src="/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      </div>
+      
       {/* Logo (Top Left) */}
       <div className="absolute top-0 left-0 p-6 z-10">
         <img 
@@ -51,3 +64,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
