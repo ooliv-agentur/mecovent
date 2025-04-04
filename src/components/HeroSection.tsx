@@ -33,10 +33,10 @@ const HeroSection = () => {
       </div>
       
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
-        <h1 className="text-[4.4rem] md:text-[7.7rem] font-bold mb-8 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
+        <h1 className="text-[3.5rem] md:text-[6.5rem] font-bold mb-8 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
           Message. Atmosphäre. Event.
         </h1>
-        <p className="text-[1.35rem] md:text-[2.35rem] text-white/90 text-center max-w-4xl mx-auto mt-8 leading-relaxed">
+        <p className="text-[1.2rem] md:text-[1.85rem] text-white/90 text-center max-w-4xl mx-auto mt-8 leading-relaxed">
           Wir gestalten Erlebnisse, die Menschen und Marken nachhaltig verbinden.
         </p>
         
