@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -94,11 +94,7 @@ const Navigation = () => {
             )}
             aria-label="Open menu"
           >
-            <div className="w-7 h-6 flex flex-col justify-between">
-              <div className="w-full h-0.5 bg-white rounded-full"></div>
-              <div className="w-full h-0.5 bg-[#009fe3] rounded-full"></div>
-              <div className="w-full h-0.5 bg-white rounded-full"></div>
-            </div>
+            <Menu size={24} />
           </button>
         </div>
       </header>
@@ -118,7 +114,7 @@ const Navigation = () => {
               className="p-2 transition-all hover:bg-accent/50 rounded-full"
               aria-label="Close menu"
             >
-              <X size={28} />
+              <X size={24} />
             </button>
           </div>
           
