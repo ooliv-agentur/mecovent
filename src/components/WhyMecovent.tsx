@@ -40,11 +40,6 @@ const ValueCard = ({ title, description, icon: Icon, videoSrc }: ValueCardProps)
           playsInline
           loop
         />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 flex items-center justify-center z-10">
-            <Icon className="w-10 h-10 text-white drop-shadow-lg" />
-          </div>
-        </div>
       </div>
       <h3 className="font-medium text-xl mb-3">{title}</h3>
       <p className="text-muted-foreground">
