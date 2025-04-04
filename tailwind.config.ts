@@ -109,6 +109,14 @@ export default {
 						'background-position': '100% 50%',
 					},
 				},
+				'gradient-button': {
+					'0%, 100%': {
+						'background-position': '0% 50%',
+					},
+					'50%': {
+						'background-position': '100% 50%',
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -117,6 +125,7 @@ export default {
 				'fade-in-up': 'fade-in-up 0.7s ease-out',
 				'slide-in': 'slide-in 0.5s ease-out',
 				'gradient-shift': 'gradient-shift 10s ease-in-out infinite',
+				'gradient-button': 'gradient-button 8s ease-in-out infinite',
 			},
 			backgroundSize: {
 				'200%': '200% 100%',
