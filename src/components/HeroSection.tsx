@@ -43,7 +43,7 @@ const HeroSection = () => {
         <div className="flex justify-center">
           <button 
             onClick={scrollToAbout}
-            className="px-6 py-3 font-medium text-white bg-gradient-to-r from-[#009fe3] via-[#66c7f4] to-[#009fe3] rounded-full shadow-md transition-all duration-300 hover:brightness-110 hover:scale-105 animate-fade-in-up"
+            className="px-6 py-3 font-medium text-white bg-[#009fe3] rounded-full shadow-md transition-all duration-300 hover:bg-gradient-to-r hover:from-[#009fe3] hover:via-[#66c7f4] hover:to-[#009fe3] animate-fade-in-up"
           >
             Kennenlernen
           </button>
