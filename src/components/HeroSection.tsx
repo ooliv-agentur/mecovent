@@ -17,27 +17,18 @@ const HeroSection = () => {
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#009fe3]"
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          src="/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
+      {/* Logo (Top Left) */}
+      <div className="absolute top-0 left-0 p-6 z-10">
+        <img 
+          src="/lovable-uploads/90ff0323-484c-49bd-a8b7-afa998d4c6b7.png" 
+          alt="MECOVENT Logo" 
+          className="h-9 object-contain" 
         />
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
       
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
-        <img 
-          src="/lovable-uploads/46f0cff9-4c9e-4add-b932-26706f4e6a83.png" 
-          alt="MECOVENT Logo" 
-          className="mx-auto mb-6 h-24 object-contain" 
-        />
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
           Message. Atmosphäre. Event.
         </h1>
