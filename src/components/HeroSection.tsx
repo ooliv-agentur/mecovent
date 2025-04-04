@@ -36,18 +36,17 @@ const HeroSection = () => {
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
           Message. Atmosphäre. Event.
         </h1>
-        <p className="text-lg md:text-xl text-gray-100 tracking-wide mb-12">
+        <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-6 animate-fade-in-up">
           Wir gestalten Erlebnisse, die Menschen und Marken nachhaltig verbinden.
         </p>
         
         <div className="flex justify-center">
-          <Button 
+          <button 
             onClick={scrollToAbout}
-            size="lg" 
-            className="rounded-full px-6 py-2 text-base text-[#1a1a1a] bg-white transition-colors duration-300 ease-in-out hover:bg-[#6ecaf7] hover:text-white hover:shadow-md w-full sm:w-auto"
+            className="px-6 py-3 font-medium text-white bg-gradient-to-r from-[#009fe3] via-[#66c7f4] to-[#009fe3] rounded-full shadow-md transition-all duration-300 hover:brightness-110 hover:scale-105 animate-fade-in-up"
           >
             Kennenlernen
-          </Button>
+          </button>
         </div>
       </div>
     </section>
