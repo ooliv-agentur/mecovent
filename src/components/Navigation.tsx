@@ -27,6 +27,7 @@ const Navigation = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial scroll position
     
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -68,31 +69,33 @@ const Navigation = () => {
 
   return (
     <>
-      <header 
-        className={cn(
-          "fixed top-0 right-0 z-50 transition-all duration-300 py-4 w-full",
-          isScrolled ? "bg-[#009fe3] backdrop-blur-sm shadow-sm" : "bg-transparent"
-        )}
-      >
-        <div className="container mx-auto flex justify-between items-center px-4">
-          <img 
-            src="/logos/MECOVENT-@2x-weiss.png" 
-            alt="MECOVENT" 
-            className="h-9 object-contain" 
-          />
-          
-          <button 
-            onClick={() => setIsMenuOpen(true)}
-            className={cn(
-              "p-2 transition-all hover:bg-accent/50 rounded-full",
-              isScrolled ? "text-white" : "text-white"
-            )}
-            aria-label="Open menu"
-          >
-            <Menu size={24} />
-          </button>
-        </div>
-      </header>
+      {isScrolled && (
+        <header 
+          className={cn(
+            "fixed top-0 right-0 z-50 transition-all duration-300 py-4 w-full",
+            isScrolled ? "bg-[#009fe3] backdrop-blur-sm shadow-sm" : "bg-transparent"
+          )}
+        >
+          <div className="container mx-auto flex justify-between items-center px-4">
+            <img 
+              src="/logos/MECOVENT-@2x-weiss.png" 
+              alt="MECOVENT" 
+              className="h-9 object-contain" 
+            />
+            
+            <button 
+              onClick={() => setIsMenuOpen(true)}
+              className={cn(
+                "p-2 transition-all hover:bg-accent/50 rounded-full",
+                isScrolled ? "text-white" : "text-white"
+              )}
+              aria-label="Open menu"
+            >
+              <Menu size={24} />
+            </button>
+          </div>
+        </header>
+      )}
 
       {isMenuOpen && (
         <div className="fixed inset-0 bg-background z-[60] flex flex-col overflow-y-auto animate-fade-in">
