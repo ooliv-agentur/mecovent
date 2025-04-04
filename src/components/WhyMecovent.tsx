@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react';
 import { 
   Carousel,
@@ -8,6 +9,7 @@ import {
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIsMobile } from '@/hooks/use-mobile';
+import StrengthCard from './StrengthCard';
 
 interface ValueCardProps {
   title: string;
@@ -109,37 +111,6 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
   );
 };
 
-const StrengthCard = ({ icon, title, description }: { icon: string, title: string, description: string }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  
-  return (
-    <Card 
-      className="h-full overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-lg"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <CardContent className="p-8 text-center relative overflow-hidden h-full">
-        <div className={`absolute ${isHovered ? 'scale-100 opacity-10' : 'scale-50 opacity-0'} transition-all duration-500 ease-out rounded-full w-[200%] aspect-square bg-gradient-to-tr from-blue-400 to-cyan-200 -top-1/2 -left-1/2`}></div>
-        
-        <div className="flex justify-center mb-4 relative">
-          <div className={`text-4xl transition-transform duration-300 ${isHovered ? 'scale-125' : 'scale-100'}`}>
-            {icon}
-          </div>
-        </div>
-        
-        <h4 className="text-xl font-medium mb-2 relative">
-          {title}
-          <div className={`h-0.5 w-0 bg-gradient-to-r from-blue-400 to-cyan-300 transition-all duration-500 mx-auto ${isHovered ? 'w-1/2' : 'w-0'}`}></div>
-        </h4>
-        
-        <p className="text-muted-foreground relative">
-          {description}
-        </p>
-      </CardContent>
-    </Card>
-  );
-};
-
 const WhyMecovent = () => {
   const isMobile = useIsMobile();
   const values = [
@@ -161,7 +132,10 @@ const WhyMecovent = () => {
   ];
 
   return (
-    <section id="why-mecovent" className="relative overflow-hidden">
+    <section id="why-mecovent" className="relative overflow-hidden mt-24">
+      {/* Add visual separator between sections */}
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background/80 to-transparent pointer-events-none"></div>
+      
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/30 pointer-events-none"></div>
       
       <div className="container-section relative">
@@ -212,25 +186,28 @@ const WhyMecovent = () => {
           </div>
         )}
 
-        <div className="mt-20">
-          <h3 className="text-2xl font-medium text-center mb-10 relative inline-block mx-auto">
-            Unsere Stärken
-            <div className="h-1 w-20 bg-gradient-to-r from-blue-400 to-cyan-300 mx-auto mt-2"></div>
+        <div className="mt-32 relative">
+          {/* Add a decorative element for visual separation */}
+          <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-[#1EAEDB] to-[#33C3F0] rounded-full"></div>
+          
+          <h3 className="text-2xl font-medium text-center mb-14 relative inline-block mx-auto">
+            <span className="relative z-10 text-[#1EAEDB]">Unsere Stärken</span>
+            <div className="h-1 w-20 bg-gradient-to-r from-[#1EAEDB] to-[#33C3F0] mx-auto mt-3"></div>
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <StrengthCard 
-              icon="🏆"
+              iconType="trophy"
               title="Langjährige Erfahrung"
               description="Expertennetzwerk für erfolgreiche Events."
             />
             <StrengthCard 
-              icon="📊"
+              iconType="chart"
               title="Budgeteffiziente Planung"
               description="Transparente Kosten, wirtschaftliche Umsetzung."
             />
             <StrengthCard 
-              icon="🤝"
+              iconType="handshake"
               title="Hand in Hand"
               description="Sie genießen, wir kümmern uns um alles."
             />
