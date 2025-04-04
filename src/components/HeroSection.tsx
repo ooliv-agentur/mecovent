@@ -35,7 +35,7 @@ const HeroSection = () => {
       {/* Logo (Top Left) */}
       <div className="absolute top-0 left-0 p-6 z-10">
         <img 
-          src="/lovable-uploads/906b4c11-1d40-4982-aa89-d40798b17c9e.png" 
+          src="/lovable-uploads/90ff0323-484c-49bd-a8b7-afa998d4c6b7.png" 
           alt="MECOVENT Logo" 
           className="h-9 object-contain" 
         />
@@ -64,3 +64,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
