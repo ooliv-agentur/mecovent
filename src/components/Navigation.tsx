@@ -77,7 +77,7 @@ const Navigation = () => {
         <div className="container mx-auto flex justify-between items-center px-4">
           <img 
             src="/logos/MECOVENT-@2x-weiss.png" 
-            alt="MECOVENT Logo" 
+            alt="MECOVENT" 
             className="h-9 object-contain" 
           />
           
@@ -100,7 +100,7 @@ const Navigation = () => {
             <div>
               <img 
                 src="/logos/MECOVENT-@2x-weiss.png" 
-                alt="MECOVENT Logo" 
+                alt="MECOVENT" 
                 className="h-9 object-contain" 
               />
             </div>

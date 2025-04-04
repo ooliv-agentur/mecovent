@@ -32,11 +32,11 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
       
-      {/* Logo in top-left corner */}
+      {/* Logo in top-left corner - Only visible when not scrolled */}
       <div className="absolute top-0 left-0 z-20 container mx-auto py-4 px-4">
         <img 
           src="/logos/mecovent logo weiss blau@2x.png" 
-          alt="MECOVENT Logo" 
+          alt="MECOVENT" 
           className="h-9 object-contain" 
         />
       </div>
