@@ -45,7 +45,7 @@ const Index = () => {
     <div className="min-h-screen bg-background selection:bg-primary/20">
       <Navigation />
       <main>
-        <HeroSection />
+        <HeroSection key="hero-section" />
         <AboutSection />
         <ServicesSection />
         <ProjectsSection />
