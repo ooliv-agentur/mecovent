@@ -35,7 +35,7 @@ const HeroSection = () => {
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
         <div className="absolute top-10 left-10">
           <img 
-            src="/lovable-uploads/f1fc1961-9352-4e09-946e-40f48759218a.png" 
+            src="/lovable-uploads/52e1deb5-ecff-4ad5-90e9-8ac54c85dbaa.png" 
             alt="MECOVENT Logo" 
             className="h-12 object-contain" 
           />
@@ -63,4 +63,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
