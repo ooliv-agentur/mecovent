@@ -1,41 +1,78 @@
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { Heart, Lightbulb, Leaf } from 'lucide-react';
 
 interface ValueCardProps {
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
+  videoSrc: string;
 }
 
-const ValueCard = ({ title, description, icon: Icon }: ValueCardProps) => (
-  <div className="flex flex-col items-center text-center">
-    <div className="w-16 h-16 flex items-center justify-center mb-4">
-      <Icon className="w-10 h-10 text-primary/80" />
+const ValueCard = ({ title, description, icon: Icon, videoSrc }: ValueCardProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
+  return (
+    <div 
+      className="flex flex-col items-center text-center relative group"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="w-full aspect-video mb-6 overflow-hidden rounded-lg relative">
+        <video 
+          ref={videoRef}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          src={videoSrc}
+          muted
+          playsInline
+          loop
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-16 h-16 flex items-center justify-center z-10">
+            <Icon className="w-10 h-10 text-white drop-shadow-lg" />
+          </div>
+        </div>
+      </div>
+      <h3 className="font-medium text-xl mb-3">{title}</h3>
+      <p className="text-muted-foreground">
+        {description}
+      </p>
     </div>
-    <h3 className="font-medium text-xl mb-3">{title}</h3>
-    <p className="text-muted-foreground">
-      {description}
-    </p>
-  </div>
-);
+  );
+};
 
 const WhyMecovent = () => {
   const values = [
     { 
       title: "INDIVIDUELL", 
       description: "Jedes Event ist einzigartig. Wir passen uns Ihren Herausforderungen an und entwickeln maßgeschneiderte Lösungen – ob Corporate Event, wissenschaftliche Konferenz oder Team-Building-Erlebnis.", 
-      icon: Heart
+      icon: Heart,
+      videoSrc: "/20250404_1452_Creative Meeting Energy_simple_compose_01jr0drfsmefxanqxqrn5njypd.mp4"
     },
     { 
       title: "KREATIV", 
       description: "Mit Ihren Impulsen und unserer Kreativität garantieren wir den Erfolg Ihrer Veranstaltung. Ihre Vision und Ziele stehen im Mittelpunkt – wir setzen innovative Konzepte mit Leidenschaft um.", 
-      icon: Lightbulb
+      icon: Lightbulb,
+      videoSrc: "/20250404_1452_Creative Meeting Energy_simple_compose_01jr0drfsmefxanqxqrn5njypd.mp4"
     },
     { 
       title: "NACHHALTIG", 
       description: "Durch strategische Planung und ein starkes Netzwerk gestalten wir ressourcenschonende Events, die langfristige Wirkung zeigen – ökologisch, wirtschaftlich und sozial nachhaltig.", 
-      icon: Leaf
+      icon: Leaf,
+      videoSrc: "/20250404_1457_Eco-Friendly Table Setup_simple_compose_01jr0e00p5fq1vm5pwka8gnwve.mp4"
     }
   ];
 
@@ -57,6 +94,7 @@ const WhyMecovent = () => {
               title={value.title} 
               description={value.description}
               icon={value.icon}
+              videoSrc={value.videoSrc}
             />
           ))}
         </div>
