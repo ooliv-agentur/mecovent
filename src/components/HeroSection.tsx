@@ -32,15 +32,6 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
       
-      {/* Logo (Top Left) */}
-      <div className="absolute top-0 left-0 p-6 z-10">
-        <img 
-          src="/lovable-uploads/906b4c11-1d40-4982-aa89-d40798b17c9e.png" 
-          alt="MECOVENT Logo" 
-          className="h-9 object-contain" 
-        />
-      </div>
-      
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
           Message. Atmosphäre. Event.
@@ -64,3 +55,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
