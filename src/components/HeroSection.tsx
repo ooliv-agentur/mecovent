@@ -40,7 +40,7 @@ const HeroSection = () => {
             className="h-9 object-contain" 
           />
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
           Message. Atmosphäre. Event.
         </h1>
         <p className="text-lg md:text-xl text-gray-100 tracking-wide mb-12">
