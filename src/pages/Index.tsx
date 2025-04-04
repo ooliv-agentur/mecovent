@@ -11,22 +11,6 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
-  // Log the logo paths to confirm they're being used correctly
-  useEffect(() => {
-    console.log("Using logo paths: /logos/mecovent logo weiss blau@2x.png and /logos/MECOVENT-@2x-weiss.png");
-    
-    // Check if files exist by creating image objects
-    const checkImageExists = (imagePath: string) => {
-      const img = new Image();
-      img.onload = () => console.log(`Image loaded successfully: ${imagePath}`);
-      img.onerror = () => console.error(`Failed to load image: ${imagePath}`);
-      img.src = imagePath;
-    };
-    
-    checkImageExists('/logos/mecovent logo weiss blau@2x.png');
-    checkImageExists('/logos/MECOVENT-@2x-weiss.png');
-  }, []);
-
   // Intersection Observer for animations
   useEffect(() => {
     const observerOptions = {

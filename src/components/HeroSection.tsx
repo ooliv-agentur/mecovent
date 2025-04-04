@@ -1,23 +1,8 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 150);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial scroll position
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   const scrollToAbout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const aboutSection = document.getElementById('ueber-uns');
@@ -47,18 +32,15 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
       
-      {/* Logo in top-left corner - Only visible when not scrolled */}
-      {!isScrolled && (
-        <div className="absolute top-0 left-0 z-20 container mx-auto py-4 px-4">
+      <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
+        <div className="absolute top-10 left-10">
           <img 
-            src="/logos/mecovent logo weiss blau@2x.png" 
-            alt="MECOVENT" 
-            className="h-9 object-contain" 
+            src="/lovable-uploads/f1fc1961-9352-4e09-946e-40f48759218a.png" 
+            alt="MECOVENT Logo" 
+            className="h-12 object-contain" 
           />
         </div>
-      )}
-      
-      <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
+        
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
           Message. Atmosphäre. Event.
         </h1>
@@ -81,3 +63,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
