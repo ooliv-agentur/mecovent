@@ -44,7 +44,7 @@ const HeroSection = () => {
           <Button 
             onClick={scrollToAbout}
             size="lg" 
-            className="rounded-full px-8 py-6 text-base text-white bg-gradient-to-r from-white to-[#009fe3] bg-200% animate-soft-gradient hover:bg-[#009fe3] hover:animate-none transition-all duration-300 w-full sm:w-auto"
+            className="rounded-full px-6 py-2 text-base text-[#1a1a1a] bg-white transition-colors duration-300 ease-in-out hover:bg-[#6ecaf7] hover:text-white hover:shadow-md w-full sm:w-auto"
           >
             Kennenlernen
           </Button>
