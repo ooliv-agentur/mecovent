@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from 'react';
 import { 
   Carousel,
@@ -8,7 +7,7 @@ import {
   CarouselPrevious
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import { useMobile } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ValueCardProps {
   title: string;
@@ -22,7 +21,6 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   
-  // Colors for the accent gradients
   const gradientColors = [
     'from-blue-400 to-cyan-300',
     'from-rose-400 to-orange-300',
@@ -44,7 +42,6 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
     setIsHovered(false);
   };
 
-  // 3D tilt effect
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     
@@ -79,7 +76,6 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
       }}
       onMouseMove={handleMouseMove}
     >
-      {/* Decorative gradient corner accent */}
       <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl opacity-70 ${gradientColors[index % 3]} rounded-bl-full -z-0 transition-opacity duration-300 ${isHovered ? 'opacity-90' : 'opacity-70'}`}></div>
       
       <div className="flex flex-col items-center text-center p-6 z-10 relative">
@@ -93,7 +89,6 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
             loop
           />
           
-          {/* Video play indicator */}
           <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
             <div className="w-16 h-16 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center">
               <div className="w-0 h-0 border-y-8 border-y-transparent border-l-12 border-l-white ml-1"></div>
@@ -124,7 +119,6 @@ const StrengthCard = ({ icon, title, description }: { icon: string, title: strin
       onMouseLeave={() => setIsHovered(false)}
     >
       <CardContent className="p-8 text-center relative overflow-hidden h-full">
-        {/* Background circle decoration */}
         <div className={`absolute ${isHovered ? 'scale-100 opacity-10' : 'scale-50 opacity-0'} transition-all duration-500 ease-out rounded-full w-[200%] aspect-square bg-gradient-to-tr from-blue-400 to-cyan-200 -top-1/2 -left-1/2`}></div>
         
         <div className="flex justify-center mb-4 relative">
@@ -147,7 +141,7 @@ const StrengthCard = ({ icon, title, description }: { icon: string, title: strin
 };
 
 const WhyMecovent = () => {
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   const values = [
     { 
       title: "INDIVIDUELL", 
@@ -168,7 +162,6 @@ const WhyMecovent = () => {
 
   return (
     <section id="why-mecovent" className="relative overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/30 pointer-events-none"></div>
       
       <div className="container-section relative">
