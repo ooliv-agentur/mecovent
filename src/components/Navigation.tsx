@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
@@ -10,17 +9,14 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update sticky header based on scroll position (150-200px threshold)
       setIsScrolled(window.scrollY > 150);
       
-      // Update active section based on scroll position
       const sections = ['hero', 'ueber-uns', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
       
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Adjusted offset to account for navigation bar height
           if (rect.top <= 100 && rect.bottom > 0) {
             setActiveSection(section);
             break;
@@ -31,7 +27,6 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     
-    // Prevent scrolling when menu is open
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -45,12 +40,11 @@ const Navigation = () => {
   }, [isMenuOpen]);
 
   const scrollToSection = (sectionId: string) => {
-    setIsMenuOpen(false); // Close menu when a link is clicked
+    setIsMenuOpen(false);
     
     const element = document.getElementById(sectionId);
     if (element) {
-      // Calculate offset to account for fixed navigation height
-      const navHeight = 80; // approximate nav height in pixels
+      const navHeight = 80;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - navHeight;
       
@@ -80,9 +74,8 @@ const Navigation = () => {
         )}
       >
         <div className="container mx-auto flex justify-between items-center px-4">
-          {/* Add logo to sticky navigation */}
           <img 
-            src="/lovable-uploads/c24eb3c0-c51f-44dd-8a81-20345a2094f8.png" 
+            src="/lovable-uploads/6c7a46dc-0619-44be-9103-39face95ca30.png" 
             alt="MECOVENT Logo" 
             className="h-9 object-contain" 
           />
@@ -100,13 +93,12 @@ const Navigation = () => {
         </div>
       </header>
 
-      {/* Full-screen overlay menu */}
       {isMenuOpen && (
         <div className="fixed inset-0 bg-background z-[60] flex flex-col overflow-y-auto animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <div>
               <img 
-                src="/lovable-uploads/c24eb3c0-c51f-44dd-8a81-20345a2094f8.png" 
+                src="/lovable-uploads/6c7a46dc-0619-44be-9103-39face95ca30.png" 
                 alt="MECOVENT Logo" 
                 className="h-9 object-contain" 
               />
