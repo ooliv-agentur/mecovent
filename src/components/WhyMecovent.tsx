@@ -69,9 +69,11 @@ const WhyMecovent = () => {
   return (
     <section id="why-mecovent">
       <div className="container-section">
-        <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
+        <div className="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
           <div className="section-tag">ÜBER UNS</div>
-          <h2 className="header-section">Warum MECOVENT? – Unsere Mission ist Ihr Erfolg.</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight text-[#1EAEDB]">
+            Warum MECOVENT? – Unsere Mission ist Ihr Erfolg.
+          </h2>
           <p className="subheader-section">
             Wir verwandeln Ihre Vision in unvergessliche Erlebnisse. Ob Change, Innovation oder Markeninszenierung – Ihre Botschaft wird lebendig.
           </p>
