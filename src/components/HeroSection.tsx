@@ -1,8 +1,22 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const scrollToAbout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const aboutSection = document.getElementById('ueber-uns');
@@ -32,6 +46,15 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
       
+      {/* Logo */}
+      <div className="absolute top-6 left-6 md:top-8 md:left-8 z-20">
+        <img 
+          src={isScrolled ? "/lovable-uploads/MECOVENT-@2x-weiss.png" : "/lovable-uploads/mecovent logo weiss blau@2x.png"} 
+          alt="MECOVENT Logo" 
+          className="h-8 md:h-10 object-contain transition-opacity duration-300" 
+        />
+      </div>
+      
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
           Message. Atmosphäre. Event.
@@ -55,4 +78,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
