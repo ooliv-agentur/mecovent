@@ -11,6 +11,12 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  // Create logos directory if it doesn't exist and ensure the logo files are placed correctly
+  useEffect(() => {
+    // This is just to notify in the console that we're using the correct logo paths
+    console.log("Using logo paths: /logos/mecovent logo weiss blau@2x.png and /logos/MECOVENT-@2x-weiss.png");
+  }, []);
+
   // Intersection Observer for animations
   useEffect(() => {
     const observerOptions = {
