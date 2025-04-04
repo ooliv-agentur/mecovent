@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -94,12 +94,7 @@ const Navigation = () => {
             )}
             aria-label="Open menu"
           >
-            {/* Custom hamburger menu icon */}
-            <div className="flex flex-col justify-center w-6">
-              <div className={`w-6 h-0.5 rounded ${isScrolled ? 'bg-white' : 'bg-white'} mb-1 block`}></div>
-              <div className={`w-6 h-0.5 rounded ${isScrolled ? 'bg-white' : 'bg-[#009fe3]'} mb-1 block`}></div>
-              <div className={`w-6 h-0.5 rounded ${isScrolled ? 'bg-white' : 'bg-white'} block`}></div>
-            </div>
+            <Menu size={24} />
           </button>
         </div>
       </header>
