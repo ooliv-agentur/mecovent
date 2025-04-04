@@ -33,7 +33,7 @@ const HeroSection = () => {
       </div>
       
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
-        <h1 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
+        <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
           Message. Atmosphäre. Event.
         </h1>
         <p className="text-xl md:text-2xl text-white/90 text-center max-w-4xl mx-auto mt-8 leading-relaxed">
