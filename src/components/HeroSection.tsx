@@ -33,13 +33,6 @@ const HeroSection = () => {
       </div>
       
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
-        <div className="absolute top-10 left-10">
-          <img 
-            src="/lovable-uploads/ed43ffda-ea78-4686-90a5-933c2995ba69.png" 
-            alt="MECOVENT Logo" 
-            className="h-9 object-contain" 
-          />
-        </div>
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
           Message. Atmosphäre. Event.
         </h1>
@@ -62,3 +55,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
