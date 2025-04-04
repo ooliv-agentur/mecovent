@@ -33,14 +33,14 @@ const HeroSection = () => {
       </div>
       
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
+        <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
           Message. Atmosphäre. Event.
         </h1>
-        <p className="text-lg md:text-xl text-white/90 text-center max-w-3xl mx-auto mt-6 leading-relaxed">
+        <p className="text-xl md:text-2xl text-white/90 text-center max-w-4xl mx-auto mt-8 leading-relaxed">
           Wir gestalten Erlebnisse, die Menschen und Marken nachhaltig verbinden.
         </p>
         
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-10">
           <button 
             onClick={scrollToAbout}
             className="px-6 py-3 font-medium text-white bg-[#009fe3] rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-[#009fe3] hover:via-[#73c4ef] hover:to-[#009fe3] hover:bg-200% animate-fade-in-up"
