@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { X, Phone, Mail } from 'lucide-react';
+import { X, Phone, Mail, Menu } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -89,7 +89,7 @@ const Navigation = () => {
           <button 
             onClick={() => setIsMenuOpen(true)}
             className={cn(
-              "p-2 transition-all rounded-full hover:bg-white/20",
+              "p-2 transition-all rounded-full hover:bg-white/10", // Updated hover effect
               isScrolled ? "text-white" : "text-white"
             )}
             aria-label="Open menu"
