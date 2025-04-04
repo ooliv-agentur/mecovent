@@ -79,7 +79,14 @@ const Navigation = () => {
           isScrolled ? "bg-[#009fe3] backdrop-blur-sm shadow-sm" : "bg-transparent"
         )}
       >
-        <div className="container mx-auto flex justify-end items-center px-4">          
+        <div className="container mx-auto flex justify-between items-center px-4">
+          {/* Add logo to sticky navigation */}
+          <img 
+            src="/lovable-uploads/c24eb3c0-c51f-44dd-8a81-20345a2094f8.png" 
+            alt="MECOVENT Logo" 
+            className="h-9 object-contain" 
+          />
+          
           <button 
             onClick={() => setIsMenuOpen(true)}
             className={cn(
