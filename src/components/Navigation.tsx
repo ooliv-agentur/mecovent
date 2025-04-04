@@ -66,6 +66,11 @@ const Navigation = () => {
     { id: 'contact', label: 'Kontakt' }
   ];
 
+  // Dynamically select logo source based on scroll state
+  const logoSrc = isScrolled 
+    ? "/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
+    : "/lovable-uploads/ed43ffda-ea78-4686-90a5-933c2995ba69.png";
+
   return (
     <>
       <header 
@@ -76,9 +81,9 @@ const Navigation = () => {
       >
         <div className="container mx-auto flex justify-between items-center px-4">
           <img 
-            src="/lovable-uploads/ed43ffda-ea78-4686-90a5-933c2995ba69.png" 
+            src={logoSrc}
             alt="MECOVENT Logo" 
-            className="h-9 object-contain" 
+            className="h-9 object-contain transition-opacity duration-300" 
           />
           
           <button 
