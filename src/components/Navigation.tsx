@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -94,7 +93,26 @@ const Navigation = () => {
             )}
             aria-label="Open menu"
           >
-            <Menu size={24} />
+            <div className="flex flex-col space-y-1 w-6">
+              <div 
+                className={cn(
+                  "h-0.5 w-6 rounded transition-all duration-300",
+                  isScrolled ? "bg-white" : "bg-white"
+                )}
+              />
+              <div 
+                className={cn(
+                  "h-0.5 w-6 rounded transition-all duration-300",
+                  isScrolled ? "bg-white" : "bg-[#009fe3]"
+                )}
+              />
+              <div 
+                className={cn(
+                  "h-0.5 w-6 rounded transition-all duration-300",
+                  isScrolled ? "bg-white" : "bg-white"
+                )}
+              />
+            </div>
           </button>
         </div>
       </header>
@@ -144,3 +162,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
