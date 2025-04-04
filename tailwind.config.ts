@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -109,11 +108,11 @@ export default {
 						'background-position': '100% 50%',
 					},
 				},
-				'gradient-button': {
-					'0%, 100%': {
+				'soft-gradient': {
+					'0%': {
 						'background-position': '0% 50%',
 					},
-					'50%': {
+					'100%': {
 						'background-position': '100% 50%',
 					},
 				},
@@ -125,7 +124,7 @@ export default {
 				'fade-in-up': 'fade-in-up 0.7s ease-out',
 				'slide-in': 'slide-in 0.5s ease-out',
 				'gradient-shift': 'gradient-shift 10s ease-in-out infinite',
-				'gradient-button': 'gradient-button 8s ease-in-out infinite',
+				'soft-gradient': 'soft-gradient 15s linear infinite',
 			},
 			backgroundSize: {
 				'200%': '200% 100%',
