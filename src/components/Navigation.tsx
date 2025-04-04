@@ -10,14 +10,17 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Update sticky header based on scroll position (150-200px threshold)
       setIsScrolled(window.scrollY > 150);
       
+      // Update active section based on scroll position
       const sections = ['hero', 'ueber-uns', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
       
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
+          // Adjusted offset to account for navigation bar height
           if (rect.top <= 100 && rect.bottom > 0) {
             setActiveSection(section);
             break;
@@ -28,6 +31,7 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     
+    // Prevent scrolling when menu is open
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -41,11 +45,12 @@ const Navigation = () => {
   }, [isMenuOpen]);
 
   const scrollToSection = (sectionId: string) => {
-    setIsMenuOpen(false);
+    setIsMenuOpen(false); // Close menu when a link is clicked
     
     const element = document.getElementById(sectionId);
     if (element) {
-      const navHeight = 80;
+      // Calculate offset to account for fixed navigation height
+      const navHeight = 80; // approximate nav height in pixels
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - navHeight;
       
@@ -71,21 +76,15 @@ const Navigation = () => {
       <header 
         className={cn(
           "fixed top-0 right-0 z-50 transition-all duration-300 py-4 w-full",
-          isScrolled ? "bg-[#009fe3] backdrop-blur-sm shadow-sm" : "bg-transparent"
+          isScrolled ? "bg-white/80 backdrop-blur-sm shadow-sm" : "bg-transparent"
         )}
       >
-        <div className="container mx-auto flex justify-between items-center px-4">
-          <img 
-            src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
-            alt="MECOVENT Logo" 
-            className="h-9 object-contain" 
-          />
-          
+        <div className="container mx-auto flex justify-end items-center px-4">          
           <button 
             onClick={() => setIsMenuOpen(true)}
             className={cn(
               "p-2 transition-all hover:bg-accent/50 rounded-full",
-              isScrolled ? "text-white" : "text-white"
+              isScrolled ? "text-gray-800" : "text-white"
             )}
             aria-label="Open menu"
           >
@@ -94,12 +93,13 @@ const Navigation = () => {
         </div>
       </header>
 
+      {/* Full-screen overlay menu */}
       {isMenuOpen && (
         <div className="fixed inset-0 bg-background z-[60] flex flex-col overflow-y-auto animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <div>
               <img 
-                src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
+                src="/lovable-uploads/92fb0bda-3846-4569-af8a-7741561e0af9.png" 
                 alt="MECOVENT Logo" 
                 className="h-9 object-contain" 
               />
