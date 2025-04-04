@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { X } from 'lucide-react';
+import { X, Phone, Mail } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -89,7 +89,7 @@ const Navigation = () => {
           <button 
             onClick={() => setIsMenuOpen(true)}
             className={cn(
-              "p-2 transition-all hover:bg-accent/50 rounded-full",
+              "p-2 transition-all rounded-full hover:bg-white/20",
               isScrolled ? "text-white" : "text-white"
             )}
             aria-label="Open menu"
@@ -119,35 +119,35 @@ const Navigation = () => {
       </header>
 
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-background z-[60] flex flex-col overflow-y-auto animate-fade-in">
+        <div className="fixed inset-0 bg-white z-[60] flex flex-col overflow-y-auto animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <div>
               <img 
-                src="/lovable-uploads/ed43ffda-ea78-4686-90a5-933c2995ba69.png" 
+                src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
                 alt="MECOVENT Logo" 
                 className="h-9 object-contain" 
               />
             </div>
             <button 
               onClick={() => setIsMenuOpen(false)}
-              className="p-2 transition-all hover:bg-accent/50 rounded-full"
+              className="p-2 transition-all hover:bg-gray-100 rounded-full"
               aria-label="Close menu"
             >
-              <X size={24} />
+              <X size={24} className="text-gray-800" />
             </button>
           </div>
           
-          <nav className="flex flex-col items-center justify-center flex-grow py-12">
+          <nav className="flex flex-col items-center justify-center flex-grow py-10">
             <ul className="space-y-6 text-center">
               {navigationItems.map((item) => (
                 <li key={item.id}>
                   <button
                     onClick={() => scrollToSection(item.id)}
                     className={cn(
-                      "text-xl md:text-2xl py-2 px-4 transition-colors",
+                      "text-xl md:text-2xl lg:text-3xl py-2 px-4 transition-colors rounded-md",
                       activeSection === item.id 
-                        ? "font-medium text-primary" 
-                        : "text-primary/70 hover:text-primary"
+                        ? "font-medium text-[#009fe3]" 
+                        : "text-gray-700 hover:text-[#009fe3] hover:bg-gray-50"
                     )}
                   >
                     {item.label}
@@ -156,6 +156,31 @@ const Navigation = () => {
               ))}
             </ul>
           </nav>
+          
+          {/* Contact Block */}
+          <div className="py-8 border-t border-gray-100 mt-4">
+            <div className="container mx-auto max-w-md px-4">
+              <div className="text-center">
+                <h3 className="text-lg font-medium text-gray-700 mb-4">Wir freuen uns auf Ihre Anfrage</h3>
+                <div className="flex flex-col items-center space-y-3">
+                  <a 
+                    href="tel:+4969123456789" 
+                    className="flex items-center text-gray-700 hover:text-[#009fe3] transition-colors"
+                  >
+                    <Phone size={18} className="mr-2 text-[#009fe3]" />
+                    <span>+49 (0) 69 123 456 789</span>
+                  </a>
+                  <a 
+                    href="mailto:info@mecovent.de" 
+                    className="flex items-center text-gray-700 hover:text-[#009fe3] transition-colors"
+                  >
+                    <Mail size={18} className="mr-2 text-[#009fe3]" />
+                    <span>info@mecovent.de</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>
