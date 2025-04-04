@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
@@ -75,7 +76,7 @@ const Navigation = () => {
       >
         <div className="container mx-auto flex justify-between items-center px-4">
           <img 
-            src="/lovable-uploads/6c7a46dc-0619-44be-9103-39face95ca30.png" 
+            src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
             alt="MECOVENT Logo" 
             className="h-9 object-contain" 
           />
@@ -98,7 +99,7 @@ const Navigation = () => {
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <div>
               <img 
-                src="/lovable-uploads/6c7a46dc-0619-44be-9103-39face95ca30.png" 
+                src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
                 alt="MECOVENT Logo" 
                 className="h-9 object-contain" 
               />
