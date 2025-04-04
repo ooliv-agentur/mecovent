@@ -5,17 +5,12 @@ import { Button } from '@/components/ui/button';
 const HeroSection = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll state
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
+      setIsScrolled(window.scrollY > 100);
     };
 
     window.addEventListener('scroll', handleScroll);
-    
-    // Initial check
-    handleScroll();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -52,13 +47,11 @@ const HeroSection = () => {
       </div>
       
       {/* Logo */}
-      <div className="absolute top-6 left-6 z-20 transition-opacity duration-300">
+      <div className="absolute top-6 left-6 md:top-8 md:left-8 z-20">
         <img 
-          src={isScrolled 
-            ? "/lovable-uploads/MECOVENT-@2x-weiss.png" 
-            : "/lovable-uploads/mecovent logo weiss blau@2x.png"} 
+          src={isScrolled ? "/lovable-uploads/MECOVENT-@2x-weiss.png" : "/lovable-uploads/mecovent logo weiss blau@2x.png"} 
           alt="MECOVENT Logo" 
-          className="h-12 md:h-16 w-auto object-contain transition-all duration-300"
+          className="h-8 md:h-10 object-contain transition-opacity duration-300" 
         />
       </div>
       
