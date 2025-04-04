@@ -89,7 +89,7 @@ const Navigation = () => {
           <button 
             onClick={() => setIsMenuOpen(true)}
             className={cn(
-              "p-2 transition-all rounded-full hover:bg-white/10", // Ensuring round hover effect
+              "p-2 transition-all rounded-full bg-transparent hover:bg-white/10",
               isScrolled ? "text-white" : "text-white"
             )}
             aria-label="Open menu"
