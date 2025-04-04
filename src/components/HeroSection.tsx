@@ -36,7 +36,7 @@ const HeroSection = () => {
         <div className="absolute top-10 left-10">
           <img 
             src="/lovable-uploads/ed43ffda-ea78-4686-90a5-933c2995ba69.png" 
-            alt="" 
+            alt="MECOVENT Logo" 
             className="h-9 object-contain" 
           />
         </div>
