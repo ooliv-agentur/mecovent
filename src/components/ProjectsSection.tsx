@@ -94,7 +94,7 @@ const ProjectsSection = () => {
         <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
                           isVisible ? "animate-fade-in" : "opacity-0")}>
           <div className="section-tag">Unsere Expertise</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.2]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.4]">
             Mit Branchenverstand gestalten
           </h2>
           <p className="subheader-section mb-3">

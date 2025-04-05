@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Clock, RotateCw, Tag, Calendar } from 'lucide-react';
 import { eventTypes } from './projects/data';
@@ -15,7 +14,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-// Updated event tags based on the new requirements
 const eventTags = [
   ['Fachpublikum', 'Wissenstransfer', 'Präzision'], // Wissenschaftliche Konferenzen
   ['Innovation', 'Markenauftritt', 'Inszenierung'], // Produktlaunches & Präsentationen
@@ -25,7 +23,6 @@ const eventTags = [
   ['Natur', 'Herausforderung', 'Zusammenhalt'] // Outdoor- & Teamevents
 ];
 
-// Updated event descriptions
 const eventDescriptions = [
   "Fachpublikum erreichen, Wissen vermitteln", // Wissenschaftliche Konferenzen
   "Innovationen inszenieren und begeistern", // Produktlaunches & Präsentationen
@@ -81,7 +78,7 @@ const EventTypesSection = () => {
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-8 animate-fade-in">
           <div className="section-tag">Unsere Veranstaltungsformate</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.4]">
             Events, die wirken – strategisch geplant, emotional inszeniert
           </h2>
           <p className="subheader-section mb-3">

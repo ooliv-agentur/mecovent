@@ -38,7 +38,7 @@ const TestimonialsSection = () => {
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <div className="section-tag">Kundenstimmen</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.2]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.4]">
             Was andere über uns sagen
           </h2>
           <p className="subheader-section">
@@ -115,7 +115,6 @@ const TestimonialsSection = () => {
         </div>
       </div>
       
-      {/* Extracted CTA as a separate section with explicit margins */}
       <section className="bg-background mt-[80px] mb-[80px]">
         <div className="container-section">
           <div className="text-center animate-fade-in">
