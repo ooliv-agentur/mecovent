@@ -69,7 +69,7 @@ const ServicesSection = () => {
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <div className="section-tag">Was wir bieten</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words" style={{ lineHeight: '1.6' }}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift break-words">
             Unsere Leistungen – Ihr Event, perfekt geplant.
           </h2>
           <p className="subheader-section">
