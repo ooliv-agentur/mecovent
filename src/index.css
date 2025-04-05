@@ -101,6 +101,13 @@
   html {
     scroll-behavior: smooth;
   }
+  
+  /* Ensure headings have proper line height and wrap correctly */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.6 !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
 }
 
 /* Custom styles */
