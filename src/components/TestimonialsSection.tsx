@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { LightbulbIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -39,9 +38,12 @@ const TestimonialsSection = () => {
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <div className="section-tag">Kundenstimmen</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.2]">
             Was andere über uns sagen
           </h2>
+          <p className="subheader-section">
+            Entdecken Sie, wie wir mit Leidenschaft und Präzision Events gestalten, die in Erinnerung bleiben.
+          </p>
         </div>
         
         <div className="max-w-5xl mx-auto">
