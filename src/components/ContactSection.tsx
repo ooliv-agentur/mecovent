@@ -171,7 +171,9 @@ const ContactSection = () => {
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
           <div className="section-tag">Kontakt</div>
-          <h2 className="header-section">Lassen Sie uns Ihr Event planen!</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
+            Lassen Sie uns Ihr Event planen!
+          </h2>
           <p className="text-lg text-muted-foreground mt-4">
             Verbinden Sie sich mit uns und wir besprechen gemeinsam Ihre individuellen Eventanforderungen.
           </p>
