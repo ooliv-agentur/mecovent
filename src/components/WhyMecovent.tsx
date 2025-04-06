@@ -8,9 +8,6 @@ import { companyValues } from './why-mecovent/constants';
 const WhyMecovent = () => {
   return (
     <section id="why-mecovent" className="relative overflow-hidden pt-24 bg-background">
-      {/* Removed margin-top (mt-24) and replaced with padding-top (pt-24) for better positioning */}
-      
-      {/* Add visual separator between sections */}
       <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background/80 to-transparent pointer-events-none"></div>
       
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/30 pointer-events-none"></div>
