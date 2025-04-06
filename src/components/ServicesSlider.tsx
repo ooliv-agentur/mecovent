@@ -6,16 +6,15 @@ import {
   Music, 
   Smartphone,
   BarChart4,
-  PartyPopper,
-  ChevronLeft,
-  ChevronRight
+  PartyPopper
 } from 'lucide-react';
 import { 
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious
+  CarouselPrevious,
+  type CarouselApi
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -55,6 +54,7 @@ const ServiceSlide = ({ title, description, icon: Icon, imageSrc, active }: Serv
 const ServicesSlider = () => {
   const isMobile = useIsMobile();
   const [activeSlide, setActiveSlide] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   
   const services = [
     { 
@@ -96,8 +96,26 @@ const ServicesSlider = () => {
   ];
 
   const handlePaginationClick = (index: number) => {
+    if (carouselApi) {
+      carouselApi.scrollTo(index);
+    }
     setActiveSlide(index);
   };
+
+  React.useEffect(() => {
+    if (!carouselApi) return;
+    
+    const handleSelect = () => {
+      setActiveSlide(carouselApi.selectedScrollSnap() || 0);
+    };
+    
+    carouselApi.on("select", handleSelect);
+    
+    // Cleanup
+    return () => {
+      carouselApi.off("select", handleSelect);
+    };
+  }, [carouselApi]);
 
   return (
     <div className="relative pb-16">
@@ -108,11 +126,7 @@ const ServicesSlider = () => {
             loop: true,
           }}
           className="w-full"
-          onSelect={(api) => {
-            const currentSlide = api?.selectedScrollSnap() || 0;
-            setActiveSlide(currentSlide);
-          }}
-          value={{selectedIndex: activeSlide}}
+          setApi={setCarouselApi}
         >
           <div className="absolute inset-y-0 left-0 w-16 md:w-24 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none"></div>
           <div className="absolute inset-y-0 right-0 w-16 md:w-24 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none"></div>
