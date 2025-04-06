@@ -1,10 +1,13 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
 
 const Datenschutz = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background selection:bg-primary/20 flex flex-col">
       <Navigation />
