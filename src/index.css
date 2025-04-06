@@ -228,3 +228,13 @@ header {
 .scroll-snap-align-center {
   scroll-snap-align: center;
 }
+
+/* High quality image rendering */
+.image-high-quality {
+  image-rendering: auto;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}

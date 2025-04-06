@@ -65,20 +65,31 @@ const IndustriesCarousel = ({
                 "transition-opacity duration-700 ease-in-out"
               )}
             >
-              {/* Use actual image element instead of background-image CSS */}
               <div 
                 className={cn(
                   "absolute inset-0 transition-opacity duration-700",
                   industryRefs[index].inView ? "opacity-100" : "opacity-0"
                 )}
               >
-                <img 
-                  src={backgroundImages[index]}
-                  alt={industry.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="eager"
-                  decoding="async"
-                />
+                <picture>
+                  <source 
+                    srcSet={backgroundImages[index]} 
+                    type="image/png" 
+                    media="(min-resolution: 2dppx), (-webkit-min-device-pixel-ratio: 2)"
+                  />
+                  <img 
+                    src={backgroundImages[index]}
+                    alt={industry.title}
+                    className="absolute inset-0 w-full h-full object-cover image-high-quality"
+                    loading="eager"
+                    decoding="async"
+                    style={{
+                      imageRendering: 'auto',
+                      maxWidth: '100%',
+                      height: '100%'
+                    }}
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
               </div>
               
@@ -135,6 +146,7 @@ const IndustriesCarousel = ({
   );
 };
 
+// Add this class to the global CSS
 const getIndustryIcon = (index: number) => {
   const iconMap = [
     <Pill className="w-8 h-8 text-[#009fe3]" />,
