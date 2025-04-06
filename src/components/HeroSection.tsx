@@ -12,13 +12,17 @@ const HeroSection = () => {
       // Get positions
       const startY = window.scrollY || document.documentElement.scrollTop;
       
-      // Calculate the position to show the "ÜBER UNS" heading at the top
-      // Subtract a small offset to ensure the heading is visible at the top
-      const targetY = targetSection.getBoundingClientRect().top + startY - 20;
+      // Get the navigation height (for proper offset calculation)
+      const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+      
+      // Calculate the position to show exactly the "ÜBER UNS" heading at the top
+      // Based on the screenshot, we need to position the section tag at the top
+      // We'll offset by the navigation height plus a small adjustment
+      const targetY = targetSection.getBoundingClientRect().top + startY - navHeight;
       const distance = targetY - startY;
       
       // Animation settings
-      const duration = 800; // Quicker 800ms animation
+      const duration = 800; // Quick smooth animation
       let startTime = null;
       
       // Animation function
