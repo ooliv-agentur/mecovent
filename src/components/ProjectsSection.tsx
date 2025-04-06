@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -13,12 +14,17 @@ const ProjectsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [scrollLocked, setScrollLocked] = useState(false);
+  const [stickyActive, setStickyActive] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          setStickyActive(true);
+        } else if (entry.boundingClientRect.top > 0) {
+          // Reset when scrolling back up past the section
+          setStickyActive(false);
         }
       },
       {
@@ -39,6 +45,7 @@ const ProjectsSection = () => {
     };
   }, []);
 
+  // Handle wheel events for controlling the carousel
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (!isVisible || scrollLocked) return;
@@ -47,12 +54,10 @@ const ProjectsSection = () => {
       if (!section) return;
       
       const rect = section.getBoundingClientRect();
-      const isInIndustriesViewport = 
-        rect.top <= 0 && 
-        rect.bottom >= window.innerHeight &&
-        !hasScrolled;
+      const isInViewport = rect.top <= 0 && rect.bottom >= window.innerHeight;
       
-      if (isInIndustriesViewport) {
+      // Only control scroll when in the sticky active mode
+      if (isInViewport && stickyActive) {
         const newIndex = e.deltaY > 0 
           ? Math.min(activeIndustryIndex + 1, industryItems.length - 1)
           : Math.max(activeIndustryIndex - 1, 0);
@@ -66,7 +71,9 @@ const ProjectsSection = () => {
           setTimeout(() => {
             setScrollLocked(false);
             
+            // Release sticky mode after viewing all industries
             if (newIndex === industryItems.length - 1 && e.deltaY > 0) {
+              setStickyActive(false);
               setHasScrolled(true);
             }
             else if (newIndex === 0 && e.deltaY < 0) {
@@ -82,17 +89,31 @@ const ProjectsSection = () => {
     return () => {
       window.removeEventListener('wheel', handleWheel);
     };
-  }, [isVisible, activeIndustryIndex, scrollLocked, hasScrolled]);
+  }, [isVisible, activeIndustryIndex, scrollLocked, hasScrolled, stickyActive]);
 
   const handleOpenIndustryDialog = (title: string) => {
     setOpenIndustryDialog(title);
   };
 
+  // Calculate the height to maintain a sticky section properly
+  const sectionHeight = `${industryItems.length * 100}vh`;
+
   return (
-    <section id="projects" className="relative overflow-hidden w-full bg-secondary/10" ref={sectionRef}>
-      <div className="py-16 md:py-24">
-        <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
-                          isVisible ? "animate-fade-in" : "opacity-0")}>
+    <section 
+      id="projects" 
+      ref={sectionRef}
+      className="relative w-full bg-secondary/10" 
+      style={{ height: sectionHeight }}
+    >
+      <div 
+        className={cn(
+          "w-full h-screen flex flex-col justify-center items-center transition-all duration-500",
+          stickyActive ? "fixed top-0 left-0 z-10" : "relative",
+          !stickyActive && hasScrolled ? "translate-y-0" : ""
+        )}
+      >
+        <div className={cn("text-center max-w-3xl mx-auto px-4 mb-6", 
+                        isVisible ? "animate-fade-in" : "opacity-0")}>
           <div className="section-tag">Unsere Expertise</div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
             Mit Branchenverstand gestalten
@@ -107,8 +128,8 @@ const ProjectsSection = () => {
           </p>
         </div>
         
-        <div className={cn("mb-28 transition-all duration-700 transform w-full", 
-                          isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}>
+        <div className={cn("transition-all duration-700 transform w-full h-full", 
+                        isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}>
           <IndustriesCarousel 
             activeIndustryIndex={activeIndustryIndex}
             setActiveIndustryIndex={setActiveIndustryIndex}
@@ -116,9 +137,9 @@ const ProjectsSection = () => {
           />
         </div>
         
-        <div className="text-center mt-16 animate-fade-in px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center mt-6 animate-fade-in px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="max-w-2xl mx-auto">
-            <p className="flex items-center justify-center gap-2 text-primary mb-8">
+            <p className="flex items-center justify-center gap-2 text-primary mb-4">
               <LightbulbIcon className="h-5 w-5" />
               <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
             </p>

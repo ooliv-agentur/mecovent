@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
@@ -41,10 +42,10 @@ const IndustriesCarousel = ({
   }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
   return (
-    <div>
-      <div className="relative mt-8">
+    <div className="h-full w-full flex items-center justify-center">
+      <div className="relative w-full h-full">
         <div 
-          className="h-[600px] overflow-y-auto snap-y snap-mandatory scrollbar-hide scroll-smooth" 
+          className="h-full w-full overflow-hidden snap-y snap-mandatory scrollbar-hide" 
           ref={containerRef}
           style={{ scrollBehavior: 'smooth' }}
         >
@@ -53,7 +54,7 @@ const IndustriesCarousel = ({
               key={index}
               ref={industryRefs[index].ref}
               className={cn(
-                "h-[600px] snap-start snap-always w-full relative flex flex-col items-center justify-center",
+                "h-screen w-full snap-start snap-always flex flex-col items-center justify-center",
                 "transition-opacity duration-700 ease-in-out"
               )}
               onClick={() => openIndustryDialog(industry.title)}
@@ -61,7 +62,7 @@ const IndustriesCarousel = ({
               <div 
                 className={cn(
                   "absolute inset-0 transition-opacity duration-700",
-                  industryRefs[index].inView ? "opacity-100" : "opacity-0"
+                  activeIndustryIndex === index ? "opacity-100" : "opacity-0"
                 )}
                 style={{
                   background: getIndustryGradient(index),
@@ -70,9 +71,9 @@ const IndustriesCarousel = ({
               
               <div 
                 className={cn(
-                  "relative z-10 max-w-2xl mx-auto p-8 rounded-xl transition-all duration-700",
+                  "relative z-10 max-w-3xl mx-auto p-8 rounded-xl transition-all duration-700",
                   "backdrop-blur-sm bg-background/70 shadow-2xl border border-primary/10",
-                  industryRefs[index].inView 
+                  activeIndustryIndex === index 
                     ? "opacity-100 scale-100 translate-y-0" 
                     : "opacity-0 scale-95 translate-y-8"
                 )}
@@ -83,7 +84,7 @@ const IndustriesCarousel = ({
                 
                 <h3 className={cn(
                   "text-3xl font-bold text-center mb-4 transition-colors duration-300",
-                  industryRefs[index].inView ? "text-primary" : "text-foreground"
+                  activeIndustryIndex === index ? "text-primary" : "text-foreground"
                 )}>
                   {industry.title}
                 </h3>
@@ -99,7 +100,7 @@ const IndustriesCarousel = ({
               
               <div className={cn(
                 "absolute pointer-events-none transition-all duration-1000",
-                industryRefs[index].inView ? "opacity-60 scale-100" : "opacity-0 scale-50"
+                activeIndustryIndex === index ? "opacity-60 scale-100" : "opacity-0 scale-50"
               )}>
                 <div className="absolute top-20 left-[15%] w-16 h-16 bg-primary/20 rounded-full blur-xl animate-pulse" />
                 <div className="absolute top-40 right-[20%] w-24 h-24 bg-primary/30 rounded-full blur-xl animate-pulse delay-300" />
@@ -109,7 +110,7 @@ const IndustriesCarousel = ({
           ))}
         </div>
         
-        <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+        <div className="absolute right-10 top-1/2 transform -translate-y-1/2 z-20">
           <ScrollIndicator 
             active={activeIndustryIndex} 
             total={industryItems.length} 
@@ -117,7 +118,7 @@ const IndustriesCarousel = ({
           />
         </div>
         
-        <div className="absolute bottom-4 left-0 right-0 text-center text-primary/80 animate-bounce text-sm">
+        <div className="absolute bottom-10 left-0 right-0 text-center text-primary/80 animate-bounce text-sm z-20">
           <span>Weiterscrollen</span>
         </div>
       </div>
