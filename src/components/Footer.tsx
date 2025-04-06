@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -57,7 +59,7 @@ const Footer = () => {
         
         <div className="mt-10 pt-6 border-t text-center text-sm text-muted-foreground">
           <div className="flex flex-wrap justify-center gap-6 mb-4">
-            <a href="#" className="hover:text-primary transition-colors">Impressum</a>
+            <Link to="/impressum" className="hover:text-primary transition-colors">Impressum</Link>
             <a href="#" className="hover:text-primary transition-colors">Datenschutz</a>
             <a href="#" className="hover:text-primary transition-colors">AGB</a>
           </div>
