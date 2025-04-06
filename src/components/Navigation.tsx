@@ -184,11 +184,11 @@ const Navigation = () => {
                 <h3 className="text-lg font-medium text-gray-700 mb-4">Wir freuen uns auf Ihre Anfrage</h3>
                 <div className="flex flex-col items-center space-y-3">
                   <a 
-                    href="tel:+4969123456789" 
+                    href="tel:+4961357039590" 
                     className="flex items-center text-gray-700 hover:text-[#009fe3] transition-colors"
                   >
                     <Phone size={18} className="mr-2 text-[#009fe3]" />
-                    <span>+49 (0) 69 123 456 789</span>
+                    <span>+49 6135 70 39 59 -0</span>
                   </a>
                   <a 
                     href="mailto:info@mecovent.de" 
