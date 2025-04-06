@@ -6,19 +6,19 @@ const HeroSection = () => {
   const scrollToNext = (event: React.MouseEvent) => {
     event.preventDefault();
     
-    // Find the "why-mecovent" section specifically instead of just the next section
+    // Find the "why-mecovent" section specifically
     const targetSection = document.getElementById('why-mecovent');
     if (targetSection) {
       // Get positions
       const startY = window.scrollY || document.documentElement.scrollTop;
       
-      // Calculate the position that shows just the beginning of the section (top of the section)
-      // This will position the scroll to show the "ÜBER UNS" heading
-      const targetY = targetSection.getBoundingClientRect().top + startY;
+      // Calculate the position to show the "ÜBER UNS" heading at the top
+      // Subtract a small offset to ensure the heading is visible at the top
+      const targetY = targetSection.getBoundingClientRect().top + startY - 20;
       const distance = targetY - startY;
       
       // Animation settings
-      const duration = 800; // Reduced from 2000ms to 800ms for quicker response
+      const duration = 800; // Quicker 800ms animation
       let startTime = null;
       
       // Animation function
