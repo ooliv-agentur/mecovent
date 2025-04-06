@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   LightbulbIcon, 
@@ -22,7 +21,6 @@ interface ServiceCardProps {
 }
 
 const ServiceCard = ({ title, description, icon: Icon, imageUrl, index }: ServiceCardProps) => {
-  // Alternate the card designs based on index
   const isEven = index % 2 === 0;
   
   return (
@@ -55,10 +53,6 @@ const ServiceCard = ({ title, description, icon: Icon, imageUrl, index }: Servic
         <p className="text-muted-foreground">
           {description}
         </p>
-        <div className="mt-4 flex items-center text-[#009fe3] font-medium text-sm opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-500">
-          <span>Mehr erfahren</span>
-          <ArrowRightCircle size={16} className="ml-1" />
-        </div>
       </CardContent>
     </Card>
   );
@@ -134,9 +128,7 @@ const ServicesSection = () => {
         </div>
       </div>
       
-      {/* New USP Section with unique design */}
       <div className="relative mt-24 mb-12 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 overflow-hidden">
-        {/* Decorative elements */}
         <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[#009fe3]/10 blur-3xl"></div>
         <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-[#009fe3]/10 blur-3xl"></div>
         
