@@ -74,9 +74,9 @@ const ProjectsSection = () => {
             // Wait a bit before allowing scroll to continue
             setTimeout(() => {
               setHasScrolled(true);
-            }, 800);
+            }, 600); // Reduced from 800ms for a more responsive feel
           }
-        }, 800);
+        }, 600); // Reduced from 800ms for a more responsive feel
       } else if (newIndex === industryItems.length - 1 && deltaY > 0) {
         // Allow scrolling to continue to next section when at the last industry
         setHasScrolled(true);
@@ -94,15 +94,15 @@ const ProjectsSection = () => {
     setOpenIndustryDialog(title);
   };
 
-  // Define the correct height for the section to prevent scroll issues
-  // Reduced the section height to minimize the gap between sections
-  const sectionHeight = `${Math.max(industryItems.length * 80, 120)}vh`;
+  // Adjusted height calculation to minimize gap
+  // Reduced the multiplier to make the section shorter
+  const sectionHeight = `${Math.max(industryItems.length * 60, 100)}vh`;
 
   return (
     <section 
       id="projects" 
       ref={sectionRef}
-      className="relative w-full bg-secondary/10 mb-0" 
+      className="relative w-full bg-secondary/10" 
       style={{ height: sectionHeight }}
     >
       {/* Header content - this stays in position and doesn't become sticky */}

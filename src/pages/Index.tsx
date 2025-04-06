@@ -48,11 +48,12 @@ const Index = () => {
         <HeroSection />
         <WhyMecovent />
         <ServicesSection />
-        {/* No spacing added here to allow smooth transition */}
+        {/* Projects section with special scrolling behavior */}
         <ProjectsSection />
-        {/* Adjust top padding to remove gap */}
-        <div className="py-8" /> {/* Small spacer */}
-        <EventTypesSection />
+        {/* Add a negative margin to pull the next section up slightly */}
+        <div className="mt-[-50px]"> {/* Negative margin to reduce space */}
+          <EventTypesSection />
+        </div>
         <TestimonialsSection />
         <ContactSection />
       </main>
