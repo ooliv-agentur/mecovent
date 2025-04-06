@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X, Phone, Mail, Menu } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,18 +13,23 @@ const Navigation = () => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       
+      // Determine scroll direction
       const isScrollingDown = currentScrollPos > prevScrollPos;
       
+      // Set visibility based on scroll direction and position
       if (currentScrollPos > 150) {
         setVisible(!isScrollingDown);
       } else {
         setVisible(true);
       }
       
+      // Update scroll position
       setPrevScrollPos(currentScrollPos);
       
+      // Set scrolled state for styling
       setIsScrolled(currentScrollPos > 150);
       
+      // Update active section
       const sections = ['hero', 'ueber-uns', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
       
       for (const section of sections) {
@@ -80,6 +84,7 @@ const Navigation = () => {
     { id: 'contact', label: 'Kontakt' }
   ];
 
+  // Dynamically select logo source based on scroll state
   const logoSrc = isScrolled 
     ? "/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
     : "/lovable-uploads/ed43ffda-ea78-4686-90a5-933c2995ba69.png";
@@ -94,13 +99,11 @@ const Navigation = () => {
         )}
       >
         <div className="container mx-auto flex justify-between items-center px-4">
-          <Link to="/">
-            <img 
-              src={logoSrc}
-              alt="MECOVENT Logo" 
-              className="h-9 object-contain transition-opacity duration-300" 
-            />
-          </Link>
+          <img 
+            src={logoSrc}
+            alt="MECOVENT Logo" 
+            className="h-9 object-contain transition-opacity duration-300" 
+          />
           
           <button 
             onClick={() => setIsMenuOpen(true)}
@@ -138,13 +141,11 @@ const Navigation = () => {
         <div className="fixed inset-0 bg-white z-[60] flex flex-col overflow-y-auto animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <div>
-              <Link to="/">
-                <img 
-                  src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
-                  alt="MECOVENT Logo" 
-                  className="h-9 object-contain" 
-                />
-              </Link>
+              <img 
+                src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
+                alt="MECOVENT Logo" 
+                className="h-9 object-contain" 
+              />
             </div>
             <button 
               onClick={() => setIsMenuOpen(false)}
@@ -175,6 +176,7 @@ const Navigation = () => {
             </ul>
           </nav>
           
+          {/* Contact Block */}
           <div className="py-8 border-t border-gray-100 mt-4">
             <div className="container mx-auto max-w-md px-4">
               <div className="text-center">
