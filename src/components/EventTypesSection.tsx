@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Clock, 
@@ -44,7 +43,6 @@ const eventDescriptions = [
   "Gemeinsam wachsen, Natur erleben" // Outdoor- & Teamevents
 ];
 
-// Event-spezifische Icons
 const eventIcons = [
   <Video className="h-12 w-12 text-white/90" />, // Wissenschaftliche Konferenzen
   <Sparkles className="h-12 w-12 text-white/90" />, // Produktlaunches & Präsentationen
@@ -89,13 +87,11 @@ const EventTypesSection = () => {
     setShowTapHint(null);
   };
 
-  // Beobachten Sie das Scrollen, um Animationen zu triggern
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Animation nach 100ms verzögern, um sicherzustellen, dass die Komponente vollständig gerendert ist
             setTimeout(() => {
               setAnimatedCards(Array.from({ length: eventTypes.length }, (_, i) => i));
             }, 100);
@@ -170,18 +166,15 @@ const EventTypesSection = () => {
                     transition: "transform 0.6s"
                   }}
                 >
-                  {/* Vorderseite der Karte im MECOVENT-Blau */}
                   <Card 
                     className={cn(
                       "flip-card-front absolute w-full h-full backface-hidden border-0 shadow-lg",
                       isFlipped ? "" : "hover:shadow-xl",
                       "bg-gradient-to-br from-[#009fe3] to-[#0087c0] text-white",
-                      // Smooth transition for hover effect
-                      "transition-all duration-300 ease-in-out"
+                      "transition-shadow duration-300 ease-in-out"
                     )}
                     style={{
-                      backfaceVisibility: "hidden",
-                      transform: isHovered ? "scale(1.02)" : "scale(1)"
+                      backfaceVisibility: "hidden"
                     }}
                   >
                     <CardHeader>
@@ -195,10 +188,9 @@ const EventTypesSection = () => {
                       </div>
                       
                       <div className="flex flex-col items-center text-center">
-                        {/* Zentral platziertes Icon mit sanfter Übergangsanimation */}
                         <div 
                           className={cn(
-                            "w-24 h-24 rounded-full bg-white/10 flex items-center justify-center mb-5 transition-all duration-300 ease-in-out",
+                            "w-24 h-24 rounded-full bg-white/10 flex items-center justify-center mb-5 transition-colors duration-300 ease-in-out",
                             isHovered ? "bg-white/20" : ""
                           )}
                         >
@@ -216,7 +208,6 @@ const EventTypesSection = () => {
                     </CardHeader>
                   </Card>
                   
-                  {/* Rückseite der Karte mit Details */}
                   <Card 
                     className="flip-card-back absolute w-full h-full backface-hidden border shadow-md bg-white rotate-y-180 flex flex-col"
                     style={{
@@ -273,4 +264,3 @@ const EventTypesSection = () => {
 };
 
 export default EventTypesSection;
-
