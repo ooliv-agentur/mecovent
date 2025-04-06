@@ -77,7 +77,7 @@ const ServicesSection = () => {
       title: "Marketing & Eventkommunikation", 
       description: "Zielgerichtete Kampagnen für mehr Reichweite", 
       icon: PartyPopper,
-      imageUrl: "/lovable-uploads/event-marketing.jpg" 
+      imageUrl: "/lovable-uploads/5869c2e4-85a2-474b-87bc-d34a4bfa1333.png" 
     }
   ];
 
