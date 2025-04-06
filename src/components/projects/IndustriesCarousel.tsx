@@ -41,7 +41,7 @@ const IndustriesCarousel = ({
 
   // Updated background images with the correct paths
   const backgroundImages = [
-    "/lovable-uploads/7d6eb5a9-2303-42fc-9271-d5b7b1d7e471.png", // Pharma
+    "/lovable-uploads/e8ff3d2b-2cdb-410f-8f87-23a186090341.png", // Pharma (new image)
     "/lovable-uploads/f96cfe76-e28d-402a-afd5-8f5566e58f26.png", // Automobil
     "/lovable-uploads/f42cbebc-c74e-4b93-9a1a-c3eb0acf6f8d.png", // Chemie
     "/lovable-uploads/c9b2e2a9-70cf-4e8c-ab1e-1414c4b0fc1a.png", // Finanz
