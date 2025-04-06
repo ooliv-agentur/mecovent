@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -151,8 +150,21 @@
   }
 }
 
+@keyframes bounce-y {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
 .animate-bounce-x {
   animation: bounce-x 1s infinite;
+}
+
+.animate-bounce-y {
+  animation: bounce-y 2s ease-in-out infinite;
 }
 
 /* Flip card animations */
