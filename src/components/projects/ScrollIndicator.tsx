@@ -26,10 +26,10 @@ const ScrollIndicator = ({
         <button 
           key={i} 
           className={cn(
-            "rounded-full transition-all duration-300",
+            "rounded-full transition-all duration-300 hover:scale-110 hover:bg-primary/90",
             isVertical
-              ? "h-12 w-1.5" // Vertical orientation
-              : "h-1.5 w-12", // Horizontal orientation
+              ? "h-12 w-1.5 md:w-2" // Vertical orientation - wider for better clickability on mobile
+              : "h-1.5 w-12 md:h-2", // Horizontal orientation - taller for better clickability on mobile
             i === active 
               ? "bg-primary" // Active
               : i < active 

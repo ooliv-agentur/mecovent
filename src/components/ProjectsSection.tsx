@@ -16,6 +16,8 @@ const ProjectsSection = () => {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollLocked, setScrollLocked] = useState(false);
+  const [wheelEventCounter, setWheelEventCounter] = useState(0);
+  const wheelThreshold = 5; // Number of wheel events to accumulate before triggering a slide change
 
   // Track scroll direction and position
   useEffect(() => {
@@ -52,99 +54,134 @@ const ProjectsSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY, scrollDirection, isVisible, stickyActive]);
 
-  // Handle wheel events for controlling the carousel
+  // Handle wheel events for controlling the carousel with improved sensitivity
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (!isVisible || !stickyActive || scrollLocked) return;
       
-      // If wheel event is happening in sticky mode, we need to handle it
-      if (scrollDirection === 'down') {
-        // Going down - move to next slide if not at end
-        if (activeIndustryIndex < industryItems.length - 1) {
-          e.preventDefault();
-          setScrollLocked(true);
-          setActiveIndustryIndex(activeIndustryIndex + 1);
-          
-          // Unlock scrolling after animation
-          setTimeout(() => {
-            setScrollLocked(false);
-          }, 600);
-        }
-      } else if (scrollDirection === 'up') {
-        // Going up - move to previous slide if not at beginning
-        if (activeIndustryIndex > 0) {
-          e.preventDefault();
-          setScrollLocked(true);
-          setActiveIndustryIndex(activeIndustryIndex - 1);
-          
-          // Unlock scrolling after animation
-          setTimeout(() => {
-            setScrollLocked(false);
-          }, 600);
-        }
+      // Prevent the default scroll behavior when in sticky mode
+      e.preventDefault();
+      
+      // Accumulate wheel events to make scrolling less sensitive
+      if (e.deltaY > 0) {
+        // Scrolling down
+        setWheelEventCounter(prev => {
+          const newCount = prev + 1;
+          if (newCount >= wheelThreshold && activeIndustryIndex < industryItems.length - 1) {
+            // Move to next slide after reaching threshold
+            setScrollLocked(true);
+            setActiveIndustryIndex(activeIndustryIndex + 1);
+            
+            // Unlock scrolling after animation
+            setTimeout(() => {
+              setScrollLocked(false);
+            }, 600);
+            // Reset counter
+            return 0;
+          }
+          return newCount;
+        });
+      } else if (e.deltaY < 0) {
+        // Scrolling up
+        setWheelEventCounter(prev => {
+          const newCount = prev - 1;
+          if (newCount <= -wheelThreshold && activeIndustryIndex > 0) {
+            // Move to previous slide after reaching threshold
+            setScrollLocked(true);
+            setActiveIndustryIndex(activeIndustryIndex - 1);
+            
+            // Unlock scrolling after animation
+            setTimeout(() => {
+              setScrollLocked(false);
+            }, 600);
+            // Reset counter
+            return 0;
+          }
+          return newCount;
+        });
       }
     };
     
-    window.addEventListener('wheel', handleWheel, { passive: false });
+    // Add the wheel event listener with passive: false to prevent default scrolling
+    const sectionElement = sectionRef.current;
+    if (sectionElement) {
+      sectionElement.addEventListener('wheel', handleWheel, { passive: false });
+    }
     
     return () => {
-      window.removeEventListener('wheel', handleWheel);
+      if (sectionElement) {
+        sectionElement.removeEventListener('wheel', handleWheel);
+      }
     };
-  }, [isVisible, activeIndustryIndex, stickyActive, scrollDirection, scrollLocked]);
+  }, [isVisible, activeIndustryIndex, stickyActive, scrollLocked, wheelEventCounter]);
 
-  // Handle touch events for mobile scrolling
+  // Handle touch events for mobile scrolling with improved sensitivity
   useEffect(() => {
     let touchStartY = 0;
+    let touchMoveCounter = 0;
+    const touchThreshold = 50; // Pixels of movement required to trigger a slide change
     
     const handleTouchStart = (e: TouchEvent) => {
       if (!isVisible || !stickyActive || scrollLocked) return;
       touchStartY = e.touches[0].clientY;
+      touchMoveCounter = 0;
     };
     
     const handleTouchMove = (e: TouchEvent) => {
       if (!isVisible || !stickyActive || scrollLocked) return;
       
       const touchCurrentY = e.touches[0].clientY;
-      const diff = touchStartY - touchCurrentY;
+      const touchDiff = touchStartY - touchCurrentY;
       
-      // Determine direction (positive = down, negative = up)
-      if (Math.abs(diff) > 50) { // Threshold to prevent accidental swipes
-        if (diff > 0) {
-          // Swiping down - move to next slide if not at end
-          if (activeIndustryIndex < industryItems.length - 1) {
-            e.preventDefault();
-            setScrollLocked(true);
-            setActiveIndustryIndex(activeIndustryIndex + 1);
-            touchStartY = touchCurrentY; // Reset to prevent multiple triggers
-            
-            // Unlock scrolling after animation
-            setTimeout(() => {
-              setScrollLocked(false);
-            }, 600);
-          }
-        } else {
-          // Swiping up - move to previous slide if not at beginning
-          if (activeIndustryIndex > 0) {
-            e.preventDefault();
-            setScrollLocked(true);
-            setActiveIndustryIndex(activeIndustryIndex - 1);
-            touchStartY = touchCurrentY; // Reset to prevent multiple triggers
-            
-            // Unlock scrolling after animation
-            setTimeout(() => {
-              setScrollLocked(false);
-            }, 600);
-          }
+      // Accumulate touch movement
+      touchMoveCounter += touchDiff;
+      
+      // Prevent default scrolling when in sticky mode
+      if (Math.abs(touchMoveCounter) > 10) {
+        e.preventDefault();
+      }
+      
+      // If threshold is reached, change slides
+      if (touchMoveCounter > touchThreshold) {
+        // Swiping down - move to next slide if not at end
+        if (activeIndustryIndex < industryItems.length - 1) {
+          setScrollLocked(true);
+          setActiveIndustryIndex(activeIndustryIndex + 1);
+          touchStartY = touchCurrentY; // Reset to prevent multiple triggers
+          touchMoveCounter = 0;
+          
+          // Unlock scrolling after animation
+          setTimeout(() => {
+            setScrollLocked(false);
+          }, 600);
+        }
+      } else if (touchMoveCounter < -touchThreshold) {
+        // Swiping up - move to previous slide if not at beginning
+        if (activeIndustryIndex > 0) {
+          setScrollLocked(true);
+          setActiveIndustryIndex(activeIndustryIndex - 1);
+          touchStartY = touchCurrentY; // Reset to prevent multiple triggers
+          touchMoveCounter = 0;
+          
+          // Unlock scrolling after animation
+          setTimeout(() => {
+            setScrollLocked(false);
+          }, 600);
         }
       }
     };
     
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    const sectionElement = sectionRef.current;
+    if (sectionElement) {
+      sectionElement.addEventListener('touchstart', handleTouchStart, { passive: true });
+      sectionElement.addEventListener('touchmove', handleTouchMove, { passive: false });
+    }
     
     return () => {
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
+      if (sectionElement) {
+        sectionElement.removeEventListener('touchstart', handleTouchStart);
+        sectionElement.removeEventListener('touchmove', handleTouchMove);
+      }
     };
   }, [isVisible, activeIndustryIndex, stickyActive, scrollLocked]);
 
@@ -153,7 +190,7 @@ const ProjectsSection = () => {
   };
 
   // Calculate section height based on number of industries
-  const sectionHeight = `${Math.max(industryItems.length * 75, 100)}vh`;
+  const sectionHeight = `${Math.max(industryItems.length * 100, 100)}vh`;
 
   return (
     <section 

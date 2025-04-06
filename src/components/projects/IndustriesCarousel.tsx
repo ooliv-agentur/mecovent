@@ -10,7 +10,9 @@ import {
   Cpu, 
   GraduationCap,
   Beaker,
-  ChevronDown
+  ChevronDown,
+  MousePointerClick,
+  ArrowUpDown
 } from 'lucide-react';
 
 interface IndustriesCarouselProps {
@@ -25,6 +27,16 @@ const IndustriesCarousel = ({
   openIndustryDialog 
 }: IndustriesCarouselProps) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  
+  // Hide scroll hint after a few seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowScrollHint(false);
+    }, 5000);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   // Handle manual navigation using the scroll indicator
   const handleIndicatorClick = (index: number) => {
@@ -84,6 +96,17 @@ const IndustriesCarousel = ({
   return (
     <div className="h-full w-full flex items-center justify-center">
       <div className="relative w-full h-full">
+        {/* Scroll Hint Overlay - only shown initially */}
+        {showScrollHint && (
+          <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
+            <div className="bg-black/70 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center gap-4 animate-fade-in">
+              <ArrowUpDown className="h-8 w-8 text-primary animate-bounce" />
+              <p className="text-lg font-medium text-white">Scrollen Sie, um mehr zu entdecken</p>
+              <p className="text-sm text-white/80">Oder nutzen Sie die Navigationspunkte →</p>
+            </div>
+          </div>
+        )}
+
         <div className="h-full w-full overflow-hidden">
           {industryItems.map((industry, index) => (
             <div 
@@ -112,7 +135,8 @@ const IndustriesCarousel = ({
                 className={cn(
                   "relative z-10 max-w-3xl mx-auto p-8 rounded-xl transition-all duration-500",
                   "backdrop-blur-sm bg-background/70 shadow-2xl border border-primary/10",
-                  "opacity-100 scale-100 translate-y-0"
+                  "opacity-100 scale-100 translate-y-0",
+                  "group hover:shadow-primary/20 hover:border-primary/30"
                 )}
               >
                 <div className="flex justify-center mb-6">
@@ -133,6 +157,14 @@ const IndustriesCarousel = ({
                 <p className="text-sm text-center text-foreground/60">
                   {industry.details}
                 </p>
+                
+                {/* View Details hint */}
+                <div className="mt-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-2 text-primary text-sm">
+                    <MousePointerClick className="h-4 w-4" />
+                    <span>Für Details klicken</span>
+                  </div>
+                </div>
               </div>
               
               <div className={cn(
@@ -147,33 +179,35 @@ const IndustriesCarousel = ({
           ))}
         </div>
         
-        {/* Up/Down Navigation Buttons */}
+        {/* Up/Down Navigation Buttons - more prominent and visible */}
         <button
           className={cn(
-            "absolute top-6 left-1/2 transform -translate-x-1/2 z-20 transition-opacity",
-            activeIndustryIndex <= 0 ? "opacity-0 pointer-events-none" : "opacity-70 hover:opacity-100"
+            "absolute top-6 left-1/2 transform -translate-x-1/2 z-20 transition-all",
+            "bg-background/80 hover:bg-background/90 backdrop-blur-sm p-2 rounded-full shadow-md",
+            activeIndustryIndex <= 0 ? "opacity-0 pointer-events-none" : "opacity-80 hover:opacity-100"
           )}
           onClick={goToPreviousSlide}
           disabled={activeIndustryIndex <= 0 || isTransitioning}
           aria-label="Previous industry"
         >
-          <ChevronDown className="w-8 h-8 rotate-180" />
+          <ChevronDown className="w-6 h-6 rotate-180" />
         </button>
         
         <button
           className={cn(
-            "absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 transition-opacity",
-            activeIndustryIndex >= industryItems.length - 1 ? "opacity-0 pointer-events-none" : "opacity-70 hover:opacity-100 animate-bounce"
+            "absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 transition-all",
+            "bg-background/80 hover:bg-background/90 backdrop-blur-sm p-2 rounded-full shadow-md",
+            activeIndustryIndex >= industryItems.length - 1 ? "opacity-0 pointer-events-none" : "opacity-80 hover:opacity-100 animate-bounce"
           )}
           onClick={goToNextSlide}
           disabled={activeIndustryIndex >= industryItems.length - 1 || isTransitioning}
           aria-label="Next industry"
         >
-          <ChevronDown className="w-8 h-8" />
+          <ChevronDown className="w-6 h-6" />
         </button>
         
-        {/* Vertical Scroll Indicator */}
-        <div className="absolute right-10 top-1/2 transform -translate-y-1/2 z-20">
+        {/* Vertical Scroll Indicator - more prominent */}
+        <div className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 bg-background/40 backdrop-blur-sm p-2 rounded-full shadow-md">
           <ScrollIndicator 
             active={activeIndustryIndex} 
             total={industryItems.length} 
@@ -185,6 +219,7 @@ const IndustriesCarousel = ({
         {/* Scroll Hint Text */}
         <div className={cn(
           "absolute bottom-10 left-0 right-0 text-center text-primary/80 text-sm z-20",
+          "bg-background/40 backdrop-blur-sm py-1 px-3 rounded-full mx-auto w-fit",
           activeIndustryIndex >= industryItems.length - 1 ? "opacity-0" : "animate-bounce"
         )}>
           <span>Weiterscrollen</span>
