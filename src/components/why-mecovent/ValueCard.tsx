@@ -10,7 +10,6 @@ interface ValueCardProps {
 
 const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   
   const gradientColors = [
@@ -34,39 +33,12 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
     setIsHovered(false);
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    
-    const card = cardRef.current;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
-    
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-  };
-  
-  const resetCardTransform = () => {
-    if (!cardRef.current) return;
-    cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-  };
-
   return (
     <div 
-      ref={cardRef}
       className={`relative group bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl transition-all duration-300 h-full
                  ${isHovered ? 'shadow-2xl' : 'shadow-md'}`}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => {
-        handleMouseLeave();
-        resetCardTransform();
-      }}
-      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl opacity-70 ${gradientColors[index % 3]} rounded-bl-full -z-0 transition-opacity duration-300 ${isHovered ? 'opacity-90' : 'opacity-70'}`}></div>
       
