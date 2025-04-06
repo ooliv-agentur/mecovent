@@ -52,7 +52,7 @@ const ServicesSection = () => {
       title: "Eventmanagement", 
       description: "Konzeption, Planung & Durchführung", 
       icon: LightbulbIcon,
-      imageUrl: "/lovable-uploads/event-management.jpg" 
+      imageUrl: "/lovable-uploads/f385109c-4e96-4e47-b083-40a9b15bddac.png" 
     },
     { 
       title: "Teilnehmermanagement", 
