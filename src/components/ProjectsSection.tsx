@@ -84,18 +84,18 @@ const ProjectsSection = () => {
   }, [isVisible, activeIndustryIndex, scrollLocked, hasScrolled]);
 
   return (
-    <section id="projects" className="relative overflow-hidden w-full bg-black/80" ref={sectionRef}>
+    <section id="projects" className="relative overflow-hidden w-full bg-gray-100" ref={sectionRef}>
       <div className="py-16 md:py-24">
         <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
                           isVisible ? "animate-fade-in" : "opacity-0")}>
           <div className="section-tag">Unsere Expertise</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-gray-800 to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
             Mit Branchenverstand gestalten
           </h2>
           <p className="subheader-section mb-3">
             Jede Branche braucht ein anderes Gespür – wir kennen die Unterschiede.
           </p>
-          <p className="text-muted-foreground text-white/70">
+          <p className="text-gray-600">
             Ob Pharma, Finanzwesen, Bildung oder Industrie –<br />
             wir verstehen, worauf es in Ihrer Branche ankommt.<br />
             So gestalten wir Events, die nicht nur passen – sondern wirken.

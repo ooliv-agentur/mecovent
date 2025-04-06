@@ -39,14 +39,14 @@ const IndustriesCarousel = ({
     }
   }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
-  // Background images for each industry
+  // Updated background images for each industry with the latest uploaded images
   const backgroundImages = [
-    "url('/lovable-uploads/bccf0481-f70d-4af7-814d-8544ce990ff8.png')", // Pharma
-    "url('/lovable-uploads/53c05d61-0e12-4d1a-927f-0b024be37aae.png')", // Automobil
-    "url('/lovable-uploads/4de2165f-2ef7-4f05-9ba1-79b7c88b9d04.png')", // Chemie
-    "url('/lovable-uploads/f6627bc9-3e13-475c-a4c7-bf148763fd04.png')", // Finanz
-    "url('/lovable-uploads/dbddb108-34c6-4bf5-9815-b19c4c637b28.png')", // Technologie
-    "url('/lovable-uploads/4452a5e5-3a26-4a60-84d1-3f180173ad2a.png')"  // Bildung
+    "url('/lovable-uploads/7d6eb5a9-2303-42fc-9271-d5b7b1d7e471.png')", // Pharma
+    "url('/lovable-uploads/f96cfe76-e28d-402a-afd5-8f5566e58f26.png')", // Automobil
+    "url('/lovable-uploads/f42cbebc-c74e-4b93-9a1a-c3eb0acf6f8d.png')", // Chemie
+    "url('/lovable-uploads/c9b2e2a9-70cf-4e8c-ab1e-1414c4b0fc1a.png')", // Finanz
+    "url('/lovable-uploads/5f36e3f9-0c67-4b45-b5a7-3b9f6d6d7c7b.png')", // Technologie
+    "url('/lovable-uploads/2d9cd6fe-9c00-4c44-b10a-0f3e0cd5c51c.png')"  // Bildung
   ];
 
   return (
@@ -75,13 +75,13 @@ const IndustriesCarousel = ({
                   backgroundImage: backgroundImages[index],
                 }}
               >
-                <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+                <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
               </div>
               
               <div 
                 className={cn(
                   "relative z-10 max-w-2xl mx-auto p-8 rounded-xl transition-all duration-700",
-                  "backdrop-blur-sm bg-white/20 shadow-2xl border border-white/20",
+                  "backdrop-blur-sm bg-white/80 shadow-lg border border-white/40",
                   industryRefs[index].inView 
                     ? "opacity-100 scale-100 translate-y-0" 
                     : "opacity-0 scale-95 translate-y-8"
@@ -93,16 +93,16 @@ const IndustriesCarousel = ({
                 
                 <h3 className={cn(
                   "text-3xl font-bold text-center mb-4 transition-colors duration-300",
-                  industryRefs[index].inView ? "text-[#009fe3]" : "text-white"
+                  industryRefs[index].inView ? "text-[#009fe3]" : "text-gray-800"
                 )}>
                   {industry.title}
                 </h3>
                 
-                <p className="text-lg text-center text-white/90 mb-6">
+                <p className="text-lg text-center text-gray-700 mb-6">
                   {industry.description}
                 </p>
                 
-                <div className="text-sm text-center text-white">
+                <div className="text-sm text-center text-gray-600">
                   {industry.details}
                 </div>
               </div>
@@ -127,7 +127,7 @@ const IndustriesCarousel = ({
           />
         </div>
         
-        <div className="absolute bottom-4 left-0 right-0 text-center text-white/80 animate-bounce text-sm">
+        <div className="absolute bottom-4 left-0 right-0 text-center text-gray-600 animate-bounce text-sm">
           <span>Weiterscrollen</span>
         </div>
       </div>
@@ -146,7 +146,7 @@ const getIndustryIcon = (index: number) => {
   ];
   
   return (
-    <div className="w-16 h-16 flex items-center justify-center bg-white/20 backdrop-blur-md rounded-full border border-white/20">
+    <div className="w-16 h-16 flex items-center justify-center bg-white/90 backdrop-blur-md rounded-full border border-gray-200 shadow-md">
       {iconMap[index % iconMap.length]}
     </div>
   );
