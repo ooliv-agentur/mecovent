@@ -117,6 +117,10 @@ export default {
 						'background-position': '100% 50%',
 					},
 				},
+				'spin-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -126,6 +130,7 @@ export default {
 				'slide-in': 'slide-in 0.5s ease-out',
 				'gradient-shift': 'gradient-shift 10s ease-in-out infinite',
 				'soft-gradient': 'soft-gradient 15s linear infinite',
+				'spin-slow': 'spin-slow 3s linear infinite',
 			},
 			backgroundSize: {
 				'200%': '200% 100%',
