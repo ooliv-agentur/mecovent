@@ -50,8 +50,8 @@ const Index = () => {
         <ServicesSection />
         {/* Projects section with special scrolling behavior */}
         <ProjectsSection />
-        {/* Add a negative margin to pull the next section up slightly */}
-        <div className="mt-[-80px]"> {/* Increased negative margin to reduce space */}
+        {/* Reduce the gap between ProjectsSection and EventTypesSection */}
+        <div className="mt-[-120px]"> 
           <EventTypesSection />
         </div>
         <TestimonialsSection />

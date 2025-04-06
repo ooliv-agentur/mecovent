@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { industryItems } from './data';
 import ScrollIndicator from './ScrollIndicator';
@@ -9,7 +9,8 @@ import {
   Building2, 
   Cpu, 
   GraduationCap,
-  Beaker 
+  Beaker,
+  ChevronDown
 } from 'lucide-react';
 
 interface IndustriesCarouselProps {
@@ -23,9 +24,61 @@ const IndustriesCarousel = ({
   setActiveIndustryIndex, 
   openIndustryDialog 
 }: IndustriesCarouselProps) => {
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
   // Handle manual navigation using the scroll indicator
   const handleIndicatorClick = (index: number) => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
     setActiveIndustryIndex(index);
+    
+    // Reset transitioning state after animation completes
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500);
+  };
+
+  // Navigate to next/previous slide with keyboard
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isTransitioning) return;
+      
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        if (activeIndustryIndex < industryItems.length - 1) {
+          setIsTransitioning(true);
+          setActiveIndustryIndex(activeIndustryIndex + 1);
+          setTimeout(() => setIsTransitioning(false), 500);
+        }
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        if (activeIndustryIndex > 0) {
+          setIsTransitioning(true);
+          setActiveIndustryIndex(activeIndustryIndex - 1);
+          setTimeout(() => setIsTransitioning(false), 500);
+        }
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeIndustryIndex, setActiveIndustryIndex, isTransitioning]);
+
+  // Next slide function
+  const goToNextSlide = () => {
+    if (isTransitioning || activeIndustryIndex >= industryItems.length - 1) return;
+    
+    setIsTransitioning(true);
+    setActiveIndustryIndex(activeIndustryIndex + 1);
+    setTimeout(() => setIsTransitioning(false), 500);
+  };
+
+  // Previous slide function
+  const goToPreviousSlide = () => {
+    if (isTransitioning || activeIndustryIndex <= 0) return;
+    
+    setIsTransitioning(true);
+    setActiveIndustryIndex(activeIndustryIndex - 1);
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
   return (
@@ -41,6 +94,9 @@ const IndustriesCarousel = ({
                 activeIndustryIndex === index ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
               )}
               onClick={() => openIndustryDialog(industry.title)}
+              tabIndex={activeIndustryIndex === index ? 0 : -1}
+              role="button"
+              aria-label={`View details for ${industry.title}`}
             >
               <div 
                 className={cn(
@@ -91,6 +147,32 @@ const IndustriesCarousel = ({
           ))}
         </div>
         
+        {/* Up/Down Navigation Buttons */}
+        <button
+          className={cn(
+            "absolute top-6 left-1/2 transform -translate-x-1/2 z-20 transition-opacity",
+            activeIndustryIndex <= 0 ? "opacity-0 pointer-events-none" : "opacity-70 hover:opacity-100"
+          )}
+          onClick={goToPreviousSlide}
+          disabled={activeIndustryIndex <= 0 || isTransitioning}
+          aria-label="Previous industry"
+        >
+          <ChevronDown className="w-8 h-8 rotate-180" />
+        </button>
+        
+        <button
+          className={cn(
+            "absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 transition-opacity",
+            activeIndustryIndex >= industryItems.length - 1 ? "opacity-0 pointer-events-none" : "opacity-70 hover:opacity-100 animate-bounce"
+          )}
+          onClick={goToNextSlide}
+          disabled={activeIndustryIndex >= industryItems.length - 1 || isTransitioning}
+          aria-label="Next industry"
+        >
+          <ChevronDown className="w-8 h-8" />
+        </button>
+        
+        {/* Vertical Scroll Indicator */}
         <div className="absolute right-10 top-1/2 transform -translate-y-1/2 z-20">
           <ScrollIndicator 
             active={activeIndustryIndex} 
@@ -100,7 +182,11 @@ const IndustriesCarousel = ({
           />
         </div>
         
-        <div className="absolute bottom-10 left-0 right-0 text-center text-primary/80 animate-bounce text-sm z-20">
+        {/* Scroll Hint Text */}
+        <div className={cn(
+          "absolute bottom-10 left-0 right-0 text-center text-primary/80 text-sm z-20",
+          activeIndustryIndex >= industryItems.length - 1 ? "opacity-0" : "animate-bounce"
+        )}>
           <span>Weiterscrollen</span>
         </div>
       </div>

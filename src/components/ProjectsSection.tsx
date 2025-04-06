@@ -15,6 +15,7 @@ const ProjectsSection = () => {
   const [stickyActive, setStickyActive] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrollLocked, setScrollLocked] = useState(false);
 
   // Track scroll direction and position
   useEffect(() => {
@@ -26,20 +27,21 @@ const ProjectsSection = () => {
       
       // Determine scroll direction
       const newScrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-      setScrollDirection(newScrollDirection);
+      if (newScrollDirection !== scrollDirection) {
+        setScrollDirection(newScrollDirection);
+      }
       setLastScrollY(scrollY);
       
       // Set visibility based on being in viewport
-      setIsVisible(rect.top <= window.innerHeight && rect.bottom >= 0);
+      const newVisibility = rect.top <= window.innerHeight && rect.bottom >= 0;
+      if (newVisibility !== isVisible) {
+        setIsVisible(newVisibility);
+      }
       
       // Set sticky state based on position
-      // Enter sticky mode when the section top reaches the viewport top
-      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
-        setStickyActive(true);
-      } 
-      // Exit sticky mode when scrolled past the section or back above it
-      else if (rect.bottom < window.innerHeight || rect.top > 0) {
-        setStickyActive(false);
+      const newStickyState = rect.top <= 0 && rect.bottom >= window.innerHeight;
+      if (newStickyState !== stickyActive) {
+        setStickyActive(newStickyState);
       }
     };
 
@@ -48,30 +50,38 @@ const ProjectsSection = () => {
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, scrollDirection, isVisible, stickyActive]);
 
   // Handle wheel events for controlling the carousel
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      if (!isVisible || !stickyActive) return;
+      if (!isVisible || !stickyActive || scrollLocked) return;
       
-      // Determine scroll direction and delta
-      const deltaY = e.deltaY;
-      
-      // Change industry based on scroll direction
-      let newIndex = activeIndustryIndex;
-      
-      if (deltaY > 0) {
-        // Scrolling down - go to next industry
-        newIndex = Math.min(activeIndustryIndex + 1, industryItems.length - 1);
-      } else {
-        // Scrolling up - go to previous industry
-        newIndex = Math.max(activeIndustryIndex - 1, 0);
-      }
-      
-      if (newIndex !== activeIndustryIndex) {
-        e.preventDefault();
-        setActiveIndustryIndex(newIndex);
+      // If wheel event is happening in sticky mode, we need to handle it
+      if (scrollDirection === 'down') {
+        // Going down - move to next slide if not at end
+        if (activeIndustryIndex < industryItems.length - 1) {
+          e.preventDefault();
+          setScrollLocked(true);
+          setActiveIndustryIndex(activeIndustryIndex + 1);
+          
+          // Unlock scrolling after animation
+          setTimeout(() => {
+            setScrollLocked(false);
+          }, 600);
+        }
+      } else if (scrollDirection === 'up') {
+        // Going up - move to previous slide if not at beginning
+        if (activeIndustryIndex > 0) {
+          e.preventDefault();
+          setScrollLocked(true);
+          setActiveIndustryIndex(activeIndustryIndex - 1);
+          
+          // Unlock scrolling after animation
+          setTimeout(() => {
+            setScrollLocked(false);
+          }, 600);
+        }
       }
     };
     
@@ -80,30 +90,70 @@ const ProjectsSection = () => {
     return () => {
       window.removeEventListener('wheel', handleWheel);
     };
-  }, [isVisible, activeIndustryIndex, stickyActive]);
+  }, [isVisible, activeIndustryIndex, stickyActive, scrollDirection, scrollLocked]);
 
-  // Update carousel index based on scroll direction when sticky
+  // Handle touch events for mobile scrolling
   useEffect(() => {
-    if (stickyActive && scrollDirection === 'up' && activeIndustryIndex > 0) {
-      // When scrolling up, we need to go back through the carousel items
-      const handleScrollUpChange = () => {
-        if (scrollDirection === 'up' && activeIndustryIndex > 0) {
-          setActiveIndustryIndex(prev => Math.max(prev - 1, 0));
-        }
-      };
+    let touchStartY = 0;
+    
+    const handleTouchStart = (e: TouchEvent) => {
+      if (!isVisible || !stickyActive || scrollLocked) return;
+      touchStartY = e.touches[0].clientY;
+    };
+    
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isVisible || !stickyActive || scrollLocked) return;
       
-      // Add a slight delay to make the navigation feel more natural
-      const timeout = setTimeout(handleScrollUpChange, 300);
-      return () => clearTimeout(timeout);
-    }
-  }, [scrollDirection, stickyActive, activeIndustryIndex]);
+      const touchCurrentY = e.touches[0].clientY;
+      const diff = touchStartY - touchCurrentY;
+      
+      // Determine direction (positive = down, negative = up)
+      if (Math.abs(diff) > 50) { // Threshold to prevent accidental swipes
+        if (diff > 0) {
+          // Swiping down - move to next slide if not at end
+          if (activeIndustryIndex < industryItems.length - 1) {
+            e.preventDefault();
+            setScrollLocked(true);
+            setActiveIndustryIndex(activeIndustryIndex + 1);
+            touchStartY = touchCurrentY; // Reset to prevent multiple triggers
+            
+            // Unlock scrolling after animation
+            setTimeout(() => {
+              setScrollLocked(false);
+            }, 600);
+          }
+        } else {
+          // Swiping up - move to previous slide if not at beginning
+          if (activeIndustryIndex > 0) {
+            e.preventDefault();
+            setScrollLocked(true);
+            setActiveIndustryIndex(activeIndustryIndex - 1);
+            touchStartY = touchCurrentY; // Reset to prevent multiple triggers
+            
+            // Unlock scrolling after animation
+            setTimeout(() => {
+              setScrollLocked(false);
+            }, 600);
+          }
+        }
+      }
+    };
+    
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [isVisible, activeIndustryIndex, stickyActive, scrollLocked]);
 
   const handleOpenIndustryDialog = (title: string) => {
     setOpenIndustryDialog(title);
   };
 
-  // Optimize section height to reduce white space
-  const sectionHeight = `${Math.max(industryItems.length * 70, 100)}vh`;
+  // Calculate section height based on number of industries
+  const sectionHeight = `${Math.max(industryItems.length * 75, 100)}vh`;
 
   return (
     <section 
@@ -136,7 +186,7 @@ const ProjectsSection = () => {
         )}
       >
         <div className={cn("w-full h-full transition-opacity duration-500",
-                          isVisible ? "opacity-100" : "opacity-0")}>
+                         isVisible ? "opacity-100" : "opacity-0")}>
           <IndustriesCarousel 
             activeIndustryIndex={activeIndustryIndex}
             setActiveIndustryIndex={setActiveIndustryIndex}

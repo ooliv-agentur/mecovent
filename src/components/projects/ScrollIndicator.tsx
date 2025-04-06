@@ -23,25 +23,26 @@ const ScrollIndicator = ({
       isVertical ? "flex-col items-center" : "items-center justify-center"
     )}>
       {Array.from({ length: total }).map((_, i) => (
-        <div 
+        <button 
           key={i} 
           className={cn(
-            "rounded-full transition-all duration-300 cursor-pointer",
+            "rounded-full transition-all duration-300",
             isVertical
               ? "h-12 w-1.5" // Vertical orientation
               : "h-1.5 w-12", // Horizontal orientation
             i === active 
-              ? isVertical ? "bg-primary h-12" : "w-12 bg-primary"
+              ? "bg-primary" // Active
               : i < active 
-                ? isVertical ? "bg-primary/60 h-8" : "w-8 bg-primary/60"
-                : isVertical ? "bg-muted-foreground/40 h-4" : "w-4 bg-muted-foreground/40"
+                ? "bg-primary/60" // Past
+                : "bg-muted-foreground/40" // Future
           )}
           style={{
             transitionDelay: `${Math.abs(i - active) * 40}ms`
           }}
           onClick={() => onIndicatorClick && onIndicatorClick(i)}
-          role="button"
           aria-label={`Go to item ${i + 1}`}
+          aria-current={i === active ? "true" : "false"}
+          tabIndex={0}
         />
       ))}
     </div>
