@@ -12,10 +12,11 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   
-  const gradientColors = [
-    'from-blue-400 to-cyan-300',
-    'from-rose-400 to-orange-300',
-    'from-green-400 to-emerald-300'
+  // Use our brand colors instead of gradients
+  const brandColors = [
+    'bg-brand-blue',        // Blau (Individuell)
+    'bg-brand-coral',       // Koralle/Apricot (Kreativ)
+    'bg-brand-mint'         // Mintgrün (Nachhaltig)
   ];
 
   const handleMouseEnter = () => {
@@ -40,7 +41,7 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl opacity-70 ${gradientColors[index % 3]} rounded-bl-full -z-0 transition-opacity duration-300 ${isHovered ? 'opacity-90' : 'opacity-70'}`}></div>
+      <div className={`absolute top-0 right-0 w-24 h-24 ${brandColors[index % 3]} opacity-70 rounded-bl-full -z-0 transition-opacity duration-300 ${isHovered ? 'opacity-90' : 'opacity-70'}`}></div>
       
       <div className="flex flex-col items-center text-center p-6 z-10 relative">
         <div className="w-full aspect-video mb-6 overflow-hidden rounded-lg relative">
@@ -63,7 +64,7 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
         
         <h3 className="font-bold text-xl mb-3 relative">
           {title}
-          <div className={`h-0.5 w-0 bg-gradient-to-r ${gradientColors[index % 3]} transition-all duration-500 mx-auto ${isHovered ? 'w-full' : 'w-0'}`}></div>
+          <div className={`h-0.5 w-0 ${brandColors[index % 3]} transition-all duration-500 mx-auto ${isHovered ? 'w-full' : 'w-0'}`}></div>
         </h3>
         
         <p className="text-muted-foreground">

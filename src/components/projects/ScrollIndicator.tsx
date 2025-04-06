@@ -11,6 +11,13 @@ interface ScrollIndicatorProps {
 const ScrollIndicator = ({ active, total, orientation = 'horizontal' }: ScrollIndicatorProps) => {
   const isVertical = orientation === 'vertical';
   
+  // Define our brand colors for indicators
+  const brandColors = [
+    'bg-brand-blue',  // Blue
+    'bg-brand-coral', // Coral
+    'bg-brand-mint',  // Mint
+  ];
+  
   return (
     <div className={cn(
       "flex gap-1",
@@ -25,9 +32,9 @@ const ScrollIndicator = ({ active, total, orientation = 'horizontal' }: ScrollIn
               ? "h-12 w-1.5" // Vertical orientation
               : "h-1.5 w-full", // Horizontal orientation
             i === active 
-              ? isVertical ? "bg-[#009fe3] h-12" : "w-8 bg-[#009fe3]"
+              ? isVertical ? `${brandColors[i % 3]} h-12` : `w-8 ${brandColors[i % 3]}`
               : i < active 
-                ? isVertical ? "bg-[#009fe3]/60 h-8" : "w-3 bg-[#009fe3]/60"
+                ? isVertical ? `${brandColors[i % 3]}/60 h-8` : `w-3 ${brandColors[i % 3]}/60`
                 : isVertical ? "bg-gray-300 h-4" : "w-2 bg-gray-300"
           )}
           style={{

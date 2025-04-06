@@ -44,6 +44,10 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --brand-blue: 195 75% 49%;    /* Equivalent to #1EAEDB */
+    --brand-coral: 7 100% 71%;    /* Equivalent to #FF7769 */
+    --brand-mint: 164 53% 67%;    /* Equivalent to #7AD9C0 */
   }
 
   .dark {
@@ -226,4 +230,29 @@ header {
   backface-visibility: hidden;
   transform: translateZ(0);
   will-change: transform;
+}
+
+.text-gradient-brand-blue {
+  @apply bg-gradient-to-r from-brand-blue to-brand-blue/70 bg-clip-text text-transparent;
+}
+
+.text-gradient-brand-coral {
+  @apply bg-gradient-to-r from-brand-coral to-brand-coral/70 bg-clip-text text-transparent;
+}
+
+.text-gradient-brand-mint {
+  @apply bg-gradient-to-r from-brand-mint to-brand-mint/70 bg-clip-text text-transparent;
+}
+
+.animate-brand-pulse {
+  animation: brand-pulse 3s ease-in-out infinite;
+}
+
+@keyframes brand-pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
 }
