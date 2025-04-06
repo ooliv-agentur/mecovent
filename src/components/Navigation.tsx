@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X, Phone, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,6 +10,8 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,16 +33,18 @@ const Navigation = () => {
       // Set scrolled state for styling
       setIsScrolled(currentScrollPos > 150);
       
-      // Update active section
-      const sections = ['hero', 'ueber-uns', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom > 0) {
-            setActiveSection(section);
-            break;
+      // Update active section only on homepage
+      if (isHomePage) {
+        const sections = ['hero', 'ueber-uns', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
+        
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom > 0) {
+              setActiveSection(section);
+              break;
+            }
           }
         }
       }
@@ -58,10 +62,16 @@ const Navigation = () => {
       window.removeEventListener('scroll', handleScroll);
       document.body.style.overflow = '';
     };
-  }, [isMenuOpen, prevScrollPos]);
+  }, [isMenuOpen, prevScrollPos, isHomePage]);
 
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
+    
+    if (!isHomePage) {
+      // If not on homepage, navigate to homepage with hash
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
     
     const element = document.getElementById(sectionId);
     if (element) {
