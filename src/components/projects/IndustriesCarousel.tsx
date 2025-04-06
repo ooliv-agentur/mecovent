@@ -30,22 +30,6 @@ const IndustriesCarousel = ({
     setActiveIndustryIndex(index);
   };
 
-  // Scroll to the active industry when the index changes
-  useEffect(() => {
-    if (containerRef.current) {
-      const container = containerRef.current;
-      const children = Array.from(container.children);
-      
-      if (children[activeIndustryIndex]) {
-        // Smooth scroll to the selected industry
-        children[activeIndustryIndex].scrollIntoView({
-          behavior: 'smooth',
-          block: 'center'
-        });
-      }
-    }
-  }, [activeIndustryIndex]);
-
   return (
     <div className="h-full w-full flex items-center justify-center">
       <div className="relative w-full h-full">
@@ -57,7 +41,7 @@ const IndustriesCarousel = ({
             <div 
               key={index}
               className={cn(
-                "h-screen w-full snap-center flex flex-col items-center justify-center",
+                "h-screen w-full flex flex-col items-center justify-center",
                 "transition-all duration-700 ease-in-out absolute inset-0",
                 activeIndustryIndex === index ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
               )}
@@ -95,9 +79,9 @@ const IndustriesCarousel = ({
                   {industry.description}
                 </p>
                 
-                <div className="text-sm text-center text-foreground/60">
+                <p className="text-sm text-center text-foreground/60">
                   {industry.details}
-                </div>
+                </p>
               </div>
               
               <div className={cn(

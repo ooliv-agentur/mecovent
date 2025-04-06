@@ -19,25 +19,25 @@ const ScrollIndicator = ({
   
   return (
     <div className={cn(
-      "flex gap-1",
+      "flex gap-1.5",
       isVertical ? "flex-col items-center" : "items-center justify-center"
     )}>
       {Array.from({ length: total }).map((_, i) => (
         <div 
           key={i} 
           className={cn(
-            "rounded-full transition-all duration-500 cursor-pointer",
+            "rounded-full transition-all duration-300 cursor-pointer",
             isVertical
               ? "h-12 w-1.5" // Vertical orientation
-              : "h-1.5 w-full", // Horizontal orientation
+              : "h-1.5 w-12", // Horizontal orientation
             i === active 
-              ? isVertical ? "bg-primary h-12" : "w-8 bg-primary"
+              ? isVertical ? "bg-primary h-12" : "w-12 bg-primary"
               : i < active 
-                ? isVertical ? "bg-primary/60 h-8" : "w-3 bg-primary/60"
-                : isVertical ? "bg-muted-foreground/30 h-4" : "w-2 bg-muted-foreground/30"
+                ? isVertical ? "bg-primary/60 h-8" : "w-8 bg-primary/60"
+                : isVertical ? "bg-muted-foreground/30 h-4" : "w-4 bg-muted-foreground/30"
           )}
           style={{
-            transitionDelay: `${Math.abs(i - active) * 50}ms`
+            transitionDelay: `${Math.abs(i - active) * 40}ms`
           }}
           onClick={() => onIndicatorClick && onIndicatorClick(i)}
           role="button"
