@@ -3,40 +3,41 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
-  const scrollToAbout = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    
+  const scrollToAbout = () => {
     const aboutSection = document.getElementById('ueber-uns');
     
     if (aboutSection) {
-      // Get positions
-      const startY = window.pageYOffset || document.documentElement.scrollTop;
-      const targetY = aboutSection.getBoundingClientRect().top + startY;
-      const distance = targetY - startY;
+      // Get the target position
+      const targetPosition = aboutSection.getBoundingClientRect().top + window.scrollY;
       
-      // Animation settings
-      const duration = 2000; // 2 seconds for very slow scroll
-      let startTime = performance.now();
+      // Animation variables
+      const startPosition = window.scrollY;
+      const distance = targetPosition - startPosition;
+      const duration = 2000; // 2 seconds for slow scroll
+      let startTime: number;
       
-      // Animation function
-      function animation(currentTime: number) {
-        const elapsedTime = currentTime - startTime;
-        const progress = Math.min(elapsedTime / duration, 1);
+      // Start the animation
+      function step(timestamp: number) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
         
-        // Easing function - very smooth easeInOutQuad
-        const ease = progress < 0.5 
+        // Easing function - smooth easeInOutQuad
+        const easing = progress < 0.5 
           ? 2 * progress * progress 
           : 1 - Math.pow(-2 * progress + 2, 2) / 2;
         
-        window.scrollTo(0, startY + distance * ease);
+        // Set the new scroll position
+        window.scrollTo(0, startPosition + (distance * easing));
         
-        if (elapsedTime < duration) {
-          requestAnimationFrame(animation);
+        // Continue animation if not finished
+        if (elapsed < duration) {
+          requestAnimationFrame(step);
         }
       }
       
-      // Start animation
-      requestAnimationFrame(animation);
+      // Start the animation loop
+      requestAnimationFrame(step);
     }
   };
 
@@ -67,12 +68,12 @@ const HeroSection = () => {
         </p>
         
         <div className="flex justify-center mt-10">
-          <button 
+          <Button 
             onClick={scrollToAbout}
             className="px-6 py-3 font-medium text-white bg-[#009fe3] rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-[#009fe3] hover:via-[#73c4ef] hover:to-[#009fe3] hover:bg-200% animate-fade-in-up"
           >
             Kennenlernen
-          </button>
+          </Button>
         </div>
       </div>
     </section>
