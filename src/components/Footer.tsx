@@ -4,25 +4,6 @@ import { Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const scrollToSection = (sectionId: string) => {
-    // Prevent default event behavior
-    const element = document.getElementById(sectionId);
-    
-    if (element) {
-      const navHeight = 80; // Approximate height of navigation
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navHeight;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    } else {
-      // If element not found, redirect to home page with hash
-      window.location.href = `/#${sectionId}`;
-    }
-  };
-
   return (
     <footer className="border-t bg-secondary/30">
       <div className="container mx-auto py-12 px-4">
@@ -43,13 +24,13 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Links</h3>
             <ul className="space-y-2">
-              <li><button onClick={() => scrollToSection('hero')} className="hover:text-primary transition-colors">Start</button></li>
-              <li><button onClick={() => scrollToSection('ueber-uns')} className="hover:text-primary transition-colors">Über Uns</button></li>
-              <li><button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Leistungen</button></li>
-              <li><button onClick={() => scrollToSection('projects')} className="hover:text-primary transition-colors">Unsere Expertise</button></li>
-              <li><button onClick={() => scrollToSection('eventformate')} className="hover:text-primary transition-colors">Veranstaltungsformate</button></li>
-              <li><button onClick={() => scrollToSection('testimonials')} className="hover:text-primary transition-colors">Kundenstimmen</button></li>
-              <li><button onClick={() => scrollToSection('contact')} className="hover:text-primary transition-colors">Kontakt</button></li>
+              <li><a href="#hero" className="hover:text-primary transition-colors">Start</a></li>
+              <li><a href="#about" className="hover:text-primary transition-colors">Über Uns</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors">Leistungen</a></li>
+              <li><a href="#projects" className="hover:text-primary transition-colors">Unsere Expertise</a></li>
+              <li><a href="#eventformate" className="hover:text-primary transition-colors">Veranstaltungsformate</a></li>
+              <li><a href="#testimonials" className="hover:text-primary transition-colors">Kundenstimmen</a></li>
+              <li><a href="#contact" className="hover:text-primary transition-colors">Kontakt</a></li>
             </ul>
           </div>
           
