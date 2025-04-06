@@ -5,36 +5,38 @@ import { Button } from '@/components/ui/button';
 const HeroSection = () => {
   const scrollToAbout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    
     const aboutSection = document.getElementById('ueber-uns');
     
     if (aboutSection) {
-      // Completely custom scroll animation to ensure it works
-      const startPosition = window.scrollY;
-      const targetPosition = aboutSection.getBoundingClientRect().top + window.scrollY;
-      const distance = targetPosition - startPosition;
-      const duration = 1800; // Even longer duration for slower scroll (in ms)
-      let startTime: number | null = null;
+      // Get positions
+      const startY = window.pageYOffset || document.documentElement.scrollTop;
+      const targetY = aboutSection.getBoundingClientRect().top + startY;
+      const distance = targetY - startY;
       
-      const animateScroll = (currentTime: number) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const progress = Math.min(timeElapsed / duration, 1);
+      // Animation settings
+      const duration = 2000; // 2 seconds for very slow scroll
+      let startTime = performance.now();
+      
+      // Animation function
+      function animation(currentTime: number) {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
         
-        // Easing function for smoother animation (ease-in-out cubic)
-        const easeInOutCubic = (t: number) => 
-          t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-          
-        window.scrollTo({
-          top: startPosition + distance * easeInOutCubic(progress),
-          behavior: 'auto' // Using 'auto' to prevent conflicts with the smooth animation
-        });
+        // Easing function - very smooth easeInOutQuad
+        const ease = progress < 0.5 
+          ? 2 * progress * progress 
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
         
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animateScroll);
+        window.scrollTo(0, startY + distance * ease);
+        
+        if (elapsedTime < duration) {
+          requestAnimationFrame(animation);
         }
-      };
+      }
       
-      requestAnimationFrame(animateScroll);
+      // Start animation
+      requestAnimationFrame(animation);
     }
   };
 
