@@ -75,7 +75,7 @@ const IndustriesCarousel = ({
                   backgroundImage: `url(${backgroundImages[index]})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  imageRendering: 'high-quality', // CSS hack for better rendering
+                  imageRendering: 'crisp-edges', // Valid TypeScript value
                 }}
               >
                 <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
