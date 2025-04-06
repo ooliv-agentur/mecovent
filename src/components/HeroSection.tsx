@@ -3,6 +3,45 @@ import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const HeroSection = () => {
+  const scrollToNext = (event: React.MouseEvent) => {
+    event.preventDefault();
+    
+    // Find the next section
+    const heroSection = document.getElementById('hero');
+    if (heroSection && heroSection.nextElementSibling) {
+      const nextSection = heroSection.nextElementSibling;
+      
+      // Get positions
+      const startY = window.pageYOffset || document.documentElement.scrollTop;
+      const targetY = nextSection.getBoundingClientRect().top + startY;
+      const distance = targetY - startY;
+      
+      // Animation settings
+      const duration = 2000; // 2 seconds for slow scroll
+      let startTime = performance.now();
+      
+      // Animation function
+      function animation(currentTime: number) {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        
+        // Easing function - smooth easeInOutQuad
+        const ease = progress < 0.5 
+          ? 2 * progress * progress 
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        
+        window.scrollTo(0, startY + distance * ease);
+        
+        if (elapsedTime < duration) {
+          requestAnimationFrame(animation);
+        }
+      }
+      
+      // Start animation
+      requestAnimationFrame(animation);
+    }
+  };
+
   return (
     <section 
       id="hero" 
@@ -21,7 +60,8 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
       
-      <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[15vh] animate-fade-in">
+      {/* Center the content in the middle of the screen */}
+      <div className="container-section relative z-10 text-center max-w-[800px] mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
         <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift break-words">
           Message. Atmosphäre. Event.
         </h1>
@@ -30,10 +70,15 @@ const HeroSection = () => {
         </p>
       </div>
       
-      {/* Animated scroll indicator */}
-      <div className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center">
-        <div className="text-white text-xl mb-2 animate-bounce-y">Kennenlernen</div>
-        <ChevronDown className="text-white animate-bounce-y h-8 w-8" />
+      {/* Animated scroll indicator with blue rollover effect */}
+      <div 
+        className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center cursor-pointer group"
+        onClick={scrollToNext}
+      >
+        <div className="text-white text-xl mb-2 animate-bounce-y group-hover:text-[#33C3F0] transition-colors duration-300">
+          Kennenlernen
+        </div>
+        <ChevronDown className="text-white animate-bounce-y h-8 w-8 group-hover:text-[#33C3F0] transition-colors duration-300" />
       </div>
     </section>
   );
