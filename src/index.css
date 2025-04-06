@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -106,6 +107,13 @@
     word-break: break-word !important;
     overflow-wrap: break-word !important;
     padding-bottom: 4px; /* Add padding to the bottom to prevent clipping */
+  }
+
+  /* Improve image rendering */
+  img, video {
+    image-rendering: -webkit-optimize-contrast;
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 }
 
@@ -227,4 +235,12 @@ header {
 /* Scroll snap styles */
 .scroll-snap-align-center {
   scroll-snap-align: center;
+}
+
+/* Enhance image quality */
+.high-quality-img {
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
 }
