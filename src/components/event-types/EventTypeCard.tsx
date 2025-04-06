@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { RotateCw } from 'lucide-react';
+import { Tag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Card,
@@ -138,7 +137,7 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
             
             <div className="mt-auto">
               <div className="flex items-center gap-1 text-xs text-foreground/60 mb-2">
-                <RotateCw className="h-3 w-3" />
+                <Tag className="h-3.5 w-3.5 text-foreground/50" />
                 <span>Tags:</span>
               </div>
               <div className="flex flex-wrap gap-2">
