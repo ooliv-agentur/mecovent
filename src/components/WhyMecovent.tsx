@@ -7,7 +7,7 @@ import { companyValues } from './why-mecovent/constants';
 
 const WhyMecovent = () => {
   return (
-    <section id="why-mecovent" className="relative overflow-hidden pt-24">
+    <section id="why-mecovent" className="relative overflow-hidden pt-24 bg-background">
       {/* Removed margin-top (mt-24) and replaced with padding-top (pt-24) for better positioning */}
       
       {/* Add visual separator between sections */}

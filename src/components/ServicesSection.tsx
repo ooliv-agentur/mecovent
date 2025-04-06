@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   LightbulbIcon, 
@@ -6,7 +7,8 @@ import {
   Smartphone,
   BarChart4,
   PartyPopper,
-  ArrowRightCircle
+  ArrowRightCircle,
+  CheckCircle2
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -29,7 +31,7 @@ const ServiceCard = ({ title, description, icon: Icon, imageUrl, index }: Servic
         "h-full overflow-hidden group transition-all duration-500 ease-in-out",
         "hover:shadow-xl hover:scale-[1.02] hover:z-10",
         "border border-border/40 dark:border-border/20",
-        isEven ? "bg-card" : "bg-primary/5"
+        "bg-white dark:bg-card"
       )}
     >
       <div className="relative overflow-hidden">
@@ -99,7 +101,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="bg-background overflow-hidden">
+    <section id="services" className="bg-[#F6F6F7] overflow-hidden">
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
           <div className="section-tag">Was wir bieten</div>
@@ -128,25 +130,56 @@ const ServicesSection = () => {
         </div>
       </div>
       
-      <div className="relative mt-24 mb-12 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 overflow-hidden">
-        <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[#009fe3]/10 blur-3xl"></div>
-        <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-[#009fe3]/10 blur-3xl"></div>
-        
-        <div className="container mx-auto px-6 py-16 relative z-10">
-          <div className="max-w-4xl mx-auto bg-card/80 backdrop-blur-sm border border-border/30 rounded-2xl p-8 md:p-12 shadow-xl transform hover:scale-[1.01] transition-all duration-500">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0 bg-[#009fe3]/10 p-6 rounded-full">
-                <LightbulbIcon className="h-12 w-12 text-[#009fe3]" />
+      <div className="relative py-24 mt-12 mb-0 bg-gradient-to-b from-[#F6F6F7] to-background overflow-hidden">
+        <div className="container mx-auto relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <div className="md:col-span-5">
+                <div className="relative h-full w-full">
+                  <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-[#009fe3]/20 to-[#009fe3]/5 blur-xl animate-pulse"></div>
+                  <div className="relative bg-white dark:bg-black/40 p-6 md:p-8 rounded-2xl shadow-lg border border-[#009fe3]/10">
+                    <LightbulbIcon className="h-14 w-14 text-[#009fe3] mb-4" />
+                    <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-foreground to-[#009fe3] bg-clip-text text-transparent">
+                      Ihr Erfolg ist unsere Mission
+                    </h3>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-foreground to-[#009fe3] bg-clip-text text-transparent">Ihr Erfolg ist unsere Mission</h3>
-                <p className="text-lg text-foreground/90 leading-relaxed">
-                  Von der ersten Idee bis zur erfolgreichen Umsetzung – wir übernehmen Planung, Umsetzung & Teilnehmerbetreuung mit höchster Präzision.
-                </p>
+              
+              <div className="md:col-span-7">
+                <div className="bg-white dark:bg-black/40 rounded-2xl shadow-lg p-8 relative border border-[#009fe3]/10">
+                  <p className="text-lg leading-relaxed mb-6">
+                    Von der ersten Idee bis zur erfolgreichen Umsetzung – wir übernehmen Planung, Umsetzung & Teilnehmerbetreuung mit höchster Präzision.
+                  </p>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#009fe3] mt-0.5 flex-shrink-0" />
+                      <span className="text-foreground/90">Ganzheitliche Betreuung</span>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#009fe3] mt-0.5 flex-shrink-0" />
+                      <span className="text-foreground/90">Maßgeschneiderte Konzepte</span>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#009fe3] mt-0.5 flex-shrink-0" />
+                      <span className="text-foreground/90">Höchste Qualitätsstandards</span>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#009fe3] mt-0.5 flex-shrink-0" />
+                      <span className="text-foreground/90">Persönlicher Ansprechpartner</span>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-gradient-to-br from-[#009fe3]/30 to-primary/5 rounded-full blur-xl"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-[#009fe3]/5 blur-[100px]"></div>
+        <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-[#009fe3]/5 blur-[80px]"></div>
       </div>
     </section>
   );
