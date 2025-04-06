@@ -81,8 +81,8 @@ const Footer = () => {
         
         <div className="mt-10 pt-6 border-t text-center text-sm text-muted-foreground">
           <div className="flex flex-wrap justify-center gap-6 mb-4">
-            <Link to="/impressum" className="hover:text-primary transition-colors">Impressum</Link>
-            <Link to="/datenschutz" className="hover:text-primary transition-colors">Datenschutz</Link>
+            <Link to="/impressum" className="hover:text-primary transition-colors" onClick={() => window.scrollTo(0, 0)}>Impressum</Link>
+            <Link to="/datenschutz" className="hover:text-primary transition-colors" onClick={() => window.scrollTo(0, 0)}>Datenschutz</Link>
             <a href="#" className="hover:text-primary transition-colors">AGB</a>
           </div>
           <p>&copy; {new Date().getFullYear()} MECOVENT. Alle Rechte vorbehalten.</p>
