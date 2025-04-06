@@ -1,9 +1,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { LightbulbIcon, ArrowDown } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import IndustryDialog from './projects/IndustryDialog';
-import { industryItems, eventTypes } from './projects/data';
+import { industryItems } from './projects/data';
 import ScrollIndicator from './projects/ScrollIndicator';
 
 // Icons for each industry
@@ -14,12 +13,9 @@ import {
   Cpu, 
   GraduationCap,
   Beaker,
-  MousePointerClick,
 } from 'lucide-react';
 
 const ProjectsSection = () => {
-  const [activeIndustryIndex, setActiveIndustryIndex] = useState<number | null>(null);
-  const [openIndustryDialog, setOpenIndustryDialog] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndicator, setActiveIndicator] = useState(0);
   
@@ -62,11 +58,6 @@ const ProjectsSection = () => {
     }
   };
 
-  // Handle opening industry dialog
-  const handleOpenIndustryDialog = (title: string) => {
-    setOpenIndustryDialog(title);
-  };
-
   // Get industry icon based on index
   const getIndustryIcon = (index: number) => {
     const iconMap = [
@@ -105,7 +96,7 @@ const ProjectsSection = () => {
       ref={sectionRef}
       className="relative w-full bg-secondary/10 py-20"
     >
-      {/* Header content */}
+      {/* Header content with updated text */}
       <div className="text-center max-w-3xl mx-auto px-4 pb-20">
         <div className="section-tag">Unsere Expertise</div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
@@ -133,6 +124,7 @@ const ProjectsSection = () => {
           total={industryItems.length} 
           orientation="vertical"
           onIndicatorClick={handleIndicatorClick}
+          isLastItem={activeIndicator === industryItems.length - 1}
           className="h-auto"
         />
       </div>
@@ -159,12 +151,8 @@ const ProjectsSection = () => {
               className={cn(
                 "relative z-10 max-w-3xl mx-auto p-8 rounded-xl transition-all duration-500",
                 "backdrop-blur-sm bg-background/70 shadow-2xl border border-primary/10",
-                "group hover:shadow-primary/20 hover:border-primary/30 cursor-pointer"
+                "group hover:shadow-primary/20 hover:border-primary/30"
               )}
-              onClick={() => handleOpenIndustryDialog(industry.title)}
-              tabIndex={0}
-              role="button"
-              aria-label={`View details for ${industry.title}`}
             >
               <div className="flex justify-center mb-6">
                 {getIndustryIcon(index)}
@@ -181,14 +169,6 @@ const ProjectsSection = () => {
               <p className="text-sm text-center text-foreground/60">
                 {industry.details}
               </p>
-              
-              {/* View Details hint */}
-              <div className="mt-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="flex items-center gap-2 text-primary text-sm">
-                  <MousePointerClick className="h-4 w-4" />
-                  <span>Für Details klicken</span>
-                </div>
-              </div>
             </div>
             
             {/* Background elements */}
@@ -200,26 +180,6 @@ const ProjectsSection = () => {
           </div>
         ))}
       </div>
-      
-      <div className="text-center mt-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="max-w-2xl mx-auto">
-          <p className="flex items-center justify-center gap-2 text-primary mb-4">
-            <LightbulbIcon className="h-5 w-5" />
-            <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
-          </p>
-        </div>
-      </div>
-      
-      {/* Industry dialogs */}
-      {industryItems.map((industry, index) => (
-        <IndustryDialog 
-          key={index}
-          industry={industry}
-          eventTypes={eventTypes}
-          isOpen={openIndustryDialog === industry.title}
-          onClose={() => setOpenIndustryDialog(null)}
-        />
-      ))}
     </section>
   );
 };

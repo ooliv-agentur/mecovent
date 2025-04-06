@@ -23,9 +23,9 @@ const ScrollIndicator = ({
   
   return (
     <div className={cn(
-      "flex gap-2 transition-opacity duration-300",
+      "flex gap-2 transition-all duration-300",
       isVertical ? "flex-col items-center" : "items-center justify-center",
-      isLastItem ? "opacity-30" : "opacity-100",
+      isLastItem ? "opacity-30 pointer-events-none" : "opacity-100",
       className
     )}>
       {Array.from({ length: total }).map((_, i) => (
