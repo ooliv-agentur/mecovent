@@ -41,6 +41,49 @@ const Index = () => {
     };
   }, []);
 
+  // Enable smooth scrolling pause option
+  useEffect(() => {
+    // Function to temporarily disable smooth scrolling for performance
+    const toggleSmoothScroll = (enable: boolean) => {
+      document.documentElement.style.scrollBehavior = enable ? 'smooth' : 'auto';
+    };
+
+    // Detect rapid scrolling to temporarily disable smooth scrolling
+    let scrollTimeout: number | null = null;
+    let lastScrollTop = 0;
+    
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollSpeed = Math.abs(scrollTop - lastScrollTop);
+      
+      // If scrolling quickly, disable smooth scroll for better performance
+      if (scrollSpeed > 50) {
+        toggleSmoothScroll(false);
+        
+        // Clear any existing timeout
+        if (scrollTimeout !== null) {
+          window.clearTimeout(scrollTimeout);
+        }
+        
+        // Re-enable smooth scrolling after scrolling stops
+        scrollTimeout = window.setTimeout(() => {
+          toggleSmoothScroll(true);
+        }, 500);
+      }
+      
+      lastScrollTop = scrollTop;
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout !== null) {
+        window.clearTimeout(scrollTimeout);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background selection:bg-primary/20">
       <Navigation />
@@ -48,12 +91,15 @@ const Index = () => {
         <HeroSection />
         <WhyMecovent />
         <ServicesSection />
-        {/* Projects section with special scrolling behavior */}
+        
+        {/* Projects section with improved transition */}
         <ProjectsSection />
+        
         {/* Add a negative margin to pull the next section up slightly */}
-        <div className="mt-[-80px]"> {/* Increased negative margin to reduce space */}
+        <div className="mt-[-100px] relative z-10"> 
           <EventTypesSection />
         </div>
+        
         <TestimonialsSection />
         <ContactSection />
       </main>
