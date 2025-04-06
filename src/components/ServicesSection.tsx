@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   LightbulbIcon, 
@@ -47,7 +46,7 @@ const ServicesSection = () => {
       title: "Strategische Eventberatung", 
       description: "Analyse Ihrer Ziele & maßgeschneiderte Konzepte", 
       icon: BarChart4,
-      imageUrl: "/lovable-uploads/strategy-planning.jpg" 
+      imageUrl: "/lovable-uploads/a5711a2e-3fe8-4825-a540-2c8a57a36cfd.png" 
     },
     { 
       title: "Eventmanagement", 
