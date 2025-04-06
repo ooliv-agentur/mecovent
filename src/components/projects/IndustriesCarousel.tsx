@@ -39,14 +39,13 @@ const IndustriesCarousel = ({
     }
   }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
-  // Updated with the new images, including the latest uploads
   const backgroundImages = [
-    "/lovable-uploads/e8ff3d2b-2cdb-410f-8f87-23a186090341.png", // Pharma
-    "/lovable-uploads/43952276-1e56-4b27-8b37-0f0b1fb8b29f.png", // Automobil
-    "/lovable-uploads/b00c20b6-e80b-4a66-854e-fb867818de47.png", // Chemie (new uploaded image)
-    "/lovable-uploads/ace534d0-d95e-41f7-b18a-f0801e6112e4.png", // Finanz
-    "/lovable-uploads/9a28bc3c-dfc5-4caa-b4e5-1bfcc9df1300.png", // Technologie
-    "/lovable-uploads/a76a13e1-54fc-495b-be1f-940d9d20adb9.png"  // Bildung (new uploaded image)
+    "/lovable-uploads/e8ff3d2b-2cdb-410f-8f87-23a186090341.png", // Pharma (new image)
+    "/lovable-uploads/43952276-1e56-4b27-8b37-0f0b1fb8b29f.png", // Automobil (new image)
+    "/lovable-uploads/fea35b42-ca42-4504-99e8-b3dff4088edc.png", // Chemie (new image)
+    "/lovable-uploads/ace534d0-d95e-41f7-b18a-f0801e6112e4.png", // Finanz (new image)
+    "/lovable-uploads/9a28bc3c-dfc5-4caa-b4e5-1bfcc9df1300.png", // Technologie (new image)
+    "/lovable-uploads/e7c6685c-c5c7-4909-9502-dc03749ac872.png"  // Bildung (upscaled new image)
   ];
 
   return (
@@ -68,26 +67,22 @@ const IndustriesCarousel = ({
             >
               <div 
                 className={cn(
-                  "absolute inset-0 transition-opacity duration-700",
+                  "absolute inset-0 transition-opacity duration-700 bg-cover bg-center",
                   industryRefs[index].inView ? "opacity-100" : "opacity-0"
                 )}
                 style={{
                   backgroundImage: `url(${backgroundImages[index]})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  imageRendering: '-webkit-optimize-contrast',
-                  transform: 'translateZ(0)', // Force GPU acceleration
-                  willChange: 'transform', // Optimize for animations
+                  backgroundPosition: 'center'
                 }}
               >
-                <div className="absolute inset-0 bg-black/25 backdrop-blur-[2px]"></div>
+                <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
               </div>
               
               <div 
                 className={cn(
                   "relative z-10 max-w-2xl mx-auto p-8 rounded-xl transition-all duration-700",
-                  "backdrop-blur-sm bg-white/85 shadow-lg border border-white/40",
+                  "backdrop-blur-sm bg-white/80 shadow-lg border border-white/40",
                   industryRefs[index].inView 
                     ? "opacity-100 scale-100 translate-y-0" 
                     : "opacity-0 scale-95 translate-y-8"
