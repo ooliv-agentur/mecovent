@@ -50,10 +50,6 @@ const EventTypesSection = () => {
     }
   };
   
-  const handleResetCards = () => {
-    setActiveEventTypeIndex(null);
-  };
-  
   const handleTouchStart = (index: number) => {
     if (isMobile && activeEventTypeIndex !== index) {
       setShowTapHint(index);
@@ -67,10 +63,6 @@ const EventTypesSection = () => {
   
   const handleTouchEnd = () => {
     setShowTapHint(null);
-  };
-  
-  const getTagClass = (tag: string) => {
-    return "bg-primary/10 text-primary";
   };
   
   return (
@@ -90,19 +82,6 @@ const EventTypesSection = () => {
             Strategisch durchdacht, emotional inszeniert und individuell für Sie entwickelt.
           </p>
         </div>
-        
-        {activeEventTypeIndex !== null && (
-          <div className="flex justify-center mb-8">
-            <Button 
-              variant="outline" 
-              onClick={() => setActiveEventTypeIndex(null)}
-              className="flex items-center gap-2"
-            >
-              <RotateCw className="h-4 w-4" />
-              <span>Zurück zur Übersicht</span>
-            </Button>
-          </div>
-        )}
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
           {eventTypes.map((event, index) => {
