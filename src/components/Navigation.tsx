@@ -7,11 +7,30 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 150);
+      const currentScrollPos = window.scrollY;
       
+      // Determine scroll direction
+      const isScrollingDown = currentScrollPos > prevScrollPos;
+      
+      // Set visibility based on scroll direction and position
+      if (currentScrollPos > 150) {
+        setVisible(!isScrollingDown);
+      } else {
+        setVisible(true);
+      }
+      
+      // Update scroll position
+      setPrevScrollPos(currentScrollPos);
+      
+      // Set scrolled state for styling
+      setIsScrolled(currentScrollPos > 150);
+      
+      // Update active section
       const sections = ['hero', 'ueber-uns', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
       
       for (const section of sections) {
@@ -38,7 +57,7 @@ const Navigation = () => {
       window.removeEventListener('scroll', handleScroll);
       document.body.style.overflow = '';
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, prevScrollPos]);
 
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
@@ -76,7 +95,8 @@ const Navigation = () => {
       <header 
         className={cn(
           "fixed top-0 right-0 z-50 transition-all duration-300 py-4 w-full",
-          isScrolled ? "bg-[#009fe3] backdrop-blur-sm shadow-sm" : "bg-transparent"
+          isScrolled ? "bg-[#009fe3] backdrop-blur-sm shadow-sm" : "bg-transparent",
+          visible ? "translate-y-0" : "-translate-y-full"
         )}
       >
         <div className="container mx-auto flex justify-between items-center px-4">

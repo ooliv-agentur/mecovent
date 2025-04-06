@@ -167,6 +167,11 @@
   animation: bounce-y 2s ease-in-out infinite;
 }
 
+/* Navbar transition */
+header {
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 /* Flip card animations */
 .flip-card-container {
   perspective: 1000px;
