@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Phone, Mail, Info, HelpCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -23,7 +22,6 @@ const FAQItem = ({ question, answer }: { question: string; answer: React.ReactNo
 );
 
 const ContactSection = () => {
-  // Group FAQs by category
   const faqCategories = {
     allgemein: [
       {
@@ -180,7 +178,6 @@ const ContactSection = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-5xl mx-auto animate-fade-in-up">
-          {/* Contact Information Card */}
           <div className="lg:col-span-1">
             <Card className="shadow-md bg-secondary/30">
               <CardContent className="p-8 text-center">
@@ -191,9 +188,9 @@ const ContactSection = () => {
                       <Phone className="h-4 w-4 text-primary" />
                       +49 6135 70 39 59 -0
                     </a>
-                    <a href="mailto:info@MECOVENT.de" className="font-medium flex items-center justify-center gap-2 hover:text-primary transition-colors">
+                    <a href="mailto:info@mecovent.de" className="font-medium flex items-center justify-center gap-2 hover:text-primary transition-colors">
                       <Mail className="h-4 w-4 text-primary" />
-                      info@MECOVENT.de
+                      info@mecovent.de
                     </a>
                   </div>
                   <div className="pt-4 border-t">
@@ -207,7 +204,6 @@ const ContactSection = () => {
             </Card>
           </div>
           
-          {/* FAQ Section */}
           <div className="lg:col-span-2">
             <div>
               <h3 className="text-2xl font-bold mb-6">Häufig gestellte Fragen</h3>
