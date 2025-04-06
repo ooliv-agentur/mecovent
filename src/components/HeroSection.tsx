@@ -11,6 +11,32 @@ const HeroSection = () => {
         behavior: 'smooth',
         block: 'start'
       });
+      
+      // Apply a smoother, slower scroll animation
+      // This will override the default scrollIntoView behavior with a more controlled animation
+      const startPosition = window.pageYOffset;
+      const targetPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1500; // Longer duration for slower scroll (in ms)
+      let startTime: number | null = null;
+      
+      const animateScroll = (currentTime: number) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        
+        // Easing function for smoother animation (ease-in-out cubic)
+        const easeInOutCubic = (t: number) => 
+          t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          
+        window.scrollTo(0, startPosition + distance * easeInOutCubic(progress));
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animateScroll);
+        }
+      };
+      
+      requestAnimationFrame(animateScroll);
     }
   };
 
@@ -33,7 +59,7 @@ const HeroSection = () => {
       </div>
       
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto pt-[25vh] pb-[30vh] animate-fade-in">
-        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
+        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift break-words">
           Message. Atmosphäre. Event.
         </h1>
         <p className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center max-w-4xl mx-auto mt-8 leading-normal">
