@@ -45,11 +45,11 @@ const Footer = () => {
                 +49 6135 70 39 59 -0
               </a>
               <a 
-                href="mailto:info@MECOVENT.de" 
+                href="mailto:info@mecovent.de" 
                 className="block hover:text-primary transition-colors flex items-center gap-2"
               >
                 <Mail className="h-4 w-4" />
-                info@MECOVENT.de
+                info@mecovent.de
               </a>
             </address>
           </div>
