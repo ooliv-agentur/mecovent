@@ -229,12 +229,10 @@ header {
   scroll-snap-align: center;
 }
 
-/* High quality image rendering */
-.image-high-quality {
-  image-rendering: auto;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+/* High-resolution image optimization */
+.high-res-image {
+  image-rendering: -webkit-optimize-contrast;  /* For WebKit browsers */
+  image-rendering: crisp-edges;
+  -webkit-backface-visibility: hidden;  /* Fix for any transformation issues */
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform;
 }

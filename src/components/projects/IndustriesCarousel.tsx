@@ -39,6 +39,7 @@ const IndustriesCarousel = ({
     }
   }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
+  // Direct paths to original high-resolution images without any processing
   const backgroundImages = [
     "/lovable-uploads/e8ff3d2b-2cdb-410f-8f87-23a186090341.png", // Pharma
     "/lovable-uploads/43952276-1e56-4b27-8b37-0f0b1fb8b29f.png", // Automobil
@@ -70,27 +71,30 @@ const IndustriesCarousel = ({
                   "absolute inset-0 transition-opacity duration-700",
                   industryRefs[index].inView ? "opacity-100" : "opacity-0"
                 )}
+                style={{ overflow: "hidden" }}
               >
-                <picture>
-                  <source 
-                    srcSet={backgroundImages[index]} 
-                    type="image/png" 
-                    media="(min-resolution: 2dppx), (-webkit-min-device-pixel-ratio: 2)"
-                  />
-                  <img 
-                    src={backgroundImages[index]}
-                    alt={industry.title}
-                    className="absolute inset-0 w-full h-full object-cover image-high-quality"
-                    loading="eager"
-                    decoding="async"
-                    style={{
-                      imageRendering: 'auto',
-                      maxWidth: '100%',
-                      height: '100%'
-                    }}
-                  />
-                </picture>
-                <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+                {/* Direct image display without picture element to avoid any browser optimization */}
+                <img 
+                  src={backgroundImages[index]}
+                  alt={industry.title}
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    maxWidth: "none",
+                    width: "100%",
+                    height: "100%",
+                    display: "block"
+                  }}
+                  loading="eager"
+                  decoding="sync"
+                />
+                
+                {/* Separate overlay div that doesn't affect the image rendering */}
+                <div 
+                  className="absolute inset-0 bg-black/30" 
+                  style={{ backdropFilter: "blur(2px)" }}
+                ></div>
               </div>
               
               <div 
@@ -146,7 +150,6 @@ const IndustriesCarousel = ({
   );
 };
 
-// Add this class to the global CSS
 const getIndustryIcon = (index: number) => {
   const iconMap = [
     <Pill className="w-8 h-8 text-[#009fe3]" />,
