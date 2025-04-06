@@ -130,23 +130,7 @@ export default {
 			backgroundSize: {
 				'200%': '200% 100%',
 			},
-			textShadow: {
-				DEFAULT: '0 1px 3px rgba(0, 0, 0, 0.2)',
-			},
 		}
 	},
-	plugins: [
-		require("tailwindcss-animate"),
-		function({ addUtilities }) {
-			const newUtilities = {
-				'.text-shadow': {
-					textShadow: '0 1px 3px rgba(0, 0, 0, 0.2)',
-				},
-				'.text-shadow-none': {
-					textShadow: 'none',
-				},
-			}
-			addUtilities(newUtilities)
-		}
-	],
+	plugins: [require("tailwindcss-animate")],
 } satisfies Config;

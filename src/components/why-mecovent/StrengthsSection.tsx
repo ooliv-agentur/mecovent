@@ -6,7 +6,7 @@ const StrengthsSection = () => {
   return (
     <div className="mt-32 relative">
       <h3 className="text-2xl font-medium text-center mb-14 relative">
-        <span className="relative z-10 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift text-shadow">Unsere Stärken</span>
+        <span className="relative z-10 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">Unsere Stärken</span>
       </h3>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
