@@ -1,8 +1,6 @@
 
 import React from 'react';
-import { Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Button } from "@/components/ui/button";
 import EventTypeCard from './event-types/EventTypeCard';
 import EventTypesSectionHeader from './event-types/EventTypesSectionHeader';
 import { useEventCardInteraction } from './event-types/useEventCardInteraction';
@@ -69,13 +67,6 @@ const EventTypesSection = () => {
               </div>
             );
           })}
-        </div>
-        
-        <div className="mt-12 text-center">
-          <Button variant="outline" className="gap-2">
-            <Calendar className="h-4 w-4" />
-            Erste Verbindung herstellen
-          </Button>
         </div>
       </div>
     </section>
