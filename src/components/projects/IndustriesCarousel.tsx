@@ -41,12 +41,12 @@ const IndustriesCarousel = ({
 
   // Background images for each industry
   const backgroundImages = [
-    "url('/lovable-uploads/c6123f97-a095-47a6-a6c5-3f5ffda701ef.png')",
-    "url('/lovable-uploads/5869c2e4-85a2-474b-87bc-d34a4bfa1333.png')",
-    "url('/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png')",
-    "url('/lovable-uploads/9c383b79-a81a-4ef0-9b54-92ca8574730b.png')",
-    "url('/lovable-uploads/6c7a46dc-0619-44be-9103-39face95ca30.png')",
-    "url('/lovable-uploads/90ff0323-484c-49bd-a8b7-afa998d4c6b7.png')"
+    "url('/lovable-uploads/bccf0481-f70d-4af7-814d-8544ce990ff8.png')", // Pharma
+    "url('/lovable-uploads/53c05d61-0e12-4d1a-927f-0b024be37aae.png')", // Automobil
+    "url('/lovable-uploads/4de2165f-2ef7-4f05-9ba1-79b7c88b9d04.png')", // Chemie
+    "url('/lovable-uploads/f6627bc9-3e13-475c-a4c7-bf148763fd04.png')", // Finanz
+    "url('/lovable-uploads/dbddb108-34c6-4bf5-9815-b19c4c637b28.png')", // Technologie
+    "url('/lovable-uploads/4452a5e5-3a26-4a60-84d1-3f180173ad2a.png')"  // Bildung
   ];
 
   return (
@@ -72,16 +72,16 @@ const IndustriesCarousel = ({
                   industryRefs[index].inView ? "opacity-100" : "opacity-0"
                 )}
                 style={{
-                  backgroundImage: backgroundImages[index % backgroundImages.length],
+                  backgroundImage: backgroundImages[index],
                 }}
               >
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
               </div>
               
               <div 
                 className={cn(
                   "relative z-10 max-w-2xl mx-auto p-8 rounded-xl transition-all duration-700",
-                  "backdrop-blur-sm bg-background/40 shadow-2xl border border-white/10",
+                  "backdrop-blur-sm bg-white/20 shadow-2xl border border-white/20",
                   industryRefs[index].inView 
                     ? "opacity-100 scale-100 translate-y-0" 
                     : "opacity-0 scale-95 translate-y-8"
@@ -102,7 +102,7 @@ const IndustriesCarousel = ({
                   {industry.description}
                 </p>
                 
-                <div className="text-sm text-center text-white/80">
+                <div className="text-sm text-center text-white">
                   {industry.details}
                 </div>
               </div>
@@ -146,7 +146,7 @@ const getIndustryIcon = (index: number) => {
   ];
   
   return (
-    <div className="w-16 h-16 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+    <div className="w-16 h-16 flex items-center justify-center bg-white/20 backdrop-blur-md rounded-full border border-white/20">
       {iconMap[index % iconMap.length]}
     </div>
   );
