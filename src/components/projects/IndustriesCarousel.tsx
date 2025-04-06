@@ -12,19 +12,22 @@ import {
   Beaker,
   ChevronDown,
   MousePointerClick,
-  ArrowUpDown
+  ArrowUpDown,
+  ArrowDown
 } from 'lucide-react';
 
 interface IndustriesCarouselProps {
   activeIndustryIndex: number;
   setActiveIndustryIndex: (index: number) => void;
   openIndustryDialog: (title: string) => void;
+  isLastItem?: boolean;
 }
 
 const IndustriesCarousel = ({ 
   activeIndustryIndex, 
   setActiveIndustryIndex, 
-  openIndustryDialog 
+  openIndustryDialog,
+  isLastItem = false
 }: IndustriesCarouselProps) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showScrollHint, setShowScrollHint] = useState(true);
@@ -97,12 +100,23 @@ const IndustriesCarousel = ({
     <div className="h-full w-full flex items-center justify-center">
       <div className="relative w-full h-full">
         {/* Scroll Hint Overlay - only shown initially */}
-        {showScrollHint && (
+        {showScrollHint && !isLastItem && (
           <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
             <div className="bg-black/70 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center gap-4 animate-fade-in">
               <ArrowUpDown className="h-8 w-8 text-primary animate-bounce" />
               <p className="text-lg font-medium text-white">Scrollen Sie, um mehr zu entdecken</p>
               <p className="text-sm text-white/80">Oder nutzen Sie die Navigationspunkte →</p>
+            </div>
+          </div>
+        )}
+
+        {/* Last Item Next Section Hint - shown only when on last item */}
+        {isLastItem && (
+          <div className="absolute inset-0 z-30 flex items-end justify-center pb-24 pointer-events-none">
+            <div className="bg-black/70 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center gap-4 animate-fade-in">
+              <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
+              <p className="text-lg font-medium text-white">Weiter zu Veranstaltungsformaten</p>
+              <p className="text-sm text-white/80">Scrollen Sie nach unten</p>
             </div>
           </div>
         )}
@@ -213,16 +227,22 @@ const IndustriesCarousel = ({
             total={industryItems.length} 
             orientation="vertical"
             onIndicatorClick={handleIndicatorClick}
+            isLastItem={isLastItem}
           />
         </div>
         
         {/* Scroll Hint Text */}
         <div className={cn(
-          "absolute bottom-10 left-0 right-0 text-center text-primary/80 text-sm z-20",
+          "absolute bottom-10 left-0 right-0 text-center text-sm z-20",
           "bg-background/40 backdrop-blur-sm py-1 px-3 rounded-full mx-auto w-fit",
-          activeIndustryIndex >= industryItems.length - 1 ? "opacity-0" : "animate-bounce"
+          isLastItem 
+            ? "text-primary/80 animate-pulse" 
+            : "text-primary/80 animate-bounce",
+          isLastItem
+            ? "opacity-100"
+            : activeIndustryIndex >= industryItems.length - 1 ? "opacity-0" : "opacity-100"
         )}>
-          <span>Weiterscrollen</span>
+          <span>{isLastItem ? "Nach unten scrollen für Veranstaltungsformate" : "Weiterscrollen"}</span>
         </div>
       </div>
     </div>

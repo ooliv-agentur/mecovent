@@ -7,20 +7,23 @@ interface ScrollIndicatorProps {
   total: number;
   orientation?: 'horizontal' | 'vertical';
   onIndicatorClick?: (index: number) => void;
+  isLastItem?: boolean;
 }
 
 const ScrollIndicator = ({ 
   active, 
   total, 
   orientation = 'horizontal',
-  onIndicatorClick
+  onIndicatorClick,
+  isLastItem = false
 }: ScrollIndicatorProps) => {
   const isVertical = orientation === 'vertical';
   
   return (
     <div className={cn(
-      "flex gap-2",
-      isVertical ? "flex-col items-center" : "items-center justify-center"
+      "flex gap-2 transition-opacity duration-300",
+      isVertical ? "flex-col items-center" : "items-center justify-center",
+      isLastItem ? "opacity-30" : "opacity-100"
     )}>
       {Array.from({ length: total }).map((_, i) => (
         <button 

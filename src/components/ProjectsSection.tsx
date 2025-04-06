@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -18,6 +17,7 @@ const ProjectsSection = () => {
   const [scrollLocked, setScrollLocked] = useState(false);
   const [wheelEventCounter, setWheelEventCounter] = useState(0);
   const wheelThreshold = 5; // Number of wheel events to accumulate before triggering a slide change
+  const isLastItem = activeIndustryIndex === industryItems.length - 1;
 
   // Track scroll direction and position
   useEffect(() => {
@@ -41,9 +41,15 @@ const ProjectsSection = () => {
       }
       
       // Set sticky state based on position
+      // If we're at the last item, don't set sticky to true if going down
       const newStickyState = rect.top <= 0 && rect.bottom >= window.innerHeight;
       if (newStickyState !== stickyActive) {
-        setStickyActive(newStickyState);
+        // If we're on the last slide and trying to scroll down, don't set sticky
+        if (isLastItem && newScrollDirection === 'down') {
+          setStickyActive(false);
+        } else {
+          setStickyActive(newStickyState);
+        }
       }
     };
 
@@ -52,11 +58,18 @@ const ProjectsSection = () => {
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, scrollDirection, isVisible, stickyActive]);
+  }, [lastScrollY, scrollDirection, isVisible, stickyActive, isLastItem]);
 
   // Handle wheel events for controlling the carousel with improved sensitivity
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
+      // If we're at the last item and scrolling down, don't prevent default
+      if (isLastItem && e.deltaY > 0) {
+        // Allow normal scroll behavior to continue to next section
+        return;
+      }
+      
+      // Otherwise continue with normal carousel behavior
       if (!isVisible || !stickyActive || scrollLocked) return;
       
       // Prevent the default scroll behavior when in sticky mode
@@ -113,7 +126,7 @@ const ProjectsSection = () => {
         sectionElement.removeEventListener('wheel', handleWheel);
       }
     };
-  }, [isVisible, activeIndustryIndex, stickyActive, scrollLocked, wheelEventCounter]);
+  }, [isVisible, activeIndustryIndex, stickyActive, scrollLocked, wheelEventCounter, isLastItem]);
 
   // Handle touch events for mobile scrolling with improved sensitivity
   useEffect(() => {
@@ -128,10 +141,16 @@ const ProjectsSection = () => {
     };
     
     const handleTouchMove = (e: TouchEvent) => {
-      if (!isVisible || !stickyActive || scrollLocked) return;
-      
+      // If we're at the last item and swiping up (negative touchDiff), don't prevent default
       const touchCurrentY = e.touches[0].clientY;
       const touchDiff = touchStartY - touchCurrentY;
+      
+      if (isLastItem && touchDiff > 0) {
+        // Allow normal scroll behavior to continue to next section
+        return;
+      }
+      
+      if (!isVisible || !stickyActive || scrollLocked) return;
       
       // Accumulate touch movement
       touchMoveCounter += touchDiff;
@@ -183,7 +202,7 @@ const ProjectsSection = () => {
         sectionElement.removeEventListener('touchmove', handleTouchMove);
       }
     };
-  }, [isVisible, activeIndustryIndex, stickyActive, scrollLocked]);
+  }, [isVisible, activeIndustryIndex, stickyActive, scrollLocked, isLastItem]);
 
   const handleOpenIndustryDialog = (title: string) => {
     setOpenIndustryDialog(title);
@@ -219,7 +238,7 @@ const ProjectsSection = () => {
       <div 
         className={cn(
           "w-full h-screen transition-all duration-300 z-10",
-          stickyActive ? "sticky top-0" : "relative"
+          stickyActive && !isLastItem ? "sticky top-0" : "relative"
         )}
       >
         <div className={cn("w-full h-full transition-opacity duration-500",
@@ -228,6 +247,7 @@ const ProjectsSection = () => {
             activeIndustryIndex={activeIndustryIndex}
             setActiveIndustryIndex={setActiveIndustryIndex}
             openIndustryDialog={handleOpenIndustryDialog}
+            isLastItem={isLastItem}
           />
         </div>
         
