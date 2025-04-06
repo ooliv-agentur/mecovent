@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Carousel,
   CarouselContent,
@@ -21,7 +21,38 @@ interface ValuesSectionProps {
 
 const ValuesSection = ({ values }: ValuesSectionProps) => {
   const isMobile = useIsMobile();
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isInSection, setIsInSection] = useState(false);
+
+  // Track if we're in this section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInSection(true);
+          } else {
+            setIsInSection(false);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.1
+      }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   // Handle indicator click
   const handleIndicatorClick = (index: number) => {
@@ -29,7 +60,7 @@ const ValuesSection = ({ values }: ValuesSectionProps) => {
   };
 
   return (
-    <>
+    <div ref={sectionRef}>
       {isMobile ? (
         <Carousel 
           className="w-full max-w-xs mx-auto"
@@ -57,12 +88,14 @@ const ValuesSection = ({ values }: ValuesSectionProps) => {
               <CarouselPrevious className="relative static" />
               <CarouselNext className="relative static" />
             </div>
-            <ScrollIndicator 
-              active={activeIndex} 
-              total={values.length} 
-              orientation="horizontal"
-              onIndicatorClick={handleIndicatorClick}
-            />
+            {isInSection && (
+              <ScrollIndicator 
+                active={activeIndex} 
+                total={values.length} 
+                orientation="horizontal"
+                onIndicatorClick={handleIndicatorClick}
+              />
+            )}
           </div>
         </Carousel>
       ) : (
@@ -78,7 +111,7 @@ const ValuesSection = ({ values }: ValuesSectionProps) => {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

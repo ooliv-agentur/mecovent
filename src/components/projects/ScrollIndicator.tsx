@@ -32,15 +32,15 @@ const ScrollIndicator = ({
         <button 
           key={i} 
           className={cn(
-            "rounded-full transition-all duration-300 hover:scale-110 hover:bg-primary/90",
+            "rounded-full transition-all duration-300 hover:scale-110",
             isVertical
-              ? "h-12 w-1.5 md:w-2" // Vertical orientation - wider for better clickability on mobile
-              : "h-1.5 w-12 md:h-2", // Horizontal orientation - taller for better clickability on mobile
+              ? "h-12 w-1.5 md:w-2" // Vertical orientation
+              : "h-1.5 w-12 md:h-2", // Horizontal orientation
             i === active 
-              ? "bg-primary" // Active
+              ? "bg-[#1EAEDB]" // Active - blue
               : i < active 
-                ? "bg-primary/60" // Past
-                : "bg-muted-foreground/40" // Future
+                ? "bg-[#33C3F0]/60" // Past - lighter blue
+                : "bg-[#8E9196]/40" // Future - gray
           )}
           style={{
             transitionDelay: `${Math.abs(i - active) * 40}ms`
