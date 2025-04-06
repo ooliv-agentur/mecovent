@@ -138,6 +138,14 @@
   .section-tag {
     @apply text-xs font-medium tracking-wider uppercase text-muted-foreground mb-2;
   }
+
+  .service-slide-active {
+    @apply shadow-lg border-primary/30 scale-105 z-10;
+  }
+  
+  .service-slide-inactive {
+    @apply shadow border-transparent scale-100 z-0;
+  }
 }
 
 /* Custom animations */
@@ -159,12 +167,27 @@
   }
 }
 
+@keyframes slide-in {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .animate-bounce-x {
   animation: bounce-x 1s infinite;
 }
 
 .animate-bounce-y {
   animation: bounce-y 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.4s ease-out forwards;
 }
 
 /* Flip card animations */
