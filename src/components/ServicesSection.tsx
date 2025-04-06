@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   LightbulbIcon, 
@@ -70,7 +71,7 @@ const ServicesSection = () => {
       title: "Incentives & Teamevents", 
       description: "Motivation & Erlebnis für Ihr Team", 
       icon: Smartphone,
-      imageUrl: "/lovable-uploads/team-events.jpg" 
+      imageUrl: "/lovable-uploads/3b884e4a-3302-4e39-928b-44f68f55994d.png" 
     },
     { 
       title: "Marketing & Eventkommunikation", 
