@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
@@ -39,7 +38,6 @@ const IndustriesCarousel = ({
     }
   }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
-  // Updated image array with optimized images and new Bildung image
   const backgroundImages = [
     "/lovable-uploads/e8ff3d2b-2cdb-410f-8f87-23a186090341.png", // Pharma (new image)
     "/lovable-uploads/43952276-1e56-4b27-8b37-0f0b1fb8b29f.png", // Automobil (new image)
@@ -127,10 +125,6 @@ const IndustriesCarousel = ({
             total={industryItems.length} 
             orientation="vertical" 
           />
-        </div>
-        
-        <div className="absolute bottom-4 left-0 right-0 text-center text-gray-600 animate-bounce text-sm">
-          <span>Weiterscrollen</span>
         </div>
       </div>
     </div>
