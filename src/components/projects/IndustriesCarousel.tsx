@@ -1,7 +1,6 @@
 
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { useInView } from 'react-intersection-observer';
 import { industryItems } from './data';
 import ScrollIndicator from './ScrollIndicator';
 import { 
@@ -26,43 +25,48 @@ const IndustriesCarousel = ({
 }: IndustriesCarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  const industryRefs = industryItems.map((_, i) => {
-    const { ref, inView } = useInView({
-      threshold: 0.6,
-      triggerOnce: false
-    });
-    return { ref, inView };
-  });
+  // Handle manual navigation using the scroll indicator
+  const handleIndicatorClick = (index: number) => {
+    setActiveIndustryIndex(index);
+  };
 
+  // Scroll to the active industry when the index changes
   useEffect(() => {
-    const inViewIndex = industryRefs.findIndex(item => item.inView);
-    if (inViewIndex !== -1) {
-      setActiveIndustryIndex(inViewIndex);
+    if (containerRef.current) {
+      const container = containerRef.current;
+      const children = Array.from(container.children);
+      
+      if (children[activeIndustryIndex]) {
+        // Smooth scroll to the selected industry
+        children[activeIndustryIndex].scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
     }
-  }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
+  }, [activeIndustryIndex]);
 
   return (
     <div className="h-full w-full flex items-center justify-center">
       <div className="relative w-full h-full">
         <div 
-          className="h-full w-full overflow-hidden snap-y snap-mandatory scrollbar-hide" 
+          className="h-full w-full snap-y snap-mandatory overflow-hidden" 
           ref={containerRef}
-          style={{ scrollBehavior: 'smooth' }}
         >
           {industryItems.map((industry, index) => (
             <div 
               key={index}
-              ref={industryRefs[index].ref}
               className={cn(
-                "h-screen w-full snap-start snap-always flex flex-col items-center justify-center",
-                "transition-opacity duration-700 ease-in-out"
+                "h-screen w-full snap-center flex flex-col items-center justify-center",
+                "transition-all duration-700 ease-in-out absolute inset-0",
+                activeIndustryIndex === index ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
               )}
               onClick={() => openIndustryDialog(industry.title)}
             >
               <div 
                 className={cn(
                   "absolute inset-0 transition-opacity duration-700",
-                  activeIndustryIndex === index ? "opacity-100" : "opacity-0"
+                  "opacity-100"
                 )}
                 style={{
                   background: getIndustryGradient(index),
@@ -73,9 +77,7 @@ const IndustriesCarousel = ({
                 className={cn(
                   "relative z-10 max-w-3xl mx-auto p-8 rounded-xl transition-all duration-700",
                   "backdrop-blur-sm bg-background/70 shadow-2xl border border-primary/10",
-                  activeIndustryIndex === index 
-                    ? "opacity-100 scale-100 translate-y-0" 
-                    : "opacity-0 scale-95 translate-y-8"
+                  "opacity-100 scale-100 translate-y-0"
                 )}
               >
                 <div className="flex justify-center mb-6">
@@ -84,7 +86,7 @@ const IndustriesCarousel = ({
                 
                 <h3 className={cn(
                   "text-3xl font-bold text-center mb-4 transition-colors duration-300",
-                  activeIndustryIndex === index ? "text-primary" : "text-foreground"
+                  "text-primary"
                 )}>
                   {industry.title}
                 </h3>
@@ -100,7 +102,7 @@ const IndustriesCarousel = ({
               
               <div className={cn(
                 "absolute pointer-events-none transition-all duration-1000",
-                activeIndustryIndex === index ? "opacity-60 scale-100" : "opacity-0 scale-50"
+                "opacity-60 scale-100"
               )}>
                 <div className="absolute top-20 left-[15%] w-16 h-16 bg-primary/20 rounded-full blur-xl animate-pulse" />
                 <div className="absolute top-40 right-[20%] w-24 h-24 bg-primary/30 rounded-full blur-xl animate-pulse delay-300" />
@@ -114,7 +116,8 @@ const IndustriesCarousel = ({
           <ScrollIndicator 
             active={activeIndustryIndex} 
             total={industryItems.length} 
-            orientation="vertical" 
+            orientation="vertical"
+            onIndicatorClick={handleIndicatorClick}
           />
         </div>
         

@@ -16,71 +16,69 @@ const ProjectsSection = () => {
   const [scrollLocked, setScrollLocked] = useState(false);
   const [stickyActive, setStickyActive] = useState(false);
 
+  // Use a more precise scroll observation
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const rect = sectionRef.current.getBoundingClientRect();
+      const isTopVisible = rect.top <= 0;
+      const isBottomVisible = rect.bottom >= window.innerHeight;
+      
+      // Determine if section should be visible and sticky
+      if (isTopVisible && isBottomVisible) {
+        setIsVisible(true);
+        // Only set sticky if we haven't scrolled through all industries
+        if (!hasScrolled || activeIndustryIndex < industryItems.length - 1) {
           setStickyActive(true);
-        } else if (entry.boundingClientRect.top > 0) {
-          // Reset when scrolling back up past the section
-          setStickyActive(false);
         }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1,
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      } else if (rect.top > 0) {
+        // Reset when scrolling back up past the section
+        setStickyActive(false);
       }
     };
-  }, []);
+
+    // Initial check
+    handleScroll();
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeIndustryIndex, hasScrolled]);
 
   // Handle wheel events for controlling the carousel
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      if (!isVisible || scrollLocked) return;
+      if (!isVisible || scrollLocked || !stickyActive) return;
       
-      const section = sectionRef.current;
-      if (!section) return;
+      const deltaY = e.deltaY;
       
-      const rect = section.getBoundingClientRect();
-      const isInViewport = rect.top <= 0 && rect.bottom >= window.innerHeight;
+      // Change industry based on scroll direction
+      const newIndex = deltaY > 0 
+        ? Math.min(activeIndustryIndex + 1, industryItems.length - 1)
+        : Math.max(activeIndustryIndex - 1, 0);
       
-      // Only control scroll when in the sticky active mode
-      if (isInViewport && stickyActive) {
-        const newIndex = e.deltaY > 0 
-          ? Math.min(activeIndustryIndex + 1, industryItems.length - 1)
-          : Math.max(activeIndustryIndex - 1, 0);
+      if (newIndex !== activeIndustryIndex) {
+        e.preventDefault();
         
-        if (newIndex !== activeIndustryIndex) {
-          e.preventDefault();
+        setScrollLocked(true);
+        setActiveIndustryIndex(newIndex);
+        
+        setTimeout(() => {
+          setScrollLocked(false);
           
-          setScrollLocked(true);
-          setActiveIndustryIndex(newIndex);
-          
-          setTimeout(() => {
-            setScrollLocked(false);
-            
-            // Release sticky mode after viewing all industries
-            if (newIndex === industryItems.length - 1 && e.deltaY > 0) {
-              setStickyActive(false);
-              setHasScrolled(true);
-            }
-            else if (newIndex === 0 && e.deltaY < 0) {
-              setHasScrolled(false);
-            }
-          }, 800);
-        }
+          // Release sticky mode after viewing all industries
+          if (newIndex === industryItems.length - 1 && deltaY > 0) {
+            setStickyActive(false);
+            setHasScrolled(true);
+          }
+          else if (newIndex === 0 && deltaY < 0) {
+            setHasScrolled(false);
+          }
+        }, 800);
+      } else if (newIndex === industryItems.length - 1 && deltaY > 0) {
+        // Allow scrolling to continue to next section when at the last industry
+        setStickyActive(false);
+        setHasScrolled(true);
       }
     };
     
@@ -91,12 +89,19 @@ const ProjectsSection = () => {
     };
   }, [isVisible, activeIndustryIndex, scrollLocked, hasScrolled, stickyActive]);
 
+  // Reset scroll position when returning to the section
+  useEffect(() => {
+    if (!stickyActive && !hasScrolled) {
+      setActiveIndustryIndex(0);
+    }
+  }, [stickyActive, hasScrolled]);
+
   const handleOpenIndustryDialog = (title: string) => {
     setOpenIndustryDialog(title);
   };
 
-  // Calculate the height to maintain a sticky section properly
-  const sectionHeight = `${industryItems.length * 100}vh`;
+  // Define the correct height for the section to prevent scroll issues
+  const sectionHeight = `${Math.max(industryItems.length * 100, 100)}vh`;
 
   return (
     <section 

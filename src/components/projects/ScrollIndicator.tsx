@@ -6,9 +6,15 @@ interface ScrollIndicatorProps {
   active: number;
   total: number;
   orientation?: 'horizontal' | 'vertical';
+  onIndicatorClick?: (index: number) => void;
 }
 
-const ScrollIndicator = ({ active, total, orientation = 'horizontal' }: ScrollIndicatorProps) => {
+const ScrollIndicator = ({ 
+  active, 
+  total, 
+  orientation = 'horizontal',
+  onIndicatorClick
+}: ScrollIndicatorProps) => {
   const isVertical = orientation === 'vertical';
   
   return (
@@ -20,7 +26,7 @@ const ScrollIndicator = ({ active, total, orientation = 'horizontal' }: ScrollIn
         <div 
           key={i} 
           className={cn(
-            "rounded-full transition-all duration-500",
+            "rounded-full transition-all duration-500 cursor-pointer",
             isVertical
               ? "h-12 w-1.5" // Vertical orientation
               : "h-1.5 w-full", // Horizontal orientation
@@ -33,6 +39,9 @@ const ScrollIndicator = ({ active, total, orientation = 'horizontal' }: ScrollIn
           style={{
             transitionDelay: `${Math.abs(i - active) * 50}ms`
           }}
+          onClick={() => onIndicatorClick && onIndicatorClick(i)}
+          role="button"
+          aria-label={`Go to item ${i + 1}`}
         />
       ))}
     </div>
