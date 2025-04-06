@@ -17,11 +17,12 @@ const HeroSection = () => {
       const distance = targetY - startY;
       
       // Animation settings
-      const duration = 2000; // 2 seconds for slow scroll
-      let startTime = performance.now();
+      const duration = 800; // Reduced from 2000ms to 800ms for quicker response
+      let startTime = null;
       
       // Animation function
       function animation(currentTime: number) {
+        if (startTime === null) startTime = currentTime;
         const elapsedTime = currentTime - startTime;
         const progress = Math.min(elapsedTime / duration, 1);
         
@@ -37,7 +38,7 @@ const HeroSection = () => {
         }
       }
       
-      // Start animation
+      // Start animation immediately
       requestAnimationFrame(animation);
     }
   };
