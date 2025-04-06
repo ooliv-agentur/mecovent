@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { X, Phone, Mail, Menu } from 'lucide-react';
+import { X, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -99,11 +101,13 @@ const Navigation = () => {
         )}
       >
         <div className="container mx-auto flex justify-between items-center px-4">
-          <img 
-            src={logoSrc}
-            alt="MECOVENT Logo" 
-            className="h-9 object-contain transition-opacity duration-300" 
-          />
+          <Link to="/">
+            <img 
+              src={logoSrc}
+              alt="MECOVENT Logo" 
+              className="h-9 object-contain transition-opacity duration-300" 
+            />
+          </Link>
           
           <button 
             onClick={() => setIsMenuOpen(true)}
@@ -141,11 +145,13 @@ const Navigation = () => {
         <div className="fixed inset-0 bg-white z-[60] flex flex-col overflow-y-auto animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <div>
-              <img 
-                src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
-                alt="MECOVENT Logo" 
-                className="h-9 object-contain" 
-              />
+              <Link to="/" onClick={() => setIsMenuOpen(false)}>
+                <img 
+                  src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
+                  alt="MECOVENT Logo" 
+                  className="h-9 object-contain" 
+                />
+              </Link>
             </div>
             <button 
               onClick={() => setIsMenuOpen(false)}

@@ -8,10 +8,22 @@ const Datenschutz = () => {
   return (
     <div className="min-h-screen bg-background selection:bg-primary/20 flex flex-col">
       <Navigation />
-      <main className="flex-1 pt-24 pb-16">
+      
+      {/* Hero Background Image */}
+      <div 
+        className="w-full h-[50vh] bg-cover bg-center relative"
+        style={{ 
+          backgroundImage: "url('/lovable-uploads/e50f5e2d-1e8c-48d5-9423-960fe140f53c.png')" 
+        }}
+      >
+        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white text-center">Datenschutzerklärung</h1>
+        </div>
+      </div>
+      
+      <main className="flex-1 pt-16 pb-16">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 animate-fade-in">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold mb-8 text-primary">Datenschutzerklärung</h1>
             <p className="text-lg mb-8">
               Wir, die MECOVENT GmbH, nehmen den Schutz Ihrer personenbezogenen Daten sehr ernst und behandeln Ihre Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
             </p>
