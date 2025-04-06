@@ -9,19 +9,30 @@ import {
   PartyPopper
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 interface ServiceCardProps {
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
+  imageUrl: string;
 }
 
-const ServiceCard = ({ title, description, icon: Icon }: ServiceCardProps) => (
-  <Card className="h-full hover:shadow-md transition-shadow group">
-    <CardContent className="p-6">
-      <div className="w-12 h-12 mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
-        <Icon className="w-7 h-7 text-primary/80" />
+const ServiceCard = ({ title, description, icon: Icon, imageUrl }: ServiceCardProps) => (
+  <Card className="h-full hover:shadow-md transition-shadow group overflow-hidden">
+    <div className="relative">
+      <AspectRatio ratio={16/9}>
+        <img 
+          src={imageUrl} 
+          alt={title} 
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </AspectRatio>
+      <div className="absolute top-0 right-0 m-4 p-2 bg-white/90 dark:bg-black/70 rounded-full">
+        <Icon className="w-5 h-5 text-primary" />
       </div>
+    </div>
+    <CardContent className="p-6">
       <h3 className="font-medium text-xl mb-3">{title}</h3>
       <p className="text-muted-foreground">
         {description}
@@ -35,32 +46,38 @@ const ServicesSection = () => {
     { 
       title: "Strategische Eventberatung", 
       description: "Analyse Ihrer Ziele & maßgeschneiderte Konzepte", 
-      icon: BarChart4 
+      icon: BarChart4,
+      imageUrl: "/lovable-uploads/strategy-planning.jpg" 
     },
     { 
       title: "Eventmanagement", 
       description: "Konzeption, Planung & Durchführung", 
-      icon: LightbulbIcon 
+      icon: LightbulbIcon,
+      imageUrl: "/lovable-uploads/event-management.jpg" 
     },
     { 
       title: "Teilnehmermanagement", 
       description: "Einladung, Buchung & Betreuung", 
-      icon: Users 
+      icon: Users,
+      imageUrl: "/lovable-uploads/participant-management.jpg" 
     },
     { 
       title: "Veranstaltungstechnik", 
       description: "Bühne, Licht, Ton & Video für den perfekten Auftritt", 
-      icon: Music 
+      icon: Music,
+      imageUrl: "/lovable-uploads/event-technology.jpg" 
     },
     { 
       title: "Incentives & Teamevents", 
       description: "Motivation & Erlebnis für Ihr Team", 
-      icon: Smartphone 
+      icon: Smartphone,
+      imageUrl: "/lovable-uploads/team-events.jpg" 
     },
     { 
       title: "Marketing & Eventkommunikation", 
       description: "Zielgerichtete Kampagnen für mehr Reichweite", 
-      icon: PartyPopper 
+      icon: PartyPopper,
+      imageUrl: "/lovable-uploads/event-marketing.jpg" 
     }
   ];
 
@@ -87,6 +104,7 @@ const ServicesSection = () => {
               title={service.title}
               description={service.description}
               icon={service.icon}
+              imageUrl={service.imageUrl}
             />
           ))}
         </div>
