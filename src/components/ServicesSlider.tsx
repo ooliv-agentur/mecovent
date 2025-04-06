@@ -6,7 +6,9 @@ import {
   Music, 
   Smartphone,
   BarChart4,
-  PartyPopper
+  PartyPopper,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { 
   Carousel,
@@ -18,7 +20,7 @@ import {
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '@/components/ui/pagination';
+import { Button } from '@/components/ui/button';
 
 interface ServiceSlideProps {
   title: string;
@@ -119,7 +121,7 @@ const ServicesSlider = () => {
 
   return (
     <div className="relative pb-16">
-      <div className="mb-12 relative">
+      <div className="mb-8 relative">
         <Carousel 
           opts={{
             align: "start",
@@ -144,33 +146,45 @@ const ServicesSlider = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-
-          <div className="hidden md:flex justify-between absolute top-1/2 left-4 right-4 -translate-y-1/2 z-20">
-            <CarouselPrevious className="relative h-10 w-10 ml-2" />
-            <CarouselNext className="relative h-10 w-10 mr-2" />
-          </div>
         </Carousel>
       </div>
 
-      <div className="flex justify-center mt-8">
-        <Pagination>
-          <PaginationContent>
-            {services.map((_, index) => (
-              <PaginationItem key={index}>
-                <PaginationLink 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handlePaginationClick(index);
-                  }}
-                  isActive={activeSlide === index}
-                  className={`w-10 h-10 ${activeSlide === index ? 'bg-primary/20' : ''}`}
-                >
-                  {index + 1}
-                </PaginationLink>
-              </PaginationItem>
-            ))}
-          </PaginationContent>
-        </Pagination>
+      {/* Custom Pagination with Dots in the middle and arrows on sides */}
+      <div className="flex items-center justify-center gap-6 mt-8">
+        <Button 
+          variant="outline" 
+          size="icon" 
+          className="rounded-full h-10 w-10"
+          onClick={() => handlePaginationClick(activeSlide > 0 ? activeSlide - 1 : services.length - 1)}
+        >
+          <ChevronLeft className="h-6 w-6" />
+          <span className="sr-only">Previous slide</span>
+        </Button>
+        
+        <div className="flex items-center gap-3">
+          {services.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handlePaginationClick(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                activeSlide === index 
+                  ? 'bg-primary scale-110' 
+                  : 'bg-primary/30 hover:bg-primary/50'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+        
+        <Button 
+          variant="outline" 
+          size="icon" 
+          className="rounded-full h-10 w-10"
+          onClick={() => handlePaginationClick(activeSlide < services.length - 1 ? activeSlide + 1 : 0)}
+        >
+          <ChevronRight className="h-6 w-6" />
+          <span className="sr-only">Next slide</span>
+        </Button>
       </div>
 
       <div className="mt-12 text-center">
