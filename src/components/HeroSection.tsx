@@ -6,18 +6,13 @@ const HeroSection = () => {
   const scrollToAbout = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const aboutSection = document.getElementById('ueber-uns');
+    
     if (aboutSection) {
-      aboutSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-      
-      // Apply a smoother, slower scroll animation
-      // This will override the default scrollIntoView behavior with a more controlled animation
-      const startPosition = window.pageYOffset;
-      const targetPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset;
+      // Completely custom scroll animation to ensure it works
+      const startPosition = window.scrollY;
+      const targetPosition = aboutSection.getBoundingClientRect().top + window.scrollY;
       const distance = targetPosition - startPosition;
-      const duration = 1500; // Longer duration for slower scroll (in ms)
+      const duration = 1800; // Even longer duration for slower scroll (in ms)
       let startTime: number | null = null;
       
       const animateScroll = (currentTime: number) => {
@@ -29,7 +24,10 @@ const HeroSection = () => {
         const easeInOutCubic = (t: number) => 
           t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
           
-        window.scrollTo(0, startPosition + distance * easeInOutCubic(progress));
+        window.scrollTo({
+          top: startPosition + distance * easeInOutCubic(progress),
+          behavior: 'auto' // Using 'auto' to prevent conflicts with the smooth animation
+        });
         
         if (timeElapsed < duration) {
           requestAnimationFrame(animateScroll);
