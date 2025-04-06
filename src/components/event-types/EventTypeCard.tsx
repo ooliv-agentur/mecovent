@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { RotateCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -61,8 +60,7 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
       onTouchEnd={onTouchEnd}
       onTouchMove={onTouchMove}
     >
-      {/* Hint overlay with absolute positioning */}
-      {showHint && (
+      {showHint && !isFlipped && (
         <div 
           className="absolute top-4 right-4 z-10 text-xs text-white/80 flex items-center gap-1 bg-black/20 rounded-md px-2 py-1 animate-fade-in"
           style={{ backdropFilter: "blur(8px)" }}
@@ -95,7 +93,6 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
         >
           <CardHeader>
             <div className="flex items-center justify-between mb-4">
-              {/* Removed the hint from here as it's now an overlay */}
             </div>
             
             <div className="flex flex-col items-center text-center">
@@ -163,4 +160,3 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
 };
 
 export default EventTypeCard;
-
