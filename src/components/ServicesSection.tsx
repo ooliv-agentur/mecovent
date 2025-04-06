@@ -64,7 +64,7 @@ const ServicesSection = () => {
       title: "Veranstaltungstechnik", 
       description: "Bühne, Licht, Ton & Video für den perfekten Auftritt", 
       icon: Music,
-      imageUrl: "/lovable-uploads/event-technology.jpg" 
+      imageUrl: "/lovable-uploads/20cca07c-10d1-4d83-a2b9-98f9aac3b283.png" 
     },
     { 
       title: "Incentives & Teamevents", 
