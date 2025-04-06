@@ -1,13 +1,12 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import IndustryDialog from './projects/IndustryDialog';
-import { industryItems, eventTypes } from './projects/data';
+import { industryItems } from './projects/data';
 import IndustriesCarousel from './projects/IndustriesCarousel';
 
 const ProjectsSection = () => {
   const [activeIndustryIndex, setActiveIndustryIndex] = useState(0);
-  const [openIndustryDialog, setOpenIndustryDialog] = useState<string | null>(null);
   
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -84,12 +83,8 @@ const ProjectsSection = () => {
     };
   }, [isVisible, activeIndustryIndex, scrollLocked, hasScrolled]);
 
-  const handleOpenIndustryDialog = (title: string) => {
-    setOpenIndustryDialog(title);
-  };
-
   return (
-    <section id="projects" className="relative overflow-hidden w-full bg-secondary/10" ref={sectionRef}>
+    <section id="projects" className="relative overflow-hidden w-full bg-black/90" ref={sectionRef}>
       <div className="py-16 md:py-24">
         <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
                           isVisible ? "animate-fade-in" : "opacity-0")}>
@@ -112,29 +107,18 @@ const ProjectsSection = () => {
           <IndustriesCarousel 
             activeIndustryIndex={activeIndustryIndex}
             setActiveIndustryIndex={setActiveIndustryIndex}
-            openIndustryDialog={handleOpenIndustryDialog}
           />
         </div>
         
         <div className="text-center mt-16 animate-fade-in px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="max-w-2xl mx-auto">
-            <p className="flex items-center justify-center gap-2 text-primary mb-8">
+            <p className="flex items-center justify-center gap-2 text-[#009fe3] mb-8">
               <LightbulbIcon className="h-5 w-5" />
               <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
             </p>
           </div>
         </div>
       </div>
-      
-      {industryItems.map((industry, index) => (
-        <IndustryDialog 
-          key={index}
-          industry={industry}
-          eventTypes={eventTypes}
-          isOpen={openIndustryDialog === industry.title}
-          onClose={() => setOpenIndustryDialog(null)}
-        />
-      ))}
     </section>
   );
 };

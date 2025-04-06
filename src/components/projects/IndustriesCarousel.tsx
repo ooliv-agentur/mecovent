@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
@@ -15,13 +16,11 @@ import {
 interface IndustriesCarouselProps {
   activeIndustryIndex: number;
   setActiveIndustryIndex: (index: number) => void;
-  openIndustryDialog: (title: string) => void;
 }
 
 const IndustriesCarousel = ({ 
   activeIndustryIndex, 
-  setActiveIndustryIndex, 
-  openIndustryDialog 
+  setActiveIndustryIndex 
 }: IndustriesCarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -40,8 +39,18 @@ const IndustriesCarousel = ({
     }
   }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
+  // Background images for each industry
+  const backgroundImages = [
+    "url('/lovable-uploads/c6123f97-a095-47a6-a6c5-3f5ffda701ef.png')",
+    "url('/lovable-uploads/5869c2e4-85a2-474b-87bc-d34a4bfa1333.png')",
+    "url('/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png')",
+    "url('/lovable-uploads/9c383b79-a81a-4ef0-9b54-92ca8574730b.png')",
+    "url('/lovable-uploads/6c7a46dc-0619-44be-9103-39face95ca30.png')",
+    "url('/lovable-uploads/90ff0323-484c-49bd-a8b7-afa998d4c6b7.png')"
+  ];
+
   return (
-    <div>
+    <div className="relative w-full">
       <div className="relative mt-8">
         <div 
           className="h-[600px] overflow-y-auto snap-y snap-mandatory scrollbar-hide scroll-smooth" 
@@ -56,22 +65,23 @@ const IndustriesCarousel = ({
                 "h-[600px] snap-start snap-always w-full relative flex flex-col items-center justify-center",
                 "transition-opacity duration-700 ease-in-out"
               )}
-              onClick={() => openIndustryDialog(industry.title)}
             >
               <div 
                 className={cn(
-                  "absolute inset-0 transition-opacity duration-700",
+                  "absolute inset-0 transition-opacity duration-700 bg-cover bg-center",
                   industryRefs[index].inView ? "opacity-100" : "opacity-0"
                 )}
                 style={{
-                  background: getIndustryGradient(index),
+                  backgroundImage: backgroundImages[index % backgroundImages.length],
                 }}
-              />
+              >
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+              </div>
               
               <div 
                 className={cn(
                   "relative z-10 max-w-2xl mx-auto p-8 rounded-xl transition-all duration-700",
-                  "backdrop-blur-sm bg-background/70 shadow-2xl border border-primary/10",
+                  "backdrop-blur-sm bg-background/40 shadow-2xl border border-white/10",
                   industryRefs[index].inView 
                     ? "opacity-100 scale-100 translate-y-0" 
                     : "opacity-0 scale-95 translate-y-8"
@@ -83,16 +93,16 @@ const IndustriesCarousel = ({
                 
                 <h3 className={cn(
                   "text-3xl font-bold text-center mb-4 transition-colors duration-300",
-                  industryRefs[index].inView ? "text-primary" : "text-foreground"
+                  industryRefs[index].inView ? "text-[#009fe3]" : "text-white"
                 )}>
                   {industry.title}
                 </h3>
                 
-                <p className="text-lg text-center text-foreground/80 mb-6">
+                <p className="text-lg text-center text-white/90 mb-6">
                   {industry.description}
                 </p>
                 
-                <div className="text-sm text-center text-foreground/60">
+                <div className="text-sm text-center text-white/80">
                   {industry.details}
                 </div>
               </div>
@@ -101,9 +111,9 @@ const IndustriesCarousel = ({
                 "absolute pointer-events-none transition-all duration-1000",
                 industryRefs[index].inView ? "opacity-60 scale-100" : "opacity-0 scale-50"
               )}>
-                <div className="absolute top-20 left-[15%] w-16 h-16 bg-primary/20 rounded-full blur-xl animate-pulse" />
-                <div className="absolute top-40 right-[20%] w-24 h-24 bg-primary/30 rounded-full blur-xl animate-pulse delay-300" />
-                <div className="absolute bottom-20 left-[25%] w-20 h-20 bg-primary/20 rounded-full blur-xl animate-pulse delay-700" />
+                <div className="absolute top-20 left-[15%] w-16 h-16 bg-[#009fe3]/20 rounded-full blur-xl animate-pulse" />
+                <div className="absolute top-40 right-[20%] w-24 h-24 bg-[#009fe3]/30 rounded-full blur-xl animate-pulse delay-300" />
+                <div className="absolute bottom-20 left-[25%] w-20 h-20 bg-[#009fe3]/20 rounded-full blur-xl animate-pulse delay-700" />
               </div>
             </div>
           ))}
@@ -117,7 +127,7 @@ const IndustriesCarousel = ({
           />
         </div>
         
-        <div className="absolute bottom-4 left-0 right-0 text-center text-primary/80 animate-bounce text-sm">
+        <div className="absolute bottom-4 left-0 right-0 text-center text-white/80 animate-bounce text-sm">
           <span>Weiterscrollen</span>
         </div>
       </div>
@@ -125,31 +135,18 @@ const IndustriesCarousel = ({
   );
 };
 
-const getIndustryGradient = (index: number): string => {
-  const grayGradients = [
-    'linear-gradient(135deg, rgba(246, 246, 247, 0.9) 0%, rgba(232, 232, 234, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(242, 242, 242, 0.9) 0%, rgba(227, 227, 227, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(238, 238, 238, 0.9) 0%, rgba(222, 222, 222, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(235, 235, 237, 0.9) 0%, rgba(218, 218, 220, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(240, 240, 242, 0.9) 0%, rgba(224, 224, 226, 0.9) 100%)',
-    'linear-gradient(135deg, rgba(244, 244, 246, 0.9) 0%, rgba(229, 229, 231, 0.9) 100%)'
-  ];
-  
-  return grayGradients[index % grayGradients.length];
-};
-
 const getIndustryIcon = (index: number) => {
   const iconMap = [
-    <Pill className="w-8 h-8 text-primary/80" />,
-    <Car className="w-8 h-8 text-primary/80" />,
-    <Beaker className="w-8 h-8 text-primary/80" />,
-    <Building2 className="w-8 h-8 text-primary/80" />,
-    <Cpu className="w-8 h-8 text-primary/80" />,
-    <GraduationCap className="w-8 h-8 text-primary/80" />
+    <Pill className="w-8 h-8 text-[#009fe3]" />,
+    <Car className="w-8 h-8 text-[#009fe3]" />,
+    <Beaker className="w-8 h-8 text-[#009fe3]" />,
+    <Building2 className="w-8 h-8 text-[#009fe3]" />,
+    <Cpu className="w-8 h-8 text-[#009fe3]" />,
+    <GraduationCap className="w-8 h-8 text-[#009fe3]" />
   ];
   
   return (
-    <div className="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full">
+    <div className="w-16 h-16 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-full border border-white/20">
       {iconMap[index % iconMap.length]}
     </div>
   );

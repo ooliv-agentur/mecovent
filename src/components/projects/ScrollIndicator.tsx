@@ -25,9 +25,9 @@ const ScrollIndicator = ({ active, total, orientation = 'horizontal' }: ScrollIn
               ? "h-12 w-1.5" // Vertical orientation
               : "h-1.5 w-full", // Horizontal orientation
             i === active 
-              ? isVertical ? "bg-primary h-12" : "w-8 bg-primary"
+              ? isVertical ? "bg-[#009fe3] h-12" : "w-8 bg-[#009fe3]"
               : i < active 
-                ? isVertical ? "bg-primary/60 h-8" : "w-3 bg-primary/60"
+                ? isVertical ? "bg-[#009fe3]/60 h-8" : "w-3 bg-[#009fe3]/60"
                 : isVertical ? "bg-muted-foreground/30 h-4" : "w-2 bg-muted-foreground/30"
           )}
           style={{
