@@ -123,16 +123,16 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
             transform: "rotateY(180deg)"
           }}
         >
-          <CardHeader className="pb-2 border-b border-primary/10">
+          <CardHeader className="pb-2 border-b border-primary/10 text-left">
             <CardTitle className="text-xl font-semibold text-primary flex items-center gap-2">
-              <div className="w-6 h-6 flex items-center justify-center text-primary/40 opacity-70">
+              <div className="w-6 h-6 flex items-center justify-center text-primary/40 opacity-70 mr-2">
                 {icon}
               </div>
               <span>{title}</span>
             </CardTitle>
           </CardHeader>
           
-          <CardContent className="flex-1 flex flex-col pt-4">
+          <CardContent className="flex-1 flex flex-col pt-4 text-left">
             <div className="text-sm text-foreground/80 leading-relaxed mb-4">
               {details}
             </div>
