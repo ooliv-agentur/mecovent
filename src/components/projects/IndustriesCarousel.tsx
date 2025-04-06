@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
@@ -39,10 +38,9 @@ const IndustriesCarousel = ({
     }
   }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
-  // Updated background images with the correct paths
   const backgroundImages = [
     "/lovable-uploads/e8ff3d2b-2cdb-410f-8f87-23a186090341.png", // Pharma (new image)
-    "/lovable-uploads/f96cfe76-e28d-402a-afd5-8f5566e58f26.png", // Automobil
+    "/lovable-uploads/43952276-1e56-4b27-8b37-0f0b1fb8b29f.png", // Automobil (new image)
     "/lovable-uploads/f42cbebc-c74e-4b93-9a1a-c3eb0acf6f8d.png", // Chemie
     "/lovable-uploads/c9b2e2a9-70cf-4e8c-ab1e-1414c4b0fc1a.png", // Finanz
     "/lovable-uploads/5f36e3f9-0c67-4b45-b5a7-3b9f6d6d7c7b.png", // Technologie
