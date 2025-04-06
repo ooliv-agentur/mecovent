@@ -73,27 +73,32 @@ const IndustriesCarousel = ({
                 )}
                 style={{ overflow: "hidden" }}
               >
-                {/* Direct image display without picture element to avoid any browser optimization */}
-                <img 
-                  src={backgroundImages[index]}
-                  alt={industry.title}
-                  className="absolute inset-0 w-full h-full"
-                  style={{
-                    objectFit: "cover",
-                    objectPosition: "center",
-                    maxWidth: "none",
-                    width: "100%",
-                    height: "100%",
-                    display: "block"
-                  }}
-                  loading="eager"
-                  decoding="sync"
-                />
+                {/* High-quality image implementation with srcSet for retina displays */}
+                <picture>
+                  <source 
+                    srcSet={`${backgroundImages[index]} 1x, ${backgroundImages[index]} 2x`}
+                    type="image/png"
+                  />
+                  <img 
+                    src={backgroundImages[index]}
+                    alt={industry.title}
+                    className="absolute inset-0 w-full h-full"
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: "center",
+                      maxWidth: "none",
+                      width: "100%",
+                      height: "100%",
+                      display: "block"
+                    }}
+                    loading="eager"
+                    decoding="sync"
+                  />
+                </picture>
                 
-                {/* Separate overlay div that doesn't affect the image rendering */}
+                {/* Reduced opacity overlay without blur effect */}
                 <div 
-                  className="absolute inset-0 bg-black/30" 
-                  style={{ backdropFilter: "blur(2px)" }}
+                  className="absolute inset-0 bg-gradient-to-t from-black/40 to-black/15"
                 ></div>
               </div>
               
@@ -130,9 +135,10 @@ const IndustriesCarousel = ({
                 "absolute pointer-events-none transition-all duration-1000",
                 industryRefs[index].inView ? "opacity-60 scale-100" : "opacity-0 scale-50"
               )}>
-                <div className="absolute top-20 left-[15%] w-16 h-16 bg-[#009fe3]/20 rounded-full blur-xl animate-pulse" />
-                <div className="absolute top-40 right-[20%] w-24 h-24 bg-[#009fe3]/30 rounded-full blur-xl animate-pulse delay-300" />
-                <div className="absolute bottom-20 left-[25%] w-20 h-20 bg-[#009fe3]/20 rounded-full blur-xl animate-pulse delay-700" />
+                {/* Reduced blur strength on decorative elements */}
+                <div className="absolute top-20 left-[15%] w-16 h-16 bg-[#009fe3]/15 rounded-full blur-sm animate-pulse" />
+                <div className="absolute top-40 right-[20%] w-24 h-24 bg-[#009fe3]/20 rounded-full blur-sm animate-pulse delay-300" />
+                <div className="absolute bottom-20 left-[25%] w-20 h-20 bg-[#009fe3]/15 rounded-full blur-sm animate-pulse delay-700" />
               </div>
             </div>
           ))}

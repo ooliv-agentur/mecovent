@@ -96,20 +96,17 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Enable smooth scrolling */
   html {
     scroll-behavior: smooth;
   }
   
-  /* Ensure headings have proper line height and wrap correctly */
   h1, h2, h3, h4, h5, h6 {
     word-break: break-word !important;
     overflow-wrap: break-word !important;
-    padding-bottom: 4px; /* Add padding to the bottom to prevent clipping */
+    padding-bottom: 4px;
   }
 }
 
-/* Custom styles */
 @layer components {
   .container-section {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
@@ -140,7 +137,6 @@
   }
 }
 
-/* Custom animations */
 @keyframes bounce-x {
   0%, 100% {
     transform: translateX(0);
@@ -167,12 +163,10 @@
   animation: bounce-y 2s ease-in-out infinite;
 }
 
-/* Navbar transition */
 header {
   transition: transform 0.3s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Flip card animations */
 .flip-card-container {
   perspective: 1000px;
 }
@@ -207,32 +201,29 @@ header {
   backface-visibility: hidden;
 }
 
-/* Improve tag display in flip cards */
 .flip-card-back .badge {
   max-width: 100%;
   overflow-wrap: break-word;
   word-break: break-word;
 }
 
-/* Hide scrollbar but keep scrolling functionality */
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari and Opera */
+  display: none;  
 }
 
-/* Scroll snap styles */
 .scroll-snap-align-center {
   scroll-snap-align: center;
 }
 
-/* High-resolution image optimization */
 .high-res-image {
-  image-rendering: -webkit-optimize-contrast;  /* For WebKit browsers */
-  image-rendering: crisp-edges;
-  -webkit-backface-visibility: hidden;  /* Fix for any transformation issues */
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
 }
