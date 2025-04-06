@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
@@ -38,13 +39,14 @@ const IndustriesCarousel = ({
     }
   }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
+  // Updated image array with optimized images and new Bildung image
   const backgroundImages = [
     "/lovable-uploads/e8ff3d2b-2cdb-410f-8f87-23a186090341.png", // Pharma (new image)
     "/lovable-uploads/43952276-1e56-4b27-8b37-0f0b1fb8b29f.png", // Automobil (new image)
     "/lovable-uploads/fea35b42-ca42-4504-99e8-b3dff4088edc.png", // Chemie (new image)
     "/lovable-uploads/ace534d0-d95e-41f7-b18a-f0801e6112e4.png", // Finanz (new image)
     "/lovable-uploads/9a28bc3c-dfc5-4caa-b4e5-1bfcc9df1300.png", // Technologie (new image)
-    "/lovable-uploads/2d9cd6fe-9c00-4c44-b10a-0f3e0cd5c51c.png"  // Bildung
+    "/lovable-uploads/ecbea725-c04b-4c4c-afb2-345526a4f4d7.png"  // Bildung (new image)
   ];
 
   return (
@@ -71,6 +73,9 @@ const IndustriesCarousel = ({
                 )}
                 style={{
                   backgroundImage: `url(${backgroundImages[index]})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  imageRendering: 'high-quality'
                 }}
               >
                 <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
