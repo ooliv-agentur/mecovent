@@ -44,11 +44,14 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background selection:bg-primary/20">
       <Navigation />
-      <main>
+      <main className="relative">
         <HeroSection />
         <WhyMecovent />
         <ServicesSection />
+        {/* No spacing added here to allow smooth transition */}
         <ProjectsSection />
+        {/* Adjust top padding to remove gap */}
+        <div className="py-8" /> {/* Small spacer */}
         <EventTypesSection />
         <TestimonialsSection />
         <ContactSection />

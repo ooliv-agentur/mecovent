@@ -19,7 +19,7 @@ const ScrollIndicator = ({
   
   return (
     <div className={cn(
-      "flex gap-1.5",
+      "flex gap-2",
       isVertical ? "flex-col items-center" : "items-center justify-center"
     )}>
       {Array.from({ length: total }).map((_, i) => (
@@ -34,7 +34,7 @@ const ScrollIndicator = ({
               ? isVertical ? "bg-primary h-12" : "w-12 bg-primary"
               : i < active 
                 ? isVertical ? "bg-primary/60 h-8" : "w-8 bg-primary/60"
-                : isVertical ? "bg-muted-foreground/30 h-4" : "w-4 bg-muted-foreground/30"
+                : isVertical ? "bg-muted-foreground/40 h-4" : "w-4 bg-muted-foreground/40"
           )}
           style={{
             transitionDelay: `${Math.abs(i - active) * 40}ms`

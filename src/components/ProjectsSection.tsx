@@ -71,7 +71,10 @@ const ProjectsSection = () => {
           
           // Release sticky mode after viewing all industries
           if (newIndex === industryItems.length - 1 && deltaY > 0) {
-            setHasScrolled(true);
+            // Wait a bit before allowing scroll to continue
+            setTimeout(() => {
+              setHasScrolled(true);
+            }, 800);
           }
         }, 800);
       } else if (newIndex === industryItems.length - 1 && deltaY > 0) {
@@ -92,14 +95,14 @@ const ProjectsSection = () => {
   };
 
   // Define the correct height for the section to prevent scroll issues
-  // This ensures proper spacing between sections when not in sticky mode
-  const sectionHeight = `${Math.max(industryItems.length * 100, 150)}vh`;
+  // Reduced the section height to minimize the gap between sections
+  const sectionHeight = `${Math.max(industryItems.length * 80, 120)}vh`;
 
   return (
     <section 
       id="projects" 
       ref={sectionRef}
-      className="relative w-full bg-secondary/10 mb-32" 
+      className="relative w-full bg-secondary/10 mb-0" 
       style={{ height: sectionHeight }}
     >
       {/* Header content - this stays in position and doesn't become sticky */}
