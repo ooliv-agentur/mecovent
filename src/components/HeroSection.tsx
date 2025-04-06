@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
@@ -11,39 +12,29 @@ const HeroSection = () => {
       // Force any ongoing scroll to stop
       window.scrollTo(window.scrollX, window.scrollY);
       
-      // Get positions
-      const startY = window.scrollY || document.documentElement.scrollTop;
+      // Get the section tag element specifically
+      const sectionTag = targetSection.querySelector('.section-tag');
       
       // Get the navigation height
       const navHeight = document.querySelector('nav')?.offsetHeight || 0;
       
-      // Get the exact position for the "ÜBER UNS" heading to be at the top
-      // We need to be more precise with our targeting
-      const targetY = targetSection.offsetTop - navHeight - 20; // Adding extra offset to match screenshot
-      const distance = targetY - startY;
+      // Calculate exact position - we need to target the section tag element
+      // Important: Check if smooth scrolling from CSS is interfering
+      const targetY = targetSection.offsetTop - navHeight;
       
-      // Animation settings - keep it fast but smooth
-      const duration = 600;
-      let startTime = null;
+      // Override any CSS smooth scrolling that might interfere
+      document.documentElement.style.scrollBehavior = 'auto';
       
-      // Animation function with easing
-      function animation(currentTime: number) {
-        if (startTime === null) startTime = currentTime;
-        const elapsedTime = currentTime - startTime;
-        const progress = Math.min(elapsedTime / duration, 1);
-        
-        // Easing function - smoother easeOutQuad
-        const ease = 1 - Math.pow(1 - progress, 2);
-        
-        window.scrollTo(0, startY + distance * ease);
-        
-        if (elapsedTime < duration) {
-          requestAnimationFrame(animation);
-        }
-      }
+      // Immediate scroll to exact position
+      window.scrollTo({
+        top: targetY,
+        behavior: 'auto'
+      });
       
-      // Start animation
-      requestAnimationFrame(animation);
+      // Restore smooth scrolling
+      setTimeout(() => {
+        document.documentElement.style.scrollBehavior = '';
+      }, 100);
     }
   };
 

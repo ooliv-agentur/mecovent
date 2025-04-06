@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -96,9 +97,9 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Smooth scrolling */
+  /* Disable smooth scrolling that could interfere with our manual scroll */
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto !important;
   }
   
   /* Ensure headings have proper line height and wrap correctly */
