@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Clock, 
@@ -150,7 +151,6 @@ const EventTypesSection = () => {
                 )}
                 style={{ 
                   perspective: "1000px",
-                  // Staffelung der Animationen basierend auf dem Index
                   transitionDelay: `${index * 100}ms`
                 }}
                 onClick={() => handleFlipCard(index)}
@@ -175,10 +175,13 @@ const EventTypesSection = () => {
                     className={cn(
                       "flip-card-front absolute w-full h-full backface-hidden border-0 shadow-lg",
                       isFlipped ? "" : "hover:shadow-xl",
-                      "bg-gradient-to-br from-[#009fe3] to-[#0087c0] text-white"
+                      "bg-gradient-to-br from-[#009fe3] to-[#0087c0] text-white",
+                      // Smooth transition for hover effect
+                      "transition-all duration-300 ease-in-out"
                     )}
                     style={{
-                      backfaceVisibility: "hidden"
+                      backfaceVisibility: "hidden",
+                      transform: isHovered ? "scale(1.02)" : "scale(1)"
                     }}
                   >
                     <CardHeader>
@@ -192,11 +195,11 @@ const EventTypesSection = () => {
                       </div>
                       
                       <div className="flex flex-col items-center text-center">
-                        {/* Zentral platziertes Icon mit Animation beim Hover */}
+                        {/* Zentral platziertes Icon mit sanfter Übergangsanimation */}
                         <div 
                           className={cn(
-                            "w-24 h-24 rounded-full bg-white/10 flex items-center justify-center mb-5 transition-all duration-300",
-                            isHovered ? "scale-110 bg-white/20" : ""
+                            "w-24 h-24 rounded-full bg-white/10 flex items-center justify-center mb-5 transition-all duration-300 ease-in-out",
+                            isHovered ? "bg-white/20" : ""
                           )}
                         >
                           {eventIcons[index]}
@@ -270,3 +273,4 @@ const EventTypesSection = () => {
 };
 
 export default EventTypesSection;
+
