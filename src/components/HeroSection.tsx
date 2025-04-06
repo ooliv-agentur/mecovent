@@ -9,32 +9,17 @@ const HeroSection = () => {
     // Find the "why-mecovent" section specifically
     const targetSection = document.getElementById('why-mecovent');
     if (targetSection) {
-      // Force any ongoing scroll to stop
-      window.scrollTo(window.scrollX, window.scrollY);
-      
-      // Get the section tag element specifically
-      const sectionTag = targetSection.querySelector('.section-tag');
-      
       // Get the navigation height
       const navHeight = document.querySelector('nav')?.offsetHeight || 0;
       
-      // Calculate exact position - we need to target the section tag element
-      // Important: Check if smooth scrolling from CSS is interfering
+      // Calculate exact position
       const targetY = targetSection.offsetTop - navHeight;
       
-      // Override any CSS smooth scrolling that might interfere
-      document.documentElement.style.scrollBehavior = 'auto';
-      
-      // Immediate scroll to exact position
+      // Smooth scroll to the target position
       window.scrollTo({
         top: targetY,
-        behavior: 'auto'
+        behavior: 'smooth'
       });
-      
-      // Restore smooth scrolling
-      setTimeout(() => {
-        document.documentElement.style.scrollBehavior = '';
-      }, 100);
     }
   };
 
