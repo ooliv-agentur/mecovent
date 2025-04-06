@@ -84,7 +84,7 @@ const ProjectsSection = () => {
   }, [isVisible, activeIndustryIndex, scrollLocked, hasScrolled]);
 
   return (
-    <section id="projects" className="relative overflow-hidden w-full bg-gray-100" ref={sectionRef}>
+    <section id="projects" className="relative overflow-hidden w-full bg-white" ref={sectionRef}>
       <div className="py-16 md:py-24">
         <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
                           isVisible ? "animate-fade-in" : "opacity-0")}>

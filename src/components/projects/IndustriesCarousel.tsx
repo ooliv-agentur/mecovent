@@ -39,14 +39,14 @@ const IndustriesCarousel = ({
     }
   }, [industryRefs.map(ref => ref.inView), setActiveIndustryIndex]);
 
-  // Updated background images for each industry with the latest uploaded images
+  // Updated background images with the correct paths
   const backgroundImages = [
-    "url('/lovable-uploads/7d6eb5a9-2303-42fc-9271-d5b7b1d7e471.png')", // Pharma
-    "url('/lovable-uploads/f96cfe76-e28d-402a-afd5-8f5566e58f26.png')", // Automobil
-    "url('/lovable-uploads/f42cbebc-c74e-4b93-9a1a-c3eb0acf6f8d.png')", // Chemie
-    "url('/lovable-uploads/c9b2e2a9-70cf-4e8c-ab1e-1414c4b0fc1a.png')", // Finanz
-    "url('/lovable-uploads/5f36e3f9-0c67-4b45-b5a7-3b9f6d6d7c7b.png')", // Technologie
-    "url('/lovable-uploads/2d9cd6fe-9c00-4c44-b10a-0f3e0cd5c51c.png')"  // Bildung
+    "/lovable-uploads/7d6eb5a9-2303-42fc-9271-d5b7b1d7e471.png", // Pharma
+    "/lovable-uploads/f96cfe76-e28d-402a-afd5-8f5566e58f26.png", // Automobil
+    "/lovable-uploads/f42cbebc-c74e-4b93-9a1a-c3eb0acf6f8d.png", // Chemie
+    "/lovable-uploads/c9b2e2a9-70cf-4e8c-ab1e-1414c4b0fc1a.png", // Finanz
+    "/lovable-uploads/5f36e3f9-0c67-4b45-b5a7-3b9f6d6d7c7b.png", // Technologie
+    "/lovable-uploads/2d9cd6fe-9c00-4c44-b10a-0f3e0cd5c51c.png"  // Bildung
   ];
 
   return (
@@ -72,7 +72,7 @@ const IndustriesCarousel = ({
                   industryRefs[index].inView ? "opacity-100" : "opacity-0"
                 )}
                 style={{
-                  backgroundImage: backgroundImages[index],
+                  backgroundImage: `url(${backgroundImages[index]})`,
                 }}
               >
                 <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
