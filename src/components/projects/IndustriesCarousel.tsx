@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
@@ -44,7 +45,7 @@ const IndustriesCarousel = ({
     "/lovable-uploads/fea35b42-ca42-4504-99e8-b3dff4088edc.png", // Chemie (new image)
     "/lovable-uploads/ace534d0-d95e-41f7-b18a-f0801e6112e4.png", // Finanz (new image)
     "/lovable-uploads/9a28bc3c-dfc5-4caa-b4e5-1bfcc9df1300.png", // Technologie (new image)
-    "/lovable-uploads/ecbea725-c04b-4c4c-afb2-345526a4f4d7.png"  // Bildung (new image)
+    "/lovable-uploads/e7c6685c-c5c7-4909-9502-dc03749ac872.png"  // Bildung (upscaled new image)
   ];
 
   return (
