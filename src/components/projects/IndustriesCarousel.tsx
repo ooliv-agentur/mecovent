@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
 import { industryItems } from './data';
 import ScrollIndicator from './ScrollIndicator';
@@ -23,8 +23,6 @@ const IndustriesCarousel = ({
   setActiveIndustryIndex, 
   openIndustryDialog 
 }: IndustriesCarouselProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
   // Handle manual navigation using the scroll indicator
   const handleIndicatorClick = (index: number) => {
     setActiveIndustryIndex(index);
@@ -33,23 +31,20 @@ const IndustriesCarousel = ({
   return (
     <div className="h-full w-full flex items-center justify-center">
       <div className="relative w-full h-full">
-        <div 
-          className="h-full w-full snap-y snap-mandatory overflow-hidden" 
-          ref={containerRef}
-        >
+        <div className="h-full w-full overflow-hidden">
           {industryItems.map((industry, index) => (
             <div 
               key={index}
               className={cn(
                 "h-screen w-full flex flex-col items-center justify-center",
-                "transition-all duration-700 ease-in-out absolute inset-0",
+                "transition-all duration-500 ease-in-out absolute inset-0",
                 activeIndustryIndex === index ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
               )}
               onClick={() => openIndustryDialog(industry.title)}
             >
               <div 
                 className={cn(
-                  "absolute inset-0 transition-opacity duration-700",
+                  "absolute inset-0 transition-opacity duration-500",
                   "opacity-100"
                 )}
                 style={{
@@ -59,7 +54,7 @@ const IndustriesCarousel = ({
               
               <div 
                 className={cn(
-                  "relative z-10 max-w-3xl mx-auto p-8 rounded-xl transition-all duration-700",
+                  "relative z-10 max-w-3xl mx-auto p-8 rounded-xl transition-all duration-500",
                   "backdrop-blur-sm bg-background/70 shadow-2xl border border-primary/10",
                   "opacity-100 scale-100 translate-y-0"
                 )}

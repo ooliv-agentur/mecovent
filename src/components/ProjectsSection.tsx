@@ -12,31 +12,33 @@ const ProjectsSection = () => {
   
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const [scrollLocked, setScrollLocked] = useState(false);
   const [stickyActive, setStickyActive] = useState(false);
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Use a more precise scroll observation
+  // Track scroll direction and position
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
       
       const rect = sectionRef.current.getBoundingClientRect();
-      const isInView = rect.top <= window.innerHeight && rect.bottom >= 0;
-      const isCentered = rect.top <= 0 && rect.bottom >= window.innerHeight;
+      const scrollY = window.scrollY;
       
-      // Determine if section should be visible
-      setIsVisible(isInView);
+      // Determine scroll direction
+      const newScrollDirection = scrollY > lastScrollY ? 'down' : 'up';
+      setScrollDirection(newScrollDirection);
+      setLastScrollY(scrollY);
       
-      // Set sticky when scrolled into view
-      if (isCentered && !hasScrolled) {
+      // Set visibility based on being in viewport
+      setIsVisible(rect.top <= window.innerHeight && rect.bottom >= 0);
+      
+      // Set sticky state based on position
+      // Enter sticky mode when the section top reaches the viewport top
+      if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
         setStickyActive(true);
-      } else if (rect.top > 0) {
-        // Reset when scrolling back up past the section
-        setStickyActive(false);
-        setHasScrolled(false);
-      } else if (hasScrolled && activeIndustryIndex >= industryItems.length - 1) {
-        // Release sticky when we've scrolled through all items
+      } 
+      // Exit sticky mode when scrolled past the section or back above it
+      else if (rect.bottom < window.innerHeight || rect.top > 0) {
         setStickyActive(false);
       }
     };
@@ -46,40 +48,30 @@ const ProjectsSection = () => {
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeIndustryIndex, hasScrolled]);
+  }, [lastScrollY]);
 
   // Handle wheel events for controlling the carousel
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      if (!isVisible || scrollLocked || !stickyActive) return;
+      if (!isVisible || !stickyActive) return;
       
+      // Determine scroll direction and delta
       const deltaY = e.deltaY;
       
       // Change industry based on scroll direction
-      const newIndex = deltaY > 0 
-        ? Math.min(activeIndustryIndex + 1, industryItems.length - 1)
-        : Math.max(activeIndustryIndex - 1, 0);
+      let newIndex = activeIndustryIndex;
+      
+      if (deltaY > 0) {
+        // Scrolling down - go to next industry
+        newIndex = Math.min(activeIndustryIndex + 1, industryItems.length - 1);
+      } else {
+        // Scrolling up - go to previous industry
+        newIndex = Math.max(activeIndustryIndex - 1, 0);
+      }
       
       if (newIndex !== activeIndustryIndex) {
         e.preventDefault();
-        
-        setScrollLocked(true);
         setActiveIndustryIndex(newIndex);
-        
-        setTimeout(() => {
-          setScrollLocked(false);
-          
-          // Release sticky mode after viewing all industries
-          if (newIndex === industryItems.length - 1 && deltaY > 0) {
-            // Wait a bit before allowing scroll to continue
-            setTimeout(() => {
-              setHasScrolled(true);
-            }, 600); // Reduced from 800ms for a more responsive feel
-          }
-        }, 600); // Reduced from 800ms for a more responsive feel
-      } else if (newIndex === industryItems.length - 1 && deltaY > 0) {
-        // Allow scrolling to continue to next section when at the last industry
-        setHasScrolled(true);
       }
     };
     
@@ -88,15 +80,30 @@ const ProjectsSection = () => {
     return () => {
       window.removeEventListener('wheel', handleWheel);
     };
-  }, [isVisible, activeIndustryIndex, scrollLocked, hasScrolled, stickyActive]);
+  }, [isVisible, activeIndustryIndex, stickyActive]);
+
+  // Update carousel index based on scroll direction when sticky
+  useEffect(() => {
+    if (stickyActive && scrollDirection === 'up' && activeIndustryIndex > 0) {
+      // When scrolling up, we need to go back through the carousel items
+      const handleScrollUpChange = () => {
+        if (scrollDirection === 'up' && activeIndustryIndex > 0) {
+          setActiveIndustryIndex(prev => Math.max(prev - 1, 0));
+        }
+      };
+      
+      // Add a slight delay to make the navigation feel more natural
+      const timeout = setTimeout(handleScrollUpChange, 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [scrollDirection, stickyActive, activeIndustryIndex]);
 
   const handleOpenIndustryDialog = (title: string) => {
     setOpenIndustryDialog(title);
   };
 
-  // Adjusted height calculation to minimize gap
-  // Reduced the multiplier to make the section shorter
-  const sectionHeight = `${Math.max(industryItems.length * 60, 100)}vh`;
+  // Optimize section height to reduce white space
+  const sectionHeight = `${Math.max(industryItems.length * 70, 100)}vh`;
 
   return (
     <section 
@@ -124,11 +131,11 @@ const ProjectsSection = () => {
       {/* Carousel container - this is what becomes sticky */}
       <div 
         className={cn(
-          "w-full h-screen transition-all duration-500 z-10",
+          "w-full h-screen transition-all duration-300 z-10",
           stickyActive ? "sticky top-0" : "relative"
         )}
       >
-        <div className={cn("w-full h-full transition-opacity duration-700",
+        <div className={cn("w-full h-full transition-opacity duration-500",
                           isVisible ? "opacity-100" : "opacity-0")}>
           <IndustriesCarousel 
             activeIndustryIndex={activeIndustryIndex}
