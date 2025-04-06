@@ -58,7 +58,7 @@ const ServicesSection = () => {
       title: "Teilnehmermanagement", 
       description: "Einladung, Buchung & Betreuung", 
       icon: Users,
-      imageUrl: "/lovable-uploads/participant-management.jpg" 
+      imageUrl: "/lovable-uploads/5cefe1bc-f4db-41da-8076-6a902d7c71b5.png" 
     },
     { 
       title: "Veranstaltungstechnik", 
