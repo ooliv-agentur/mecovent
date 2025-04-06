@@ -5,6 +5,13 @@ import { Link, useLocation } from 'react-router-dom';
 const Footer = () => {
   const location = useLocation();
 
+  const handleLinkClick = (path: string, event: React.MouseEvent) => {
+    // If the link is to the current page, prevent default scrolling
+    if (location.pathname === path) {
+      event.preventDefault();
+    }
+  };
+
   const scrollToSection = (sectionId: string) => {
     // Check if we're already on the home page
     if (location.pathname === '/') {
@@ -83,21 +90,21 @@ const Footer = () => {
             <Link 
               to="/impressum" 
               className="hover:text-primary transition-colors"
-              onClick={() => window.scrollTo(0, 0)}
+              onClick={(e) => handleLinkClick('/impressum', e)}
             >
               Impressum
             </Link>
             <Link 
               to="/datenschutz" 
               className="hover:text-primary transition-colors"
-              onClick={() => window.scrollTo(0, 0)}
+              onClick={(e) => handleLinkClick('/datenschutz', e)}
             >
               Datenschutz
             </Link>
             <Link 
               to="/agb" 
               className="hover:text-primary transition-colors"
-              onClick={() => window.scrollTo(0, 0)}
+              onClick={(e) => handleLinkClick('/agb', e)}
             >
               AGB
             </Link>
