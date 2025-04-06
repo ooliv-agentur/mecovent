@@ -65,19 +65,20 @@ const IndustriesCarousel = ({
                 "transition-opacity duration-700 ease-in-out"
               )}
             >
+              {/* Use actual image element instead of background-image CSS */}
               <div 
                 className={cn(
                   "absolute inset-0 transition-opacity duration-700",
-                  "bg-cover bg-center will-change-transform",
                   industryRefs[index].inView ? "opacity-100" : "opacity-0"
                 )}
-                style={{
-                  backgroundImage: `url(${backgroundImages[index]})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  imageRendering: 'crisp-edges', // Valid TypeScript value
-                }}
               >
+                <img 
+                  src={backgroundImages[index]}
+                  alt={industry.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="eager"
+                  decoding="async"
+                />
                 <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
               </div>
               
