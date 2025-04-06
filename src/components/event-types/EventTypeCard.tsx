@@ -48,7 +48,7 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
   return (
     <div 
       className={cn(
-        "flip-card-container cursor-pointer h-[350px] transition-all duration-500",
+        "flip-card-container cursor-pointer h-[350px] transition-all duration-500 relative",
         isFlipped ? "is-flipped" : "",
       )}
       style={{ 
@@ -61,6 +61,17 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
       onTouchEnd={onTouchEnd}
       onTouchMove={onTouchMove}
     >
+      {/* Hint overlay with absolute positioning */}
+      {showHint && (
+        <div 
+          className="absolute top-4 right-4 z-10 text-xs text-white/80 flex items-center gap-1 bg-black/20 rounded-md px-2 py-1 animate-fade-in"
+          style={{ backdropFilter: "blur(8px)" }}
+        >
+          <RotateCw className="h-3.5 w-3.5 animate-spin-slow" />
+          <span>Klicken für Details</span>
+        </div>
+      )}
+      
       <div 
         className={cn(
           "flip-card relative w-full h-full transition-transform duration-500 transform-style-preserve-3d",
@@ -84,12 +95,7 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
         >
           <CardHeader>
             <div className="flex items-center justify-between mb-4">
-              {showHint && (
-                <div className="text-xs text-white/80 flex items-center gap-1 ml-auto">
-                  <RotateCw className="h-3.5 w-3.5 animate-spin-slow" />
-                  <span>Klicken für Details</span>
-                </div>
-              )}
+              {/* Removed the hint from here as it's now an overlay */}
             </div>
             
             <div className="flex flex-col items-center text-center">
@@ -157,3 +163,4 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
 };
 
 export default EventTypeCard;
+
