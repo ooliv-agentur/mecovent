@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Clock, 
@@ -10,7 +9,7 @@ import {
   Users,
   Building,
   PartyPopper,
-  Mountains
+  Mountain
 } from 'lucide-react';
 import { eventTypes } from './projects/data';
 import { cn } from '@/lib/utils';
@@ -51,7 +50,7 @@ const eventIcons = [
   <Users className="h-12 w-12 text-white/90" />, // Interaktive Workshops
   <Building className="h-12 w-12 text-white/90" />, // Firmen- & Mitarbeiterevents
   <PartyPopper className="h-12 w-12 text-white/90" />, // Galas & exklusive Abendveranstaltungen
-  <Mountains className="h-12 w-12 text-white/90" /> // Outdoor- & Teamevents
+  <Mountain className="h-12 w-12 text-white/90" /> // Outdoor- & Teamevents
 ];
 
 const EventTypesSection = () => {
