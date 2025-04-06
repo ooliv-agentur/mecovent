@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Phone, Mail } from 'lucide-react';
 
@@ -8,7 +7,13 @@ const Footer = () => {
       <div className="container mx-auto py-12 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <div className="font-bold text-2xl mb-4">[Logo]</div>
+            <div className="font-bold text-2xl mb-4">
+              <img 
+                src="/lovable-uploads/2315b43b-ca1a-4e3c-a0df-5834ea32e8a0.png" 
+                alt="MECOVENT Logo" 
+                className="h-10 object-contain"
+              />
+            </div>
             <p className="text-muted-foreground max-w-xs">
               Wir bringen Menschen zusammen – Meeting. Congress. Event.
             </p>
