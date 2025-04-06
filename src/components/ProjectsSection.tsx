@@ -1,225 +1,112 @@
+
 import React, { useState, useRef, useEffect } from 'react';
-import { LightbulbIcon } from 'lucide-react';
+import { LightbulbIcon, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import IndustryDialog from './projects/IndustryDialog';
 import { industryItems, eventTypes } from './projects/data';
-import IndustriesCarousel from './projects/IndustriesCarousel';
+import ScrollIndicator from './projects/ScrollIndicator';
+
+// Icons for each industry
+import { 
+  Pill, 
+  Car, 
+  Building2, 
+  Cpu, 
+  GraduationCap,
+  Beaker,
+  MousePointerClick,
+} from 'lucide-react';
 
 const ProjectsSection = () => {
-  const [activeIndustryIndex, setActiveIndustryIndex] = useState(0);
+  const [activeIndustryIndex, setActiveIndustryIndex] = useState<number | null>(null);
   const [openIndustryDialog, setOpenIndustryDialog] = useState<string | null>(null);
-  
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [stickyActive, setStickyActive] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [scrollLocked, setScrollLocked] = useState(false);
-  const [wheelEventCounter, setWheelEventCounter] = useState(0);
-  const wheelThreshold = 5; // Number of wheel events to accumulate before triggering a slide change
-  const isLastItem = activeIndustryIndex === industryItems.length - 1;
-
-  // Track scroll direction and position
+  const [activeIndicator, setActiveIndicator] = useState(0);
+  
+  // Handle intersection observer to highlight correct section in scroll indicator
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      
-      const rect = sectionRef.current.getBoundingClientRect();
-      const scrollY = window.scrollY;
-      
-      // Determine scroll direction
-      const newScrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-      if (newScrollDirection !== scrollDirection) {
-        setScrollDirection(newScrollDirection);
-      }
-      setLastScrollY(scrollY);
-      
-      // Set visibility based on being in viewport
-      const newVisibility = rect.top <= window.innerHeight && rect.bottom >= 0;
-      if (newVisibility !== isVisible) {
-        setIsVisible(newVisibility);
-      }
-      
-      // Set sticky state based on position
-      // If we're at the last item, don't set sticky to true if going down
-      const newStickyState = rect.top <= 0 && rect.bottom >= window.innerHeight;
-      if (newStickyState !== stickyActive) {
-        // If we're on the last slide and trying to scroll down, don't set sticky
-        if (isLastItem && newScrollDirection === 'down') {
-          setStickyActive(false);
-        } else {
-          setStickyActive(newStickyState);
-        }
-      }
-    };
-
-    // Initial check
-    handleScroll();
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, scrollDirection, isVisible, stickyActive, isLastItem]);
-
-  // Handle wheel events for controlling the carousel with improved sensitivity
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      // If we're at the last item and scrolling down, don't prevent default
-      if (isLastItem && e.deltaY > 0) {
-        // Allow normal scroll behavior to continue to next section
-        return;
-      }
-      
-      // Otherwise continue with normal carousel behavior
-      if (!isVisible || !stickyActive || scrollLocked) return;
-      
-      // Prevent the default scroll behavior when in sticky mode
-      e.preventDefault();
-      
-      // Accumulate wheel events to make scrolling less sensitive
-      if (e.deltaY > 0) {
-        // Scrolling down
-        setWheelEventCounter(prev => {
-          const newCount = prev + 1;
-          if (newCount >= wheelThreshold && activeIndustryIndex < industryItems.length - 1) {
-            // Move to next slide after reaching threshold
-            setScrollLocked(true);
-            setActiveIndustryIndex(activeIndustryIndex + 1);
-            
-            // Unlock scrolling after animation
-            setTimeout(() => {
-              setScrollLocked(false);
-            }, 600);
-            // Reset counter
-            return 0;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setActiveIndicator(index);
           }
-          return newCount;
         });
-      } else if (e.deltaY < 0) {
-        // Scrolling up
-        setWheelEventCounter(prev => {
-          const newCount = prev - 1;
-          if (newCount <= -wheelThreshold && activeIndustryIndex > 0) {
-            // Move to previous slide after reaching threshold
-            setScrollLocked(true);
-            setActiveIndustryIndex(activeIndustryIndex - 1);
-            
-            // Unlock scrolling after animation
-            setTimeout(() => {
-              setScrollLocked(false);
-            }, 600);
-            // Reset counter
-            return 0;
-          }
-          return newCount;
-        });
+      },
+      {
+        root: null,
+        rootMargin: "-50% 0px",
+        threshold: 0
       }
-    };
+    );
     
-    // Add the wheel event listener with passive: false to prevent default scrolling
-    const sectionElement = sectionRef.current;
-    if (sectionElement) {
-      sectionElement.addEventListener('wheel', handleWheel, { passive: false });
-    }
+    // Observe all industry cards
+    const industryCards = document.querySelectorAll('.industry-card');
+    industryCards.forEach(card => {
+      observer.observe(card);
+    });
     
     return () => {
-      if (sectionElement) {
-        sectionElement.removeEventListener('wheel', handleWheel);
-      }
+      industryCards.forEach(card => {
+        observer.unobserve(card);
+      });
     };
-  }, [isVisible, activeIndustryIndex, stickyActive, scrollLocked, wheelEventCounter, isLastItem]);
-
-  // Handle touch events for mobile scrolling with improved sensitivity
-  useEffect(() => {
-    let touchStartY = 0;
-    let touchMoveCounter = 0;
-    const touchThreshold = 50; // Pixels of movement required to trigger a slide change
-    
-    const handleTouchStart = (e: TouchEvent) => {
-      if (!isVisible || !stickyActive || scrollLocked) return;
-      touchStartY = e.touches[0].clientY;
-      touchMoveCounter = 0;
-    };
-    
-    const handleTouchMove = (e: TouchEvent) => {
-      // If we're at the last item and swiping up (negative touchDiff), don't prevent default
-      const touchCurrentY = e.touches[0].clientY;
-      const touchDiff = touchStartY - touchCurrentY;
-      
-      if (isLastItem && touchDiff > 0) {
-        // Allow normal scroll behavior to continue to next section
-        return;
-      }
-      
-      if (!isVisible || !stickyActive || scrollLocked) return;
-      
-      // Accumulate touch movement
-      touchMoveCounter += touchDiff;
-      
-      // Prevent default scrolling when in sticky mode
-      if (Math.abs(touchMoveCounter) > 10) {
-        e.preventDefault();
-      }
-      
-      // If threshold is reached, change slides
-      if (touchMoveCounter > touchThreshold) {
-        // Swiping down - move to next slide if not at end
-        if (activeIndustryIndex < industryItems.length - 1) {
-          setScrollLocked(true);
-          setActiveIndustryIndex(activeIndustryIndex + 1);
-          touchStartY = touchCurrentY; // Reset to prevent multiple triggers
-          touchMoveCounter = 0;
-          
-          // Unlock scrolling after animation
-          setTimeout(() => {
-            setScrollLocked(false);
-          }, 600);
-        }
-      } else if (touchMoveCounter < -touchThreshold) {
-        // Swiping up - move to previous slide if not at beginning
-        if (activeIndustryIndex > 0) {
-          setScrollLocked(true);
-          setActiveIndustryIndex(activeIndustryIndex - 1);
-          touchStartY = touchCurrentY; // Reset to prevent multiple triggers
-          touchMoveCounter = 0;
-          
-          // Unlock scrolling after animation
-          setTimeout(() => {
-            setScrollLocked(false);
-          }, 600);
-        }
-      }
-    };
-    
-    const sectionElement = sectionRef.current;
-    if (sectionElement) {
-      sectionElement.addEventListener('touchstart', handleTouchStart, { passive: true });
-      sectionElement.addEventListener('touchmove', handleTouchMove, { passive: false });
+  }, []);
+  
+  // Handle indicator click to scroll to the corresponding industry
+  const handleIndicatorClick = (index: number) => {
+    const industryCards = document.querySelectorAll('.industry-card');
+    if (industryCards[index]) {
+      industryCards[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    
-    return () => {
-      if (sectionElement) {
-        sectionElement.removeEventListener('touchstart', handleTouchStart);
-        sectionElement.removeEventListener('touchmove', handleTouchMove);
-      }
-    };
-  }, [isVisible, activeIndustryIndex, stickyActive, scrollLocked, isLastItem]);
+  };
 
+  // Handle opening industry dialog
   const handleOpenIndustryDialog = (title: string) => {
     setOpenIndustryDialog(title);
   };
 
-  // Calculate section height based on number of industries
-  const sectionHeight = `${Math.max(industryItems.length * 100, 100)}vh`;
+  // Get industry icon based on index
+  const getIndustryIcon = (index: number) => {
+    const iconMap = [
+      <Pill className="w-8 h-8 text-primary/80" />,
+      <Car className="w-8 h-8 text-primary/80" />,
+      <Beaker className="w-8 h-8 text-primary/80" />,
+      <Building2 className="w-8 h-8 text-primary/80" />,
+      <Cpu className="w-8 h-8 text-primary/80" />,
+      <GraduationCap className="w-8 h-8 text-primary/80" />
+    ];
+    
+    return (
+      <div className="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full">
+        {iconMap[index % iconMap.length]}
+      </div>
+    );
+  };
+
+  // Get industry gradient based on index
+  const getIndustryGradient = (index: number): string => {
+    const grayGradients = [
+      'linear-gradient(135deg, rgba(246, 246, 247, 0.9) 0%, rgba(232, 232, 234, 0.9) 100%)',
+      'linear-gradient(135deg, rgba(242, 242, 242, 0.9) 0%, rgba(227, 227, 227, 0.9) 100%)',
+      'linear-gradient(135deg, rgba(238, 238, 238, 0.9) 0%, rgba(222, 222, 222, 0.9) 100%)',
+      'linear-gradient(135deg, rgba(235, 235, 237, 0.9) 0%, rgba(218, 218, 220, 0.9) 100%)',
+      'linear-gradient(135deg, rgba(240, 240, 242, 0.9) 0%, rgba(224, 224, 226, 0.9) 100%)',
+      'linear-gradient(135deg, rgba(244, 244, 246, 0.9) 0%, rgba(229, 229, 231, 0.9) 100%)'
+    ];
+    
+    return grayGradients[index % grayGradients.length];
+  };
 
   return (
     <section 
       id="projects" 
       ref={sectionRef}
-      className="relative w-full bg-secondary/10" 
-      style={{ height: sectionHeight }}
+      className="relative w-full bg-secondary/10 py-20"
     >
-      {/* Header content - this stays in position and doesn't become sticky */}
-      <div className="text-center max-w-3xl mx-auto px-4 py-20">
+      {/* Header content */}
+      <div className="text-center max-w-3xl mx-auto px-4 pb-20">
         <div className="section-tag">Unsere Expertise</div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
           Mit Branchenverstand gestalten
@@ -232,35 +119,98 @@ const ProjectsSection = () => {
           wir verstehen, worauf es in Ihrer Branche ankommt.<br />
           So gestalten wir Events, die nicht nur passen – sondern wirken.
         </p>
+
+        {/* Down arrow scroll hint */}
+        <div className="mt-12 animate-bounce flex justify-center">
+          <ArrowDown className="h-8 w-8 text-primary/80" />
+        </div>
       </div>
       
-      {/* Carousel container - this is what becomes sticky */}
-      <div 
-        className={cn(
-          "w-full h-screen transition-all duration-300 z-10",
-          stickyActive && !isLastItem ? "sticky top-0" : "relative"
-        )}
-      >
-        <div className={cn("w-full h-full transition-opacity duration-500",
-                         isVisible ? "opacity-100" : "opacity-0")}>
-          <IndustriesCarousel 
-            activeIndustryIndex={activeIndustryIndex}
-            setActiveIndustryIndex={setActiveIndustryIndex}
-            openIndustryDialog={handleOpenIndustryDialog}
-            isLastItem={isLastItem}
-          />
-        </div>
-        
-        <div className="text-center mt-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="max-w-2xl mx-auto">
-            <p className="flex items-center justify-center gap-2 text-primary mb-4">
-              <LightbulbIcon className="h-5 w-5" />
-              <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
-            </p>
+      {/* Fixed scroll indicator */}
+      <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-20 bg-background/40 backdrop-blur-sm p-2 rounded-full shadow-md">
+        <ScrollIndicator 
+          active={activeIndicator} 
+          total={industryItems.length} 
+          orientation="vertical"
+          onIndicatorClick={handleIndicatorClick}
+          className="h-auto"
+        />
+      </div>
+      
+      {/* Industry cards in a vertical layout */}
+      <div className="max-w-4xl mx-auto px-4 space-y-32 mb-32">
+        {industryItems.map((industry, index) => (
+          <div 
+            key={index}
+            data-index={index}
+            className={cn(
+              "industry-card relative w-full flex flex-col items-center justify-center py-20",
+              "opacity-100 transition-all duration-700 animate-fade-in-up"
+            )}
+          >
+            <div 
+              className="absolute inset-0 -z-10 opacity-70 rounded-2xl"
+              style={{
+                background: getIndustryGradient(index),
+              }}
+            />
+            
+            <div 
+              className={cn(
+                "relative z-10 max-w-3xl mx-auto p-8 rounded-xl transition-all duration-500",
+                "backdrop-blur-sm bg-background/70 shadow-2xl border border-primary/10",
+                "group hover:shadow-primary/20 hover:border-primary/30 cursor-pointer"
+              )}
+              onClick={() => handleOpenIndustryDialog(industry.title)}
+              tabIndex={0}
+              role="button"
+              aria-label={`View details for ${industry.title}`}
+            >
+              <div className="flex justify-center mb-6">
+                {getIndustryIcon(index)}
+              </div>
+              
+              <h3 className="text-3xl font-bold text-center mb-4 transition-colors duration-300 text-primary">
+                {industry.title}
+              </h3>
+              
+              <p className="text-lg text-center text-foreground/80 mb-6">
+                {industry.description}
+              </p>
+              
+              <p className="text-sm text-center text-foreground/60">
+                {industry.details}
+              </p>
+              
+              {/* View Details hint */}
+              <div className="mt-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-2 text-primary text-sm">
+                  <MousePointerClick className="h-4 w-4" />
+                  <span>Für Details klicken</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Background elements */}
+            <div className="absolute pointer-events-none transition-all duration-1000 opacity-60">
+              <div className="absolute top-20 left-[15%] w-16 h-16 bg-primary/20 rounded-full blur-xl animate-pulse" />
+              <div className="absolute top-40 right-[20%] w-24 h-24 bg-primary/30 rounded-full blur-xl animate-pulse delay-300" />
+              <div className="absolute bottom-20 left-[25%] w-20 h-20 bg-primary/20 rounded-full blur-xl animate-pulse delay-700" />
+            </div>
           </div>
+        ))}
+      </div>
+      
+      <div className="text-center mt-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="max-w-2xl mx-auto">
+          <p className="flex items-center justify-center gap-2 text-primary mb-4">
+            <LightbulbIcon className="h-5 w-5" />
+            <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
+          </p>
         </div>
       </div>
       
+      {/* Industry dialogs */}
       {industryItems.map((industry, index) => (
         <IndustryDialog 
           key={index}

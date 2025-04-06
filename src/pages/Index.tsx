@@ -48,12 +48,8 @@ const Index = () => {
         <HeroSection />
         <WhyMecovent />
         <ServicesSection />
-        {/* Projects section with special scrolling behavior */}
         <ProjectsSection />
-        {/* Reduce the gap between ProjectsSection and EventTypesSection */}
-        <div className="mt-[-120px]"> 
-          <EventTypesSection />
-        </div>
+        <EventTypesSection />
         <TestimonialsSection />
         <ContactSection />
       </main>

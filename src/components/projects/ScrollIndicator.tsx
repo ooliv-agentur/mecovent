@@ -8,6 +8,7 @@ interface ScrollIndicatorProps {
   orientation?: 'horizontal' | 'vertical';
   onIndicatorClick?: (index: number) => void;
   isLastItem?: boolean;
+  className?: string;
 }
 
 const ScrollIndicator = ({ 
@@ -15,7 +16,8 @@ const ScrollIndicator = ({
   total, 
   orientation = 'horizontal',
   onIndicatorClick,
-  isLastItem = false
+  isLastItem = false,
+  className
 }: ScrollIndicatorProps) => {
   const isVertical = orientation === 'vertical';
   
@@ -23,7 +25,8 @@ const ScrollIndicator = ({
     <div className={cn(
       "flex gap-2 transition-opacity duration-300",
       isVertical ? "flex-col items-center" : "items-center justify-center",
-      isLastItem ? "opacity-30" : "opacity-100"
+      isLastItem ? "opacity-30" : "opacity-100",
+      className
     )}>
       {Array.from({ length: total }).map((_, i) => (
         <button 
