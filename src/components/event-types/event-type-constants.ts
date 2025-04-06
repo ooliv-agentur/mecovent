@@ -60,11 +60,12 @@ export const eventDescriptions = [
   "Gemeinsam wachsen, Natur erleben" // Outdoor- & Teamevents
 ];
 
-export const eventIcons = [
-  <Video className="h-12 w-12 text-white/90" />, // Wissenschaftliche Konferenzen
-  <Sparkles className="h-12 w-12 text-white/90" />, // Produktlaunches & Präsentationen
-  <Users className="h-12 w-12 text-white/90" />, // Interaktive Workshops
-  <Building className="h-12 w-12 text-white/90" />, // Firmen- & Mitarbeiterevents
-  <PartyPopper className="h-12 w-12 text-white/90" />, // Galas & exklusive Abendveranstaltungen
-  <Mountain className="h-12 w-12 text-white/90" /> // Outdoor- & Teamevents
+// Using an array of icon components instead of JSX elements directly
+export const eventIconComponents = [
+  Video,           // Wissenschaftliche Konferenzen
+  Sparkles,        // Produktlaunches & Präsentationen
+  Users,           // Interaktive Workshops
+  Building,        // Firmen- & Mitarbeiterevents
+  PartyPopper,     // Galas & exklusive Abendveranstaltungen
+  Mountain         // Outdoor- & Teamevents
 ];

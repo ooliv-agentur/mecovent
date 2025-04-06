@@ -10,7 +10,7 @@ import {
   eventTypes, 
   eventTags, 
   eventDescriptions, 
-  eventIcons 
+  eventIconComponents 
 } from './event-types/event-type-constants';
 
 const EventTypesSection = () => {
@@ -37,6 +37,7 @@ const EventTypesSection = () => {
             const isHovered = hoveredCardIndex === index;
             const showHint = isHovered || showTapHint === index;
             const isAnimated = animatedCards.includes(index);
+            const IconComponent = eventIconComponents[index];
             
             return (
               <div 
@@ -53,7 +54,7 @@ const EventTypesSection = () => {
                   title={event.title}
                   description={eventDescriptions[index]}
                   details={event.details}
-                  icon={eventIcons[index]}
+                  icon={<IconComponent className="h-12 w-12 text-white/90" />}
                   tags={eventTags[index]}
                   isFlipped={isFlipped}
                   isHovered={isHovered}
