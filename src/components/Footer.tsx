@@ -1,9 +1,31 @@
 
 import React from 'react';
 import { Phone, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
+
+  const scrollToSection = (sectionId: string) => {
+    // Check if we're already on the home page
+    if (location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - navHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      // If we're on another page, navigate to the home page with the section hash
+      window.location.href = `/#${sectionId}`;
+    }
+  };
+
   return (
     <footer className="border-t bg-secondary/30">
       <div className="container mx-auto py-12 px-4">
@@ -24,13 +46,13 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Links</h3>
             <ul className="space-y-2">
-              <li><a href="#hero" className="hover:text-primary transition-colors">Start</a></li>
-              <li><a href="#about" className="hover:text-primary transition-colors">Über Uns</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">Leistungen</a></li>
-              <li><a href="#projects" className="hover:text-primary transition-colors">Unsere Expertise</a></li>
-              <li><a href="#eventformate" className="hover:text-primary transition-colors">Veranstaltungsformate</a></li>
-              <li><a href="#testimonials" className="hover:text-primary transition-colors">Kundenstimmen</a></li>
-              <li><a href="#contact" className="hover:text-primary transition-colors">Kontakt</a></li>
+              <li><button onClick={() => scrollToSection('hero')} className="text-left hover:text-primary transition-colors">Start</button></li>
+              <li><button onClick={() => scrollToSection('ueber-uns')} className="text-left hover:text-primary transition-colors">Über Uns</button></li>
+              <li><button onClick={() => scrollToSection('services')} className="text-left hover:text-primary transition-colors">Leistungen</button></li>
+              <li><button onClick={() => scrollToSection('projects')} className="text-left hover:text-primary transition-colors">Unsere Expertise</button></li>
+              <li><button onClick={() => scrollToSection('eventformate')} className="text-left hover:text-primary transition-colors">Veranstaltungsformate</button></li>
+              <li><button onClick={() => scrollToSection('testimonials')} className="text-left hover:text-primary transition-colors">Kundenstimmen</button></li>
+              <li><button onClick={() => scrollToSection('contact')} className="text-left hover:text-primary transition-colors">Kontakt</button></li>
             </ul>
           </div>
           

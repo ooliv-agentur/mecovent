@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X, Phone, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,6 +10,7 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,16 +64,22 @@ const Navigation = () => {
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
     
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const navHeight = 80;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - navHeight;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+    // Check if we're already on the home page
+    if (location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - navHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      // If we're on another page, navigate to the home page with the section hash
+      window.location.href = `/#${sectionId}`;
     }
   };
 
