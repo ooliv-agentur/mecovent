@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { 
   Carousel,
   CarouselContent,
@@ -9,7 +9,6 @@ import {
 } from '@/components/ui/carousel';
 import { useIsMobile } from '@/hooks/use-mobile';
 import ValueCard from './ValueCard';
-import ScrollIndicator from '../projects/ScrollIndicator';
 
 interface ValuesSectionProps {
   values: Array<{
@@ -21,55 +20,11 @@ interface ValuesSectionProps {
 
 const ValuesSection = ({ values }: ValuesSectionProps) => {
   const isMobile = useIsMobile();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isInSection, setIsInSection] = useState(false);
-
-  // Track if we're in this section
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInSection(true);
-          } else {
-            setIsInSection(false);
-          }
-        });
-      },
-      {
-        root: null,
-        threshold: 0.1
-      }
-    );
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  // Handle indicator click
-  const handleIndicatorClick = (index: number) => {
-    setActiveIndex(index);
-  };
 
   return (
-    <div ref={sectionRef}>
+    <>
       {isMobile ? (
-        <Carousel 
-          className="w-full max-w-xs mx-auto"
-          setApi={(api) => {
-            api?.on('select', () => {
-              setActiveIndex(api.selectedScrollSnap());
-            });
-          }}
-        >
+        <Carousel className="w-full max-w-xs mx-auto">
           <CarouselContent>
             {values.map((value, index) => (
               <CarouselItem key={index} className="py-2">
@@ -83,19 +38,9 @@ const ValuesSection = ({ values }: ValuesSectionProps) => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="flex flex-col items-center gap-4 mt-6">
-            <div className="flex justify-center gap-2">
-              <CarouselPrevious className="relative static" />
-              <CarouselNext className="relative static" />
-            </div>
-            {isInSection && (
-              <ScrollIndicator 
-                active={activeIndex} 
-                total={values.length} 
-                orientation="horizontal"
-                onIndicatorClick={handleIndicatorClick}
-              />
-            )}
+          <div className="flex justify-center gap-2 mt-6">
+            <CarouselPrevious className="relative static" />
+            <CarouselNext className="relative static" />
           </div>
         </Carousel>
       ) : (
@@ -111,7 +56,7 @@ const ValuesSection = ({ values }: ValuesSectionProps) => {
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

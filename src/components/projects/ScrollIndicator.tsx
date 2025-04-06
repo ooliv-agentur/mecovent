@@ -6,49 +6,33 @@ interface ScrollIndicatorProps {
   active: number;
   total: number;
   orientation?: 'horizontal' | 'vertical';
-  onIndicatorClick?: (index: number) => void;
-  isLastItem?: boolean;
-  className?: string;
 }
 
-const ScrollIndicator = ({ 
-  active, 
-  total, 
-  orientation = 'horizontal',
-  onIndicatorClick,
-  isLastItem = false,
-  className
-}: ScrollIndicatorProps) => {
+const ScrollIndicator = ({ active, total, orientation = 'horizontal' }: ScrollIndicatorProps) => {
   const isVertical = orientation === 'vertical';
   
   return (
     <div className={cn(
-      "flex gap-2 transition-all duration-300",
-      isVertical ? "flex-col items-center" : "items-center justify-center",
-      isLastItem ? "opacity-30 pointer-events-none" : "opacity-100",
-      className
+      "flex gap-1",
+      isVertical ? "flex-col items-center" : "items-center justify-center"
     )}>
       {Array.from({ length: total }).map((_, i) => (
-        <button 
+        <div 
           key={i} 
           className={cn(
-            "rounded-full transition-all duration-300 hover:scale-110",
+            "rounded-full transition-all duration-500",
             isVertical
-              ? "h-12 w-1.5 md:w-2" // Vertical orientation
-              : "h-1.5 w-12 md:h-2", // Horizontal orientation
+              ? "h-12 w-1.5" // Vertical orientation
+              : "h-1.5 w-full", // Horizontal orientation
             i === active 
-              ? "bg-[#1EAEDB]" // Active - blue
+              ? isVertical ? "bg-primary h-12" : "w-8 bg-primary"
               : i < active 
-                ? "bg-[#33C3F0]/60" // Past - lighter blue
-                : "bg-[#8E9196]/40" // Future - gray
+                ? isVertical ? "bg-primary/60 h-8" : "w-3 bg-primary/60"
+                : isVertical ? "bg-muted-foreground/30 h-4" : "w-2 bg-muted-foreground/30"
           )}
           style={{
-            transitionDelay: `${Math.abs(i - active) * 40}ms`
+            transitionDelay: `${Math.abs(i - active) * 50}ms`
           }}
-          onClick={() => onIndicatorClick && onIndicatorClick(i)}
-          aria-label={`Go to item ${i + 1}`}
-          aria-current={i === active ? "true" : "false"}
-          tabIndex={0}
         />
       ))}
     </div>

@@ -44,7 +44,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background selection:bg-primary/20">
       <Navigation />
-      <main className="relative overflow-x-hidden">
+      <main>
         <HeroSection />
         <WhyMecovent />
         <ServicesSection />
