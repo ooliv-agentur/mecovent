@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
@@ -9,32 +8,32 @@ const HeroSection = () => {
     // Find the "why-mecovent" section specifically
     const targetSection = document.getElementById('why-mecovent');
     if (targetSection) {
+      // Force any ongoing scroll to stop
+      window.scrollTo(window.scrollX, window.scrollY);
+      
       // Get positions
       const startY = window.scrollY || document.documentElement.scrollTop;
       
-      // Get the navigation height (for proper offset calculation)
+      // Get the navigation height
       const navHeight = document.querySelector('nav')?.offsetHeight || 0;
       
-      // Calculate the position to show exactly the "ÜBER UNS" heading at the top
-      // Based on the screenshot, we need to position the section tag at the top
-      // We'll offset by the navigation height plus a small adjustment
-      const targetY = targetSection.getBoundingClientRect().top + startY - navHeight;
+      // Get the exact position for the "ÜBER UNS" heading to be at the top
+      // We need to be more precise with our targeting
+      const targetY = targetSection.offsetTop - navHeight - 20; // Adding extra offset to match screenshot
       const distance = targetY - startY;
       
-      // Animation settings
-      const duration = 800; // Quick smooth animation
+      // Animation settings - keep it fast but smooth
+      const duration = 600;
       let startTime = null;
       
-      // Animation function
+      // Animation function with easing
       function animation(currentTime: number) {
         if (startTime === null) startTime = currentTime;
         const elapsedTime = currentTime - startTime;
         const progress = Math.min(elapsedTime / duration, 1);
         
-        // Easing function - smooth easeInOutQuad
-        const ease = progress < 0.5 
-          ? 2 * progress * progress 
-          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        // Easing function - smoother easeOutQuad
+        const ease = 1 - Math.pow(1 - progress, 2);
         
         window.scrollTo(0, startY + distance * ease);
         
@@ -43,7 +42,7 @@ const HeroSection = () => {
         }
       }
       
-      // Start animation immediately
+      // Start animation
       requestAnimationFrame(animation);
     }
   };
