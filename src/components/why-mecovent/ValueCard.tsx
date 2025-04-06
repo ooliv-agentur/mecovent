@@ -12,12 +12,6 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   
-  const gradientColors = [
-    'from-blue-400 to-cyan-300',
-    'from-rose-400 to-orange-300',
-    'from-green-400 to-emerald-300'
-  ];
-
   const handleMouseEnter = () => {
     if (videoRef.current) {
       videoRef.current.play();
@@ -35,12 +29,12 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
 
   return (
     <div 
-      className={`relative group bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl transition-all duration-300 h-full
-                 ${isHovered ? 'shadow-2xl' : 'shadow-md'}`}
+      className={`relative group bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden shadow-md transition-all duration-300 h-full
+                 ${isHovered ? 'shadow-lg' : 'shadow-md'}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl opacity-70 ${gradientColors[index % 3]} rounded-bl-full -z-0 transition-opacity duration-300 ${isHovered ? 'opacity-90' : 'opacity-70'}`}></div>
+      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl opacity-70 from-primary/30 to-primary/20 rounded-bl-full -z-0 transition-opacity duration-300 ${isHovered ? 'opacity-90' : 'opacity-70'}"></div>
       
       <div className="flex flex-col items-center text-center p-6 z-10 relative">
         <div className="w-full aspect-video mb-6 overflow-hidden rounded-lg relative">
@@ -63,7 +57,7 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
         
         <h3 className="font-bold text-xl mb-3 relative">
           {title}
-          <div className={`h-0.5 w-0 bg-gradient-to-r ${gradientColors[index % 3]} transition-all duration-500 mx-auto ${isHovered ? 'w-full' : 'w-0'}`}></div>
+          <div className={`h-0.5 w-0 bg-gradient-to-r from-primary to-primary/70 transition-all duration-500 mx-auto ${isHovered ? 'w-full' : 'w-0'}`}></div>
         </h3>
         
         <p className="text-muted-foreground">

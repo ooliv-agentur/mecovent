@@ -16,11 +16,11 @@ const StrengthCard = ({ iconType, title, description }: StrengthCardProps) => {
   const getIcon = () => {
     switch (iconType) {
       case 'trophy':
-        return <Trophy className="text-[#1EAEDB] stroke-[1.5]" size={36} />;
+        return <Trophy className="text-primary stroke-[1.5]" size={36} />;
       case 'chart':
-        return <BarChart3 className="text-[#1EAEDB] stroke-[1.5]" size={36} />;
+        return <BarChart3 className="text-primary stroke-[1.5]" size={36} />;
       case 'handshake':
-        return <HandshakeIcon className="text-[#1EAEDB]" size={36} />;
+        return <HandshakeIcon className="text-primary" size={36} />;
       default:
         return null;
     }
@@ -33,7 +33,7 @@ const StrengthCard = ({ iconType, title, description }: StrengthCardProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <CardContent className="p-8 text-center relative overflow-hidden h-full">
-        <div className={`absolute ${isHovered ? 'scale-100 opacity-10' : 'scale-50 opacity-0'} transition-all duration-500 ease-out rounded-full w-[200%] aspect-square bg-gradient-to-tr from-[#1EAEDB]/60 to-[#33C3F0]/40 -top-1/2 -left-1/2`}></div>
+        <div className={`absolute ${isHovered ? 'scale-100 opacity-10' : 'scale-50 opacity-0'} transition-all duration-500 ease-out rounded-full w-[200%] aspect-square bg-gradient-to-tr from-primary/60 to-primary/40 -top-1/2 -left-1/2`}></div>
         
         <div className="flex justify-center mb-6 relative">
           <div className={`transition-transform duration-300 p-4 rounded-full bg-[#D3E4FD]/30 ${isHovered ? 'scale-110' : 'scale-100'}`}>
@@ -43,7 +43,7 @@ const StrengthCard = ({ iconType, title, description }: StrengthCardProps) => {
         
         <h4 className="text-xl font-medium mb-3 relative">
           {title}
-          <div className={`h-0.5 w-0 bg-gradient-to-r from-[#1EAEDB] to-[#33C3F0] transition-all duration-500 mx-auto ${isHovered ? 'w-1/3' : 'w-0'}`}></div>
+          <div className={`h-0.5 w-0 bg-gradient-to-r from-primary to-primary/70 transition-all duration-500 mx-auto ${isHovered ? 'w-1/3' : 'w-0'}`}></div>
         </h4>
         
         <p className="text-muted-foreground relative">
