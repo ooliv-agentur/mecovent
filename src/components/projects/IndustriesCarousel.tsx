@@ -74,8 +74,7 @@ const IndustriesCarousel = ({
                 style={{
                   backgroundImage: `url(${backgroundImages[index]})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  imageRendering: 'high-quality'
+                  backgroundPosition: 'center'
                 }}
               >
                 <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
