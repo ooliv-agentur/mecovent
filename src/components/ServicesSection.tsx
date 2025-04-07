@@ -141,7 +141,7 @@ const ServicesSection = () => {
                   <div className="relative bg-white dark:bg-black/40 p-6 md:p-8 rounded-2xl shadow-lg border border-[#009fe3]/10">
                     <LightbulbIcon className="h-14 w-14 text-[#009fe3] mb-4" />
                     <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-foreground to-[#009fe3] bg-clip-text text-transparent">
-                      Ihr Erfolg ist unsere Mission
+                      Verlässlich. Kreativ. An Ihrer Seite.
                     </h3>
                   </div>
                 </div>
@@ -150,25 +150,25 @@ const ServicesSection = () => {
               <div className="md:col-span-7">
                 <div className="bg-white dark:bg-black/40 rounded-2xl shadow-lg p-8 relative border border-[#009fe3]/10">
                   <p className="text-lg leading-relaxed mb-6">
-                    Von der ersten Idee bis zur erfolgreichen Umsetzung – wir übernehmen Planung, Umsetzung & Teilnehmerbetreuung mit höchster Präzision.
+                    Ob Kick-off, Kongress oder Gala – wir begleiten Sie von der ersten Idee bis zum letzten Detail. Persönlich, präzise und mit dem Blick für das Wesentliche.
                   </p>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex items-start space-x-3">
                       <CheckCircle2 className="w-5 h-5 text-[#009fe3] mt-0.5 flex-shrink-0" />
-                      <span className="text-foreground/90">Ganzheitliche Betreuung</span>
+                      <span className="text-foreground/90">Persönliche Projektbetreuung</span>
                     </div>
                     <div className="flex items-start space-x-3">
                       <CheckCircle2 className="w-5 h-5 text-[#009fe3] mt-0.5 flex-shrink-0" />
-                      <span className="text-foreground/90">Maßgeschneiderte Konzepte</span>
+                      <span className="text-foreground/90">Strategische Beratung & Konzeption</span>
                     </div>
                     <div className="flex items-start space-x-3">
                       <CheckCircle2 className="w-5 h-5 text-[#009fe3] mt-0.5 flex-shrink-0" />
-                      <span className="text-foreground/90">Höchste Qualitätsstandards</span>
+                      <span className="text-foreground/90">Höchste Qualitätsansprüche</span>
                     </div>
                     <div className="flex items-start space-x-3">
                       <CheckCircle2 className="w-5 h-5 text-[#009fe3] mt-0.5 flex-shrink-0" />
-                      <span className="text-foreground/90">Persönlicher Ansprechpartner</span>
+                      <span className="text-foreground/90">Effiziente Umsetzung & klare Prozesse</span>
                     </div>
                   </div>
                   
