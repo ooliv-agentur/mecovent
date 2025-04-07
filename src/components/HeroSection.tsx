@@ -44,19 +44,21 @@ const HeroSection = () => {
       {/* Center the content in the middle of the screen */}
       <div className="container-section relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
         {/* Main Headline with animated gradient applied to the entire text */}
-        <div className="space-y-1 mb-6">
+        <div className="space-y-4 mb-8">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
             Wir bringen<br />
             Menschen zusammen –
           </h1>
-          <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
+          <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed pt-1">
             Meeting. Congress. Event.
           </div>
         </div>
         
-        {/* Subline in solid white/light color */}
-        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-8 leading-normal font-medium">
-          Strategisch geplant. Emotional inszeniert. Nachhaltig umgesetzt.
+        {/* Subline in solid white/light color as three separate lines */}
+        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-8 flex flex-col space-y-2 leading-relaxed font-medium">
+          <span>Strategisch geplant.</span>
+          <span>Emotional inszeniert.</span>
+          <span>Nachhaltig umgesetzt.</span>
         </h2>
       </div>
       
