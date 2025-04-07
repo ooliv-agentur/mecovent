@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, CheckCircle } from 'lucide-react';
 
 const HeroSection = () => {
   const scrollToNext = (event: React.MouseEvent) => {
@@ -44,22 +44,31 @@ const HeroSection = () => {
       {/* Center the content in the middle of the screen */}
       <div className="container-section relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
         {/* Main Headline with animated gradient applied to the entire text */}
-        <div className="space-y-4 mb-8">
+        <div className="space-y-5 mb-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
             Wir bringen<br />
             Menschen zusammen –
           </h1>
-          <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed pt-1">
+          <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2">
             Meeting. Congress. Event.
           </div>
         </div>
         
-        {/* Subline in solid white/light color as three separate lines */}
-        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-8 flex flex-col space-y-2 leading-relaxed font-medium">
-          <span>Strategisch geplant.</span>
-          <span>Emotional inszeniert.</span>
-          <span>Nachhaltig umgesetzt.</span>
-        </h2>
+        {/* Subline with check icons */}
+        <div className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-10 space-y-4 font-medium">
+          <div className="flex items-center justify-center gap-3">
+            <CheckCircle className="h-6 w-6 text-[#009fe3]" />
+            <span>Strategisch geplant.</span>
+          </div>
+          <div className="flex items-center justify-center gap-3">
+            <CheckCircle className="h-6 w-6 text-[#009fe3]" />
+            <span>Emotional inszeniert.</span>
+          </div>
+          <div className="flex items-center justify-center gap-3">
+            <CheckCircle className="h-6 w-6 text-[#009fe3]" />
+            <span>Nachhaltig umgesetzt.</span>
+          </div>
+        </div>
       </div>
       
       {/* Animated scroll indicator with blue rollover effect */}
