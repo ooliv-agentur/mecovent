@@ -91,15 +91,13 @@ const ProjectsSection = () => {
                           isVisible ? "animate-fade-in" : "opacity-0")}>
           <SectionLabel label="Unsere Expertise" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
-            Mit Branchenverstand gestalten
+            Verstehen, was zählt – für Events mit Wirkung
           </h2>
           <p className="subheader-section mb-3">
-            Jede Branche braucht ein anderes Gespür – wir kennen die Unterschiede.
+            Jede Branche spricht ihre eigene Sprache. Wir kennen die Unterschiede – und wissen, worauf es wirklich ankommt.
           </p>
           <p className="text-gray-600">
-            Ob Pharma, Finanzwesen, Bildung oder Industrie –<br />
-            wir verstehen, worauf es in Ihrer Branche ankommt.<br />
-            So gestalten wir Events, die nicht nur passen – sondern wirken.
+            Ob Pharma, Finanzen, Bildung oder Industrie: Wir denken uns in Ihre Welt ein und schaffen Erlebnisse, die Inhalte transportieren – und Vertrauen schaffen.
           </p>
         </div>
         

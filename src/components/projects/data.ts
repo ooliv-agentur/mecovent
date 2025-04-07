@@ -2,33 +2,33 @@
 export const industryItems = [
   { 
     title: "Pharma & Medizintechnik", 
-    description: "Wissenschaftliche Kongresse, Tagungen, Fortbildungen",
-    details: "Wir organisieren hochkarätige wissenschaftliche Veranstaltungen mit präzisem Teilnehmermanagement und anspruchsvoller technischer Umsetzung für die Pharma- und Medizintechnikbranche."
+    description: "Wissenschaftliche Präzision trifft reibungslose Organisation.",
+    details: "Mit durchdachtem Teilnehmermanagement und zuverlässiger Technik realisieren wir Kongresse, Tagungen und Fortbildungen für die Pharma- und Medizintechnikbranche."
   },
   { 
     title: "Automobil & Verkehrswesen", 
-    description: "Produktpräsentationen, Messen, Networking-Events",
-    details: "Von dynamischen Fahrzeugpräsentationen bis zu exklusiven Händlerevents – wir inszenieren automotive Highlights mit dem richtigen Gespür für Technik, Design und Emotion."
+    description: "Technik im Rampenlicht – Events für die Mobilität von morgen.",
+    details: "Von exklusiven Händlerevents bis zu großen Fahrzeugpremieren: Wir inszenieren automobile Highlights mit Gespür für Design, Innovation und Dynamik – und schaffen Momente, die in Erinnerung bleiben."
   },
   { 
     title: "Chemie & Industrie", 
-    description: "Corporate Events, Jubiläen, Mitarbeiterevents",
-    details: "Für produzierende Unternehmen und die Chemieindustrie konzipieren wir Veranstaltungsformate, die komplexe Themen verständlich kommunizieren und Menschen begeistern."
+    description: "Verständlich. Sicher. Begeisternd.",
+    details: "Ob Corporate Events oder Mitarbeiterevents – wir übersetzen komplexe Inhalte in inspirierende Formate und schaffen Events, die Wissen erlebbar machen."
   },
   { 
     title: "Finanz- & Versicherungswesen", 
-    description: "Leadership Summits, exklusive Kundenveranstaltungen",
-    details: "Diskretion, Professionalität und stilvolles Ambiente – unsere Events für die Finanz- und Versicherungsbranche überzeugen durch passende Locations und hochwertige Umsetzung."
+    description: "Vertrauen gestalten – mit Stil und Struktur.",
+    details: "Für die Finanz- und Versicherungsbranche kreieren wir exklusive Veranstaltungsformate, die Vertraulichkeit wahren, Wirkung entfalten und Ihre Marke stilsicher präsentieren."
   },
   { 
     title: "Technologie & IT", 
-    description: "Digitale Konferenzen, hybride Events, Hackathons",
-    details: "Innovation erlebbar machen: Mit hybriden Eventformaten, technischer Exzellenz und kreativen Setups gestalten wir zukunftsweisende Tech-Events."
+    description: "Zukunft live erleben – mit hybriden Formaten.",
+    details: "Ob Konferenz oder Hackathon – wir bringen Tech-Inhalte auf die Bühne. Mit innovativer Technik und Formatideen, die Ihre Zielgruppe wirklich erreichen."
   },
   { 
     title: "Bildung & Wissenschaft", 
-    description: "Fachkongresse, Preisverleihungen, Workshops",
-    details: "Wissen vermitteln, Expertise feiern und akademische Erfolge würdigen – unsere Veranstaltungen im Bildungs- und Wissenschaftssektor vereinen Wissensvermittlung mit inspirierendem Rahmenprogramm."
+    description: "Wissen, das wirkt. Formate, die fördern.",
+    details: "Wir realisieren Tagungen und Veranstaltungen, die Wissen sichtbar machen, Menschen vernetzen und akademische Leistungen wertschätzen – mit inspirierendem Rahmenprogramm."
   }
 ];
 
