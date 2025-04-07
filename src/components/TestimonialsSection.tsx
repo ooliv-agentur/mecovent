@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { LightbulbIcon, ChevronLeft, ChevronRight, Quote, Mail, ArrowRight, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, Mail, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { SectionLabel } from '@/components/ui/section-label';
@@ -128,7 +128,7 @@ const TestimonialsSection = () => {
         </div>
       </section>
       
-      {/* Video Section - Added between testimonials and CTA */}
+      {/* Updated Video Section */}
       <VideoSection />
       
       {/* CTA Section with blue background */}
