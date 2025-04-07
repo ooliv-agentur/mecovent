@@ -36,7 +36,7 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          src="/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
+          src="https://projekte-ooliv.de/mecovent/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
