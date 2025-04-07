@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 
 const VideoSection = () => {
@@ -7,7 +8,7 @@ const VideoSection = () => {
   // Define video sources with the new directly hosted URL
   const videoSources = [
     // New directly hosted URL
-    "https://mecovent.projekte-ooliv.de/20250407_0946_High-Tech%20Corporate%20Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4",
+    "https://projekte-ooliv.de/mecovent/20250407_0946_High-Tech%20Corporate%20Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4",
     // Fallback URLs (if needed)
     `${window.location.protocol}//${window.location.host}/20250407_0946_High-Tech%20Corporate%20Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4`,
     "/20250407_0946_High-Tech%20Corporate%20Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4"
