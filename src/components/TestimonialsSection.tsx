@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
-import { LightbulbIcon, ChevronLeft, ChevronRight, Quote, Mail, ArrowRight } from 'lucide-react';
+import { LightbulbIcon, ChevronLeft, ChevronRight, Quote, Mail, ArrowRight, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { SectionLabel } from '@/components/ui/section-label';
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -37,8 +38,9 @@ const TestimonialsSection = () => {
   return (
     <section id="testimonials" className="bg-background py-20">
       <div className="container-section">
+        <SectionLabel label="Kundenstimmen" />
+        
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
-          <div className="section-tag">Kundenstimmen</div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
             Was andere über uns sagen
           </h2>
@@ -126,10 +128,10 @@ const TestimonialsSection = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center gap-2 bg-white/20 px-4 py-2 rounded-full text-white mb-8">
-              <LightbulbIcon className="h-4 w-4" />
-              <span className="text-sm font-medium">Vertrauen entsteht im gemeinsamen Tun</span>
-            </div>
+            <SectionLabel 
+              label="Vertrauen entsteht im gemeinsamen Tun" 
+              className="mb-8"
+            />
             
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
               Lassen Sie uns in Verbindung treten – wir freuen uns auf den ersten Austausch

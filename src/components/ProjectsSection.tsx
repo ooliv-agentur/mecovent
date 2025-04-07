@@ -4,6 +4,7 @@ import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { industryItems } from './projects/data';
 import IndustriesCarousel from './projects/IndustriesCarousel';
+import { SectionLabel } from '@/components/ui/section-label';
 
 const ProjectsSection = () => {
   const [activeIndustryIndex, setActiveIndustryIndex] = useState(0);
@@ -88,7 +89,7 @@ const ProjectsSection = () => {
       <div className="py-16 md:py-24">
         <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
                           isVisible ? "animate-fade-in" : "opacity-0")}>
-          <div className="section-tag">Unsere Expertise</div>
+          <SectionLabel label="Unsere Expertise" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
             Mit Branchenverstand gestalten
           </h2>
