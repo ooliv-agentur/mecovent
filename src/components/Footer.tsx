@@ -2,6 +2,7 @@
 import React from 'react';
 import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { Separator } from '@/components/ui/separator';
 
 const Footer = () => {
   const location = useLocation();
@@ -49,45 +50,70 @@ const Footer = () => {
               </button>
             </div>
             <p className="text-muted-foreground max-w-xs leading-relaxed">
-              Wir bringen Menschen zusammen – Meeting. Congress. Event.
+              Events, die verbinden.<br />
+              <span className="text-sm">Meeting. Congress. Event. – mit Hingabe realisiert.</span>
             </p>
           </div>
           
           {/* Navigation links */}
           <div className="md:col-span-4">
             <h3 className="font-semibold text-lg mb-6">Schnellzugriff</h3>
-            <ul className="space-y-3">
-              {[
-                { label: "Start", id: "hero" },
-                { label: "Über Uns", id: "ueber-uns" },
-                { label: "Leistungen", id: "services" },
-                { label: "Unsere Expertise", id: "projects" },
-                { label: "Veranstaltungsformate", id: "eventformate" },
-                { label: "Kundenstimmen", id: "testimonials" },
-                { label: "Kontakt", id: "contact" }
-              ].map((item) => (
-                <li key={item.id}>
-                  <button 
-                    onClick={() => scrollToSection(item.id)} 
-                    className="text-left flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
-                  >
-                    <ChevronRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span>{item.label}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-5">
+              {/* Content navigation section */}
+              <ul className="space-y-3">
+                {[
+                  { label: "Start", id: "hero" },
+                  { label: "Über Uns", id: "ueber-uns" },
+                  { label: "Leistungen", id: "services" },
+                  { label: "Unsere Expertise", id: "projects" },
+                  { label: "Veranstaltungsformate", id: "eventformate" },
+                ].map((item) => (
+                  <li key={item.id}>
+                    <button 
+                      onClick={() => scrollToSection(item.id)} 
+                      className="text-left flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+                    >
+                      <ChevronRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <span>{item.label}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Visual separator */}
+              <Separator className="w-16 bg-muted/50" />
+              
+              {/* Trust navigation section */}
+              <ul className="space-y-3">
+                {[
+                  { label: "Kundenstimmen", id: "testimonials" },
+                  { label: "Kontakt", id: "contact" }
+                ].map((item) => (
+                  <li key={item.id}>
+                    <button 
+                      onClick={() => scrollToSection(item.id)} 
+                      className="text-left flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+                    >
+                      <ChevronRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <span>{item.label}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           
           {/* Contact information */}
           <div className="md:col-span-4">
             <h3 className="font-semibold text-lg mb-6">Kontakt</h3>
-            <div className="bg-white rounded-xl p-6 shadow-sm space-y-4">
+            <div className="bg-white rounded-xl p-6 shadow-sm space-y-6">
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5" />
+                <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 <address className="not-italic text-muted-foreground">
+                  <p className="font-medium text-foreground/90">MECOVENT GmbH</p>
                   <p>Wormser Straße 44</p>
                   <p>55294 Bodenheim</p>
+                  <p className="text-sm text-muted-foreground/80">Deutschland</p>
                 </address>
               </div>
               
@@ -117,31 +143,33 @@ const Footer = () => {
         {/* Legal links and copyright */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="flex flex-wrap justify-center md:justify-between items-center gap-6">
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center items-center">
               <Link 
                 to="/impressum" 
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors px-3"
                 onClick={(e) => handleLinkClick('/impressum', e)}
               >
                 Impressum
               </Link>
+              <div className="h-4 border-r border-gray-300"></div>
               <Link 
                 to="/datenschutz" 
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors px-3"
                 onClick={(e) => handleLinkClick('/datenschutz', e)}
               >
                 Datenschutz
               </Link>
+              <div className="h-4 border-r border-gray-300"></div>
               <Link 
                 to="/agb" 
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors px-3"
                 onClick={(e) => handleLinkClick('/agb', e)}
               >
                 AGB
               </Link>
             </div>
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} MECOVENT. Alle Rechte vorbehalten.
+              &copy; {new Date().getFullYear()} MECOVENT GmbH &middot; Alle Rechte vorbehalten.
             </p>
           </div>
         </div>
