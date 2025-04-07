@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
@@ -42,17 +43,18 @@ const HeroSection = () => {
       
       {/* Center the content in the middle of the screen */}
       <div className="container-section relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
-          <span className="block">Wir bringen Menschen zusammen –</span>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white leading-relaxed">
+          <span className="block whitespace-nowrap">Wir bringen Menschen zusammen –</span>
           <span className="block">Meeting. Congress. Event.</span>
         </h1>
-        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-8 leading-relaxed font-medium">
+        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-8 leading-relaxed font-medium max-w-full whitespace-nowrap">
           Strategisch geplant. Emotional inszeniert. Nachhaltig umgesetzt.
         </h2>
       </div>
       
       {/* Animated scroll indicator with blue rollover effect */}
-      <div 
+      <a 
+        href="#why-mecovent" 
         className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center cursor-pointer group"
         onClick={scrollToNext}
       >
@@ -60,7 +62,7 @@ const HeroSection = () => {
           Kennenlernen
         </div>
         <ChevronDown className="text-white animate-bounce-y h-8 w-8 group-hover:text-[#33C3F0] transition-colors duration-300" />
-      </div>
+      </a>
     </section>
   );
 };
