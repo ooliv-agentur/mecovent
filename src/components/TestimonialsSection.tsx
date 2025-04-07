@@ -50,7 +50,8 @@ const TestimonialsSection = () => {
           </h2>
           <p className="subheader-section">
             Jede Rückmeldung erzählt von Zusammenarbeit, Vertrauen und gemeinsamem Erfolg.
-            <br />
+          </p>
+          <p className="text-base text-muted-foreground mt-2">
             Erleben Sie, wie unsere Events nicht nur begeistern – sondern nachhaltig wirken.
           </p>
         </div>
