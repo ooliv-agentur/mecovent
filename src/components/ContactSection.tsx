@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Phone, Mail, Info, HelpCircle, Users, Calendar, User, Globe, Building, Sparkles } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -183,10 +184,10 @@ const ContactSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
           <SectionLabel label="Kontakt" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
-            Lassen Sie uns Ihr Event planen!
+            Wie können wir Sie unterstützen?
           </h2>
           <p className="text-lg text-muted-foreground mt-4">
-            Verbinden Sie sich mit uns und wir besprechen gemeinsam Ihre individuellen Eventanforderungen.
+            Ob erste Idee oder konkreter Anlass – wir sind für Sie da. Persönlich, klar und auf Augenhöhe.
           </p>
         </div>
         
@@ -194,10 +195,14 @@ const ContactSection = () => {
           <div className="lg:col-span-4 order-2 lg:order-1">
             <Card className="shadow-lg bg-secondary/20 backdrop-blur-sm border border-secondary/50 overflow-hidden">
               <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-4 border-b border-secondary/50">
-                <h3 className="text-xl font-medium text-center">Persönliche Beratung gewünscht?</h3>
+                <h3 className="text-xl font-medium text-center">Persönlich sprechen?</h3>
               </div>
               <CardContent className="p-6">
                 <div className="space-y-6">
+                  <p className="text-center text-muted-foreground">
+                    Wir freuen uns auf Ihre Nachricht oder Ihren Anruf.
+                  </p>
+                  
                   <div className="flex flex-col gap-4 my-6">
                     <a href="tel:+4961357039590" className="flex items-center gap-3 p-3 rounded-lg bg-secondary/40 hover:bg-secondary/70 transition-colors group">
                       <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
@@ -235,8 +240,12 @@ const ContactSection = () => {
             <div className="bg-secondary/10 p-6 rounded-xl border border-secondary/20">
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <Info className="h-5 w-5 text-primary" />
-                Häufig gestellte Fragen
+                Häufige Fragen – klar beantwortet
               </h3>
+              
+              <p className="text-muted-foreground mb-6">
+                Sie möchten mehr über unsere Leistungen, Abläufe oder technischen Möglichkeiten wissen? Hier finden Sie die wichtigsten Antworten im Überblick.
+              </p>
               
               <Tabs defaultValue="allgemein" className="w-full">
                 <TabsList className="w-full mb-6 bg-secondary/50 p-1">
