@@ -43,12 +43,22 @@ const HeroSection = () => {
       
       {/* Center the content in the middle of the screen */}
       <div className="container-section relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white leading-relaxed">
-          <span className="block whitespace-nowrap">Wir bringen Menschen zusammen –</span>
-          <span className="block">Meeting. Congress. Event.</span>
-        </h1>
-        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-8 leading-relaxed font-medium max-w-full whitespace-nowrap">
-          Strategisch geplant. Emotional inszeniert. Nachhaltig umgesetzt.
+        {/* Main Headline - Split into two distinct visual sections */}
+        <div className="space-y-1 mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
+            <span className="text-[#86D5F8]">Wir</span> bringen<br />
+            Menschen zusammen –
+          </h1>
+          <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+            Meeting. Congress. <span className="text-[#86D5F8]">Event</span>.
+          </div>
+        </div>
+        
+        {/* Subline as a three-liner */}
+        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-8 flex flex-col items-center leading-normal font-medium">
+          <span className="text-[#86D5F8]">Strategisch</span> geplant.
+          <span>Emotional inszeniert.</span>
+          <span><span className="text-[#86D5F8]">Nachhaltig</span> umgesetzt.</span>
         </h2>
       </div>
       
