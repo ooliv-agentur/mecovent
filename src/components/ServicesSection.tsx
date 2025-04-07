@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   LightbulbIcon, 
@@ -64,37 +65,37 @@ const ServicesSection = () => {
   const services = [
     { 
       title: "Strategische Eventberatung", 
-      description: "Analyse Ihrer Ziele & maßgeschneiderte Konzepte", 
+      description: "Ziele verstehen, Strategien entwickeln, Wirkung entfalten.", 
       icon: BarChart4,
       imageUrl: "/lovable-uploads/a5711a2e-3fe8-4825-a540-2c8a57a36cfd.png" 
     },
     { 
       title: "Eventmanagement", 
-      description: "Konzeption, Planung & Durchführung", 
+      description: "Von der Konzeption bis zur Umsetzung – zuverlässig, professionell, ganzheitlich.", 
       icon: LightbulbIcon,
       imageUrl: "/lovable-uploads/f385109c-4e96-4e47-b083-40a9b15bddac.png" 
     },
     { 
       title: "Teilnehmermanagement", 
-      description: "Einladung, Buchung & Betreuung", 
+      description: "Persönlich, DSGVO-konform, digital – wir kümmern uns um Einladungen & Betreuung.", 
       icon: Users,
       imageUrl: "/lovable-uploads/5cefe1bc-f4db-41da-8076-6a902d7c71b5.png" 
     },
     { 
       title: "Veranstaltungstechnik", 
-      description: "Bühne, Licht, Ton & Video für den perfekten Auftritt", 
+      description: "Licht, Ton, Bühne & Bild – technisch perfekt und atmosphärisch abgestimmt.", 
       icon: Music,
       imageUrl: "/lovable-uploads/20cca07c-10d1-4d83-a2b9-98f9aac3b283.png" 
     },
     { 
       title: "Incentives & Teamevents", 
-      description: "Motivation & Erlebnis für Ihr Team", 
+      description: "Verbindungen stärken – mit Formaten, die motivieren und begeistern.", 
       icon: Smartphone,
       imageUrl: "/lovable-uploads/3b884e4a-3302-4e39-928b-44f68f55994d.png" 
     },
     { 
       title: "Marketing & Eventkommunikation", 
-      description: "Zielgerichtete Kampagnen für mehr Reichweite", 
+      description: "Ihre Botschaft sichtbar machen – mit strategischen Kampagnen vor, während und nach dem Event.", 
       icon: PartyPopper,
       imageUrl: "/lovable-uploads/5869c2e4-85a2-474b-87bc-d34a4bfa1333.png" 
     }
@@ -106,13 +107,13 @@ const ServicesSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
           <SectionLabel label="Was wir bieten" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift break-words">
-            Unsere Leistungen – Ihr Event, perfekt geplant.
+            Unsere Leistungen – ganzheitlich gedacht, präzise umgesetzt.
           </h2>
           <p className="subheader-section">
-            Von strategischer Beratung bis zur perfekten Umsetzung – wir machen Ihr Event einzigartig.
+            Von der Idee bis zur Wirkung begleiten wir Sie mit Strategie, Hingabe und Erfahrung.
           </p>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Ob Fachkonferenz, Kick-off oder hybride Messe – wir begleiten Sie von der ersten Idee bis zur Umsetzung mit Strategie, Hingabe und Erfahrung.
+            Ob Fachkonferenz, Kick-off oder hybride Messe – wir denken ganzheitlich und gestalten Events, die wirken.
           </p>
         </div>
         
