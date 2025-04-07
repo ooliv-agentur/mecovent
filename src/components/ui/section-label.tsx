@@ -12,7 +12,7 @@ export function SectionLabel({ label, className }: SectionLabelProps) {
   return (
     <div className={cn("flex items-center justify-center w-full max-w-full mx-auto mb-4", className)}>
       <Separator className="flex-grow h-px bg-gray-200" />
-      <div className="px-4 py-1 mx-3 text-xs font-medium tracking-wider uppercase text-primary bg-blue-50 rounded-full inline-block max-w-full text-center">
+      <div className="px-4 py-1 mx-3 text-xs font-medium tracking-wider uppercase text-primary bg-blue-50 rounded-full break-keep whitespace-nowrap">
         {label}
       </div>
       <Separator className="flex-grow h-px bg-gray-200" />
