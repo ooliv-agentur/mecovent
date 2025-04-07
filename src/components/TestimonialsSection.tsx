@@ -118,19 +118,12 @@ const TestimonialsSection = () => {
         </div>
       </div>
       
-      {/* CTA Section with video background */}
-      <div className="mt-24 py-16 relative overflow-hidden">
-        {/* Video Background */}
-        <div className="absolute inset-0 z-0">
-          <video
-            className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            src="/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      {/* Redesigned CTA Section with blue background */}
+      <div className="bg-primary mt-24 py-16 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-white/20"></div>
+          <div className="absolute -left-20 -bottom-20 w-64 h-64 rounded-full bg-white/10"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -144,7 +137,7 @@ const TestimonialsSection = () => {
               Lassen Sie uns in Verbindung treten – wir freuen uns auf den ersten Austausch
             </h3>
             
-            <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
               Bereit für ein außergewöhnliches Event? Kontaktieren Sie uns noch heute und lassen Sie uns gemeinsam Ihre Ideen zum Leben erwecken.
             </p>
             
