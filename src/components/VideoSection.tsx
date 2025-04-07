@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const VideoSection = () => {
   const videoRef = useRef<HTMLDivElement>(null);
+  const [videoError, setVideoError] = useState(false);
 
   // Add parallax effect on scroll
   useEffect(() => {
@@ -32,23 +33,58 @@ const VideoSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Define multiple possible video sources to try
+  const videoSources = [
+    // Fully qualified URL for deployed sites
+    `${window.location.protocol}//${window.location.host}/lovable-uploads/20250407_0946_High-Tech Corporate Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4`,
+    // Relative path as fallback
+    "/lovable-uploads/20250407_0946_High-Tech Corporate Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4",
+    // Another fallback without the lovable-uploads folder
+    "/20250407_0946_High-Tech Corporate Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4",
+  ];
+
+  const handleVideoError = () => {
+    console.error("Video failed to load");
+    setVideoError(true);
+  };
+
   return (
     <section 
       ref={videoRef} 
-      className="relative w-full h-[75vh] overflow-hidden"
+      className="relative w-full h-[75vh] overflow-hidden bg-[#1A1F2C]"
     >
-      {/* Video background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        src="/lovable-uploads/20250407_0946_High-Tech Corporate Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4"
-      />
+      {/* Video background with multiple fallback sources */}
+      {!videoError ? (
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          onError={handleVideoError}
+        >
+          {videoSources.map((src, index) => (
+            <source key={index} src={src} type="video/mp4" />
+          ))}
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center text-white/70 bg-[#1A1F2C]">
+          <p>Video nicht verfügbar</p>
+        </div>
+      )}
       
       {/* Gradient overlay - keeping a subtle overlay for visual depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#1A1F2C] via-[#1A1F2C]/40 to-transparent opacity-60"></div>
+      
+      {/* Add console logging to help debug in production */}
+      <div className="hidden">
+        {console.log("Video section rendered", {
+          protocol: window.location.protocol,
+          host: window.location.host,
+          sources: videoSources
+        })}
+      </div>
     </section>
   );
 };
