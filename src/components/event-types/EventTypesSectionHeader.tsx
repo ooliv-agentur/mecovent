@@ -7,15 +7,13 @@ const EventTypesSectionHeader: React.FC = () => {
     <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
       <SectionLabel label="Unsere Veranstaltungsformate" />
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
-        Events, die wirken – strategisch geplant, emotional inszeniert
+        Formate mit Wirkung – für Marken, Menschen und Momentum.
       </h2>
       <p className="subheader-section mb-3">
-        Ob Fachkongress oder Kick-off – wir finden das richtige Format für Ihre Botschaft.
+        Ob Fachkongress, Retreat oder Roadshow – jedes Format entsteht bei uns aus Strategie, Erfahrung und Gespür für Wirkung.
       </p>
       <p className="text-muted-foreground">
-        Vom Kick-off bis zur Roadshow, vom Fachkongress bis zum Team-Retreat:<br />
-        Unsere Formate entstehen immer mit einem Ziel – Wirkung.<br />
-        Strategisch durchdacht, emotional inszeniert und individuell für Sie entwickelt.
+        Individuell geplant, emotional erzählt und gemeinsam mit Ihnen entwickelt.
       </p>
     </div>
   );

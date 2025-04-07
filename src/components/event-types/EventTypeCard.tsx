@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Tag, RotateCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -98,11 +99,11 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
             <div className="flex flex-col items-center text-center">
               <div 
                 className={cn(
-                  "w-24 h-24 rounded-full bg-white/10 flex items-center justify-center mb-5 transition-colors duration-300 ease-in-out",
+                  "w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-6 transition-colors duration-300 ease-in-out",
                   isHovered ? "bg-white/20" : ""
                 )}
               >
-                {icon}
+                {React.cloneElement(icon as React.ReactElement, { className: "h-9 w-9 text-white/90" })}
               </div>
               
               <CardTitle className="text-2xl font-bold text-white mb-3">

@@ -12,33 +12,33 @@ import {
 export const eventTypes = [
   { 
     title: "Wissenschaftliche Konferenzen", 
-    description: "Experten vernetzen & Wissen teilen",
-    details: "Von der Keynote bis zum Posterslam: Wir organisieren Fachkonferenzen mit präziser Teilnehmerbetreuung, simultaner Übersetzung und intelligentem Raum- und Zeitmanagement."
+    description: "Präzise organisiert, fachlich auf den Punkt",
+    details: "Wissenschaftlich präzise, organisatorisch souverän: Wir realisieren Konferenzen mit reibungsloser Teilnehmerkoordination, passender Technik und Gespür für Inhalte."
   },
   { 
     title: "Produktlaunches & Präsentationen", 
-    description: "Begeisterung für Innovationen schaffen",
-    details: "Der große Auftritt für Ihr Produkt: Mit spektakulärer Inszenierung, technischer Perfektion und emotionalem Storytelling machen wir Ihren Launch unvergesslich."
+    description: "Innovation sichtbar machen – emotional und technisch stark",
+    details: "Inszenierte Innovation: Wir bringen Ihre Produkte auf die Bühne – mit technischer Finesse, dramaturgischem Feingefühl und maximaler Markenwirkung."
   },
   { 
     title: "Interaktive Workshops", 
-    description: "Lernen durch Erleben",
-    details: "Partizipative Formate mit kreativem Setup, durchdachter Moderation und inspirierenden Methoden, die Wissen aktivieren und Teilnehmer zu aktiven Gestaltern machen."
+    description: "Kreativ denken, gemeinsam gestalten",
+    details: "Wissen wird erlebbar: Unsere Workshops fördern aktives Lernen, kreative Zusammenarbeit und sinnvolle Ergebnisse – individuell gestaltet und klar moderiert."
   },
   { 
     title: "Firmenevents & Mitarbeiterveranstaltungen", 
-    description: "Teamgeist & Unternehmenswerte stärken",
-    details: "Corporate Culture erleben: Von der Jahreskonferenz bis zum Sommerfest – wir schaffen Veranstaltungen, die Ihre Unternehmenskultur prägen und Mitarbeiter begeistern."
+    description: "Verbindung schaffen, Motivation stärken",
+    details: "Events für Verbindung: Wir stärken Teamgeist, feiern gemeinsame Erfolge und schaffen emotionale Momente für Ihre interne Marke – persönlich, klar und motivierend."
   },
   { 
     title: "Galas & exklusive Abendveranstaltungen", 
-    description: "Stilvolle Inszenierungen mit besonderem Flair",
-    details: "Exquisite Locations, durchdachte Dramaturgie und erstklassiges Catering – unsere Abendveranstaltungen verbinden festlichen Glanz mit unvergesslichen Momenten."
+    description: "Eleganz inszenieren – mit Gespür für Atmosphäre",
+    details: "Abende mit Stil: Wir gestalten Galas mit Atmosphäre, passender Dramaturgie und hochwertigen Details – für besondere Anlässe mit bleibendem Eindruck."
   },
   { 
     title: "Outdoor- & Teamevents", 
-    description: "Erlebnisse, die zusammenschweißen",
-    details: "Gemeinsam wachsen: Mit herausfordernden Aktivitäten und inspirierenden Naturerlebnissen schaffen wir Teamevents, die verbinden und motivieren."
+    description: "Natur erleben. Team stärken.",
+    details: "Gemeinsam raus, gemeinsam wachsen: Unsere Outdoorformate verbinden Teamdynamik mit Naturerlebnis – aktivierend, achtsam und verbindend."
   }
 ];
 
@@ -52,12 +52,12 @@ export const eventTags = [
 ];
 
 export const eventDescriptions = [
-  "Fachpublikum erreichen, Wissen vermitteln", // Wissenschaftliche Konferenzen
-  "Innovationen inszenieren und begeistern", // Produktlaunches & Präsentationen
-  "Wissen aktivieren, Kollaboration fördern", // Interaktive Workshops
-  "Teamgeist und Unternehmenskultur stärken", // Firmen- & Mitarbeiterevents
-  "Stilvolle Highlights mit besonderem Flair", // Galas & exklusive Abendveranstaltungen
-  "Gemeinsam wachsen, Natur erleben" // Outdoor- & Teamevents
+  "Präzise organisiert, fachlich auf den Punkt", // Wissenschaftliche Konferenzen
+  "Innovation sichtbar machen – emotional und technisch stark", // Produktlaunches & Präsentationen
+  "Kreativ denken, gemeinsam gestalten", // Interaktive Workshops
+  "Verbindung schaffen, Motivation stärken", // Firmen- & Mitarbeiterevents
+  "Eleganz inszenieren – mit Gespür für Atmosphäre", // Galas & exklusive Abendveranstaltungen
+  "Natur erleben. Team stärken." // Outdoor- & Teamevents
 ];
 
 // Using an array of icon components instead of JSX elements directly
