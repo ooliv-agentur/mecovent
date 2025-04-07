@@ -1,7 +1,36 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const VideoSection = () => {
   const videoRef = useRef<HTMLDivElement>(null);
+
+  // Add parallax effect on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!videoRef.current) return;
+      
+      const scrollPosition = window.scrollY;
+      const videoSection = videoRef.current;
+      const videoOffset = videoSection.offsetTop;
+      const videoHeight = videoSection.offsetHeight;
+      
+      // Only apply effect when the section is in view
+      if (scrollPosition > videoOffset - window.innerHeight && 
+          scrollPosition < videoOffset + videoHeight) {
+        
+        // Calculate parallax offset - slower movement for parallax effect
+        const parallaxOffset = (scrollPosition - (videoOffset - window.innerHeight)) * 0.4;
+        
+        // Apply transform to create parallax effect
+        const video = videoSection.querySelector('video');
+        if (video) {
+          video.style.transform = `translateY(${parallaxOffset * 0.15}px)`;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section 
@@ -15,14 +44,8 @@ const VideoSection = () => {
         muted
         loop
         playsInline
-        preload="auto"
-      >
-        {/* Using both absolute and relative paths for better compatibility */}
-        <source src="https://mecovent.projekte-ooliv.de/lovable-uploads/20250407_0946_High-Tech Corporate Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4" type="video/mp4" />
-        <source src="/lovable-uploads/20250407_0946_High-Tech Corporate Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4" type="video/mp4" />
-        {/* Fallback-Text falls Video nicht geladen werden kann */}
-        Ihr Browser unterstützt keine Videos.
-      </video>
+        src="/lovable-uploads/20250407_0946_High-Tech Corporate Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4"
+      />
       
       {/* Gradient overlay - keeping a subtle overlay for visual depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#1A1F2C] via-[#1A1F2C]/40 to-transparent opacity-60"></div>

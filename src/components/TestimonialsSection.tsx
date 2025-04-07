@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Quote, Mail, ArrowRight } from 'lucide-react';
+import { LightbulbIcon, ChevronLeft, ChevronRight, Quote, Mail, ArrowRight, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { SectionLabel } from '@/components/ui/section-label';
@@ -127,9 +128,12 @@ const TestimonialsSection = () => {
         </div>
       </section>
       
+      {/* Video Section - Added between testimonials and CTA */}
       <VideoSection />
       
+      {/* CTA Section with blue background */}
       <div className="bg-primary py-16 relative overflow-hidden">
+        {/* Background decoration */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-white/20"></div>
           <div className="absolute -left-20 -bottom-20 w-64 h-64 rounded-full bg-white/10"></div>
