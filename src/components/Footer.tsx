@@ -51,7 +51,7 @@ const Footer = () => {
             </div>
             <p className="text-muted-foreground max-w-xs leading-relaxed">
               Events, die verbinden.<br />
-              <span className="text-sm">Meeting. Congress. Event. – mit Hingabe realisiert.</span>
+              <span className="text-sm">Meeting. Congress. Event.<br />– mit Hingabe realisiert.</span>
             </p>
           </div>
           
@@ -109,7 +109,7 @@ const Footer = () => {
             <div className="bg-white rounded-xl p-6 shadow-sm space-y-6">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <address className="not-italic text-muted-foreground">
+                <address className="not-italic text-muted-foreground space-y-2">
                   <p className="font-medium text-foreground/90">MECOVENT GmbH</p>
                   <p>Wormser Straße 44</p>
                   <p>55294 Bodenheim</p>
@@ -117,7 +117,7 @@ const Footer = () => {
                 </address>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 mt-4">
                 <Phone className="h-5 w-5 text-primary flex-shrink-0" />
                 <a 
                   href="tel:+4961357039590" 
@@ -127,7 +127,7 @@ const Footer = () => {
                 </a>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 mt-4">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0" />
                 <a 
                   href="mailto:info@mecovent.de" 
