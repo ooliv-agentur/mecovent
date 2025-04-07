@@ -38,17 +38,17 @@ const HeroSection = () => {
           playsInline
           src="/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
       
       {/* Center the content in the middle of the screen */}
       <div className="container-section relative z-10 text-center max-w-[800px] mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
-        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift break-words">
-          Message. Atmosphäre. Event.
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
+          Wir bringen Menschen zusammen – Meeting. Congress. Event.
         </h1>
-        <p className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center max-w-4xl mx-auto mt-8 leading-normal">
-          Wir gestalten Erlebnisse, die Menschen und Marken nachhaltig verbinden.
-        </p>
+        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center max-w-4xl mx-auto mt-4 mb-8 leading-relaxed font-medium">
+          Strategisch geplant. Emotional inszeniert. Nachhaltig umgesetzt.
+        </h2>
       </div>
       
       {/* Animated scroll indicator with blue rollover effect */}
