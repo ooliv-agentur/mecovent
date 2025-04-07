@@ -12,15 +12,19 @@ const TestimonialsSection = () => {
       attribution: ""
     },
     {
-      quote: "Von der ersten Beratung bis zur Umsetzung – absolut zuverlässig, transparent und professionell!",
+      quote: "Selten so reibungslos und partnerschaftlich zusammengearbeitet – das Ergebnis hat unsere Erwartungen übertroffen.",
       attribution: ""
     },
     {
-      quote: "Die individuelle Betreuung war hervorragend. Jedes Detail wurde präzise ausgearbeitet.",
+      quote: "Unsere Botschaft wurde nicht nur sichtbar, sondern erlebbar gemacht. Danke für die starke Umsetzung!",
       attribution: ""
     },
     {
-      quote: "Wir waren beeindruckt von der strategischen Planung und reibungslosen Durchführung.",
+      quote: "Verlässlichkeit, Empathie und ein klarer Plan – besser kann man ein Event nicht begleiten.",
+      attribution: ""
+    },
+    {
+      quote: "MECOVENT hat unser Event strategisch durchdacht und emotional inszeniert. Der perfekte Mix für unsere Zielgruppe.",
       attribution: ""
     }
   ];
@@ -42,10 +46,12 @@ const TestimonialsSection = () => {
         
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
-            Was andere über uns sagen
+            Vertrauen, das bleibt – Stimmen unserer Kund:innen.
           </h2>
           <p className="subheader-section">
-            Entdecken Sie, wie wir mit Leidenschaft und Präzision Events gestalten, die in Erinnerung bleiben.
+            Jede Rückmeldung erzählt von Zusammenarbeit, Vertrauen und gemeinsamem Erfolg.
+            <br />
+            Erleben Sie, wie unsere Events nicht nur begeistern – sondern nachhaltig wirken.
           </p>
         </div>
         
