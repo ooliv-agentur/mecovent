@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 
 const VideoSection = () => {
@@ -48,6 +49,15 @@ const VideoSection = () => {
     setVideoError(true);
   };
 
+  // Debug log instead of rendering it in JSX
+  useEffect(() => {
+    console.log("Video section rendered", {
+      protocol: window.location.protocol,
+      host: window.location.host,
+      sources: videoSources
+    });
+  }, [videoSources]);
+
   return (
     <section 
       ref={videoRef} 
@@ -76,15 +86,6 @@ const VideoSection = () => {
       
       {/* Gradient overlay - keeping a subtle overlay for visual depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#1A1F2C] via-[#1A1F2C]/40 to-transparent opacity-60"></div>
-      
-      {/* Add console logging to help debug in production */}
-      <div className="hidden">
-        {console.log("Video section rendered", {
-          protocol: window.location.protocol,
-          host: window.location.host,
-          sources: videoSources
-        })}
-      </div>
     </section>
   );
 };
