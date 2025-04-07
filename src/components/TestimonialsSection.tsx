@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { SectionLabel } from '@/components/ui/section-label';
 import VideoSection from '@/components/VideoSection';
-import SecondVideoSection from '@/components/SecondVideoSection';
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -129,11 +128,8 @@ const TestimonialsSection = () => {
         </div>
       </section>
       
-      {/* First Video Section */}
+      {/* Video Section - Added between testimonials and CTA */}
       <VideoSection />
-      
-      {/* Second Video Section - New high-tech corporate event video */}
-      <SecondVideoSection />
       
       {/* CTA Section with blue background */}
       <div className="bg-primary py-16 relative overflow-hidden">
