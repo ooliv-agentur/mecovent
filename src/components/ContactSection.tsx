@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Phone, Mail, Info, HelpCircle, Users, Calendar, User, Globe, Building, Sparkles } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
