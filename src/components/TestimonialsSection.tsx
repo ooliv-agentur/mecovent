@@ -125,7 +125,7 @@ const TestimonialsSection = () => {
         </div>
       </div>
       
-      {/* Redesigned CTA Section with blue background */}
+      {/* Updated CTA Section with blue background */}
       <div className="bg-primary mt-24 py-16 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 opacity-10">
@@ -141,11 +141,11 @@ const TestimonialsSection = () => {
             />
             
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
-              Lassen Sie uns in Verbindung treten – wir freuen uns auf den ersten Austausch
+              Verbindung knüpfen – gemeinsam mehr bewegen.
             </h3>
             
             <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              Bereit für ein außergewöhnliches Event? Kontaktieren Sie uns noch heute und lassen Sie uns gemeinsam Ihre Ideen zum Leben erwecken.
+              Sie haben eine Idee, wir die Erfahrung. Lassen Sie uns gemeinsam etwas starten, das bleibt.
             </p>
             
             <a 
@@ -153,7 +153,7 @@ const TestimonialsSection = () => {
               className="inline-flex items-center gap-2 bg-white text-primary hover:bg-white/90 transition-colors px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl"
             >
               <Mail className="h-5 w-5" />
-              <span>Kontakt aufnehmen</span>
+              <span>Jetzt kennenlernen</span>
               <ArrowRight className="h-5 w-5 ml-2" />
             </a>
           </div>
