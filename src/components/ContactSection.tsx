@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Phone, Mail, Info, HelpCircle, Users, Calendar, User, Globe, Building, Sparkles } from 'lucide-react';
+import { Phone, Mail, Info, HelpCircle, Users, Calendar, User, Globe, Building, Sparkles, CircleDot } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -13,62 +14,78 @@ const ContactSection = () => {
       {
         question: "Was macht MECOVENT genau?",
         answer: (
-          <div className="space-y-3 text-muted-foreground">
-            <p>MECOVENT ist eine Full-Service-Eventagentur, die sich auf die <span className="text-foreground font-medium">Planung, Organisation und Durchführung</span> maßgeschneiderter Veranstaltungen spezialisiert hat. Wir bieten Lösungen für:</p>
-            <ul className="space-y-2 pl-1">
-              <li className="flex items-start gap-2">
-                <Calendar className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Kongresse & Konferenzen</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Building className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Produktlaunches & Firmenveranstaltungen</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Users className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Workshops, Incentives & Teamevents</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Globe className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Outdoor-Events & exklusive Abendveranstaltungen</span>
-              </li>
-            </ul>
-            <p>Unsere Leistungen umfassen <span className="text-foreground font-medium">Projektmanagement, Teilnehmermanagement, Eventmanagement, Veranstaltungstechnik & Marketingmaßnahmen</span> – alles Hand in Hand!</p>
+          <div className="space-y-4 text-muted-foreground">
+            <p>MECOVENT ist eine Full-Service-Eventagentur für Unternehmen, Institutionen und Fachverbände. Unser Fokus: maßgeschneiderte Events mit klarer Struktur, kreativem Konzept und reibungsloser Umsetzung.</p>
+            <div className="space-y-3 pl-1">
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Kongresse & Konferenzen</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Produktlaunches & Firmenveranstaltungen</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Workshops, Teamevents & Incentives</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Outdoor-Events & exklusive Abendformate</span>
+              </div>
+            </div>
+            <p>Unser Leistungsspektrum umfasst Projektplanung, Teilnehmermanagement, Veranstaltungstechnik und Kommunikationsmaßnahmen – <span className="text-foreground font-medium">alles aus einer Hand.</span></p>
           </div>
         )
       },
       {
         question: "Warum sollte ich MECOVENT für mein Event buchen?",
         answer: (
-          <div className="space-y-3 text-muted-foreground">
-            <p>Unsere drei Kernwerte – <span className="text-foreground font-medium">INDIVIDUELL, KREATIV, NACHHALTIG</span> – stehen für maßgeschneiderte Events, innovative Konzepte und verantwortungsvolle Umsetzung. Wir bieten:</p>
-            <ul className="space-y-2 pl-1">
-              <li className="flex items-start gap-2">
-                <Sparkles className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Langjährige Erfahrung & ein starkes Partnernetzwerk</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Sparkles className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Kreative & budgeteffiziente Planung</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Sparkles className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Transparente Kosten & professionelle Umsetzung</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Sparkles className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-foreground">Verlässliche Partnerschaft – Sie genießen das Event, wir arbeiten mit Hingabe!</span>
-              </li>
-            </ul>
+          <div className="space-y-4 text-muted-foreground">
+            <p>Mit MECOVENT entscheiden Sie sich für eine Zusammenarbeit, die auf Vertrauen, Präzision und Erfahrung basiert.</p>
+            <p className="font-medium text-foreground">Unsere Stärken:</p>
+            <div className="space-y-3 pl-1">
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Individuelle Konzepte</span> für jede Branche & Zielgruppe</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Kreative und budgeteffiziente Planung</span></span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Verlässliche Umsetzung</span> mit erfahrenem Partnernetzwerk</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Partnerschaftlicher Service:</span> Sie genießen, wir kümmern uns um alles</span>
+              </div>
+            </div>
           </div>
         )
       },
       {
         question: "Welche Veranstaltungsgrößen betreut MECOVENT?",
         answer: (
-          <p className="text-muted-foreground">
-            Wir organisieren Events jeder Größe – von <span className="text-foreground font-medium">kleinen exklusiven Meetings (10 Personen)</span> bis hin zu <span className="text-foreground font-medium">großen Firmenveranstaltungen mit über 1.000 Teilnehmern</span>. Egal ob Konferenz, Gala oder Teamevent, wir haben die passenden Lösungen.
-          </p>
+          <div className="space-y-4 text-muted-foreground">
+            <p>Wir realisieren Veranstaltungen für jede Größenordnung:</p>
+            <div className="space-y-3 pl-1">
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Kleine Meetings & Workshops</span> ab 10 Personen</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Mittlere Formate</span> wie Tagungen oder Teamevents</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Großveranstaltungen</span> mit über 1.000 Gästen</span>
+              </div>
+            </div>
+            <p>Je nach Bedarf skalieren wir Planung, Technik und Teilnehmermanagement flexibel mit – für Events, die passen.</p>
+          </div>
         )
       },
     ],
@@ -76,41 +93,47 @@ const ContactSection = () => {
       {
         question: "Kann MECOVENT auch digitale oder hybride Events umsetzen?",
         answer: (
-          <div className="space-y-3 text-muted-foreground">
-            <p>Absolut! Wir bieten Lösungen für:</p>
-            <ul className="space-y-2 pl-1">
-              <li className="flex items-start gap-2">
-                <Globe className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-foreground">Hybride Events</span>
-                  <p className="text-sm mt-1">Kombination aus Live- und Online-Teilnahme</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-2">
-                <Globe className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-foreground">Digitale Konferenzen & Webinare</span>
-                  <p className="text-sm mt-1">Virtuelle Plattformen mit interaktiven Elementen</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-2">
-                <Globe className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-foreground">Live-Streaming & Simultantechnik</span>
-                  <p className="text-sm mt-1">Professionelle Übertragung weltweit</p>
-                </div>
-              </li>
-            </ul>
-            <p>Wir helfen Ihnen, Ihr digitales Event so interaktiv und wirkungsvoll wie möglich zu gestalten.</p>
+          <div className="space-y-4 text-muted-foreground">
+            <p>Ja – wir planen und realisieren digitale & hybride Formate mit bewährter Technik und interaktiven Tools:</p>
+            <div className="space-y-3 pl-1">
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Hybride Events</span> mit Vor-Ort- und Online-Komponenten</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Digitale Konferenzen</span> mit interaktiven Plattformen</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Live-Streaming & Simultantechnik</span> für weltweite Reichweite</span>
+              </div>
+            </div>
+            <p>Wir sorgen für eine stimmige User Journey – vom Teilnehmerhandling bis zur Live-Interaktion.</p>
           </div>
         )
       },
       {
-        question: "Kann MECOVENT bei der Location-Suche helfen?",
+        question: "Unterstützt MECOVENT bei der Location-Suche?",
         answer: (
-          <p className="text-muted-foreground">
-            Ja, wir unterstützen Sie bei der Auswahl der passenden Location – egal ob Hotel, Konferenzzentrum, Outdoor-Event oder exklusive Eventlocation. Wir haben Zugang zu einer Vielzahl an <span className="text-foreground font-medium">Top-Locations deutschlandweit & international</span>.
-          </p>
+          <div className="space-y-4 text-muted-foreground">
+            <p>Ja – wir helfen Ihnen, die passende Location für Ihre Veranstaltung zu finden:</p>
+            <div className="space-y-3 pl-1">
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Hotels, Kongresszentren, Outdoor- oder Speziallocations</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Exklusiver Zugang zu Partnerlocations</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Berücksichtigung von Technik, Logistik und Atmosphäre</span>
+              </div>
+            </div>
+            <p>Unsere Vorschläge sind immer auf Ihr Eventformat abgestimmt.</p>
+          </div>
         )
       },
     ],
@@ -118,60 +141,60 @@ const ContactSection = () => {
       {
         question: "Welche technischen Services bietet MECOVENT?",
         answer: (
-          <div className="space-y-3 text-muted-foreground">
-            <p>Wir arbeiten mit führenden Anbietern für Veranstaltungstechnik zusammen und bieten:</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
-              <div className="flex items-start gap-2">
-                <Sparkles className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-foreground">Bühnenbau & Dekoration</span>
-                  <p className="text-sm mt-1">Perfektes Setup für Ihre Veranstaltung</p>
-                </div>
+          <div className="space-y-4 text-muted-foreground">
+            <p>Gemeinsam mit erfahrenen Technikpartnern bieten wir:</p>
+            <div className="space-y-3 pl-1">
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Bühnenbau & Dekoration</span> für jede Raumgröße</span>
               </div>
-              <div className="flex items-start gap-2">
-                <Sparkles className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-foreground">Licht-, Ton- & Videotechnik</span>
-                  <p className="text-sm mt-1">Hochwertige technische Umsetzung</p>
-                </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Licht-, Ton- & Videotechnik</span> für überzeugende Auftritte</span>
               </div>
-              <div className="flex items-start gap-2">
-                <Sparkles className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-foreground">Präsentationstechnik</span>
-                  <p className="text-sm mt-1">Optimale Darstellung Ihrer Inhalte</p>
-                </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Präsentationstechnik</span> für professionelle Inhalte</span>
               </div>
-              <div className="flex items-start gap-2">
-                <Sparkles className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <div>
-                  <span className="text-foreground">Simultantechnik</span>
-                  <p className="text-sm mt-1">Interaktive Abstimmungen & Mehrsprachigkeit</p>
-                </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span><span className="text-foreground">Simultantechnik & Interaktion</span> bei internationalen Events</span>
               </div>
             </div>
-            <p className="mt-2">Unsere Technik-Experten sorgen für ein serviceorientiertes Event-Erlebnis.</p>
+            <p>Technik ist bei uns kein Add-on – sondern fester Bestandteil des Gesamtkonzepts.</p>
           </div>
         )
       },
       {
         question: "Wie transparent sind die Kosten?",
         answer: (
-          <div className="space-y-3 text-muted-foreground">
-            <p>Unsere Kostenstruktur ist <span className="text-foreground font-medium">vollständig transparent</span>. Wir arbeiten mit <span className="text-foreground font-medium">klaren Budgets & detaillierten Angeboten</span>, damit Sie immer die volle Kontrolle haben. Keine versteckten Kosten, keine Überraschungen.</p>
-            <div className="flex items-center gap-2 bg-secondary/70 p-3 rounded-lg mt-3">
-              <Info className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-foreground font-medium">Tipp: Wir optimieren Ihr Budget so, dass Sie den maximalen Mehrwert erhalten.</span>
+          <div className="space-y-4 text-muted-foreground">
+            <p>Unsere Angebote sind vollständig transparent und verständlich aufgeschlüsselt.</p>
+            <div className="space-y-3 pl-1">
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Keine versteckten Kosten</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Detaillierte Budgetübersicht</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CircleDot className="h-3.5 w-3.5 text-primary mt-1.5 flex-shrink-0" />
+                <span>Anpassungen jederzeit möglich</span>
+              </div>
             </div>
+            <p>Wir arbeiten mit klarem Kostenrahmen – und holen das Beste aus Ihrem Budget heraus.</p>
           </div>
         )
       },
       {
-        question: "Kann ich Referenzen von MECOVENT einsehen?",
+        question: "Gibt es Referenzen von MECOVENT?",
         answer: (
-          <p className="text-muted-foreground">
-            Aus <span className="text-foreground font-medium">Loyalität & Diskretion</span> gegenüber unseren Kunden führen wir keine direkten Referenzen auf der Website auf. Gerne geben wir Ihnen jedoch in einem persönlichen Gespräch weitere Informationen über erfolgreich umgesetzte Projekte.
-          </p>
+          <div className="space-y-4 text-muted-foreground">
+            <p>Aus Diskretion gegenüber unseren Kund:innen veröffentlichen wir keine Projektlisten auf der Website.</p>
+            <p>In einem persönlichen Gespräch teilen wir gerne anonymisierte Beispiele aus unserer Praxis – für einen realistischen Eindruck unserer Arbeit.</p>
+          </div>
         )
       }
     ]
@@ -194,24 +217,24 @@ const ContactSection = () => {
           <div className="lg:col-span-4 order-2 lg:order-1">
             <Card className="shadow-lg bg-secondary/20 backdrop-blur-sm border border-secondary/50 overflow-hidden">
               <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-4 border-b border-secondary/50">
-                <h3 className="text-xl font-medium text-center">Persönlich sprechen?</h3>
+                <h3 className="text-xl font-medium text-center">Direkter Kontakt</h3>
               </div>
               <CardContent className="p-6">
                 <div className="space-y-6">
                   <p className="text-center text-muted-foreground">
-                    Wir freuen uns auf Ihre Nachricht oder Ihren Anruf.
+                    Kontaktieren Sie uns gerne telefonisch oder per E-Mail.
                   </p>
                   
                   <div className="flex flex-col gap-4 my-6">
                     <a href="tel:+4961357039590" className="flex items-center gap-3 p-3 rounded-lg bg-secondary/40 hover:bg-secondary/70 transition-colors group">
                       <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                        <Phone className="h-5 w-5 text-primary" />
+                        <Phone className="h-4 w-4 text-primary" />
                       </div>
                       <span className="font-medium">+49 6135 70 39 59 -0</span>
                     </a>
                     <a href="mailto:info@mecovent.de" className="flex items-center gap-3 p-3 rounded-lg bg-secondary/40 hover:bg-secondary/70 transition-colors group">
                       <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                        <Mail className="h-5 w-5 text-primary" />
+                        <Mail className="h-4 w-4 text-primary" />
                       </div>
                       <span className="font-medium">info@mecovent.de</span>
                     </a>
@@ -247,30 +270,30 @@ const ContactSection = () => {
               </p>
               
               <Tabs defaultValue="allgemein" className="w-full">
-                <TabsList className="w-full mb-6 bg-secondary/50 p-1">
-                  <TabsTrigger value="allgemein" className="data-[state=active]:bg-primary data-[state=active]:text-white">
+                <TabsList className="w-full mb-6 bg-secondary/50 p-1 sticky top-20 z-10">
+                  <TabsTrigger value="allgemein" className="data-[state=active]:bg-primary data-[state=active]:text-white text-base">
                     Allgemein
                   </TabsTrigger>
-                  <TabsTrigger value="planung" className="data-[state=active]:bg-primary data-[state=active]:text-white">
+                  <TabsTrigger value="planung" className="data-[state=active]:bg-primary data-[state=active]:text-white text-base">
                     Planung & Ablauf
                   </TabsTrigger>
-                  <TabsTrigger value="technisch" className="data-[state=active]:bg-primary data-[state=active]:text-white">
+                  <TabsTrigger value="technisch" className="data-[state=active]:bg-primary data-[state=active]:text-white text-base">
                     Technische Fragen
                   </TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="allgemein">
-                  <Accordion type="single" collapsible className="w-full space-y-3">
+                  <Accordion type="single" collapsible className="w-full space-y-4">
                     {faqCategories.allgemein.map((faq, index) => (
                       <AccordionItem 
                         key={index}
                         value={`allgemein-${index}`}
                         className="border border-secondary/30 rounded-lg overflow-hidden bg-secondary/10 px-1"
                       >
-                        <AccordionTrigger className="py-4 px-3 hover:no-underline hover:bg-secondary/30 data-[state=open]:bg-secondary/20 rounded-lg transition-all">
+                        <AccordionTrigger className="py-5 px-4 hover:no-underline hover:bg-secondary/30 data-[state=open]:bg-secondary/20 rounded-lg transition-all text-lg">
                           <span className="text-left font-medium">{faq.question}</span>
                         </AccordionTrigger>
-                        <AccordionContent className="px-3 pb-4 pt-2">
+                        <AccordionContent className="px-4 pb-5 pt-2 text-base leading-relaxed">
                           {faq.answer}
                         </AccordionContent>
                       </AccordionItem>
@@ -279,17 +302,17 @@ const ContactSection = () => {
                 </TabsContent>
                 
                 <TabsContent value="planung">
-                  <Accordion type="single" collapsible className="w-full space-y-3">
+                  <Accordion type="single" collapsible className="w-full space-y-4">
                     {faqCategories.planung.map((faq, index) => (
                       <AccordionItem 
                         key={index}
                         value={`planung-${index}`}
                         className="border border-secondary/30 rounded-lg overflow-hidden bg-secondary/10 px-1"
                       >
-                        <AccordionTrigger className="py-4 px-3 hover:no-underline hover:bg-secondary/30 data-[state=open]:bg-secondary/20 rounded-lg transition-all">
+                        <AccordionTrigger className="py-5 px-4 hover:no-underline hover:bg-secondary/30 data-[state=open]:bg-secondary/20 rounded-lg transition-all text-lg">
                           <span className="text-left font-medium">{faq.question}</span>
                         </AccordionTrigger>
-                        <AccordionContent className="px-3 pb-4 pt-2">
+                        <AccordionContent className="px-4 pb-5 pt-2 text-base leading-relaxed">
                           {faq.answer}
                         </AccordionContent>
                       </AccordionItem>
@@ -298,17 +321,17 @@ const ContactSection = () => {
                 </TabsContent>
                 
                 <TabsContent value="technisch">
-                  <Accordion type="single" collapsible className="w-full space-y-3">
+                  <Accordion type="single" collapsible className="w-full space-y-4">
                     {faqCategories.technisch.map((faq, index) => (
                       <AccordionItem 
                         key={index}
                         value={`technisch-${index}`}
                         className="border border-secondary/30 rounded-lg overflow-hidden bg-secondary/10 px-1"
                       >
-                        <AccordionTrigger className="py-4 px-3 hover:no-underline hover:bg-secondary/30 data-[state=open]:bg-secondary/20 rounded-lg transition-all">
+                        <AccordionTrigger className="py-5 px-4 hover:no-underline hover:bg-secondary/30 data-[state=open]:bg-secondary/20 rounded-lg transition-all text-lg">
                           <span className="text-left font-medium">{faq.question}</span>
                         </AccordionTrigger>
-                        <AccordionContent className="px-3 pb-4 pt-2">
+                        <AccordionContent className="px-4 pb-5 pt-2 text-base leading-relaxed">
                           {faq.answer}
                         </AccordionContent>
                       </AccordionItem>
