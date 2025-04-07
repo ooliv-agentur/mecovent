@@ -1,9 +1,7 @@
 
 import React from 'react';
-import { Phone, Mail, MapPin, ChevronRight, FacebookIcon, InstagramIcon, LinkedinIcon } from 'lucide-react';
+import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button } from './ui/button';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
 
 const Footer = () => {
   const location = useLocation();
@@ -42,28 +40,17 @@ const Footer = () => {
           {/* Logo and company description */}
           <div className="md:col-span-4 space-y-6">
             <div className="font-bold text-2xl mb-6">
-              <img 
-                src="/lovable-uploads/2315b43b-ca1a-4e3c-a0df-5834ea32e8a0.png" 
-                alt="MECOVENT Logo" 
-                className="h-10 object-contain"
-              />
+              <button onClick={() => scrollToSection('hero')}>
+                <img 
+                  src="/lovable-uploads/2315b43b-ca1a-4e3c-a0df-5834ea32e8a0.png" 
+                  alt="MECOVENT Logo" 
+                  className="h-10 object-contain"
+                />
+              </button>
             </div>
             <p className="text-muted-foreground max-w-xs leading-relaxed">
               Wir bringen Menschen zusammen – Meeting. Congress. Event.
             </p>
-            
-            {/* Social media icons */}
-            <div className="flex space-x-4 pt-4">
-              <a href="https://facebook.com" className="bg-white p-2 rounded-full shadow-sm hover:shadow-md transition-all duration-300">
-                <FacebookIcon className="h-5 w-5 text-primary" />
-              </a>
-              <a href="https://instagram.com" className="bg-white p-2 rounded-full shadow-sm hover:shadow-md transition-all duration-300">
-                <InstagramIcon className="h-5 w-5 text-primary" />
-              </a>
-              <a href="https://linkedin.com" className="bg-white p-2 rounded-full shadow-sm hover:shadow-md transition-all duration-300">
-                <LinkedinIcon className="h-5 w-5 text-primary" />
-              </a>
-            </div>
           </div>
           
           {/* Navigation links */}
@@ -122,16 +109,6 @@ const Footer = () => {
                 >
                   info@mecovent.de
                 </a>
-              </div>
-
-              <div className="pt-2">
-                <Button 
-                  variant="default" 
-                  className="w-full" 
-                  onClick={() => scrollToSection('contact')}
-                >
-                  Kontaktieren Sie uns
-                </Button>
               </div>
             </div>
           </div>
