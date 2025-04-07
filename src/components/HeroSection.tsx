@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
@@ -42,13 +41,12 @@ const HeroSection = () => {
       </div>
       
       {/* Center the content in the middle of the screen */}
-      <div className="container-section relative z-10 text-center max-w-[800px] mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white leading-tight max-w-4xl">
-          <span className="inline-block">Wir bringen Menschen zusammen –</span>
-          <br className="hidden md:block" />
-          <span className="inline-block">Meeting. Congress. Event.</span>
+      <div className="container-section relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
+          <span className="block">Wir bringen Menschen zusammen –</span>
+          <span className="block">Meeting. Congress. Event.</span>
         </h1>
-        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center max-w-4xl mx-auto mt-4 mb-8 leading-relaxed font-medium">
+        <h2 className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-8 leading-relaxed font-medium">
           Strategisch geplant. Emotional inszeniert. Nachhaltig umgesetzt.
         </h2>
       </div>
