@@ -15,9 +15,8 @@ const WhyMecovent = () => {
       <div className="container-section relative">
         <SectionHeader 
           tag="ÜBER UNS"
-          title="Warum MECOVENT? – Unsere Mission ist Ihr Erfolg."
-          subheader="Wir verwandeln Ihre Vision in unvergessliche Erlebnisse. Ob Change, Innovation oder Markeninszenierung – Ihre Botschaft wird lebendig."
-          description="Jedes Event erzählt eine Geschichte. Unsere Aufgabe ist es, diese Geschichte sichtbar, spürbar und nachhaltig zu gestalten – mit Respekt vor Ihrer Marke und dem Ziel, Menschen zu verbinden."
+          title="Wir gestalten Erlebnisse, die verbinden."
+          subheader="Ob Change-Prozess, Markenlaunch oder Kongress – wir inszenieren Ihre Botschaft so, dass sie Menschen berührt und Marken stärkt."
         />
         
         <ValuesSection values={companyValues} />
