@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { ChevronDown, Star, Heart, Sparkles } from 'lucide-react';
+import { ChevronDown, CheckCircle } from 'lucide-react';
 
 const HeroSection = () => {
   const scrollToNext = (event: React.MouseEvent) => {
@@ -53,18 +54,18 @@ const HeroSection = () => {
           </div>
         </div>
         
-        {/* Subline with softer, more emotional icons */}
+        {/* Subline with check icons */}
         <div className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-10 space-y-4 font-medium">
           <div className="flex items-center justify-center gap-3">
-            <Star className="h-6 w-6 text-[#009fe3] opacity-80" />
+            <CheckCircle className="h-6 w-6 text-[#009fe3]" />
             <span>Strategisch geplant.</span>
           </div>
           <div className="flex items-center justify-center gap-3">
-            <Heart className="h-6 w-6 text-[#009fe3] opacity-80" />
+            <CheckCircle className="h-6 w-6 text-[#009fe3]" />
             <span>Emotional inszeniert.</span>
           </div>
           <div className="flex items-center justify-center gap-3">
-            <Sparkles className="h-6 w-6 text-[#009fe3] opacity-80" />
+            <CheckCircle className="h-6 w-6 text-[#009fe3]" />
             <span>Nachhaltig umgesetzt.</span>
           </div>
         </div>
