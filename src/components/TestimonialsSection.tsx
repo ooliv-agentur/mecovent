@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { LightbulbIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { LightbulbIcon, ChevronLeft, ChevronRight, Quote, Mail, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -115,23 +116,40 @@ const TestimonialsSection = () => {
         </div>
       </div>
       
-      <section className="bg-background mt-[80px] mb-[80px]">
-        <div className="container-section">
-          <div className="text-center animate-fade-in">
-            <p className="flex items-center justify-center gap-2 text-primary mb-6">
-              <LightbulbIcon className="h-5 w-5" />
-              <span className="font-medium">Vertrauen entsteht im gemeinsamen Tun.</span>
+      {/* Redesigned CTA Section with blue background */}
+      <div className="bg-primary mt-24 py-16 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-white/20"></div>
+          <div className="absolute -left-20 -bottom-20 w-64 h-64 rounded-full bg-white/10"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center gap-2 bg-white/20 px-4 py-2 rounded-full text-white mb-8">
+              <LightbulbIcon className="h-4 w-4" />
+              <span className="text-sm font-medium">Vertrauen entsteht im gemeinsamen Tun</span>
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
+              Lassen Sie uns in Verbindung treten – wir freuen uns auf den ersten Austausch
+            </h3>
+            
+            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+              Bereit für ein außergewöhnliches Event? Kontaktieren Sie uns noch heute und lassen Sie uns gemeinsam Ihre Ideen zum Leben erwecken.
             </p>
             
-            <div className="mt-8">
-              <p className="text-lg mb-4">Lassen Sie uns in Verbindung treten – wir freuen uns auf den ersten Austausch.</p>
-              <Button size="lg" className="rounded-full px-8 py-6 text-base">
-                Erste Verbindung herstellen
-              </Button>
-            </div>
+            <a 
+              href="mailto:info@mecovent.de" 
+              className="inline-flex items-center gap-2 bg-white text-primary hover:bg-white/90 transition-colors px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl"
+            >
+              <Mail className="h-5 w-5" />
+              <span>Kontakt aufnehmen</span>
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </a>
           </div>
         </div>
-      </section>
+      </div>
     </section>
   );
 };
