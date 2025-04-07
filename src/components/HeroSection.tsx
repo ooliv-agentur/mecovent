@@ -6,8 +6,8 @@ const HeroSection = () => {
   const scrollToNext = (event: React.MouseEvent) => {
     event.preventDefault();
     
-    // Find the "why-mecovent" section specifically
-    const targetSection = document.getElementById('why-mecovent');
+    // Find the "ueber-uns" section since that's the logical "get to know us" section
+    const targetSection = document.getElementById('ueber-uns');
     if (targetSection) {
       // Get the navigation height
       const navHeight = document.querySelector('nav')?.offsetHeight || 0;
@@ -73,7 +73,7 @@ const HeroSection = () => {
       
       {/* Animated scroll indicator with blue rollover effect */}
       <a 
-        href="#why-mecovent" 
+        href="#ueber-uns" 
         className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center cursor-pointer group"
         onClick={scrollToNext}
       >
