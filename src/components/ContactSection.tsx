@@ -1,26 +1,11 @@
-
 import React from 'react';
 import { Phone, Mail, Info, HelpCircle, Users, Calendar, User, Globe, Building, Sparkles } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
-  Tabs, 
-  TabsContent, 
-  TabsList, 
-  TabsTrigger
-} from "@/components/ui/tabs";
-import { 
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger 
-} from "@/components/ui/collapsible";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Button } from '@/components/ui/button';
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { SectionLabel } from '@/components/ui/section-label';
 
 const ContactSection = () => {
   const faqCategories = {
@@ -196,7 +181,7 @@ const ContactSection = () => {
     <section id="contact" className="bg-background py-20">
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-          <div className="section-tag">Kontakt</div>
+          <SectionLabel label="Kontakt" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
             Lassen Sie uns Ihr Event planen!
           </h2>
@@ -206,7 +191,6 @@ const ContactSection = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto animate-fade-in-up">
-          {/* Contact Card */}
           <div className="lg:col-span-4 order-2 lg:order-1">
             <Card className="shadow-lg bg-secondary/20 backdrop-blur-sm border border-secondary/50 overflow-hidden">
               <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-4 border-b border-secondary/50">
@@ -247,7 +231,6 @@ const ContactSection = () => {
             </Card>
           </div>
           
-          {/* FAQ Section */}
           <div className="lg:col-span-8 order-1 lg:order-2">
             <div className="bg-secondary/10 p-6 rounded-xl border border-secondary/20">
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">

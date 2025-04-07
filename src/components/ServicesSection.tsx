@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   LightbulbIcon, 
@@ -13,6 +12,7 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { cn } from '@/lib/utils';
+import { SectionLabel } from '@/components/ui/section-label';
 
 interface ServiceCardProps {
   title: string;
@@ -104,7 +104,7 @@ const ServicesSection = () => {
     <section id="services" className="bg-[#F6F6F7] overflow-hidden">
       <div className="container-section">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-          <div className="section-tag">Was wir bieten</div>
+          <SectionLabel label="Was wir bieten" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift break-words">
             Unsere Leistungen – Ihr Event, perfekt geplant.
           </h2>
