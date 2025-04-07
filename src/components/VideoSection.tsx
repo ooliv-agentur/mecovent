@@ -35,16 +35,16 @@ const VideoSection = () => {
   return (
     <section 
       ref={videoRef} 
-      className="relative w-full h-[90vh] overflow-hidden"
+      className="relative w-full h-[75vh] overflow-hidden"
     >
       {/* Video background */}
       <video
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
+        className="absolute inset-0 w-full h-full object-cover"
         autoPlay
         muted
         loop
         playsInline
-        src="/lovable-uploads/20250407_0936_Event Tranquility_simple_compose_01jr7jvm9fe5svth9mjsww839d.mp4"
+        src="/lovable-uploads/20250407_0946_High-Tech Corporate Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4"
       />
       
       {/* Gradient overlay - keeping a subtle overlay for visual depth */}
