@@ -4,6 +4,7 @@ import { LightbulbIcon, ChevronLeft, ChevronRight, Quote, Mail, ArrowRight, Star
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { SectionLabel } from '@/components/ui/section-label';
+import VideoSection from '@/components/VideoSection';
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -40,93 +41,98 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section id="testimonials" className="bg-background py-20">
-      <div className="container-section">
-        <SectionLabel label="Kundenstimmen" />
-        
-        <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
-            Vertrauen, das bleibt – Stimmen unserer Kund:innen.
-          </h2>
-          <p className="subheader-section">
-            Jede Rückmeldung erzählt von Zusammenarbeit, Vertrauen und gemeinsamem Erfolg.
-          </p>
-          <p className="text-base text-muted-foreground mt-2">
-            Erleben Sie, wie unsere Events nicht nur begeistern – sondern nachhaltig wirken.
-          </p>
-        </div>
-        
-        <div className="max-w-5xl mx-auto">
-          <div className="relative">
-            <div className="overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out" 
-                style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
-              >
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="w-full flex-shrink-0 px-4">
-                    <Card className="shadow-md h-full">
-                      <CardContent className="p-10">
-                        <div className="mb-6">
-                          <Quote className="h-12 w-12 text-primary/40" />
-                        </div>
-                        <blockquote className="text-3xl font-medium mb-6 leading-relaxed">
-                          {testimonial.quote}
-                        </blockquote>
-                        {testimonial.attribution && (
-                          <cite className="block text-right text-muted-foreground not-italic">
-                            — {testimonial.attribution}
-                          </cite>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div className="flex justify-center mt-8 gap-4 items-center">
-              <Button 
-                variant="outline" 
-                size="icon" 
-                className="rounded-full shadow-sm hover:shadow-md transition-all h-10 w-10" 
-                onClick={prevTestimonial}
-                aria-label="Vorheriges Testimonial"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </Button>
-              
-              <div className="flex gap-2 items-center">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`h-3 rounded-full transition-all ${
-                      currentTestimonial === index 
-                        ? "bg-primary w-6" 
-                        : "bg-muted w-3"
-                    }`}
-                    onClick={() => setCurrentTestimonial(index)}
-                    aria-label={`Testimonial ${index + 1}`}
-                  />
-                ))}
+    <>
+      <section id="testimonials" className="bg-background py-20">
+        <div className="container-section">
+          <SectionLabel label="Kundenstimmen" />
+          
+          <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
+              Vertrauen, das bleibt – Stimmen unserer Kund:innen.
+            </h2>
+            <p className="subheader-section">
+              Jede Rückmeldung erzählt von Zusammenarbeit, Vertrauen und gemeinsamem Erfolg.
+            </p>
+            <p className="text-base text-muted-foreground mt-2">
+              Erleben Sie, wie unsere Events nicht nur begeistern – sondern nachhaltig wirken.
+            </p>
+          </div>
+          
+          <div className="max-w-5xl mx-auto">
+            <div className="relative">
+              <div className="overflow-hidden">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out" 
+                  style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+                >
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="w-full flex-shrink-0 px-4">
+                      <Card className="shadow-md h-full">
+                        <CardContent className="p-10">
+                          <div className="mb-6">
+                            <Quote className="h-12 w-12 text-primary/40" />
+                          </div>
+                          <blockquote className="text-3xl font-medium mb-6 leading-relaxed">
+                            {testimonial.quote}
+                          </blockquote>
+                          {testimonial.attribution && (
+                            <cite className="block text-right text-muted-foreground not-italic">
+                              — {testimonial.attribution}
+                            </cite>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
               </div>
               
-              <Button 
-                variant="outline" 
-                size="icon" 
-                className="rounded-full shadow-sm hover:shadow-md transition-all h-10 w-10" 
-                onClick={nextTestimonial}
-                aria-label="Nächstes Testimonial"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </Button>
+              <div className="flex justify-center mt-8 gap-4 items-center">
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  className="rounded-full shadow-sm hover:shadow-md transition-all h-10 w-10" 
+                  onClick={prevTestimonial}
+                  aria-label="Vorheriges Testimonial"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </Button>
+                
+                <div className="flex gap-2 items-center">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`h-3 rounded-full transition-all ${
+                        currentTestimonial === index 
+                          ? "bg-primary w-6" 
+                          : "bg-muted w-3"
+                      }`}
+                      onClick={() => setCurrentTestimonial(index)}
+                      aria-label={`Testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
+                
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  className="rounded-full shadow-sm hover:shadow-md transition-all h-10 w-10" 
+                  onClick={nextTestimonial}
+                  aria-label="Nächstes Testimonial"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
       
-      {/* Updated CTA Section with blue background */}
-      <div className="bg-primary mt-24 py-16 relative overflow-hidden">
+      {/* Video Section - Added between testimonials and CTA */}
+      <VideoSection />
+      
+      {/* CTA Section with blue background */}
+      <div className="bg-primary py-16 relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-white/20"></div>
@@ -159,7 +165,7 @@ const TestimonialsSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 
