@@ -3,7 +3,7 @@ import React from 'react';
 import SectionHeader from './why-mecovent/SectionHeader';
 import ValuesSection from './why-mecovent/ValuesSection';
 import StrengthsSection from './why-mecovent/StrengthsSection';
-import { companyValues } from './why-mecovent/constants';
+import { companyValues, discretionText } from './why-mecovent/constants';
 
 const WhyMecovent = () => {
   return (
@@ -16,11 +16,18 @@ const WhyMecovent = () => {
         <SectionHeader 
           tag="ÜBER UNS"
           title="Wir gestalten Erlebnisse, die verbinden."
-          subheader="Ob Change-Prozess, Markenlaunch oder Kongress – wir inszenieren Ihre Botschaft so, dass sie Menschen berührt und Marken stärkt."
+          subheader="Ob Change-Prozess, Produktlaunch oder Kongress – wir inszenieren Ihre Botschaft so, dass sie Menschen berührt und Marken stärkt."
         />
         
         <ValuesSection values={companyValues} />
         <StrengthsSection />
+        
+        {/* Discretion notice */}
+        <div className="mt-20 mb-12 max-w-3xl mx-auto text-center bg-secondary/30 p-6 rounded-xl">
+          <p className="text-muted-foreground text-sm leading-relaxed italic">
+            {discretionText}
+          </p>
+        </div>
       </div>
     </section>
   );

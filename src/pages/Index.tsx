@@ -9,6 +9,7 @@ import EventTypesSection from '@/components/EventTypesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import VideoSection from '@/components/VideoSection';
 
 const Index = () => {
   // Intersection Observer for animations
@@ -47,8 +48,10 @@ const Index = () => {
       <main>
         <HeroSection />
         <WhyMecovent />
-        <ServicesSection />
+        {/* Order changed as requested: Projects first, then Services */}
         <ProjectsSection />
+        <ServicesSection />
+        <VideoSection />
         <EventTypesSection />
         <TestimonialsSection />
         <ContactSection />
