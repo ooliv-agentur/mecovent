@@ -7,7 +7,7 @@ import { companyValues, discretionText } from './why-mecovent/constants';
 
 const WhyMecovent = () => {
   return (
-    <section id="ueber-uns" className="relative overflow-hidden pt-24 bg-background">
+    <section id="ueber-uns" className="relative overflow-hidden pt-24 bg-background w-full">
       <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background/80 to-transparent pointer-events-none"></div>
       
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/30 pointer-events-none"></div>

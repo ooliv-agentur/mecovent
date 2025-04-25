@@ -43,9 +43,9 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background selection:bg-primary/20">
+    <div className="min-h-screen bg-background selection:bg-primary/20 overflow-x-hidden w-full">
       <Navigation />
-      <main>
+      <main className="overflow-x-hidden w-full">
         <HeroSection />
         <WhyMecovent />
         {/* Order changed as requested: Projects first, then Services */}
