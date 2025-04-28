@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -81,16 +80,15 @@ const ProjectsSection = () => {
         </Carousel>
       </div>
       
-      <div className="text-center mt-16 animate-fade-in px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <Separator className="max-w-2xl mx-auto mb-8" />
-        <div className="max-w-2xl mx-auto space-y-4">
-          <div className="flex items-center justify-center gap-2 text-[#009fe3] mb-4">
+      <div className="text-center mt-8 animate-fade-in px-4">
+        <div className="max-w-[650px] mx-auto space-y-4">
+          <div className="flex items-center justify-center gap-2 text-[#009fe3]">
             <LightbulbIcon className="h-5 w-5 flex-shrink-0" />
           </div>
-          <p className="text-gray-600">
+          <p className="text-gray-600 leading-relaxed">
             Loyalität, Diskretion und Compliance unseren Kunden gegenüber sind uns ein großes Anliegen. Deshalb führen wir hier keine Kundennamen auf.
           </p>
-          <p className="text-gray-600">
+          <p className="text-gray-600 leading-relaxed">
             Für weitere Informationen freuen wir uns auf ein Gespräch mit Ihnen und stellen Ihnen gerne Referenzen zur Verfügung!
           </p>
         </div>
