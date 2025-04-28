@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -35,7 +36,7 @@ const ProjectsSection = () => {
         </p>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-16">
         <Carousel 
           className="w-full"
           opts={{
@@ -79,16 +80,16 @@ const ProjectsSection = () => {
         </Carousel>
       </div>
       
-      <div className="mt-8 px-4">
-        <div className="max-w-[650px] mx-auto bg-[#f8f8f8] rounded-lg p-6">
+      <div className="bg-[#f8f8f8] py-12">
+        <div className="max-w-[650px] mx-auto px-4">
           <div className="flex items-center justify-center gap-2 text-primary/80 mb-4">
             <LightbulbIcon className="h-4 w-4 flex-shrink-0" />
           </div>
-          <div className="space-y-4">
-            <p className="text-gray-600 leading-[1.4] text-[1rem]">
+          <div className="space-y-4 text-center">
+            <p className="text-gray-600 leading-[1.4]">
               Loyalität, Diskretion und Compliance unseren Kunden gegenüber sind uns ein großes Anliegen. Deshalb führen wir hier keine Kundennamen auf.
             </p>
-            <p className="text-gray-600 leading-[1.4] text-[1rem]">
+            <p className="text-gray-600 leading-[1.4]">
               Für weitere Informationen freuen wir uns auf ein Gespräch mit Ihnen und stellen Ihnen gerne Referenzen zur Verfügung!
             </p>
           </div>
