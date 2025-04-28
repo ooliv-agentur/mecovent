@@ -69,20 +69,24 @@ const Navigation = () => {
           <div className="flex items-center gap-3 relative z-[70]">
             <span className={cn(
               "text-sm font-medium",
-              isMenuOpen ? "text-[#222]" : "text-white"
+              isMenuOpen ? "text-gray-800" : "text-white"
             )}>
               {isMenuOpen ? "Schließen" : "Menü"}
             </span>
             <button 
-              onClick={() => setIsMenuOpen(true)}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="w-10 h-10 flex items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10"
-              aria-label="Open menu"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
-              <img
-                src="/lovable-uploads/3f78c6a0-159b-4cbe-be49-7303dccfd108.png"
-                alt="Menu"
-                className="w-6 h-6 object-contain"
-              />
+              {isMenuOpen ? (
+                <X size={24} className="text-gray-800" />
+              ) : (
+                <img
+                  src="/lovable-uploads/3f78c6a0-159b-4cbe-be49-7303dccfd108.png"
+                  alt="Menu"
+                  className="w-6 h-6 object-contain"
+                />
+              )}
             </button>
           </div>
         </div>
@@ -98,13 +102,18 @@ const Navigation = () => {
                 className="h-9 object-contain" 
               />
             </Link>
-            <button 
-              onClick={() => setIsMenuOpen(false)}
-              className="p-2 transition-all hover:bg-gray-100 rounded-full"
-              aria-label="Close menu"
-            >
-              <X size={24} className="text-gray-800" />
-            </button>
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium text-gray-800 z-[80]">
+                Schließen
+              </span>
+              <button 
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 transition-all hover:bg-gray-100 rounded-full z-[80]"
+                aria-label="Close menu"
+              >
+                <X size={24} className="text-gray-800" />
+              </button>
+            </div>
           </div>
           
           <nav className="flex flex-col items-center justify-center flex-grow py-12">
