@@ -9,7 +9,6 @@ import EventTypesSection from '@/components/EventTypesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
-import VideoSection from '@/components/VideoSection';
 
 const Index = () => {
   // Intersection Observer for animations
@@ -43,15 +42,13 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background selection:bg-primary/20 overflow-x-hidden w-full">
+    <div className="min-h-screen bg-background selection:bg-primary/20">
       <Navigation />
-      <main className="overflow-x-hidden w-full">
+      <main>
         <HeroSection />
         <WhyMecovent />
-        {/* Order changed as requested: Projects first, then Services */}
-        <ProjectsSection />
         <ServicesSection />
-        <VideoSection />
+        <ProjectsSection />
         <EventTypesSection />
         <TestimonialsSection />
         <ContactSection />

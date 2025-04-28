@@ -1,24 +1,16 @@
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 
 interface ValueCardProps {
   title: string;
   description: string;
   videoSrc: string;
   index: number;
-  playbackRate?: number;
 }
 
-const ValueCard = ({ title, description, videoSrc, index, playbackRate = 1 }: ValueCardProps) => {
+const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  
-  // Set playback rate when video is loaded
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = playbackRate;
-    }
-  }, [playbackRate]);
   
   const handleMouseEnter = () => {
     if (videoRef.current) {

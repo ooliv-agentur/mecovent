@@ -5,9 +5,9 @@ const VideoSection = () => {
   const videoRef = useRef<HTMLDivElement>(null);
   const [videoError, setVideoError] = useState(false);
 
-  // Define video sources with the updated directly hosted URL
+  // Define video sources with the new directly hosted URL
   const videoSources = [
-    // Primary video source
+    // New directly hosted URL
     "https://projekte-ooliv.de/mecovent/20250407_0946_High-Tech%20Corporate%20Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4",
     // Fallback URLs (if needed)
     `${window.location.protocol}//${window.location.host}/20250407_0946_High-Tech%20Corporate%20Event_simple_compose_01jr7kdhtcee3bx75xtzd6q1a7.mp4`,
@@ -70,7 +70,6 @@ const VideoSection = () => {
           muted
           loop
           playsInline
-          preload="auto"
           onError={handleVideoError}
         >
           {videoSources.map((src, index) => (

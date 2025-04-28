@@ -86,7 +86,7 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="relative overflow-hidden w-full bg-white" ref={sectionRef}>
-      <div className="py-16 md:py-24 w-full">
+      <div className="py-16 md:py-24">
         <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12", 
                           isVisible ? "animate-fade-in" : "opacity-0")}>
           <SectionLabel label="Unsere Expertise" />
@@ -101,7 +101,7 @@ const ProjectsSection = () => {
           </p>
         </div>
         
-        <div className={cn("mb-28 transition-all duration-700 transform w-full overflow-hidden", 
+        <div className={cn("mb-28 transition-all duration-700 transform w-full", 
                           isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0")}>
           <IndustriesCarousel 
             activeIndustryIndex={activeIndustryIndex}

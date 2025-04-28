@@ -28,7 +28,7 @@ const HeroSection = () => {
       id="hero" 
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Video Background with preload */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
           className="w-full h-full object-cover"
@@ -36,8 +36,6 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          preload="auto"
-          poster="/lovable-uploads/c24eb3c0-c51f-44dd-8a81-20345a2094f8.png"
           src="https://projekte-ooliv.de/mecovent/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>

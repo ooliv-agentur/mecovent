@@ -1,77 +1,71 @@
 
-import { Users, Calendar, GraduationCap, Presentation, Briefcase, Landmark, Mic, Globe, MapPin } from 'lucide-react';
+import React from 'react';
+import { 
+  Video,
+  Sparkles,
+  Users,
+  Building,
+  PartyPopper,
+  Mountain
+} from 'lucide-react';
 
 export const eventTypes = [
-  {
-    title: "Incentives und Teamevents",
-    details: "Natur erleben. Team stärken. Mitarbeitende motivieren.",
+  { 
+    title: "Wissenschaftliche Konferenzen", 
+    description: "Präzise organisiert, fachlich auf den Punkt",
+    details: "Wissenschaftlich präzise, organisatorisch souverän: Wir realisieren Konferenzen mit reibungsloser Teilnehmerkoordination, passender Technik und Gespür für Inhalte."
   },
-  {
-    title: "Tagungen & Kongresse",
-    details: "Wissen teilen. Austausch fördern. Mehrwert schaffen.",
+  { 
+    title: "Produktlaunches & Präsentationen", 
+    description: "Innovation sichtbar machen – emotional und technisch stark",
+    details: "Inszenierte Innovation: Wir bringen Ihre Produkte auf die Bühne – mit technischer Finesse, dramaturgischem Feingefühl und maximaler Markenwirkung."
   },
-  {
-    title: "Weiterbildung & Schulung",
-    details: "Inhalte vermitteln. Skills aufbauen. Erfolge sichern.",
+  { 
+    title: "Interaktive Workshops", 
+    description: "Kreativ denken, gemeinsam gestalten",
+    details: "Wissen wird erlebbar: Unsere Workshops fördern aktives Lernen, kreative Zusammenarbeit und sinnvolle Ergebnisse – individuell gestaltet und klar moderiert."
   },
-  {
-    title: "Produktpräsentationen",
-    details: "Innovation erlebbar machen. Begeisterung wecken. Markenwert steigern.",
+  { 
+    title: "Firmenevents & Mitarbeiterveranstaltungen", 
+    description: "Verbindung schaffen, Motivation stärken",
+    details: "Events für Verbindung: Wir stärken Teamgeist, feiern gemeinsame Erfolge und schaffen emotionale Momente für Ihre interne Marke – persönlich, klar und motivierend."
   },
-  {
-    title: "Business Events",
-    details: "Austausch fördern. Netzwerk stärken. Geschäfte anbahnen.",
+  { 
+    title: "Galas & exklusive Abendveranstaltungen", 
+    description: "Eleganz inszenieren – mit Gespür für Atmosphäre",
+    details: "Abende mit Stil: Wir gestalten Galas mit Atmosphäre, passender Dramaturgie und hochwertigen Details – für besondere Anlässe mit bleibendem Eindruck."
   },
-  {
-    title: "Mitarbeiterevents",
-    details: "Verbindung schaffen. Kultur erleben. Identifikation steigern.",
-  },
-  {
-    title: "Messeauftritte",
-    details: "Aufmerksamkeit erzeugen. Gespräche initiieren. Leads generieren.",
-  },
-  {
-    title: "Hybride und virtuelle Formate",
-    details: "Reichweite erhöhen. Flexibilität gewinnen. Zeit- und ortsunabhängig agieren.",
-  },
-  {
-    title: "Location Scouting",
-    details: "Inspiration finden. Rahmen setzen. Wirkung verstärken.",
-  },
-];
-
-export const eventDescriptions = [
-  "Wir schaffen unvergessliche Erlebnisse, die Teams verbinden und motivieren – ob in der Natur, in der Stadt oder an außergewöhnlichen Orten.",
-  "Wir organisieren hochwertige Veranstaltungen für Wissenstransfer und Vernetzung – mit durchdachter Architektur und inspirierendem Rahmen.",
-  "Wir gestalten lernfördernde Umgebungen mit kreativen Methoden und nachhaltiger Wirkung – für bleibende Skills und messbaren Erfolg.",
-  "Wir inszenieren Ihre Produkte und Innovationen mit Wow-Effekt und schaffen multisensorische Erlebnisse, die in Erinnerung bleiben.",
-  "Wir konzipieren professionelle Business-Events mit klarem ROI – für neue Kontakte, gestärkte Beziehungen und konkrete Ergebnisse.",
-  "Wir entwickeln Formate, die Mitarbeitende begeistern, Kultur erlebbar machen und die Identifikation mit dem Unternehmen stärken.",
-  "Wir realisieren aufmerksamkeitsstarke Messeauftritte mit strategischer Besucherführung und nachhaltiger Lead-Generierung.",
-  "Wir verbinden physische und digitale Eventwelten – für mehr Reichweite, Flexibilität und standortunabhängige Teilhabe.",
-  "Wir finden die perfekten Locations für Ihre Veranstaltung – mit dem richtigen Ambiente, der passenden Infrastruktur und Ihrem Budget entsprechend."
+  { 
+    title: "Outdoor- & Teamevents", 
+    description: "Natur erleben. Team stärken.",
+    details: "Gemeinsam raus, gemeinsam wachsen: Unsere Outdoorformate verbinden Teamdynamik mit Naturerlebnis – aktivierend, achtsam und verbindend."
+  }
 ];
 
 export const eventTags = [
-  ["Teambuilding", "Outdoor", "Erlebnis"],
-  ["Wissensaustausch", "Networking", "Fachexperten"],
-  ["Lernen", "Entwicklung", "Kompetenzen"],
-  ["Innovation", "Markteinführung", "Emotion"],
-  ["B2B", "Networking", "Geschäftsbeziehungen"],
-  ["Kultur", "Teamgeist", "Employer Branding"],
-  ["Markenauftritt", "Leadgenerierung", "ROI"],
-  ["Digital", "Reichweite", "Flexibilität"],
-  ["Ambiente", "Infrastruktur", "Logistik"]
+  ['Fachpublikum', 'Wissenstransfer', 'Präzision'], // Wissenschaftliche Konferenzen
+  ['Innovation', 'Markenauftritt', 'Inszenierung'], // Produktlaunches & Präsentationen
+  ['Aktivierung', 'Kollaboration', 'Lernerlebnis'], // Interaktive Workshops
+  ['Unternehmenskultur', 'Wertschätzung', 'Teambuilding'], // Firmen- & Mitarbeiterevents
+  ['Premium', 'Stil', 'Atmosphäre'], // Galas & exklusive Abendveranstaltungen
+  ['Natur', 'Herausforderung', 'Zusammenhalt'] // Outdoor- & Teamevents
 ];
 
+export const eventDescriptions = [
+  "Präzise organisiert, fachlich auf den Punkt", // Wissenschaftliche Konferenzen
+  "Innovation sichtbar machen – emotional und technisch stark", // Produktlaunches & Präsentationen
+  "Kreativ denken, gemeinsam gestalten", // Interaktive Workshops
+  "Verbindung schaffen, Motivation stärken", // Firmen- & Mitarbeiterevents
+  "Eleganz inszenieren – mit Gespür für Atmosphäre", // Galas & exklusive Abendveranstaltungen
+  "Natur erleben. Team stärken." // Outdoor- & Teamevents
+];
+
+// Using an array of icon components instead of JSX elements directly
 export const eventIconComponents = [
-  Users,       // Incentives und Teamevents
-  Calendar,    // Tagungen & Kongresse
-  GraduationCap, // Weiterbildung & Schulung
-  Presentation, // Produktpräsentationen
-  Briefcase,   // Business Events
-  Landmark,    // Mitarbeiterevents
-  Mic,         // Messeauftritte
-  Globe,       // Hybride und virtuelle Formate
-  MapPin       // Location Scouting
+  Video,           // Wissenschaftliche Konferenzen
+  Sparkles,        // Produktlaunches & Präsentationen
+  Users,           // Interaktive Workshops
+  Building,        // Firmen- & Mitarbeiterevents
+  PartyPopper,     // Galas & exklusive Abendveranstaltungen
+  Mountain         // Outdoor- & Teamevents
 ];
