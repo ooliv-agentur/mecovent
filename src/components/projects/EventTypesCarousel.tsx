@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { eventTypes } from './data';
@@ -154,34 +155,34 @@ const EventTypesCarousel = ({
                   <Card 
                     className={cn(
                       "flip-card-front absolute w-full h-full backface-hidden border shadow-sm transition-all duration-300",
-                      "bg-gradient-to-br from-[#D3E4FD]/40 to-white",
-                      "hover:shadow-lg hover:from-[#D3E4FD]/60",
+                      "hover:shadow-lg",
                       isFlipped ? "" : "hover:border-primary/20"
                     )}
                     style={{
                       backfaceVisibility: "hidden",
-                      backgroundImage: "radial-gradient(circle at 90% -10%, rgba(211, 228, 253, 0.4), transparent 40%)"
+                      background: "linear-gradient(135deg, #4B96D6 0%, #6CAAE4 100%)",
+                      backgroundImage: "radial-gradient(circle at 90% -10%, rgba(255, 255, 255, 0.2), transparent 40%)"
                     }}
                   >
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center backdrop-blur-sm">
-                          <Clock className="h-5 w-5 text-primary/70" />
+                        <div className="w-10 h-10 rounded-full bg-white/30 flex items-center justify-center backdrop-blur-sm">
+                          <Clock className="h-5 w-5 text-white" />
                         </div>
                         
                         {showHint && (
-                          <div className="text-xs text-primary/70 flex items-center gap-1 ml-auto">
+                          <div className="text-xs text-white flex items-center gap-1 ml-auto">
                             <RotateCw className="h-3.5 w-3.5" />
                             <span>Klicken zum Wenden</span>
                           </div>
                         )}
                       </div>
                       
-                      <CardTitle className="text-xl font-semibold text-primary/80">
+                      <CardTitle className="text-xl font-semibold text-white">
                         {event.title}
                       </CardTitle>
                       
-                      <CardDescription className="text-muted-foreground">
+                      <CardDescription className="text-white/90">
                         {event.description}
                       </CardDescription>
                     </CardHeader>
@@ -190,7 +191,7 @@ const EventTypesCarousel = ({
                   <Card 
                     className={cn(
                       "flip-card-back absolute w-full h-full backface-hidden border border-primary/20 shadow-md rotate-y-180",
-                      "bg-gradient-to-br from-[#D3E4FD]/20 to-white/90"
+                      "bg-gradient-to-br from-[#F8FAFF] to-white"
                     )}
                     style={{
                       backfaceVisibility: "hidden",

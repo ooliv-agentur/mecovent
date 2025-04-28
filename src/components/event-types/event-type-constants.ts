@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   Video,
@@ -47,7 +48,7 @@ export const eventTags = [
   ['Aktivierung', 'Kollaboration', 'Lernerlebnis'], // Interaktive Workshops
   ['Unternehmenskultur', 'Wertschätzung', 'Teambuilding'], // Firmen- & Mitarbeiterevents
   ['Premium', 'Stil', 'Atmosphäre'], // Galas & exklusive Abendveranstaltungen
-  ['Natur', 'Herausforderung', 'Zusammenhalt'] // Outdoor- & Teamevents
+  ['Natur', 'Herausforderung', 'Zusammenhalt'] // Incentives und Teamevents
 ];
 
 export const eventDescriptions = [
@@ -65,5 +66,5 @@ export const eventIconComponents = [
   Users,           // Interaktive Workshops
   Building,        // Firmen- & Mitarbeiterevents
   PartyPopper,     // Galas & exklusive Abendveranstaltungen
-  Mountain         // Outdoor- & Teamevents
+  Mountain         // Incentives und Teamevents
 ];
