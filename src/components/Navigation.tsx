@@ -116,10 +116,10 @@ const Navigation = () => {
             />
           </Link>
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 relative z-[70]">
             <span className={cn(
               "text-sm font-medium",
-              isMenuOpen ? "text-gray-800" : "text-white"
+              isMenuOpen ? "text-[#222]" : "text-white"
             )}>
               {isMenuOpen ? "Schließen" : "Menü"}
             </span>
