@@ -53,7 +53,7 @@ const Navigation = () => {
       <header 
         className={cn(
           "fixed top-0 right-0 z-50 transition-all duration-300 py-4 w-full",
-          isScrolled ? "bg-[#009fe3] backdrop-blur-sm shadow-sm" : "bg-transparent",
+          isScrolled ? "bg-[#009fe3]/80 backdrop-blur-[8px] shadow-sm" : "bg-transparent",
           visible ? "translate-y-0" : "-translate-y-full"
         )}
       >
