@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
@@ -12,7 +11,6 @@ import FloatingContactButton from '@/components/FloatingContactButton';
 import Footer from '@/components/Footer';
 
 const Index = () => {
-  // Intersection Observer for animations
   useEffect(() => {
     const observerOptions = {
       root: null,

@@ -4,22 +4,16 @@ import { cn } from '@/lib/utils';
 import { MessageCircle } from 'lucide-react';
 
 const FloatingContactButton = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [prevScrollY, setPrevScrollY] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
   
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const isScrollingDown = currentScrollY > prevScrollY;
-      
-      // Hide button when scrolling down, show when scrolling up
-      setIsVisible(!isScrollingDown || currentScrollY < 300);
-      setPrevScrollY(currentScrollY);
-    };
+    // Add initial animation after a short delay
+    const timer = setTimeout(() => {
+      setHasAnimated(true);
+    }, 1000);
     
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollY]);
+    return () => clearTimeout(timer);
+  }, []);
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -32,21 +26,20 @@ const FloatingContactButton = () => {
     <button
       onClick={scrollToContact}
       className={cn(
-        "fixed right-0 z-40 transform translate-y-1/2 px-5 py-3 rounded-l-full",
-        "bg-[#33c3f0]/90 hover:bg-[#33c3f0] text-white font-medium",
+        "fixed right-0 top-1/2 z-40 transform -translate-y-1/2 px-6 py-3.5 rounded-l-full",
+        "bg-[#A8D8B9] text-primary hover:bg-[#9ACAAB]",
         "shadow-md hover:shadow-lg transition-all duration-300",
         "flex items-center gap-2 group",
         "hidden md:flex", // Hide on mobile, show on tablet/desktop
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none",
+        hasAnimated ? "animate-none" : "animate-pulse"
       )}
-      style={{ top: '50%' }}
       aria-label="Kontakt knüpfen"
     >
       <MessageCircle 
-        size={18} 
-        className="text-white transition-transform group-hover:-translate-y-0.5" 
+        size={20} 
+        className="text-primary transition-transform group-hover:-translate-y-0.5" 
       />
-      <span>Kontakt knüpfen</span>
+      <span className="font-medium">Kontakt knüpfen</span>
     </button>
   );
 };
