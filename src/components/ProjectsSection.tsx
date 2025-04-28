@@ -79,16 +79,16 @@ const ProjectsSection = () => {
         </Carousel>
       </div>
       
-      <div className="bg-gradient-to-b from-white via-[#f8f8f8] to-[#f8f8f8] py-12">
+      <div className="bg-gradient-to-b from-white via-[#f8f8f8] to-[#f8f8f8] py-20 md:py-24">
         <div className="max-w-[650px] mx-auto px-4">
-          <div className="flex items-center justify-center gap-2 text-primary/80 mb-4">
-            <LightbulbIcon className="h-4 w-4 flex-shrink-0 animate-[glow_6s_ease-in-out_infinite]" />
+          <div className="flex items-center justify-center gap-3 text-primary/80 mb-6">
+            <LightbulbIcon className="h-12 w-12 flex-shrink-0 animate-[glow_6s_ease-in-out_infinite] stroke-2" />
           </div>
-          <div className="space-y-4 text-center">
-            <p className="text-gray-600 leading-[1.4]">
+          <div className="space-y-6 text-center">
+            <p className="text-gray-600 leading-[1.6] font-medium text-lg">
               Loyalität, Diskretion und Compliance unseren Kunden gegenüber sind uns ein großes Anliegen. Deshalb führen wir hier keine Kundennamen auf.
             </p>
-            <p className="text-gray-600 leading-[1.4]">
+            <p className="text-gray-600 leading-[1.6]">
               Für weitere Informationen freuen wir uns auf ein Gespräch mit Ihnen und stellen Ihnen gerne Referenzen zur Verfügung!
             </p>
           </div>

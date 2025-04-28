@@ -134,6 +134,7 @@ export default {
 				'gradient-shift': 'gradient-shift 10s ease-in-out infinite',
 				'soft-gradient': 'soft-gradient 15s linear infinite',
 				'spin-slow': 'spin-slow 3s linear infinite',
+				'glow': 'glow 6s ease-in-out infinite',
 			},
 			backgroundSize: {
 				'200%': '200% 100%',
