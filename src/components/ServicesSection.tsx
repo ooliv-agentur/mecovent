@@ -113,7 +113,7 @@ const ServicesSection = () => {
             Von der Idee bis zur Wirkung begleiten wir Sie mit Strategie, Hingabe und Erfahrung.
           </p>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Ob Fachkonferenz, Kick-off oder hybride Messe – wir denken ganzheitlich und gestalten Events, die wirken.
+            Ob Fachkonferenz, Kick-off oder hybride und virtuelle Formate – wir denken ganzheitlich und gestalten Events, die wirken.
           </p>
         </div>
         
