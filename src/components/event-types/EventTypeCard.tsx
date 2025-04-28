@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { RotateCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -109,7 +108,7 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
                 })}
               </div>
               
-              <CardTitle className="text-2xl font-bold text-primary/90 mb-3">
+              <CardTitle className="text-xl font-semibold text-primary/90 mb-3">
                 {title}
               </CardTitle>
               
@@ -129,7 +128,7 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
           }}
         >
           <CardHeader className="pb-2 border-b border-primary/10">
-            <CardTitle className="text-xl font-semibold text-primary/90">
+            <CardTitle className="text-lg font-semibold text-primary/90">
               {title}
             </CardTitle>
           </CardHeader>
