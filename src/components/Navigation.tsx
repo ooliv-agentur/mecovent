@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X, Phone, Mail } from 'lucide-react';
@@ -118,32 +117,14 @@ const Navigation = () => {
           
           <button 
             onClick={() => setIsMenuOpen(true)}
-            className={cn(
-              "w-10 h-10 flex flex-col items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10",
-              isScrolled ? "text-white" : "text-white"
-            )}
+            className="w-10 h-10 flex items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10"
             aria-label="Open menu"
           >
-            <div className="flex flex-col gap-1.5">
-              <div 
-                className={cn(
-                  "h-[1px] w-5 rotate-[25deg] rounded transition-all duration-300",
-                  isScrolled ? "bg-white" : "bg-white"
-                )}
-              />
-              <div 
-                className={cn(
-                  "h-[1px] w-5 rotate-[25deg] rounded transition-all duration-300",
-                  isScrolled ? "bg-white" : "bg-white"
-                )}
-              />
-              <div 
-                className={cn(
-                  "h-[1px] w-5 rotate-[25deg] rounded transition-all duration-300",
-                  isScrolled ? "bg-white" : "bg-white"
-                )}
-              />
-            </div>
+            <img
+              src="/lovable-uploads/3f78c6a0-159b-4cbe-be49-7303dccfd108.png"
+              alt="Menu"
+              className="w-6 h-6 object-contain"
+            />
           </button>
         </div>
       </header>
