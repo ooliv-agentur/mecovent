@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -120,6 +119,10 @@ export default {
 				'spin-slow': {
 					'0%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' }
+				},
+				'glow': {
+					'0%, 100%': { opacity: '0.8', filter: 'brightness(1)' },
+					'50%': { opacity: '1', filter: 'brightness(1.3)' }
 				},
 			},
 			animation: {

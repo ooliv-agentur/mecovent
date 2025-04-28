@@ -83,7 +83,7 @@ const ProjectsSection = () => {
       <div className="bg-[#f8f8f8] py-12">
         <div className="max-w-[650px] mx-auto px-4">
           <div className="flex items-center justify-center gap-2 text-primary/80 mb-4">
-            <LightbulbIcon className="h-4 w-4 flex-shrink-0" />
+            <LightbulbIcon className="h-4 w-4 flex-shrink-0 animate-[glow_6s_ease-in-out_infinite]" />
           </div>
           <div className="space-y-4 text-center">
             <p className="text-gray-600 leading-[1.4]">
