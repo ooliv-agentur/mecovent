@@ -119,27 +119,27 @@ const Navigation = () => {
           <button 
             onClick={() => setIsMenuOpen(true)}
             className={cn(
-              "w-10 h-10 flex items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10",
+              "w-10 h-10 flex flex-col items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10",
               isScrolled ? "text-white" : "text-white"
             )}
             aria-label="Open menu"
           >
-            <div className="flex flex-col space-y-1">
+            <div className="flex flex-col gap-1.5">
               <div 
                 className={cn(
-                  "h-0.5 w-6 rounded transition-all duration-300",
+                  "h-[1px] w-5 rotate-[25deg] rounded transition-all duration-300",
                   isScrolled ? "bg-white" : "bg-white"
                 )}
               />
               <div 
                 className={cn(
-                  "h-0.5 w-6 rounded transition-all duration-300",
-                  isScrolled ? "bg-white" : "bg-[#009fe3]"
+                  "h-[1px] w-5 rotate-[25deg] rounded transition-all duration-300",
+                  isScrolled ? "bg-white" : "bg-white"
                 )}
               />
               <div 
                 className={cn(
-                  "h-0.5 w-6 rounded transition-all duration-300",
+                  "h-[1px] w-5 rotate-[25deg] rounded transition-all duration-300",
                   isScrolled ? "bg-white" : "bg-white"
                 )}
               />
