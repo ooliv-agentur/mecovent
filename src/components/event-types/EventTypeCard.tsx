@@ -85,12 +85,11 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
           className={cn(
             "flip-card-front absolute w-full h-full backface-hidden border-0 shadow-lg",
             isFlipped ? "" : "hover:shadow-xl",
+            "bg-gradient-to-br from-[#009fe3] to-[#0087c0] text-white",
             "transition-shadow duration-300 ease-in-out"
           )}
           style={{
-            backfaceVisibility: "hidden",
-            background: "linear-gradient(135deg, #79c1ed 0%, #5aabdd 100%)",
-            backgroundImage: "radial-gradient(circle at 90% -10%, rgba(211, 228, 253, 0.6), transparent 60%)",
+            backfaceVisibility: "hidden"
           }}
         >
           <CardHeader>
