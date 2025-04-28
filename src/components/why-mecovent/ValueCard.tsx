@@ -15,6 +15,10 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
   const handleMouseEnter = () => {
     if (videoRef.current) {
       videoRef.current.play();
+      // Slow down playback for "INDIVIDUELL" card
+      if (title === "INDIVIDUELL") {
+        videoRef.current.playbackRate = 0.7;
+      }
     }
     setIsHovered(true);
   };
@@ -23,6 +27,8 @@ const ValueCard = ({ title, description, videoSrc, index }: ValueCardProps) => {
     if (videoRef.current) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
+      // Reset playback rate
+      videoRef.current.playbackRate = 1;
     }
     setIsHovered(false);
   };
