@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -19,7 +20,7 @@ const ProjectsSection = () => {
   return (
     <section 
       id="projects" 
-      className="relative w-full bg-gradient-to-b from-white via-white to-[#f8f8f8] py-16 md:py-24 overflow-hidden"
+      className="relative w-full bg-gradient-to-b from-white to-[#f8f8f8] py-16 md:py-24 overflow-hidden"
       ref={sectionRef}
     >
       <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12 animate-fade-in")}>
