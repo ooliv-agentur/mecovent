@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   Video,
@@ -36,8 +35,8 @@ export const eventTypes = [
     details: "Abende mit Stil: Wir gestalten Galas mit Atmosphäre, passender Dramaturgie und hochwertigen Details – für besondere Anlässe mit bleibendem Eindruck."
   },
   { 
-    title: "Outdoor- & Teamevents", 
-    description: "Natur erleben. Team stärken.",
+    title: "Incentives und Teamevents", 
+    description: "Natur erleben. Team stärken. Mitarbeiter:Innen motivieren.",
     details: "Gemeinsam raus, gemeinsam wachsen: Unsere Outdoorformate verbinden Teamdynamik mit Naturerlebnis – aktivierend, achtsam und verbindend."
   }
 ];
@@ -57,10 +56,9 @@ export const eventDescriptions = [
   "Kreativ denken, gemeinsam gestalten", // Interaktive Workshops
   "Verbindung schaffen, Motivation stärken", // Firmen- & Mitarbeiterevents
   "Eleganz inszenieren – mit Gespür für Atmosphäre", // Galas & exklusive Abendveranstaltungen
-  "Natur erleben. Team stärken." // Outdoor- & Teamevents
+  "Natur erleben. Team stärken. Mitarbeiter:Innen motivieren." // Incentives und Teamevents
 ];
 
-// Using an array of icon components instead of JSX elements directly
 export const eventIconComponents = [
   Video,           // Wissenschaftliche Konferenzen
   Sparkles,        // Produktlaunches & Präsentationen
