@@ -137,7 +137,7 @@ const Navigation = () => {
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <Link to="/" onClick={() => setIsMenuOpen(false)}>
               <img 
-                src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png"
+                src="/lovable-uploads/3c5fdd60-00c3-413d-aff2-357fdba14b25.png"
                 alt="MECOVENT Logo" 
                 className="h-9 object-contain" 
               />
@@ -176,7 +176,6 @@ const Navigation = () => {
             </ul>
           </nav>
           
-          {/* Contact Block - with increased spacing */}
           <div className="py-10 border-t border-gray-100 mt-16">
             <div className="container mx-auto max-w-md px-4">
               <div className="text-center">
