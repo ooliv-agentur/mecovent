@@ -19,7 +19,7 @@ const ProjectsSection = () => {
   return (
     <section 
       id="projects" 
-      className="relative w-full bg-gradient-to-b from-white via-white to-white py-16 md:py-24 overflow-hidden"
+      className="relative w-full bg-gradient-to-b from-white via-white to-[#f8f8f8] py-16 md:py-24 overflow-hidden"
       ref={sectionRef}
     >
       <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12 animate-fade-in")}>
@@ -79,7 +79,7 @@ const ProjectsSection = () => {
         </Carousel>
       </div>
       
-      <div className="bg-gradient-to-b from-white via-[#f8f8f8] to-[#f8f8f8] py-20 md:py-24">
+      <div className="py-20 md:py-24">
         <div className="max-w-[650px] mx-auto px-4">
           <div className="flex items-center justify-center gap-3 text-primary/80 mb-6">
             <LightbulbIcon className="h-12 w-12 flex-shrink-0 animate-[glow_6s_ease-in-out_infinite] stroke-2" />
