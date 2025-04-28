@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
@@ -6,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useNavigationScroll } from '@/hooks/useNavigationScroll';
 import { NavigationItems } from './navigation/NavigationItems';
 import { ContactInfo } from './navigation/ContactInfo';
+import { AnimatedMenuIcon } from './navigation/AnimatedMenuIcon';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,15 +78,7 @@ const Navigation = () => {
               className="w-10 h-10 flex items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
-              {isMenuOpen ? (
-                <X size={24} className="text-gray-800" />
-              ) : (
-                <img
-                  src="/lovable-uploads/3f78c6a0-159b-4cbe-be49-7303dccfd108.png"
-                  alt="Menu"
-                  className="w-6 h-6 object-contain"
-                />
-              )}
+              <AnimatedMenuIcon isOpen={isMenuOpen} />
             </button>
           </div>
         </div>
@@ -111,7 +103,7 @@ const Navigation = () => {
                 className="p-2 transition-all hover:bg-gray-100 rounded-full z-[80]"
                 aria-label="Close menu"
               >
-                <X size={24} className="text-gray-800" />
+                <AnimatedMenuIcon isOpen={true} />
               </button>
             </div>
           </div>
