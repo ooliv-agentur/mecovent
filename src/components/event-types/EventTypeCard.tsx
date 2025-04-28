@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Tag, RotateCw } from 'lucide-react';
+import { RotateCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Card,
@@ -83,13 +83,14 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
       >
         <Card 
           className={cn(
-            "flip-card-front absolute w-full h-full backface-hidden border-0 shadow-lg",
+            "flip-card-front absolute w-full h-full backface-hidden border-0",
             isFlipped ? "" : "hover:shadow-xl",
-            "bg-gradient-to-br from-[#009fe3] to-[#0087c0] text-white",
-            "transition-shadow duration-300 ease-in-out"
+            "transition-shadow duration-300 ease-in-out overflow-hidden"
           )}
           style={{
-            backfaceVisibility: "hidden"
+            backfaceVisibility: "hidden",
+            background: "linear-gradient(135deg, #D3E4FD 0%, #EEF6FF 100%)",
+            backgroundImage: "radial-gradient(circle at 90% -10%, rgba(211, 228, 253, 0.4), transparent 40%)"
           }}
         >
           <CardHeader>
@@ -99,18 +100,20 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
             <div className="flex flex-col items-center text-center">
               <div 
                 className={cn(
-                  "w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-6 transition-colors duration-300 ease-in-out",
-                  isHovered ? "bg-white/20" : ""
+                  "w-20 h-20 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center mb-6 transition-colors duration-300 ease-in-out",
+                  isHovered ? "bg-white/40" : ""
                 )}
               >
-                {React.cloneElement(icon as React.ReactElement, { className: "h-9 w-9 text-white/90" })}
+                {React.cloneElement(icon as React.ReactElement, { 
+                  className: "h-9 w-9 text-primary/90" 
+                })}
               </div>
               
-              <CardTitle className="text-2xl font-bold text-white mb-3">
+              <CardTitle className="text-2xl font-bold text-primary/90 mb-3">
                 {title}
               </CardTitle>
               
-              <CardDescription className="text-white/90 text-lg">
+              <CardDescription className="text-primary/80 text-lg">
                 {description}
               </CardDescription>
             </div>
@@ -118,26 +121,26 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
         </Card>
         
         <Card 
-          className="flip-card-back absolute w-full h-full backface-hidden border shadow-md bg-white rotate-y-180 flex flex-col"
+          className="flip-card-back absolute w-full h-full backface-hidden border shadow-md bg-white/95 rotate-y-180 flex flex-col"
           style={{
             backfaceVisibility: "hidden",
-            transform: "rotateY(180deg)"
+            transform: "rotateY(180deg)",
+            background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%)",
           }}
         >
-          <CardHeader className="pb-2 border-b border-primary/10 text-left">
-            <CardTitle className="text-xl font-semibold text-primary">
+          <CardHeader className="pb-2 border-b border-primary/10">
+            <CardTitle className="text-xl font-semibold text-primary/90">
               {title}
             </CardTitle>
           </CardHeader>
           
-          <CardContent className="flex-1 flex flex-col pt-4 text-left">
+          <CardContent className="flex-1 flex flex-col pt-4">
             <div className="text-sm text-foreground/80 leading-relaxed mb-4">
               {details}
             </div>
             
             <div className="mt-auto">
               <div className="flex items-center gap-1 text-xs text-foreground/60 mb-2">
-                <Tag className="h-3.5 w-3.5 text-foreground/50" />
                 <span>Tags:</span>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -145,7 +148,7 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
                   <Badge 
                     key={i} 
                     variant="outline" 
-                    className="py-1 px-2 border-primary/30 text-xs font-medium bg-primary/10 text-primary"
+                    className="py-1 px-2 border-primary/20 text-xs font-medium bg-primary/5 text-primary/80"
                   >
                     {tag}
                   </Badge>
@@ -153,6 +156,13 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
               </div>
             </div>
           </CardContent>
+          
+          <CardFooter className="pt-0 text-xs text-primary/70 justify-end">
+            <div className="flex items-center gap-1">
+              <RotateCw className="h-3.5 w-3.5" />
+              <span>Zurück zur Übersicht</span>
+            </div>
+          </CardFooter>
         </Card>
       </div>
     </div>
