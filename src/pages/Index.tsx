@@ -47,8 +47,8 @@ const Index = () => {
       <main>
         <HeroSection />
         <WhyMecovent />
-        <ServicesSection />
         <ProjectsSection />
+        <ServicesSection />
         <EventTypesSection />
         <TestimonialsSection />
         <ContactSection />
