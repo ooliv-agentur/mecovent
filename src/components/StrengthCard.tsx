@@ -16,9 +16,9 @@ const StrengthCard = ({ iconType, title, description }: StrengthCardProps) => {
   const getIcon = () => {
     switch (iconType) {
       case 'trophy':
-        return <Trophy className="text-primary stroke-[1.5]" size={36} />;
+        return <Trophy className="text-primary" size={36} />;
       case 'chart':
-        return <BarChart3 className="text-primary stroke-[1.5]" size={36} />;
+        return <BarChart3 className="text-primary" size={36} />;
       case 'handshake':
         return <HandshakeIcon className="text-primary" size={36} />;
       default:
@@ -28,22 +28,21 @@ const StrengthCard = ({ iconType, title, description }: StrengthCardProps) => {
   
   return (
     <Card 
-      className="h-full overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-lg border-none bg-white/5 backdrop-blur-sm"
+      className="h-full overflow-hidden group transition-all duration-300 border-none bg-white/5 backdrop-blur-sm hover:shadow-lg"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <CardContent className="p-8 text-center relative overflow-hidden h-full">
-        <div className={`absolute ${isHovered ? 'scale-100 opacity-10' : 'scale-50 opacity-0'} transition-all duration-500 ease-out rounded-full w-[200%] aspect-square bg-gradient-to-tr from-primary/60 to-primary/40 -top-1/2 -left-1/2`}></div>
+        <div className={`absolute ${isHovered ? 'scale-100 opacity-10' : 'scale-50 opacity-0'} transition-all duration-500 ease-out rounded-full w-[200%] aspect-square bg-gradient-to-tr from-black/10 to-black/5 -top-1/2 -left-1/2`}></div>
         
         <div className="flex justify-center mb-6 relative">
-          <div className={`transition-transform duration-300 p-4 rounded-full bg-[#D3E4FD]/30 ${isHovered ? 'scale-110' : 'scale-100'}`}>
+          <div className={`transition-transform duration-300 p-4 rounded-full bg-[#D3E4FD]/30`}>
             {getIcon()}
           </div>
         </div>
         
-        <h4 className="text-xl font-medium mb-3 relative">
+        <h4 className="text-xl font-medium mb-3 relative text-foreground">
           {title}
-          <div className={`h-0.5 w-0 bg-gradient-to-r from-primary to-primary/70 transition-all duration-500 mx-auto ${isHovered ? 'w-1/3' : 'w-0'}`}></div>
         </h4>
         
         <p className="text-muted-foreground relative">
