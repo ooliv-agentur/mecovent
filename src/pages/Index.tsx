@@ -8,6 +8,7 @@ import ProjectsSection from '@/components/ProjectsSection';
 import EventTypesSection from '@/components/EventTypesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
+import FloatingContactButton from '@/components/FloatingContactButton';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -44,6 +45,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background selection:bg-primary/20">
       <Navigation />
+      <FloatingContactButton />
       <main>
         <HeroSection />
         <WhyMecovent />
