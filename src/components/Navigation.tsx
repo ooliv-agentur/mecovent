@@ -115,32 +115,33 @@ const Navigation = () => {
             />
           </Link>
           
-          <button 
-            onClick={() => setIsMenuOpen(true)}
-            className="w-10 h-10 flex items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10"
-            aria-label="Open menu"
-          >
-            <img
-              src="/lovable-uploads/3f78c6a0-159b-4cbe-be49-7303dccfd108.png"
-              alt="Menu"
-              className="w-6 h-6 object-contain"
-            />
-          </button>
+          <div className="flex items-center gap-3">
+            <span className="text-white text-sm font-medium">Menü</span>
+            <button 
+              onClick={() => setIsMenuOpen(true)}
+              className="w-10 h-10 flex items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10"
+              aria-label="Open menu"
+            >
+              <img
+                src="/lovable-uploads/3f78c6a0-159b-4cbe-be49-7303dccfd108.png"
+                alt="Menu"
+                className="w-6 h-6 object-contain"
+              />
+            </button>
+          </div>
         </div>
       </header>
 
       {isMenuOpen && (
         <div className="fixed inset-0 bg-white z-[60] flex flex-col overflow-y-auto animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div>
-              <Link to="/" onClick={() => setIsMenuOpen(false)}>
-                <img 
-                  src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
-                  alt="MECOVENT Logo" 
-                  className="h-9 object-contain" 
-                />
-              </Link>
-            </div>
+            <Link to="/" onClick={() => setIsMenuOpen(false)}>
+              <img 
+                src="/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png"
+                alt="MECOVENT Logo" 
+                className="h-9 object-contain" 
+              />
+            </Link>
             <button 
               onClick={() => setIsMenuOpen(false)}
               className="p-2 transition-all hover:bg-gray-100 rounded-full"
