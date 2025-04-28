@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import ExpertiseBlock from './projects/ExpertiseBlock';
+import { Separator } from '@/components/ui/separator';
 
 const ProjectsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -81,10 +82,16 @@ const ProjectsSection = () => {
       </div>
       
       <div className="text-center mt-16 animate-fade-in px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="max-w-2xl mx-auto">
-          <p className="flex items-center justify-center gap-2 text-[#009fe3] mb-8">
-            <LightbulbIcon className="h-5 w-5" />
-            <span className="font-medium">Diskretion & Vertraulichkeit stehen für uns an erster Stelle.</span>
+        <Separator className="max-w-2xl mx-auto mb-8" />
+        <div className="max-w-2xl mx-auto space-y-4">
+          <div className="flex items-center justify-center gap-2 text-[#009fe3] mb-4">
+            <LightbulbIcon className="h-5 w-5 flex-shrink-0" />
+          </div>
+          <p className="text-gray-600">
+            Loyalität, Diskretion und Compliance unseren Kunden gegenüber sind uns ein großes Anliegen. Deshalb führen wir hier keine Kundennamen auf.
+          </p>
+          <p className="text-gray-600">
+            Für weitere Informationen freuen wir uns auf ein Gespräch mit Ihnen und stellen Ihnen gerne Referenzen zur Verfügung!
           </p>
         </div>
       </div>
