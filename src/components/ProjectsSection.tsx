@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -20,7 +19,7 @@ const ProjectsSection = () => {
   return (
     <section 
       id="projects" 
-      className="relative w-full bg-white py-16 md:py-24 overflow-hidden"
+      className="relative w-full bg-gradient-to-b from-white via-white to-white py-16 md:py-24 overflow-hidden"
       ref={sectionRef}
     >
       <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12 animate-fade-in")}>
@@ -80,7 +79,7 @@ const ProjectsSection = () => {
         </Carousel>
       </div>
       
-      <div className="bg-[#f8f8f8] py-12">
+      <div className="bg-gradient-to-b from-white via-[#f8f8f8] to-[#f8f8f8] py-12">
         <div className="max-w-[650px] mx-auto px-4">
           <div className="flex items-center justify-center gap-2 text-primary/80 mb-4">
             <LightbulbIcon className="h-4 w-4 flex-shrink-0 animate-[glow_6s_ease-in-out_infinite]" />
