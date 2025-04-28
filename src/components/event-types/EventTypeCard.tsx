@@ -113,7 +113,7 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
                 {title}
               </CardTitle>
               
-              <CardDescription className="text-primary/80 text-lg">
+              <CardDescription className="text-lg text-gray-700">
                 {description}
               </CardDescription>
             </div>
