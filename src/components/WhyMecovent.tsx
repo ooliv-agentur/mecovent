@@ -16,7 +16,7 @@ const WhyMecovent = () => {
         <SectionHeader 
           tag="ÜBER UNS"
           title="Wir gestalten Erlebnisse, die verbinden."
-          subheader="Ob Change-Prozess, Markenlaunch oder Kongress – wir inszenieren Ihre Botschaft so, dass sie Menschen berührt und Marken stärkt."
+          subheader="Ob Change-Prozess, Produktlaunch oder Kongress – wir inszenieren Ihre Botschaft so, dass sie Menschen berührt und Marken stärkt."
         />
         
         <ValuesSection values={companyValues} />
