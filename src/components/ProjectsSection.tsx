@@ -43,7 +43,7 @@ const ProjectsSection = () => {
             align: "start",
             loop: true,
           }}
-          onSlideChange={setActiveIndex}
+          onSlideChange={(index) => setActiveIndex(index)}
         >
           <CarouselContent>
             {industryItems.map((industry, index) => (
