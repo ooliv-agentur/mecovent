@@ -11,7 +11,6 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import ExpertiseBlock from './projects/ExpertiseBlock';
-import { Separator } from '@/components/ui/separator';
 
 const ProjectsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -80,17 +79,22 @@ const ProjectsSection = () => {
         </Carousel>
       </div>
       
-      <div className="text-center mt-8 animate-fade-in px-4">
-        <div className="max-w-[650px] mx-auto space-y-4">
-          <div className="flex items-center justify-center gap-2 text-[#009fe3]">
-            <LightbulbIcon className="h-5 w-5 flex-shrink-0" />
+      <div className="relative mt-12 mb-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-50/50 to-transparent pointer-events-none" />
+        <div className="text-center px-4 relative">
+          <div className="max-w-[650px] mx-auto">
+            <div className="flex items-center justify-center gap-2 text-[#009fe3] mb-6 opacity-80">
+              <LightbulbIcon className="h-5 w-5 flex-shrink-0" />
+            </div>
+            <div className="space-y-4">
+              <p className="text-gray-600 leading-[1.5] text-[1.0625rem]">
+                Loyalität, Diskretion und Compliance unseren Kunden gegenüber sind uns ein großes Anliegen. Deshalb führen wir hier keine Kundennamen auf.
+              </p>
+              <p className="text-gray-600 leading-[1.5] text-[1.0625rem]">
+                Für weitere Informationen freuen wir uns auf ein Gespräch mit Ihnen und stellen Ihnen gerne Referenzen zur Verfügung!
+              </p>
+            </div>
           </div>
-          <p className="text-gray-600 leading-relaxed">
-            Loyalität, Diskretion und Compliance unseren Kunden gegenüber sind uns ein großes Anliegen. Deshalb führen wir hier keine Kundennamen auf.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            Für weitere Informationen freuen wir uns auf ein Gespräch mit Ihnen und stellen Ihnen gerne Referenzen zur Verfügung!
-          </p>
         </div>
       </div>
     </section>
