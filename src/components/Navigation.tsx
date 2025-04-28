@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X, Phone, Mail } from 'lucide-react';
@@ -116,7 +117,9 @@ const Navigation = () => {
           </Link>
           
           <div className="flex items-center gap-3">
-            <span className="text-white text-sm font-medium">Menü</span>
+            <span className="text-white text-sm font-medium">
+              {isMenuOpen ? "Schließen" : "Menü"}
+            </span>
             <button 
               onClick={() => setIsMenuOpen(true)}
               className="w-10 h-10 flex items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10"
