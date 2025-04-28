@@ -117,7 +117,10 @@ const Navigation = () => {
           </Link>
           
           <div className="flex items-center gap-3">
-            <span className="text-white text-sm font-medium">
+            <span className={cn(
+              "text-sm font-medium",
+              isMenuOpen ? "text-gray-800" : "text-white"
+            )}>
               {isMenuOpen ? "Schließen" : "Menü"}
             </span>
             <button 
