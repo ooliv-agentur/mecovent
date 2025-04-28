@@ -89,8 +89,8 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
           )}
           style={{
             backfaceVisibility: "hidden",
-            background: "linear-gradient(135deg, #4B96D6 0%, #6CAAE4 100%)",
-            backgroundImage: "radial-gradient(circle at 90% -10%, rgba(255, 255, 255, 0.2), transparent 40%)"
+            background: "linear-gradient(135deg, #D3E4FD 0%, #EEF6FF 100%)",
+            backgroundImage: "radial-gradient(circle at 90% -10%, rgba(211, 228, 253, 0.4), transparent 40%)"
           }}
         >
           <CardHeader>
@@ -105,15 +105,15 @@ const EventTypeCard: React.FC<EventTypeCardProps> = ({
                 )}
               >
                 {React.cloneElement(icon as React.ReactElement, { 
-                  className: "h-9 w-9 text-white" 
+                  className: "h-9 w-9 text-primary/90" 
                 })}
               </div>
               
-              <CardTitle className="text-2xl font-bold text-white mb-3">
+              <CardTitle className="text-2xl font-bold text-primary/90 mb-3">
                 {title}
               </CardTitle>
               
-              <CardDescription className="text-white/90 text-lg">
+              <CardDescription className="text-primary/80 text-lg">
                 {description}
               </CardDescription>
             </div>
