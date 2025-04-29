@@ -21,7 +21,7 @@ const Impressum = () => {
       metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute('content', 'Impressum und rechtliche Informationen der MECOVENT GmbH. Hier finden Sie alle gesetzlich vorgeschriebenen Angaben zu unserem Unternehmen.');
+    metaDescription.setAttribute('content', 'Impressum der MECOVENT GmbH. Rechtliche Angaben, Kontaktdaten und Informationen gemäß § 5 TMG.');
   }, []);
 
   return (
