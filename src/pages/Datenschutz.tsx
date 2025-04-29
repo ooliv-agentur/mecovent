@@ -10,6 +10,20 @@ const Datenschutz = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Set meta title and description
+  useEffect(() => {
+    document.title = "Datenschutzerklärung | MECOVENT GmbH";
+    
+    // Find existing meta description or create a new one
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', 'Erfahren Sie, wie MECOVENT GmbH Ihre personenbezogenen Daten schützt. Alle Informationen zur Datensicherheit und Ihren Rechten finden Sie hier.');
+  }, []);
+
   return (
     <div className="min-h-screen bg-background selection:bg-primary/20 flex flex-col">
       <Navigation />
