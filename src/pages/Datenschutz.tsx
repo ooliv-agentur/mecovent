@@ -49,7 +49,7 @@ const Datenschutz = () => {
             
             <div className="space-y-8">
               <section>
-                <h2 className="text-xl font-semibold mb-3">Wer ist verantwortlich?</h2>
+                <h2 className="text-2xl font-semibold mb-4">Wer ist verantwortlich?</h2>
                 <p>MECOVENT GmbH</p>
                 <p>Wormser Straße 44</p>
                 <p>55294 Bodenheim, Deutschland</p>
@@ -60,105 +60,112 @@ const Datenschutz = () => {
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Welche Daten erfassen wir?</h2>
-                <p className="text-sm leading-relaxed">
+                <h2 className="text-2xl font-semibold mb-4">Welche Daten erfassen wir?</h2>
+                <p className="mb-4">
                   Beim Besuch unserer Website werden automatisch Informationen allgemeiner Natur erfasst (sogenannte Server-Logfiles). Dazu gehören:
                 </p>
-                <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
-                  <li>Browsertyp und -version,</li>
-                  <li>verwendetes Betriebssystem,</li>
-                  <li>Referrer-URL,</li>
-                  <li>IP-Adresse (anonymisiert),</li>
-                  <li>Datum und Uhrzeit des Zugriffs.</li>
+                <ul className="list-disc pl-5 space-y-2 mb-4">
+                  <li>Browsertyp und -version</li>
+                  <li>verwendetes Betriebssystem</li>
+                  <li>Referrer-URL</li>
+                  <li>IP-Adresse (anonymisiert)</li>
+                  <li>Datum und Uhrzeit des Zugriffs</li>
                 </ul>
-                <p className="text-sm mt-2">Eine Zuordnung zu einer bestimmten Person ist nicht möglich.</p>
+                <p>Eine Zuordnung zu einer bestimmten Person ist nicht möglich.</p>
               </section>
               
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Wofür nutzen wir Ihre Daten?</h2>
-                <p className="text-sm leading-relaxed">
+                <h2 className="text-2xl font-semibold mb-4">Wofür nutzen wir Ihre Daten?</h2>
+                <p className="mb-4">
                   Wir verwenden Ihre Daten ausschließlich für folgende Zwecke:
                 </p>
-                <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
-                  <li>Sicherstellung eines reibungslosen Verbindungsaufbaus der Website,</li>
-                  <li>Gewährleistung einer komfortablen Nutzung unserer Website,</li>
-                  <li>Auswertung der Systemsicherheit und -stabilität sowie</li>
-                  <li>administrative Zwecke.</li>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>Sicherstellung eines reibungslosen Verbindungsaufbaus der Website</li>
+                  <li>Gewährleistung einer komfortablen Nutzung unserer Website</li>
+                  <li>Auswertung der Systemsicherheit und -stabilität</li>
+                  <li>administrative Zwecke</li>
                 </ul>
               </section>
               
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Cookies und Einwilligungsmanagement</h2>
-                <p className="text-sm leading-relaxed">
-                  Unsere Website verwendet Cookies. Technisch notwendige Cookies setzen wir auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO).
-                  <br />Andere Cookies (Statistik, Marketing) werden erst nach Ihrer ausdrücklichen Einwilligung gesetzt.
-                  <br />Ihre Einstellungen können Sie jederzeit über unser Cookie-Consent-Tool anpassen oder widerrufen.
+                <h2 className="text-2xl font-semibold mb-4">Cookies und Einwilligungsmanagement</h2>
+                <p className="mb-2">
+                  Unsere Website verwendet Cookies. Technisch notwendige Cookies werden auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO) eingesetzt.
+                </p>
+                <p className="mb-2">
+                  Andere Cookies (z. B. Statistik, Marketing) werden erst nach Ihrer ausdrücklichen Einwilligung gesetzt.
+                </p>
+                <p>
+                  Ihre Einwilligungen können Sie jederzeit über unser Cookie-Consent-Tool verwalten oder widerrufen.
                 </p>
               </section>
               
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Kontaktaufnahme</h2>
-                <p className="text-sm leading-relaxed">
+                <h2 className="text-2xl font-semibold mb-4">Kontaktaufnahme</h2>
+                <p className="mb-2">
                   Wenn Sie uns kontaktieren, verarbeiten wir Ihre Angaben (z. B. Name, E-Mail-Adresse) zur Bearbeitung Ihrer Anfrage.
-                  <br />Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) oder die Durchführung vorvertraglicher Maßnahmen (Art. 6 Abs. 1 lit. b DSGVO).
+                </p>
+                <p>
+                  Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) oder die Durchführung vorvertraglicher Maßnahmen (Art. 6 Abs. 1 lit. b DSGVO).
                 </p>
               </section>
               
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Webanalyse</h2>
-                <p className="text-sm leading-relaxed">
-                  Zur Optimierung unserer Website können Analyse-Tools eingesetzt werden. Die Auswertung erfolgt pseudonymisiert auf Basis berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO).
-                  <br />Sie können der Datenverarbeitung jederzeit widersprechen.
+                <h2 className="text-2xl font-semibold mb-4">Webanalyse</h2>
+                <p className="mb-2">
+                  Zur Optimierung unserer Website können Analyse-Tools eingesetzt werden. Die Auswertung erfolgt pseudonymisiert auf Grundlage berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO).
+                </p>
+                <p>
+                  Sie können der Verarbeitung jederzeit widersprechen.
                 </p>
               </section>
               
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Wie lange speichern wir Ihre Daten?</h2>
-                <p className="text-sm leading-relaxed">
-                  Personenbezogene Daten werden gelöscht, sobald der Zweck der Speicherung entfällt oder Sie Ihre Einwilligung widerrufen.
-                  <br />Gesetzliche Aufbewahrungspflichten bleiben unberührt.
+                <h2 className="text-2xl font-semibold mb-4">Wie lange speichern wir Ihre Daten?</h2>
+                <p>
+                  Wir speichern personenbezogene Daten nur so lange, wie dies für die jeweiligen Zwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.
                 </p>
               </section>
               
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Welche Rechte haben Sie?</h2>
-                <p className="text-sm leading-relaxed">
+                <h2 className="text-2xl font-semibold mb-4">Welche Rechte haben Sie?</h2>
+                <p className="mb-4">
                   Sie haben das Recht auf:
                 </p>
-                <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
-                  <li>Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO),</li>
-                  <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO),</li>
-                  <li>Löschung Ihrer Daten (Art. 17 DSGVO),</li>
-                  <li>Einschränkung der Verarbeitung (Art. 18 DSGVO),</li>
-                  <li>Datenübertragbarkeit (Art. 20 DSGVO),</li>
-                  <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO),</li>
-                  <li>Widerruf Ihrer Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO).</li>
+                <ul className="list-disc pl-5 space-y-2 mb-4">
+                  <li>Auskunft (Art. 15 DSGVO)</li>
+                  <li>Berichtigung (Art. 16 DSGVO)</li>
+                  <li>Löschung (Art. 17 DSGVO)</li>
+                  <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+                  <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+                  <li>Widerspruch gegen bestimmte Verarbeitungen (Art. 21 DSGVO)</li>
+                  <li>Widerruf einer Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
                 </ul>
-                <p className="text-sm mt-2">Zur Wahrnehmung Ihrer Rechte genügt eine formlose E-Mail an <a href="mailto:info@mecovent.de" className="text-primary hover:underline">info@mecovent.de</a>.</p>
+                <p>Zur Wahrnehmung Ihrer Rechte genügt eine formlose Nachricht an <a href="mailto:info@mecovent.de" className="text-primary hover:underline">info@mecovent.de</a>.</p>
               </section>
               
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Beschwerderecht bei der Aufsichtsbehörde</h2>
-                <p className="text-sm leading-relaxed">
-                  Im Falle datenschutzrechtlicher Verstöße können Sie sich bei einer Aufsichtsbehörde beschweren.
-                  <br />
-                  Eine Übersicht der zuständigen Stellen finden Sie unter:
-                  <br />
-                  <a href="https://www.bfdi.bund.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                <h2 className="text-2xl font-semibold mb-4">Beschwerderecht bei der Aufsichtsbehörde</h2>
+                <p className="mb-2">
+                  Im Falle datenschutzrechtlicher Verstöße können Sie sich an eine Aufsichtsbehörde wenden.
+                </p>
+                <p>
+                  Eine Übersicht der zuständigen Stellen finden Sie unter: 
+                  <a href="https://www.bfdi.bund.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline ml-1">
                     https://www.bfdi.bund.de
                   </a>
                 </p>
@@ -167,18 +174,18 @@ const Datenschutz = () => {
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Wie schützen wir Ihre Daten?</h2>
-                <p className="text-sm leading-relaxed">
-                  Wir setzen technische und organisatorische Sicherheitsmaßnahmen (insbesondere SSL-/TLS-Verschlüsselung) ein, um Ihre Daten vor Verlust, Missbrauch und unbefugtem Zugriff zu schützen.
+                <h2 className="text-2xl font-semibold mb-4">Wie schützen wir Ihre Daten?</h2>
+                <p>
+                  Wir verwenden technische und organisatorische Sicherheitsmaßnahmen (z. B. SSL-/TLS-Verschlüsselung), um Ihre Daten gegen Verlust, Missbrauch oder unbefugten Zugriff zu schützen.
                 </p>
               </section>
               
               <Separator />
               
               <section>
-                <h2 className="text-xl font-semibold mb-3">Änderungen dieser Datenschutzerklärung</h2>
-                <p className="text-sm leading-relaxed">
-                  Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf zu aktualisieren. Es gilt jeweils die auf unserer Website veröffentlichte aktuelle Version.
+                <h2 className="text-2xl font-semibold mb-4">Änderungen dieser Datenschutzerklärung</h2>
+                <p>
+                  Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen. Es gilt die jeweils aktuelle, auf dieser Website veröffentlichte Fassung.
                 </p>
               </section>
               
