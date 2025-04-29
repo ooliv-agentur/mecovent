@@ -26,11 +26,11 @@ const FloatingContactButton = () => {
     <button
       onClick={scrollToContact}
       className={cn(
-        "fixed right-0 top-1/2 z-40 transform -translate-y-1/2 px-6 py-3.5 rounded-l-full",
+        "fixed right-5 bottom-10 z-50 transform px-6 py-3.5 rounded-full",
         "bg-[#A8D8B9] text-[#111111] hover:bg-[#9ACAAB]",
         "shadow-md hover:shadow-lg transition-all duration-300",
         "flex items-center gap-2 group",
-        "hidden md:flex", // Hide on mobile, show on tablet/desktop
+        "md:right-5 md:top-1/2 md:-translate-y-1/2 md:rounded-l-full md:rounded-r-none",
         hasAnimated ? "animate-none" : "animate-pulse"
       )}
       aria-label="Kontakt knüpfen"

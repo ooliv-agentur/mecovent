@@ -129,6 +129,10 @@ export default {
 					'50%': { transform: 'scale(1.05)' },
 					'100%': { transform: 'scale(1)' }
 				},
+				'pulse': {
+					'0%, 100%': { opacity: '1', transform: 'scale(1)' },
+					'50%': { opacity: '0.85', transform: 'scale(1.05)' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -140,7 +144,8 @@ export default {
 				'soft-gradient': 'soft-gradient 15s linear infinite',
 				'spin-slow': 'spin-slow 3s linear infinite',
 				'glow': 'glow 6s ease-in-out infinite',
-				'pulse': 'pulse-once 2s ease-in-out',
+				'pulse': 'pulse 2s ease-in-out infinite',
+				'pulse-once': 'pulse-once 2s ease-in-out',
 			},
 			backgroundSize: {
 				'200%': '200% 100%',
