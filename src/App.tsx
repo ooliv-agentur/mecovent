@@ -9,7 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
-import AGB from "./pages/AGB";  // New import
+import AGB from "./pages/AGB";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -26,7 +26,7 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/impressum" element={<Impressum />} />
               <Route path="/datenschutz" element={<Datenschutz />} />
-              <Route path="/agb" element={<AGB />} />  {/* New route */}
+              <Route path="/agb" element={<AGB />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

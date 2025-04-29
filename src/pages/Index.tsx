@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
@@ -12,6 +13,9 @@ import Footer from '@/components/Footer';
 
 const Index = () => {
   useEffect(() => {
+    // Set document title for the homepage
+    document.title = "Eventagentur für Meetings, Kongresse und Events | MECOVENT GmbH";
+    
     const observerOptions = {
       root: null,
       rootMargin: '0px',
