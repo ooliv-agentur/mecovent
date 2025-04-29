@@ -270,7 +270,7 @@ const ContactSection = () => {
               </p>
               
               <Tabs defaultValue="allgemein" className="w-full">
-                <TabsList className="w-full mb-6 bg-secondary/50 p-1 sticky top-20 z-10">
+                <TabsList className="w-full mb-6 bg-secondary/50 p-1">
                   <TabsTrigger value="allgemein" className="data-[state=active]:bg-primary data-[state=active]:text-white text-base">
                     Allgemein
                   </TabsTrigger>
