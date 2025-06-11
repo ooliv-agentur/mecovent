@@ -27,9 +27,12 @@ const WhyMecovent = () => {
               <span className="font-normal bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">die verbinden.</span>
             </h2>
             
-            {/* Description text */}
+            {/* Description text with line breaks */}
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              Ob Change-Prozess, Produktlaunch oder Kongress – wir inszenieren Ihre Botschaft so, dass sie Menschen berührt und Marken stärkt.
+              Ob Change-Prozess, Produktlaunch<br />
+              oder Kongress – wir inszenieren<br />
+              Ihre Botschaft so, dass sie Menschen<br />
+              berührt und Marken stärkt.
             </p>
           </div>
         </div>
