@@ -45,7 +45,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
         <div className="w-[70%] max-w-4xl">
           <img
-            src="/mecovent-Logo-transparent.svg"
+            src="/lovable-uploads/MECOVENT @2x.png"
             alt="MECOVENT Logo"
             className="w-full h-auto opacity-90"
           />
