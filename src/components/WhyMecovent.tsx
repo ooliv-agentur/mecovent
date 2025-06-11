@@ -13,8 +13,10 @@ const WhyMecovent = () => {
         {/* Right-aligned header section */}
         <div className="flex justify-end mb-16">
           <div className="text-right max-w-2xl">
-            {/* Section tag with bubble design */}
-            <SectionLabel label="ÜBER UNS" className="mb-6" />
+            {/* Section tag with bubble design - right aligned */}
+            <div className="flex justify-end">
+              <SectionLabel label="ÜBER UNS" className="mb-6" />
+            </div>
             
             {/* Main heading with mixed typography and gradient colors */}
             <h2 className="text-4xl sm:text-5xl md:text-6xl leading-tight mb-8">
