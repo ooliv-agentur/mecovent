@@ -44,15 +44,30 @@ const HeroSection = () => {
       {/* MECOVENT Logo Overlay - Large and prominent, covering 70% above the fold */}
       <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
         <div className="w-[70vw] h-[70vh] flex items-center justify-center">
-          <img
-            src="/mecovent-Logo-transparent.svg"
-            alt="MECOVENT Logo"
-            className="w-full h-full object-contain opacity-95"
-            style={{
-              filter: 'brightness(1.1) contrast(1.1)',
-              mixBlendMode: 'screen'
-            }}
-          />
+          {/* Temporary visible placeholder - replace with transparent SVG in final build */}
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* White placeholder for prototype visibility */}
+            <div 
+              className="absolute inset-0 bg-white opacity-20 flex items-center justify-center text-4xl font-bold text-black"
+              style={{ 
+                background: 'linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.3) 75%)',
+                backgroundSize: '20px 20px'
+              }}
+            >
+              MECOVENT LOGO POSITION
+            </div>
+            
+            {/* Actual SVG logo (invisible in prototype but will work in final build) */}
+            <img
+              src="/mecovent-Logo-transparent.svg"
+              alt="MECOVENT Logo"
+              className="w-full h-full object-contain opacity-95 relative z-10"
+              style={{
+                filter: 'brightness(1.1) contrast(1.1)',
+                mixBlendMode: 'screen'
+              }}
+            />
+          </div>
         </div>
       </div>
       
