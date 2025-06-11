@@ -20,11 +20,11 @@ const WhyMecovent = () => {
             
             {/* Main heading with mixed typography and gradient colors */}
             <h2 className="text-4xl sm:text-5xl md:text-6xl leading-tight mb-8">
-              <span className="font-normal bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent bg-200% animate-gradient-shift">Wir gestalten</span>
+              <span className="font-normal bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">Wir gestalten</span>
               <br />
-              <span className="font-bold bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent bg-200% animate-gradient-shift">ERLEBNISSE,</span>
+              <span className="font-bold bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">ERLEBNISSE,</span>
               <br />
-              <span className="font-normal bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent bg-200% animate-gradient-shift">die verbinden.</span>
+              <span className="font-normal bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">die verbinden.</span>
             </h2>
             
             {/* Description text with line breaks */}
