@@ -26,9 +26,12 @@ const HeroSection = () => {
   return (
     <section 
       id="hero" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-800"
     >
-      {/* Video Background */}
+      {/* Gray Background - this will be the main background */}
+      <div className="absolute inset-0 bg-gray-800"></div>
+
+      {/* Video Background - positioned behind everything */}
       <div className="absolute inset-0 z-0">
         <video
           className="w-full h-full object-cover"
@@ -38,42 +41,71 @@ const HeroSection = () => {
           playsInline
           src="https://projekte-ooliv.de/mecovent/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
 
-      {/* MECOVENT Logo Overlay - Large and prominent, covering 70% above the fold */}
+      {/* LOGO MASK EFFECT - In final build, this will use CSS mask to show video only through logo */}
       <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
         <div className="w-[70vw] h-[70vh] flex items-center justify-center">
-          {/* Temporary visible placeholder - replace with transparent SVG in final build */}
           <div className="relative w-full h-full flex items-center justify-center">
-            {/* Enhanced placeholder for prototype visibility */}
+            
+            {/* Prototype simulation: Show video area with border to indicate logo shape */}
             <div 
-              className="absolute inset-0 flex items-center justify-center text-2xl md:text-4xl font-bold text-white border-4 border-white/50 rounded-lg"
+              className="absolute inset-0 flex items-center justify-center text-2xl md:text-4xl font-bold text-white border-4 border-white/70 rounded-lg bg-black/20"
               style={{ 
-                background: 'linear-gradient(45deg, rgba(0,159,227,0.4) 25%, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.2) 75%, rgba(0,159,227,0.4) 75%)',
+                background: 'linear-gradient(45deg, rgba(0,159,227,0.6) 25%, rgba(255,255,255,0.3) 25%, rgba(255,255,255,0.3) 75%, rgba(0,159,227,0.6) 75%)',
                 backgroundSize: '40px 40px'
               }}
             >
               <div className="text-center">
-                <div className="mb-2">MECOVENT</div>
-                <div className="text-sm md:text-xl">LOGO POSITION</div>
+                <div className="mb-2">VIDEO VISIBLE</div>
+                <div className="text-sm md:text-xl">THROUGH LOGO</div>
                 <div className="text-xs md:text-sm mt-2 opacity-75">70vw × 70vh</div>
               </div>
             </div>
             
-            {/* Actual SVG logo (invisible in prototype but will work in final build) */}
-            <img
-              src="/mecovent-Logo-transparent.svg"
-              alt="MECOVENT Logo"
-              className="w-full h-full object-contain opacity-95 relative z-10"
+            {/* 
+              FINAL BUILD IMPLEMENTATION:
+              This div will have CSS mask applied to show video only through logo shape.
+              CSS to add in final build:
+              
+              .logo-mask {
+                mask: url('/mecovent-Logo-transparent.svg') no-repeat center center;
+                mask-size: contain;
+                -webkit-mask: url('/mecovent-Logo-transparent.svg') no-repeat center center;
+                -webkit-mask-size: contain;
+              }
+            */}
+            <div
+              className="w-full h-full relative z-10 opacity-0"
               style={{
-                filter: 'brightness(1.1) contrast(1.1)',
-                mixBlendMode: 'screen'
+                /* In final build, uncomment these lines:
+                mask: 'url("/mecovent-Logo-transparent.svg") no-repeat center center',
+                maskSize: 'contain',
+                WebkitMask: 'url("/mecovent-Logo-transparent.svg") no-repeat center center',
+                WebkitMaskSize: 'contain',
+                */
               }}
-            />
+            >
+              {/* This will show the video through the logo mask in final build */}
+              <img
+                src="/mecovent-Logo-transparent.svg"
+                alt="MECOVENT Logo"
+                className="w-full h-full object-contain opacity-0"
+              />
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Gray overlay to cover video everywhere except logo area */}
+      <div className="absolute inset-0 z-40 bg-gray-800" style={{
+        /* 
+          FINAL BUILD: This will also use inverse mask to hide everywhere except logo
+          mask: 'url("/mecovent-Logo-transparent.svg") no-repeat center center',
+          maskSize: 'contain',
+          maskComposite: 'exclude',
+        */
+      }}></div>
       
       {/* Position text block at 25% from left */}
       <div className="relative z-30 w-full flex flex-col items-start justify-center min-h-screen pl-[25%]">
