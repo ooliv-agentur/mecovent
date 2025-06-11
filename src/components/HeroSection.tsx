@@ -28,10 +28,7 @@ const HeroSection = () => {
       id="hero" 
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Gray Background - this is the main background */}
-      <div className="absolute inset-0 bg-gray-800"></div>
-
-      {/* Video Background - positioned behind everything */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
           className="w-full h-full object-cover"
@@ -41,24 +38,11 @@ const HeroSection = () => {
           playsInline
           src="https://projekte-ooliv.de/mecovent/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
         />
-      </div>
-
-      {/* Animated MECOVENT SVG Overlay - scrolling logo */}
-      <div className="absolute inset-0 z-20 overflow-hidden">
-        <div className="relative w-full h-full flex items-center">
-          <img 
-            src="/scrollinglogo.svg"
-            alt="MECOVENT"
-            className="whitespace-nowrap leading-none tracking-wider select-none h-[20vw] animate-scroll-left"
-            style={{
-              transform: 'translateX(100vw)',
-            }}
-          />
-        </div>
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
       
-      {/* Position text block at 25% from left */}
-      <div className="relative z-30 w-full flex flex-col items-start justify-center min-h-screen pl-[25%]">
+      {/* Position text block at 25% from left (second quarter) */}
+      <div className="relative z-10 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-[25%]">
         {/* Main content with left alignment */}
         <div className="w-full max-w-2xl text-left">
           {/* Main Headline - each word on new line - slightly smaller */}
@@ -95,7 +79,7 @@ const HeroSection = () => {
       {/* Animated scroll indicator with only arrow */}
       <a 
         href="#ueber-uns" 
-        className="absolute bottom-10 left-0 right-0 mx-auto z-40 flex flex-col items-center cursor-pointer group"
+        className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center cursor-pointer group"
         onClick={scrollToNext}
       >
         <ChevronDown className="text-white animate-bounce-y h-8 w-8 group-hover:text-[#33C3F0] transition-colors duration-300" />
