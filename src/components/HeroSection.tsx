@@ -6,11 +6,16 @@ const HeroSection = () => {
   const scrollToNext = (event: React.MouseEvent) => {
     event.preventDefault();
     
+    // Find the "ueber-uns" section since that's the logical "get to know us" section
     const targetSection = document.getElementById('ueber-uns');
     if (targetSection) {
+      // Get the navigation height
       const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+      
+      // Calculate exact position
       const targetY = targetSection.offsetTop - navHeight;
       
+      // Smooth scroll to the target position
       window.scrollTo({
         top: targetY,
         behavior: 'smooth'
@@ -36,39 +41,43 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
       
-      <div className="container-section relative z-10 text-center max-w-6xl mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
-        <div className="space-y-8 mb-12">
-          <h1 className="headline-hero text-gradient-dynamic">
+      {/* Center the content in the middle of the screen */}
+      <div className="container-section relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
+        {/* Main Headline with animated gradient applied to the entire text */}
+        <div className="space-y-5 mb-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
             Wir bringen<br />
             Menschen zusammen –
           </h1>
-          <div className="headline-secondary text-gradient-dynamic py-2 font-extrabold text-accent-spacing">
+          <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2">
             Meeting. Congress. Event.
           </div>
         </div>
         
-        <div className="subheader-large text-white/90 text-center mx-auto mt-6 mb-12 space-y-6 font-medium max-w-4xl">
-          <div className="flex items-center justify-center gap-4 text-dynamic-left sm:text-dynamic-center">
-            <CheckCircle className="h-7 w-7 text-[#009fe3] flex-shrink-0" />
-            <span className="text-left sm:text-center">Strategisch geplant.</span>
+        {/* Subline with check icons */}
+        <div className="text-xl sm:text-2xl md:text-3xl text-white/90 text-center mx-auto mt-4 mb-10 space-y-4 font-medium">
+          <div className="flex items-center justify-center gap-3">
+            <CheckCircle className="h-6 w-6 text-[#009fe3]" />
+            <span>Strategisch geplant.</span>
           </div>
-          <div className="flex items-center justify-center gap-4 text-dynamic-right sm:text-dynamic-center">
-            <CheckCircle className="h-7 w-7 text-[#009fe3] flex-shrink-0" />
-            <span className="text-right sm:text-center">Emotional inszeniert.</span>
+          <div className="flex items-center justify-center gap-3">
+            <CheckCircle className="h-6 w-6 text-[#009fe3]" />
+            <span>Emotional inszeniert.</span>
           </div>
-          <div className="flex items-center justify-center gap-4 text-dynamic-left sm:text-dynamic-center">
-            <CheckCircle className="h-7 w-7 text-[#009fe3] flex-shrink-0" />
-            <span className="text-left sm:text-center">Nachhaltig umgesetzt.</span>
+          <div className="flex items-center justify-center gap-3">
+            <CheckCircle className="h-6 w-6 text-[#009fe3]" />
+            <span>Nachhaltig umgesetzt.</span>
           </div>
         </div>
       </div>
       
+      {/* Animated scroll indicator with blue rollover effect */}
       <a 
         href="#ueber-uns" 
         className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center cursor-pointer group"
         onClick={scrollToNext}
       >
-        <div className="text-white subheader-small mb-2 animate-bounce-y group-hover:text-[#33C3F0] transition-colors duration-300 font-semibold text-tight-spacing">
+        <div className="text-white text-xl mb-2 animate-bounce-y group-hover:text-[#33C3F0] transition-colors duration-300">
           Kennenlernen
         </div>
         <ChevronDown className="text-white animate-bounce-y h-8 w-8 group-hover:text-[#33C3F0] transition-colors duration-300" />

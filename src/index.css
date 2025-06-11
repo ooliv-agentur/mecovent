@@ -113,100 +113,12 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
   }
 
-  /* Dynamic Typography Classes */
-  .headline-hero {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight;
-  }
-  
-  .headline-primary {
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
-  }
-  
-  .headline-secondary {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-snug tracking-tight;
-  }
-  
-  .headline-tertiary {
-    @apply text-xl sm:text-2xl md:text-3xl font-semibold leading-relaxed;
-  }
-  
-  .subheader-large {
-    @apply text-lg sm:text-xl md:text-2xl font-medium leading-relaxed;
-  }
-  
-  .subheader-medium {
-    @apply text-base sm:text-lg md:text-xl font-medium leading-relaxed;
-  }
-  
-  .subheader-small {
-    @apply text-sm sm:text-base md:text-lg font-medium leading-relaxed;
-  }
-  
-  .body-large {
-    @apply text-base sm:text-lg md:text-xl leading-relaxed;
-  }
-  
-  .body-medium {
-    @apply text-sm sm:text-base md:text-lg leading-relaxed;
-  }
-  
-  .body-small {
-    @apply text-xs sm:text-sm md:text-base leading-relaxed;
-  }
-
-  /* Legacy class for backward compatibility */
   .header-section {
-    @apply headline-primary bg-gradient-to-r from-white to-primary bg-clip-text text-transparent bg-200% animate-gradient-shift break-words;
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-primary bg-clip-text text-transparent bg-200% animate-gradient-shift break-words;
   }
 
   .subheader-section {
-    @apply subheader-large text-muted-foreground;
-  }
-
-  /* Dynamic Alignment Classes */
-  .text-dynamic-left {
-    @apply text-left;
-  }
-  
-  .text-dynamic-right {
-    @apply text-right;
-  }
-  
-  .text-dynamic-center {
-    @apply text-center;
-  }
-  
-  .content-left-aligned {
-    @apply max-w-4xl;
-  }
-  
-  .content-right-aligned {
-    @apply max-w-4xl ml-auto;
-  }
-  
-  .content-center-aligned {
-    @apply max-w-4xl mx-auto;
-  }
-
-  /* Enhanced Typography Effects */
-  .text-gradient-primary {
-    @apply bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent;
-  }
-  
-  .text-gradient-dynamic {
-    @apply bg-gradient-to-r from-white to-primary bg-clip-text text-transparent bg-200% animate-gradient-shift;
-  }
-  
-  .text-accent-spacing {
-    @apply tracking-wide;
-  }
-  
-  .text-tight-spacing {
-    @apply tracking-tight;
-  }
-  
-  .text-loose-spacing {
-    @apply tracking-widest;
+    @apply text-lg sm:text-xl md:text-2xl font-medium mb-8 text-muted-foreground;
   }
 
   .placeholder-box {
