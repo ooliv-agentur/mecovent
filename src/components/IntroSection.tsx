@@ -22,7 +22,7 @@ const IntroSection = () => {
           line1="Meeting."
           line2="Congress."
           line3="Event."
-          subline="Strategisch geplant, emotional inszeniert, nachhaltig umgesetzt – für Events, die verbinden und wirken."
+          subline="Strategisch, emotional und nachhaltig umgesetzt – für Events, die verbinden und wirken."
           alignment="center"
           className="mb-16"
         />
@@ -43,7 +43,7 @@ const IntroSection = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-[#005a80] transition-colors">
-                      Strategisch geplant
+                      Vorausschauend vorbereitet
                     </h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
                       Jedes Detail durchdacht, jeder Moment perfekt orchestriert für unvergessliche Erlebnisse.
@@ -65,7 +65,7 @@ const IntroSection = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-[#005a80] transition-colors">
-                      Emotional inszeniert
+                      Emotional erlebbar
                     </h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
                       Wir schaffen Momente, die berühren und verbinden – authentisch und von Herzen.
@@ -87,7 +87,7 @@ const IntroSection = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-[#005a80] transition-colors">
-                      Nachhaltig umgesetzt
+                      Nachhaltig realisiert
                     </h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
                       Mit Weitblick und Verantwortung für Generationen – heute und morgen.
