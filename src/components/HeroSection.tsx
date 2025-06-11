@@ -40,20 +40,11 @@ const HeroSection = () => {
         />
       </div>
       
-      {/* Position text block at 25% from left (second quarter) */}
-      <div className="relative z-10 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-[25%]">
-        {/* Main content with left alignment */}
-        <div className="w-full max-w-2xl text-left">
-          {/* Main Headline - each word on new line - slightly smaller */}
-          <div className="space-y-2 mb-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
-              Wir<br />
-              bringen<br />
-              Menschen<br />
-              zusammen.
-            </h1>
-          </div>
-        </div>
+      {/* Text centered in 3rd quarter from top */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ paddingTop: '50vh' }}>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center animate-fade-in">
+          Wir bringen Menschen zusammen.
+        </h1>
       </div>
       
       {/* Animated scroll indicator with only arrow */}
