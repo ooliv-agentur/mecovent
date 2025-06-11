@@ -41,8 +41,8 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
       
-      {/* Position text block moderately to the left */}
-      <div className="relative z-10 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-4 md:pl-8 lg:pl-16">
+      {/* Position text block between centered and left */}
+      <div className="relative z-10 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-6 md:pl-12 lg:pl-20">
         {/* Main content with left alignment */}
         <div className="w-full max-w-2xl text-left">
           {/* Main Headline - each word on new line - slightly smaller */}
