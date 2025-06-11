@@ -44,9 +44,10 @@ const Navigation = () => {
     }
   };
 
+  // Use colored logo for hero section (not scrolled), white logo when scrolled
   const logoSrc = isScrolled 
-    ? "/lovable-uploads/12df19ff-641f-4ec4-9a0a-b4a9b2260cb1.png" 
-    : "/lovable-uploads/ed43ffda-ea78-4686-90a5-933c2995ba69.png";
+    ? "/lovable-uploads/ed43ffda-ea78-4686-90a5-933c2995ba69.png"
+    : "/lovable-uploads/3c5fdd60-00c3-413d-aff2-357fdba14b25.png";
 
   return (
     <>
@@ -69,7 +70,7 @@ const Navigation = () => {
           <div className="flex items-center gap-3 relative z-[70]">
             <span className={cn(
               "text-sm font-medium",
-              isMenuOpen ? "text-gray-800" : "text-white"
+              isMenuOpen ? "text-gray-800" : (isScrolled ? "text-white" : "text-gray-800")
             )}>
               {isMenuOpen ? "Schließen" : "Menü"}
             </span>
@@ -84,7 +85,10 @@ const Navigation = () => {
                 <img
                   src="/lovable-uploads/3f78c6a0-159b-4cbe-be49-7303dccfd108.png"
                   alt="Menu"
-                  className="w-6 h-6 object-contain"
+                  className={cn(
+                    "w-6 h-6 object-contain",
+                    isScrolled ? "filter invert" : ""
+                  )}
                 />
               )}
             </button>

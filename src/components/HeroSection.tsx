@@ -28,7 +28,7 @@ const HeroSection = () => {
       id="hero" 
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Video Background */}
+      {/* Video Background - no overlay */}
       <div className="absolute inset-0 z-0">
         <video
           className="w-full h-full object-cover"
@@ -36,13 +36,13 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          src="/public/LogoMask_5.mp4"
+          src="/public/LogoMask_6.mp4"
         />
       </div>
       
       {/* Text centered in 3rd quarter from top */}
       <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ paddingTop: 'calc(50vh + 100px)' }}>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center animate-fade-in">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 text-center animate-fade-in">
           Wir bringen Menschen zusammen.
         </h1>
       </div>
@@ -53,7 +53,7 @@ const HeroSection = () => {
         className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center cursor-pointer group"
         onClick={scrollToNext}
       >
-        <ChevronDown className="text-white animate-bounce-y h-8 w-8 group-hover:text-[#33C3F0] transition-colors duration-300" />
+        <ChevronDown className="text-gray-800 animate-bounce-y h-8 w-8 group-hover:text-[#33C3F0] transition-colors duration-300" />
       </a>
     </section>
   );
