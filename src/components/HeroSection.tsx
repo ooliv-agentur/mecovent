@@ -46,20 +46,20 @@ const HeroSection = () => {
         {/* Main content with left alignment */}
         <div className="w-full max-w-2xl text-left">
           {/* Main Headline - each word on new line - slightly smaller */}
-          <div className="space-y-2 mb-10">
+          <div className="space-y-2 mb-6">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
               Wir<br />
               bringen<br />
               Menschen<br />
               zusammen.
             </h1>
-            <div className="text-xl sm:text-2xl md:text-3xl font-normal bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2 mt-6">
+            <div className="text-xl sm:text-2xl md:text-3xl font-normal bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2 mt-6 mb-6">
               Meeting. Congress. Event.
             </div>
           </div>
           
           {/* Subline with "/" bullets - left aligned */}
-          <div className="text-xl sm:text-2xl md:text-3xl text-white/90 mt-4 mb-10 space-y-4 font-medium">
+          <div className="text-xl sm:text-2xl md:text-3xl text-white/90 space-y-4 font-medium">
             <div className="flex items-center gap-3">
               <span className="text-[#009fe3] text-2xl font-bold">/</span>
               <span>Strategisch geplant.</span>
