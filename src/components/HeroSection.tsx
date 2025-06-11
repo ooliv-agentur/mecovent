@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ChevronDown, CheckCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const HeroSection = () => {
   const scrollToNext = (event: React.MouseEvent) => {
@@ -45,29 +45,31 @@ const HeroSection = () => {
       <div className="container-section relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
         {/* Main content with left alignment but centered container */}
         <div className="w-full max-w-3xl text-left">
-          {/* Main Headline with animated gradient applied to the entire text */}
-          <div className="space-y-5 mb-10">
+          {/* Main Headline - each word on new line */}
+          <div className="space-y-2 mb-10">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
-              Wir bringen<br />
-              Menschen zusammen –
+              Wir<br />
+              bringen<br />
+              Menschen<br />
+              zusammen
             </h1>
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2">
+            <div className="text-3xl sm:text-4xl md:text-5xl font-normal bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2 mt-6">
               Meeting. Congress. Event.
             </div>
           </div>
           
-          {/* Subline with check icons - left aligned */}
+          {/* Subline with "/" bullets - left aligned */}
           <div className="text-xl sm:text-2xl md:text-3xl text-white/90 mt-4 mb-10 space-y-4 font-medium">
             <div className="flex items-center gap-3">
-              <CheckCircle className="h-6 w-6 text-[#009fe3]" />
+              <span className="text-[#009fe3] text-2xl font-bold">/</span>
               <span>Strategisch geplant.</span>
             </div>
             <div className="flex items-center gap-3">
-              <CheckCircle className="h-6 w-6 text-[#009fe3]" />
+              <span className="text-[#009fe3] text-2xl font-bold">/</span>
               <span>Emotional inszeniert.</span>
             </div>
             <div className="flex items-center gap-3">
-              <CheckCircle className="h-6 w-6 text-[#009fe3]" />
+              <span className="text-[#009fe3] text-2xl font-bold">/</span>
               <span>Nachhaltig umgesetzt.</span>
             </div>
           </div>
