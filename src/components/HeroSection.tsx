@@ -36,7 +36,7 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          src="/public/LogoMask_6.mp4"
+          src="/LogoMask_6.mp4"
         />
       </div>
       
