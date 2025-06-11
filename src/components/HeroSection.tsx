@@ -46,15 +46,19 @@ const HeroSection = () => {
         <div className="w-[70vw] h-[70vh] flex items-center justify-center">
           {/* Temporary visible placeholder - replace with transparent SVG in final build */}
           <div className="relative w-full h-full flex items-center justify-center">
-            {/* White placeholder for prototype visibility */}
+            {/* Enhanced placeholder for prototype visibility */}
             <div 
-              className="absolute inset-0 bg-white opacity-20 flex items-center justify-center text-4xl font-bold text-black"
+              className="absolute inset-0 flex items-center justify-center text-2xl md:text-4xl font-bold text-white border-4 border-white/50 rounded-lg"
               style={{ 
-                background: 'linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.3) 75%)',
-                backgroundSize: '20px 20px'
+                background: 'linear-gradient(45deg, rgba(0,159,227,0.4) 25%, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.2) 75%, rgba(0,159,227,0.4) 75%)',
+                backgroundSize: '40px 40px'
               }}
             >
-              MECOVENT LOGO POSITION
+              <div className="text-center">
+                <div className="mb-2">MECOVENT</div>
+                <div className="text-sm md:text-xl">LOGO POSITION</div>
+                <div className="text-xs md:text-sm mt-2 opacity-75">70vw × 70vh</div>
+              </div>
             </div>
             
             {/* Actual SVG logo (invisible in prototype but will work in final build) */}
