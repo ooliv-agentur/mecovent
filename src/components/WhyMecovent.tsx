@@ -19,7 +19,7 @@ const WhyMecovent = () => {
             </div>
             
             {/* Main heading with mixed typography and gradient colors */}
-            <h2 className="text-4xl sm:text-5xl md:text-6xl leading-tight mb-8">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl leading-normal mb-8">
               <span className="font-normal bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">Wir gestalten</span>
               <br />
               <span className="font-bold bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">ERLEBNISSE,</span>
@@ -28,7 +28,7 @@ const WhyMecovent = () => {
             </h2>
             
             {/* Description text with line breaks */}
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground leading-loose">
               Ob Change-Prozess, Produktlaunch<br />
               oder Kongress – wir inszenieren<br />
               Ihre Botschaft so, dass sie Menschen<br />
