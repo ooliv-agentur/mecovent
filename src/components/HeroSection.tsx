@@ -43,17 +43,17 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Animated MECOVENT Overlay - scrolling text */}
+      {/* Animated MECOVENT SVG Overlay - scrolling logo */}
       <div className="absolute inset-0 z-20 overflow-hidden">
         <div className="relative w-full h-full flex items-center">
-          <div 
-            className="whitespace-nowrap text-white/30 font-black leading-none tracking-wider select-none text-[20vw] animate-scroll-left"
+          <img 
+            src="/scrollinglogo.svg"
+            alt="MECOVENT"
+            className="whitespace-nowrap leading-none tracking-wider select-none h-[20vw] animate-scroll-left"
             style={{
               transform: 'translateX(100vw)',
             }}
-          >
-            MECOVENT
-          </div>
+          />
         </div>
       </div>
       
