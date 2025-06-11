@@ -42,16 +42,16 @@ const HeroSection = () => {
       </div>
       
       {/* Center the content in the middle of the screen */}
-      <div className="container-section relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen animate-fade-in">
-        {/* Main content with left alignment but centered container */}
-        <div className="w-full max-w-3xl text-left">
-          {/* Main Headline - each word on new line - BIGGER */}
+      <div className="container-section relative z-10 max-w-4xl mx-auto flex flex-col items-start justify-center min-h-screen animate-fade-in pl-8 md:pl-16 lg:pl-24">
+        {/* Main content with left alignment */}
+        <div className="w-full max-w-2xl text-left">
+          {/* Main Headline - each word on new line - slightly smaller */}
           <div className="space-y-2 mb-10">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
               Wir<br />
               bringen<br />
               Menschen<br />
-              zusammen
+              zusammen.
             </h1>
             <div className="text-xl sm:text-2xl md:text-3xl font-normal bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2 mt-6">
               Meeting. Congress. Event.
