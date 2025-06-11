@@ -40,8 +40,19 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
+
+      {/* MECOVENT Logo Overlay */}
+      <div className="absolute inset-0 z-5 flex items-center justify-center">
+        <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+          <img
+            src="/mecovent-Logo-transparent.svg"
+            alt="MECOVENT Logo"
+            className="w-full h-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+          />
+        </div>
+      </div>
       
-      {/* Position text block at 25% from left (second quarter) */}
+      {/* Position text block at 25% from left */}
       <div className="relative z-10 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-[25%]">
         {/* Main content with left alignment */}
         <div className="w-full max-w-2xl text-left">
