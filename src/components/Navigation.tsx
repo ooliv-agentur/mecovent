@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
@@ -76,7 +75,10 @@ const Navigation = () => {
             </span>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="w-10 h-10 flex items-center justify-center transition-all rounded-full bg-transparent hover:bg-white/10"
+              className={cn(
+                "w-10 h-10 flex items-center justify-center transition-all rounded-full hover:bg-white/10",
+                isScrolled ? "bg-white/20" : "bg-gray-800/10"
+              )}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMenuOpen ? (
@@ -86,8 +88,8 @@ const Navigation = () => {
                   src="/lovable-uploads/3f78c6a0-159b-4cbe-be49-7303dccfd108.png"
                   alt="Menu"
                   className={cn(
-                    "w-6 h-6 object-contain",
-                    isScrolled ? "filter invert" : ""
+                    "w-6 h-6 object-contain transition-all duration-300",
+                    isScrolled ? "filter brightness-0 invert" : "filter brightness-0"
                   )}
                 />
               )}
