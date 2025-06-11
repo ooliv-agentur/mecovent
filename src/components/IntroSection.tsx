@@ -17,15 +17,15 @@ const IntroSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Main heading with emotional impact */}
         <div className="text-center mb-16">
-          <div className="inline-block">
-            <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="block bg-gradient-to-r from-[#005a80] via-[#009fe3] to-[#005a80] bg-clip-text text-transparent bg-300% animate-gradient-shift">
+          <div className="inline-block px-4">
+            <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span className="block text-[#005a80] mb-2 px-2">
                 Meeting.
               </span>
-              <span className="block bg-gradient-to-r from-[#009fe3] via-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-300% animate-gradient-shift delay-500">
+              <span className="block text-[#009fe3] mb-2 px-2">
                 Congress.
               </span>
-              <span className="block bg-gradient-to-r from-[#005a80] via-[#009fe3] to-[#005a80] bg-clip-text text-transparent bg-300% animate-gradient-shift delay-1000">
+              <span className="block text-[#005a80] px-2">
                 Event.
               </span>
             </div>
