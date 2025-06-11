@@ -41,19 +41,23 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
 
-      {/* MECOVENT Logo Overlay - Large and prominent */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-        <div className="w-[70%] max-w-4xl">
+      {/* MECOVENT Logo Overlay - Large and prominent, covering 70% above the fold */}
+      <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+        <div className="w-[70vw] h-[70vh] flex items-center justify-center">
           <img
-            src="/lovable-uploads/MECOVENT @2x.png"
+            src="/mecovent-Logo-transparent.svg"
             alt="MECOVENT Logo"
-            className="w-full h-auto opacity-90"
+            className="w-full h-full object-contain opacity-95"
+            style={{
+              filter: 'brightness(1.1) contrast(1.1)',
+              mixBlendMode: 'screen'
+            }}
           />
         </div>
       </div>
       
       {/* Position text block at 25% from left */}
-      <div className="relative z-30 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-[25%]">
+      <div className="relative z-30 w-full flex flex-col items-start justify-center min-h-screen pl-[25%]">
         {/* Main content with left alignment */}
         <div className="w-full max-w-2xl text-left">
           {/* Main Headline - each word on new line - slightly smaller */}
