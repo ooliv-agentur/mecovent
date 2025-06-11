@@ -36,12 +36,12 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          src="/public/LogoMask_4.mp4"
+          src="/public/LogoMask_5.mp4"
         />
       </div>
       
       {/* Text centered in 3rd quarter from top */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ paddingTop: 'calc(50vh + 50px)' }}>
+      <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ paddingTop: 'calc(50vh + 100px)' }}>
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center animate-fade-in">
           Wir bringen Menschen zusammen.
         </h1>
