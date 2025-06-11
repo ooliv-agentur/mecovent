@@ -1,11 +1,12 @@
 
 import React from 'react';
+import SectionTextBlockSimple from '@/components/ui/section-text-block-simple';
 
 const IntroSection = () => {
   return (
     <section 
       id="intro" 
-      className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden"
+      className="py-20 md:py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0">
@@ -14,26 +15,20 @@ const IntroSection = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-[#009fe3]/3 to-transparent rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Main heading with emotional impact */}
-        <div className="text-center mb-16">
-          <div className="inline-block px-4">
-            <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="block text-[#005a80] mb-2 px-2">
-                Meeting.
-              </span>
-              <span className="block text-[#009fe3] mb-2 px-2">
-                Congress.
-              </span>
-              <span className="block text-[#005a80] px-2">
-                Event.
-              </span>
-            </div>
-          </div>
-        </div>
+      <div className="container-section relative z-10">
+        {/* Header Section */}
+        <SectionTextBlockSimple
+          label="MEETING. CONGRESS. EVENT."
+          line1="Meeting."
+          line2="Congress."
+          line3="Event."
+          subline="Strategisch geplant, emotional inszeniert, nachhaltig umgesetzt – für Events, die verbinden und wirken."
+          alignment="center"
+          className="mb-16"
+        />
         
-        {/* Emotional value propositions with modern layout */}
-        <div className="max-w-6xl mx-auto">
+        {/* Value propositions with modern layout */}
+        <div className="max-w-6xl mx-auto mb-16">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             
             {/* Strategic Planning */}
@@ -105,7 +100,7 @@ const IntroSection = () => {
         </div>
 
         {/* Emotional tagline */}
-        <div className="text-center mt-16">
+        <div className="text-center">
           <p className="text-xl md:text-2xl text-gray-700 font-light italic">
             "Wo <span className="font-medium text-[#009fe3]">Begegnungen</span> zu <span className="font-medium text-[#005a80]">Erinnerungen</span> werden."
           </p>
