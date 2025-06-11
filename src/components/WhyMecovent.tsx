@@ -1,7 +1,9 @@
+
 import React from 'react';
 import SectionHeader from './why-mecovent/SectionHeader';
 import ValuesSection from './why-mecovent/ValuesSection';
 import StrengthsSection from './why-mecovent/StrengthsSection';
+import { companyValues } from './why-mecovent/constants';
 
 const WhyMecovent = () => {
   return (
@@ -31,7 +33,7 @@ const WhyMecovent = () => {
           </div>
         </div>
 
-        <ValuesSection />
+        <ValuesSection values={companyValues} />
         <StrengthsSection />
       </div>
     </section>
