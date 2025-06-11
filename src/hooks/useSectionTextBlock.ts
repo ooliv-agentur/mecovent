@@ -1,5 +1,5 @@
 
-import { SectionTextBlockProps } from '@/components/ui/section-text-block';
+import { SectionTextBlockProps } from '@/components/ui/section-text-block.d';
 
 type SectionTextBlockConfig = Omit<SectionTextBlockProps, 'className'>;
 
