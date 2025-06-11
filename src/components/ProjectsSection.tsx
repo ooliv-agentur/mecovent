@@ -3,7 +3,8 @@ import React, { useState, useRef } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { industryItems } from './projects/data';
-import { SectionLabel } from '@/components/ui/section-label';
+import { sectionTextBlocks } from '@/hooks/useSectionTextBlock';
+import SectionTextBlock from '@/components/ui/section-text-block';
 import {
   Carousel,
   CarouselContent,
@@ -23,17 +24,11 @@ const ProjectsSection = () => {
       className="relative w-full bg-gradient-to-b from-white to-[#f8f8f8] py-16 md:py-24 overflow-hidden"
       ref={sectionRef}
     >
-      <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12 animate-fade-in")}>
-        <SectionLabel label="Unsere Expertise" />
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
-          Verstehen, was zählt – für Events mit Wirkung
-        </h2>
-        <p className="subheader-section mb-3">
-          Jede Branche spricht ihre eigene Sprache. Wir kennen die Unterschiede – und wissen, worauf es wirklich ankommt.
-        </p>
-        <p className="text-gray-600">
-          Ob Pharma, Finanzen, Bildung oder Industrie: Wir denken uns in Ihre Welt ein und schaffen Erlebnisse, die Inhalte transportieren – und Vertrauen schaffen.
-        </p>
+      <div className="container-section">
+        <SectionTextBlock
+          {...sectionTextBlocks.expertise}
+          alignment="left"
+        />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-16">
