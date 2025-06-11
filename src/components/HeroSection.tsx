@@ -42,7 +42,7 @@ const HeroSection = () => {
       
       {/* Text centered in 3rd quarter from top */}
       <div className="absolute inset-0 z-10 flex items-center justify-center" style={{ paddingTop: '50vh' }}>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center animate-fade-in">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center animate-fade-in">
           Wir bringen Menschen zusammen.
         </h1>
       </div>
