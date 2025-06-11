@@ -20,7 +20,7 @@ const WhyMecovent = () => {
             
             {/* Main heading with mixed typography and gradient colors */}
             <h2 className="text-4xl sm:text-5xl md:text-6xl leading-tight mb-8">
-              <span className="font-normal bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">Wir gestalten </span>
+              <span className="font-normal bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">Wir gestalten</span>
               <br />
               <span className="font-bold bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">ERLEBNISSE,</span>
               <br />
