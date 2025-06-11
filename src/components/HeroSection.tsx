@@ -41,10 +41,10 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
       
-      {/* Center the content in the middle of the screen */}
-      <div className="container-section relative z-10 max-w-4xl mx-auto flex flex-col items-start justify-center min-h-screen animate-fade-in pl-4 md:pl-8 lg:pl-12">
+      {/* Position text block much further to the left */}
+      <div className="relative z-10 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-8 md:pl-16 lg:pl-32">
         {/* Main content with left alignment */}
-        <div className="w-full max-w-2xl text-left ml-0">
+        <div className="w-full max-w-2xl text-left">
           {/* Main Headline - each word on new line - slightly smaller */}
           <div className="space-y-2 mb-6">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
