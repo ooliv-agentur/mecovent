@@ -38,7 +38,6 @@ const HeroSection = () => {
           playsInline
           src="/public/LogoMask_2.mp4"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
       
       {/* Position text block at 25% from left (second quarter) */}
