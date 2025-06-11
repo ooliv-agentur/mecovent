@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 
 export const navigationItems = [
   { id: 'hero', label: 'Start' },
-  { id: 'intro', label: 'Intro' },
   { id: 'ueber-uns', label: 'Über Uns' },
   { id: 'services', label: 'Leistungen' },
   { id: 'projects', label: 'Unsere Expertise' },

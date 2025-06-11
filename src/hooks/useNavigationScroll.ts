@@ -27,8 +27,8 @@ export const useNavigationScroll = () => {
       // Set scrolled state for styling
       setIsScrolled(currentScrollPos > 150);
       
-      // Update active section - added 'intro' to the sections list
-      const sections = ['hero', 'intro', 'ueber-uns', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
+      // Update active section
+      const sections = ['hero', 'ueber-uns', 'services', 'projects', 'eventformate', 'testimonials', 'contact'];
       
       for (const section of sections) {
         const element = document.getElementById(section);
