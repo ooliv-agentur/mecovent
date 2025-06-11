@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Quote, Mail, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -43,16 +44,15 @@ const TestimonialsSection = () => {
     <>
       <section id="testimonials" className="bg-background py-20">
         <div className="container-section">
-          <SectionLabel label="Kundenstimmen" />
-          
-          <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
+          <div className="content-left-aligned mb-16 animate-fade-in">
+            <SectionLabel label="Kundenstimmen" className="text-dynamic-left" />
+            <h2 className="headline-primary text-gradient-dynamic mb-8 text-dynamic-left break-words">
               Vertrauen, das bleibt – Stimmen unserer Kund:innen.
             </h2>
-            <p className="subheader-section">
-              Jede Rückmeldung erzählt von Zusammenarbeit, Vertrauen und gemeinsamem Erfolg.
+            <p className="subheader-large text-muted-foreground text-dynamic-left mb-4">
+              Jede Rückmeldung erzählt von <span className="font-semibold text-primary">Zusammenarbeit</span>, <span className="font-semibold text-primary">Vertrauen</span> und <span className="font-semibold text-primary">gemeinsamem Erfolg</span>.
             </p>
-            <p className="text-base text-muted-foreground mt-2">
+            <p className="body-large text-muted-foreground text-dynamic-left">
               Erleben Sie, wie unsere Events nicht nur begeistern – sondern nachhaltig wirken.
             </p>
           </div>
@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
                           <div className="mb-6">
                             <Quote className="h-12 w-12 text-primary/40" />
                           </div>
-                          <blockquote className="text-3xl font-medium mb-6 leading-relaxed">
+                          <blockquote className="headline-tertiary font-medium mb-6 leading-relaxed text-dynamic-left">
                             {testimonial.quote}
                           </blockquote>
                           {testimonial.attribution && (
@@ -136,23 +136,23 @@ const TestimonialsSection = () => {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="content-center-aligned text-center">
             <SectionLabel 
               label="Vertrauen entsteht im gemeinsamen Tun" 
               className="mb-8"
             />
             
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
+            <h3 className="headline-secondary text-white mb-8 font-extrabold text-tight-spacing">
               Verbindung knüpfen – gemeinsam mehr bewegen.
             </h3>
             
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              Sie haben eine Idee, wir die Erfahrung. Lassen Sie uns gemeinsam etwas starten, das bleibt.
+            <p className="subheader-medium text-white/80 mb-10 max-w-2xl mx-auto">
+              Sie haben eine <span className="font-bold text-white">Idee</span>, wir die <span className="font-bold text-white">Erfahrung</span>. Lassen Sie uns gemeinsam etwas starten, das bleibt.
             </p>
             
             <a 
               href="mailto:info@mecovent.de" 
-              className="inline-flex items-center gap-2 bg-white text-primary hover:bg-white/90 transition-colors px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 bg-white text-primary hover:bg-white/90 transition-colors px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl subheader-small"
             >
               <Mail className="h-5 w-5" />
               <span>Jetzt kennenlernen</span>

@@ -23,16 +23,16 @@ const ProjectsSection = () => {
       className="relative w-full bg-gradient-to-b from-white to-[#f8f8f8] py-16 md:py-24 overflow-hidden"
       ref={sectionRef}
     >
-      <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12 animate-fade-in")}>
-        <SectionLabel label="Unsere Expertise" />
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
+      <div className={cn("content-right-aligned px-4 mb-16 animate-fade-in")}>
+        <SectionLabel label="Unsere Expertise" className="text-dynamic-right" />
+        <h2 className="headline-primary text-gradient-dynamic mb-8 text-dynamic-right break-words">
           Verstehen, was zählt – für Events mit Wirkung
         </h2>
-        <p className="subheader-section mb-3">
+        <p className="subheader-large text-muted-foreground text-dynamic-right mb-4">
           Jede Branche spricht ihre eigene Sprache. Wir kennen die Unterschiede – und wissen, worauf es wirklich ankommt.
         </p>
-        <p className="text-gray-600">
-          Ob Pharma, Finanzen, Bildung oder Industrie: Wir denken uns in Ihre Welt ein und schaffen Erlebnisse, die Inhalte transportieren – und Vertrauen schaffen.
+        <p className="body-large text-gray-600 text-dynamic-right">
+          Ob <span className="font-semibold text-primary">Pharma</span>, <span className="font-semibold text-primary">Finanzen</span>, <span className="font-semibold text-primary">Bildung</span> oder <span className="font-semibold text-primary">Industrie</span>: Wir denken uns in Ihre Welt ein und schaffen Erlebnisse, die Inhalte transportieren – und Vertrauen schaffen.
         </p>
       </div>
       
@@ -81,16 +81,17 @@ const ProjectsSection = () => {
       </div>
       
       <div className="py-20 md:py-24">
-        <div className="max-w-[650px] mx-auto px-4">
-          <div className="flex items-center justify-center gap-3 text-primary/80 mb-6">
-            <LightbulbIcon className="h-12 w-12 flex-shrink-0 animate-[glow_6s_ease-in-out_infinite] stroke-2" />
+        <div className="content-center-aligned px-4">
+          <div className="flex items-center justify-center gap-3 text-primary/80 mb-8">
+            <LightbulbIcon className="h-14 w-14 flex-shrink-0 animate-[glow_6s_ease-in-out_infinite] stroke-2" />
           </div>
-          <div className="space-y-6 text-center">
-            <p className="text-gray-600 leading-[1.6] font-medium text-lg">
-              Loyalität, Diskretion und Compliance unseren Kunden gegenüber sind uns ein großes Anliegen. Deshalb führen wir hier keine Kundennamen auf.
+          <div className="space-y-8 text-center">
+            <p className="body-large text-gray-600 font-medium">
+              <span className="headline-tertiary text-gray-800 block mb-4">Loyalität, Diskretion und Compliance</span>
+              unseren Kunden gegenüber sind uns ein großes Anliegen. Deshalb führen wir hier keine Kundennamen auf.
             </p>
-            <p className="text-gray-600 leading-[1.6]">
-              Für weitere Informationen freuen wir uns auf ein Gespräch mit Ihnen und stellen Ihnen gerne Referenzen zur Verfügung!
+            <p className="body-medium text-gray-600">
+              Für weitere Informationen freuen wir uns auf ein Gespräch mit Ihnen und stellen Ihnen gerne <span className="font-semibold text-primary">Referenzen</span> zur Verfügung!
             </p>
           </div>
         </div>

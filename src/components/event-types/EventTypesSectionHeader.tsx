@@ -2,18 +2,18 @@
 import React from 'react';
 import { SectionLabel } from '@/components/ui/section-label';
 
-const EventTypesSectionHeader: React.FC = () => {
+const EventTypesSectionHeader = () => {
   return (
-    <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
-      <SectionLabel label="Unsere Veranstaltungsformate" />
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
-        Formate mit Wirkung – für Marken, Menschen und Momentum.
+    <div className="content-right-aligned mb-16 px-4 animate-fade-in">
+      <SectionLabel label="Eventformate" className="text-dynamic-right" />
+      <h2 className="headline-primary text-gradient-dynamic mb-8 text-dynamic-right break-words">
+        Jeden Anlass richtig inszenieren – vom Meeting bis zum Kongress.
       </h2>
-      <p className="subheader-section mb-3">
-        Ob Fachkongress, Retreat oder Roadshow – jedes Format entsteht bei uns aus Strategie, Erfahrung und Gespür für Wirkung.
+      <p className="subheader-large text-muted-foreground text-dynamic-right mb-4">
+        Ob interne Kommunikation oder externe Repräsentation – wir wissen, wie Events wirken.
       </p>
-      <p className="text-muted-foreground">
-        Individuell geplant, emotional erzählt und gemeinsam mit Ihnen entwickelt.
+      <p className="body-large text-muted-foreground text-dynamic-right">
+        Interaktiv entdecken: <span className="font-semibold text-primary">Karten umdrehen</span> für mehr Details zu jedem Format.
       </p>
     </div>
   );

@@ -11,16 +11,16 @@ interface SectionHeaderProps {
 
 const SectionHeader = ({ tag, title, subheader, description }: SectionHeaderProps) => {
   return (
-    <div className="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
-      <SectionLabel label={tag} />
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift break-words">
+    <div className="content-left-aligned mb-20 animate-fade-in">
+      <SectionLabel label={tag} className="text-dynamic-left" />
+      <h2 className="headline-primary text-gradient-dynamic mb-8 text-dynamic-left break-words">
         {title}
       </h2>
-      <p className="subheader-section">
+      <p className="subheader-large text-muted-foreground text-dynamic-left mb-6">
         {subheader}
       </p>
       {description && (
-        <p className="mt-4 text-muted-foreground">
+        <p className="body-large text-muted-foreground text-dynamic-left">
           {description}
         </p>
       )}
