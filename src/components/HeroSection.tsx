@@ -6,8 +6,8 @@ const HeroSection = () => {
   const scrollToNext = (event: React.MouseEvent) => {
     event.preventDefault();
     
-    // Find the "ueber-uns" section since that's the logical "get to know us" section
-    const targetSection = document.getElementById('ueber-uns');
+    // Find the "intro" section since that's now the next section
+    const targetSection = document.getElementById('intro');
     if (targetSection) {
       // Get the navigation height
       const navHeight = document.querySelector('nav')?.offsetHeight || 0;
@@ -52,32 +52,13 @@ const HeroSection = () => {
               Menschen<br />
               zusammen.
             </h1>
-            <div className="text-xl sm:text-2xl md:text-3xl font-normal bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2 mt-6 mb-6">
-              Meeting. Congress. Event.
-            </div>
-          </div>
-          
-          {/* Subline with "/" bullets - left aligned */}
-          <div className="text-xl sm:text-2xl md:text-3xl text-white/90 space-y-4 font-medium">
-            <div className="flex items-center gap-3">
-              <span className="text-[#009fe3] text-2xl font-bold">/</span>
-              <span>Strategisch geplant.</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-[#009fe3] text-2xl font-bold">/</span>
-              <span>Emotional inszeniert.</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-[#009fe3] text-2xl font-bold">/</span>
-              <span>Nachhaltig umgesetzt.</span>
-            </div>
           </div>
         </div>
       </div>
       
       {/* Animated scroll indicator with only arrow */}
       <a 
-        href="#ueber-uns" 
+        href="#intro" 
         className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center cursor-pointer group"
         onClick={scrollToNext}
       >
