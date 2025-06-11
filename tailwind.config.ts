@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -144,6 +145,7 @@ export default {
 			},
 			backgroundSize: {
 				'200%': '200% 100%',
+				'300%': '300% 100%',
 			},
 		}
 	},

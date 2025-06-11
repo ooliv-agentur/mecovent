@@ -5,28 +5,110 @@ const IntroSection = () => {
   return (
     <section 
       id="intro" 
-      className="py-20 bg-white"
+      className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 text-center">
-        {/* Meeting. Congress. Event. */}
-        <div className="text-xl sm:text-2xl md:text-3xl font-normal bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2 mb-12">
-          Meeting. Congress. Event.
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-[#009fe3]/10 to-[#005a80]/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-48 h-48 bg-gradient-to-r from-[#005a80]/5 to-[#009fe3]/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-[#009fe3]/3 to-transparent rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Main heading with emotional impact */}
+        <div className="text-center mb-16">
+          <div className="inline-block">
+            <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+              <span className="block bg-gradient-to-r from-[#005a80] via-[#009fe3] to-[#005a80] bg-clip-text text-transparent bg-300% animate-gradient-shift">
+                Meeting.
+              </span>
+              <span className="block bg-gradient-to-r from-[#009fe3] via-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-300% animate-gradient-shift delay-500">
+                Congress.
+              </span>
+              <span className="block bg-gradient-to-r from-[#005a80] via-[#009fe3] to-[#005a80] bg-clip-text text-transparent bg-300% animate-gradient-shift delay-1000">
+                Event.
+              </span>
+            </div>
+          </div>
         </div>
         
-        {/* Bullet points with "/" */}
-        <div className="text-xl sm:text-2xl md:text-3xl text-gray-700 space-y-6 font-medium max-w-2xl mx-auto">
-          <div className="flex items-center justify-center gap-4">
-            <span className="text-[#009fe3] text-2xl font-bold">/</span>
-            <span>Strategisch geplant.</span>
+        {/* Emotional value propositions with modern layout */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+            
+            {/* Strategic Planning */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#009fe3]/10 to-transparent rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-500"></div>
+              <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/20">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#005a80] to-[#009fe3] rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-white font-bold text-xl">/</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-[#005a80] transition-colors">
+                      Strategisch geplant
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Jedes Detail durchdacht, jeder Moment perfekt orchestriert für unvergessliche Erlebnisse.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Emotional Staging */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#005a80]/10 to-transparent rounded-2xl transform -rotate-1 group-hover:-rotate-2 transition-transform duration-500"></div>
+              <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/20">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#009fe3] to-[#005a80] rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-white font-bold text-xl">/</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-[#005a80] transition-colors">
+                      Emotional inszeniert
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Wir schaffen Momente, die berühren und verbinden – authentisch und von Herzen.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Sustainable Implementation */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#009fe3]/10 to-transparent rounded-2xl transform rotate-1 group-hover:rotate-2 transition-transform duration-500"></div>
+              <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/20">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#005a80] to-[#009fe3] rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-white font-bold text-xl">/</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-[#005a80] transition-colors">
+                      Nachhaltig umgesetzt
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Mit Weitblick und Verantwortung für Generationen – heute und morgen.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center justify-center gap-4">
-            <span className="text-[#009fe3] text-2xl font-bold">/</span>
-            <span>Emotional inszeniert.</span>
-          </div>
-          <div className="flex items-center justify-center gap-4">
-            <span className="text-[#009fe3] text-2xl font-bold">/</span>
-            <span>Nachhaltig umgesetzt.</span>
-          </div>
+        </div>
+
+        {/* Emotional tagline */}
+        <div className="text-center mt-16">
+          <p className="text-xl md:text-2xl text-gray-700 font-light italic">
+            "Wo <span className="font-medium text-[#009fe3]">Begegnungen</span> zu <span className="font-medium text-[#005a80]">Erinnerungen</span> werden."
+          </p>
         </div>
       </div>
     </section>
