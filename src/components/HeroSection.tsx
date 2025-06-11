@@ -76,15 +76,12 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Animated scroll indicator with blue rollover effect */}
+      {/* Animated scroll indicator with only arrow */}
       <a 
         href="#ueber-uns" 
         className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center cursor-pointer group"
         onClick={scrollToNext}
       >
-        <div className="text-white text-xl mb-2 animate-bounce-y group-hover:text-[#33C3F0] transition-colors duration-300">
-          Kennenlernen
-        </div>
         <ChevronDown className="text-white animate-bounce-y h-8 w-8 group-hover:text-[#33C3F0] transition-colors duration-300" />
       </a>
     </section>
