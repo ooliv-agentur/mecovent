@@ -18,7 +18,7 @@ const IntroSection = () => {
       <div className="container-section relative z-10">
         {/* Header Section */}
         <SectionTextBlockSimple
-          label="MEETING. CONGRESS. EVENT."
+          label="MECOVENT"
           line1="Meeting."
           line2="Congress."
           line3="Event."
