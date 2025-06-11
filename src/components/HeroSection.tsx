@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   const scrollToNext = (event: React.MouseEvent) => {
@@ -23,6 +24,21 @@ const HeroSection = () => {
     }
   };
 
+  const scrollToContact = (event: React.MouseEvent) => {
+    event.preventDefault();
+    
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+      const targetY = contactSection.offsetTop - navHeight;
+      
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section 
       id="hero" 
@@ -36,43 +52,35 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          src="https://projekte-ooliv.de/mecovent/20250402_1922_Elegant%20Event%20Ambiance_simple_compose_01jqvrch48fr9sq1rmb5c8ghxx.mp4"
+          src="/MECOVENT_Hero.mp4"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
       </div>
       
-      {/* Position text block at 25% from left (second quarter) */}
-      <div className="relative z-10 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-[25%]">
-        {/* Main content with left alignment */}
-        <div className="w-full max-w-2xl text-left">
-          {/* Main Headline - each word on new line - slightly smaller */}
-          <div className="space-y-2 mb-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
-              Wir<br />
-              bringen<br />
-              Menschen<br />
-              zusammen.
-            </h1>
-            <div className="text-xl sm:text-2xl md:text-3xl font-normal bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-relaxed py-2 mt-6 mb-6">
-              Meeting. Congress. Event.
-            </div>
+      {/* Centered content */}
+      <div className="relative z-10 w-full flex flex-col items-center justify-center min-h-screen animate-fade-in text-center px-4">
+        {/* Main content */}
+        <div className="max-w-4xl">
+          {/* MECOVENT Claim - Prominent headline */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-8 bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift">
+            Wir bringen<br />
+            Menschen<br />
+            zusammen
+          </h1>
+          
+          {/* Subtitle */}
+          <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white/90 mb-12 leading-relaxed">
+            Meeting. Congress. Event.
           </div>
           
-          {/* Subline with "/" bullets - left aligned */}
-          <div className="text-xl sm:text-2xl md:text-3xl text-white/90 space-y-4 font-medium">
-            <div className="flex items-center gap-3">
-              <span className="text-[#009fe3] text-2xl font-bold">/</span>
-              <span>Strategisch geplant.</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-[#009fe3] text-2xl font-bold">/</span>
-              <span>Emotional inszeniert.</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-[#009fe3] text-2xl font-bold">/</span>
-              <span>Nachhaltig umgesetzt.</span>
-            </div>
-          </div>
+          {/* CTA Button */}
+          <Button 
+            onClick={scrollToContact}
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            Jetzt Beratung anfragen
+          </Button>
         </div>
       </div>
       
