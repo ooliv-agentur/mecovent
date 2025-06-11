@@ -25,7 +25,7 @@ const ProjectsSection = () => {
     >
       <div className={cn("text-center max-w-3xl mx-auto px-4 mb-12 animate-fade-in")}>
         <SectionLabel label="Unsere Expertise" />
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-[#005a80] to-[#009fe3] bg-clip-text text-transparent bg-200% animate-gradient-shift leading-[1.6] break-words">
           Verstehen, was zählt – für Events mit Wirkung
         </h2>
         <p className="subheader-section mb-3">
