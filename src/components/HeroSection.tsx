@@ -41,19 +41,19 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
 
-      {/* MECOVENT Logo Overlay */}
-      <div className="absolute inset-0 z-5 flex items-center justify-center">
-        <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+      {/* MECOVENT Logo Overlay - Large and prominent */}
+      <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+        <div className="w-[70%] max-w-4xl">
           <img
             src="/mecovent-Logo-transparent.svg"
             alt="MECOVENT Logo"
-            className="w-full h-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+            className="w-full h-auto opacity-90"
           />
         </div>
       </div>
       
       {/* Position text block at 25% from left */}
-      <div className="relative z-10 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-[25%]">
+      <div className="relative z-30 w-full flex flex-col items-start justify-center min-h-screen animate-fade-in pl-[25%]">
         {/* Main content with left alignment */}
         <div className="w-full max-w-2xl text-left">
           {/* Main Headline - each word on new line - slightly smaller */}
@@ -90,7 +90,7 @@ const HeroSection = () => {
       {/* Animated scroll indicator with only arrow */}
       <a 
         href="#ueber-uns" 
-        className="absolute bottom-10 left-0 right-0 mx-auto z-10 flex flex-col items-center cursor-pointer group"
+        className="absolute bottom-10 left-0 right-0 mx-auto z-40 flex flex-col items-center cursor-pointer group"
         onClick={scrollToNext}
       >
         <ChevronDown className="text-white animate-bounce-y h-8 w-8 group-hover:text-[#33C3F0] transition-colors duration-300" />
