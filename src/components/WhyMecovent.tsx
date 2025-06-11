@@ -4,6 +4,7 @@ import SectionHeader from './why-mecovent/SectionHeader';
 import ValuesSection from './why-mecovent/ValuesSection';
 import StrengthsSection from './why-mecovent/StrengthsSection';
 import { companyValues } from './why-mecovent/constants';
+import { SectionLabel } from '@/components/ui/section-label';
 
 const WhyMecovent = () => {
   return (
@@ -12,10 +13,8 @@ const WhyMecovent = () => {
         {/* Right-aligned header section */}
         <div className="flex justify-end mb-16">
           <div className="text-right max-w-2xl">
-            {/* Section tag with dashes */}
-            <div className="text-xs font-medium tracking-wider uppercase text-primary mb-6">
-              --- ÜBER UNS ----
-            </div>
+            {/* Section tag with bubble design */}
+            <SectionLabel label="ÜBER UNS" className="mb-6" />
             
             {/* Main heading with mixed typography and gradient colors */}
             <h2 className="text-4xl sm:text-5xl md:text-6xl leading-tight mb-8">
