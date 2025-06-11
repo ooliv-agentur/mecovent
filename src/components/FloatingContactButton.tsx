@@ -33,13 +33,13 @@ const FloatingContactButton = () => {
         "hidden md:flex", // Hide on mobile, show on tablet/desktop
         hasAnimated ? "animate-none" : "animate-pulse"
       )}
-      aria-label="Kontakt knüpfen"
+      aria-label="Kontakt"
     >
       <MessageCircle 
         size={20} 
         className="text-[#111111] transition-transform group-hover:-translate-y-0.5" 
       />
-      <span className="font-medium">Kontakt knüpfen</span>
+      <span className="font-medium">Kontakt</span>
     </button>
   );
 };
