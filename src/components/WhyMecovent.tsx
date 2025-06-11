@@ -17,13 +17,13 @@ const WhyMecovent = () => {
               --- ÜBER UNS ----
             </div>
             
-            {/* Main heading with mixed typography */}
+            {/* Main heading with mixed typography and gradient colors */}
             <h2 className="text-4xl sm:text-5xl md:text-6xl leading-tight mb-8">
-              <span className="font-normal text-foreground">Wir gestalten </span>
+              <span className="font-normal bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">Wir gestalten </span>
               <br />
-              <span className="font-bold text-foreground">ERLEBNISSE,</span>
+              <span className="font-bold bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">ERLEBNISSE,</span>
               <br />
-              <span className="font-normal text-foreground">die verbinden.</span>
+              <span className="font-normal bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">die verbinden.</span>
             </h2>
             
             {/* Description text */}
